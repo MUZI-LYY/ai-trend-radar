@@ -21,12 +21,13 @@ class CollectionGuardTests(unittest.TestCase):
    profile = c.classify(repo, '', {'owner/agent': {'category': 'agents', 'related': related}})
    self.assertEqual(profile['related'], related)
 
- def test_budget_keeps_tracked_and_limits_new(self):
-  previous = {f'o/r{i}': {'fullName': f'o/r{i}'} for i in range(178)}
+ def test_batch_budget_does_not_cap_collection_size_or_new_admissions(self):
+  previous = {f'o/r{i}': {'fullName': f'o/r{i}'} for i in range(2000)}
   candidates = {**{key: row['fullName'] for key, row in previous.items()}, **{f'n/r{i}': f'n/r{i}' for i in range(20)}}
-  self.assertEqual(len(c.select_candidates(previous, candidates, 180, 8)), 180)
-  self.assertEqual(len(c.select_candidates(previous, candidates, 170, 8)), 178)
-  self.assertEqual(len(c.select_candidates(previous, candidates, 200, 8)), 186)
+  selected=c.select_candidates(previous, candidates, 180, 8)
+  self.assertEqual(len(selected),180)
+  self.assertEqual(sum(name.startswith('n/') for name in selected),8)
+  self.assertEqual(len(previous),2000)
 
  def test_failure_retains_previous_without_old_period_rank(self):
   old = {'id': 1, 'fullName': 'o/old', 'metrics': {'daily': 99}, 'fetchedAt': '2026-09-01T00:00:00Z'}

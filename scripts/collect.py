@@ -195,13 +195,23 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
  prev_stars=previous.get('stars') if previous else None
  return {**profile,'id':repo['id'],'fullName':repo['full_name'],'name':repo['name'],'owner':repo['owner']['login'],'avatar':repo['owner']['avatar_url'],'url':repo['html_url'],'homepage':repo.get('homepage') if str(repo.get('homepage','')).startswith(('https://','http://')) else None,'stars':repo['stargazers_count'],'forks':repo['forks_count'],'language':repo.get('language') or '未标注','license':(repo.get('license') or {}).get('spdx_id') or '未明确','topics':repo.get('topics',[]),'description':repo.get('description') or '', 'archived':repo['archived'],'createdAt':created,'pushedAt':repo['pushed_at'],'fetchedAt':fetched,'firstSeen':first,'readmeSha':sha,'readmeFetchedAt':readme_fetched,'metrics':metrics,'historyStatus':history_status,'history':[{'date':d,'stars':v} for d,v in sorted(daily.items())],'warnings':warnings,'netSincePrevious':repo['stargazers_count']-prev_stars if prev_stars is not None else None,'netBaselineAt':previous.get('fetchedAt') if previous else None}
 
-def select_candidates(previous, candidates, limit, new_limit):
- """Never drop tracked records when the budget is lowered; bound only new work."""
- new=[name for key,name in candidates.items() if key not in previous]
- room=max(0,limit-len(previous))
- return [r['fullName'] for r in previous.values()]+new[:min(max(0,new_limit),room)]
+def is_current(project, end):
+ return (bool(end) and project.get('statsThrough') == end and not project.get('stale')
+         and project.get('historyStatus') == 'ok'
+         and all(project.get('metrics', {}).get(period) is not None for period in period_starts(end)))
 
-def retain_previous(projects, previous, end):
+def select_candidates(previous, candidates, batch_size, new_limit, end=None, force=False):
+ """Bound work per run, never collection size. Oldest attempts rotate fairly.
+
+ New admissions have reserved slots even when a very large existing collection is
+ overdue. Already-current repositories need not be fetched again every hour.
+ """
+ new=[name for key,name in candidates.items() if key not in previous][:min(new_limit,batch_size)]
+ due=[r for r in previous.values() if force or not is_current(r,end)]
+ due.sort(key=lambda r:(r.get('lastAttemptAt',r.get('fetchedAt','')),r['fullName'].lower()))
+ return new+[r['fullName'] for r in due[:max(0,batch_size-len(new))]]
+
+def retain_previous(projects, previous, end, attempted=(), attempted_at=None):
  """Prefer fresh records on redirects and preserve missing projects without old ranks."""
  by_id={}
  for project in projects:
@@ -209,7 +219,13 @@ def retain_previous(projects, previous, end):
   if old is None or project['fetchedAt']>old['fetchedAt']:by_id[project['id']]=project
  for old in previous.values():
   if old['id'] not in by_id:
-   by_id[old['id']]={**old,'stale':True,'metrics':{p:None for p in period_starts(end)},'warnings':sorted(set(old.get('warnings',[])+['本次未获取到更新，保留上次记录']))}
+   if is_current(old,end):
+    by_id[old['id']]=old
+   else:
+    attempted_here=old['fullName'].lower() in attempted
+    note='本次未获取到更新，保留上次记录' if attempted_here else '等待后续批次更新，本期指标暂不参榜'
+    by_id[old['id']]={**old,'stale':True,'metrics':{p:None for p in period_starts(end)},'warnings':sorted(set(old.get('warnings',[])+[note]))}
+    if attempted_here and attempted_at:by_id[old['id']]['lastAttemptAt']=attempted_at
   else:
    # A new candidate name can redirect to an already tracked repository ID.
    # Keep its observation baseline even if that candidate won the fresh deduplication.
@@ -220,59 +236,63 @@ def retain_previous(projects, previous, end):
     fresh['netBaselineAt']=old['fetchedAt']
  return list(by_id.values())
 
+def collection_coverage(projects, discovery, excluded, end):
+ tracked={p['id'] for p in projects}; excluded={name.lower() for name in excluded}
+ candidates=list(discovery['candidates'].values())
+ pending=[c for c in candidates if c['id'] not in tracked and c.get('status')!='rejected'
+          and c['fullName'].lower() not in excluded]
+ updated=sum(is_current(p,end) for p in projects)
+ return {'discoveredRepositories':len(tracked | {c['id'] for c in candidates}),
+         'trackedRepositories':len(projects),'updatedRepositories':updated,
+         'pendingCandidates':len(pending),'pendingUpdates':len(projects)-updated,
+         'sourceDate':end,'totalLimit':None}
+
 def missing_period_history(projects):
  if not any(not p.get('stale') and any(v is not None for v in p['metrics'].values()) for p in projects):
   raise ValueError('No usable fresh period metrics: previous published data preserved')
  return [p['fullName'] for p in projects if not p.get('stale') and any(v is None for v in p['metrics'].values())]
 
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int,default=800);parser.add_argument('--new-limit',type=int,default=20);parser.add_argument('--no-discover',action='store_true');parser.add_argument('--refresh',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--batch-size',type=int,default=600,help='Maximum repositories attempted per run; no total collection limit');parser.add_argument('--new-limit',type=int,default=40,help='New candidate attempts reserved within each batch');parser.add_argument('--no-discover',action='store_true');parser.add_argument('--refresh',action='store_true');parser.add_argument('--force-refresh',action='store_true',help='Also refresh already-current repositories within this batch');args=parser.parse_args()
+ if args.batch_size<1 or args.new_limit<0:parser.error('batch-size must be positive and new-limit nonnegative')
  now=dt.datetime.now(UTC);capture_date=now.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat();end=(now.date()-dt.timedelta(days=1)).isoformat();year_start=min(period_starts(end).values())
  latest_path=ROOT/'public/data/latest.json';latest=json.loads(latest_path.read_text()) if latest_path.exists() else {'projects':[]}
  snapshot_path=ROOT/'public/data/snapshots'/f'{capture_date}.json'
- if snapshot_path.exists() and not args.refresh:print('Already collected '+capture_date+'; archived snapshot preserved.');return
+ if snapshot_path.exists() and not (args.refresh or args.force_refresh):print('Already collected '+capture_date+'; archived snapshot preserved.');return
  editorial=json.loads((ROOT/'data/editorial.json').read_text()) if (ROOT/'data/editorial.json').exists() else {}
  excluded_path=ROOT/'data/excluded.json'
  excluded={name.lower() for name in json.loads(excluded_path.read_text())} if excluded_path.exists() else set()
  previous={r['fullName'].lower():r for r in latest['projects'] if r['fullName'].lower() not in excluded}
- from discover import load_state, pending_candidates, record_attempt, save_state
+ # Migrate the old single-batch format using its verified dataset source date.
+ for r in previous.values():
+  if 'statsThrough' not in r and not r.get('stale') and r.get('historyStatus')=='ok':r['statsThrough']=latest.get('periodEnd')
+ from discover import load_state, pending_candidates, record_attempt, save_state, discover as run_discovery
  discovery=load_state()
+ warnings=[]
+ if not args.no_discover:
+  report=run_discovery(discovery,api,max_requests=24,persist=save_state)
+  if report['errors']:warnings.append('部分候选搜索未完成，保留分页进度等待后续发现任务。')
  candidates={key:r['fullName'] for key,r in previous.items()}
  for candidate in pending_candidates(discovery,tracked=latest['projects'],excluded=excluded):
   candidates[candidate['fullName'].lower()]=candidate['fullName']
  for n in SEEDS:candidates[n.lower()]=n
- warnings=[]
- topics=['llm','ai-agents','generative-ai','machine-learning','rag','mcp','text-to-speech','computer-vision','deep-learning','ai','large-language-models','diffusion','reinforcement-learning','nlp','speech-recognition','ai-tools']
- rotation=now.date().toordinal()*4%len(topics)
- queries=[f'topic:{topics[(rotation+i)%len(topics)]} stars:>100 archived:false' for i in range(4)]
- if not args.no_discover:
-  from urllib.parse import urlencode
-  for query in queries:
-   try:
-    data=api('search/repositories?'+urlencode({'q':query,'sort':'updated','per_page':10}))
-    if data.get('incomplete_results'):warnings.append('部分搜索结果不完整')
-    for r in data.get('items',[]):
-     if not r.get('fork'):candidates[r['full_name'].lower()]=r['full_name']
-   except Exception as e:warnings.append('项目搜索部分不可用');print(str(e),file=sys.stderr)
-  try:
-   for name in trending():
-    # Trending is not AI-only: metadata check below filters candidates conservatively.
-    candidates.setdefault(name.lower(),name)
-  except Exception:warnings.append('Trending 发现暂不可用')
- # Update every tracked repository, and reserve a bounded budget for new candidates.
+ # Work is bounded, admission count is not. Unselected candidates stay queued.
  candidates={key:value for key,value in candidates.items() if key not in excluded}
- new=[name for key,name in candidates.items() if key not in previous]
- room=max(0,args.limit-len(previous))
- names=select_candidates(previous,candidates,args.limit,args.new_limit)
- if new and not room:warnings.append('达到收录预算上限，已有项目继续更新，新项目发现暂停；可调整采集 limit。')
+ names=select_candidates(previous,candidates,args.batch_size,args.new_limit,end,args.force_refresh)
+ if not names:print('All tracked data is current; no eligible candidate work.');return
  projects=[];failures=[]
  metadata=batch_metadata(names)
  if len(metadata)<len(names):warnings.append('部分批量元数据不可用，将在 REST 预算内尝试单仓库获取。')
  def work(name):
-  result=collect_one(name,previous.get(name.lower()),editorial,end,year_start,repo=metadata.get(name.lower()))
-  if result and name.lower() not in previous and name.lower() not in {s.lower() for s in SEEDS}:
-   text=' '.join([result['fullName'],result['description'],*result['topics']]).lower()
-   if not re.search(r'\b(ai|llm|rag|agent|agents|gpt|ml|mcp)\b|artificial.intelligence|machine.learning|deep.learning|diffusion|neural|语音|智能|模型',text):return None
+  repo=metadata.get(name.lower()) or api('repos/'+name)
+  if name.lower() not in previous and name.lower() not in {s.lower() for s in SEEDS}:
+   from discover import TOPICS
+   text=' '.join([repo['full_name'],repo.get('description') or '',*repo.get('topics',[])]).lower()
+   if not (set(repo.get('topics',[])) & set(TOPICS)) and not re.search(r'\b(ai|llm|rag|gpt|ml|mcp)\b|artificial.intelligence|machine.learning|deep.learning|diffusion|neural|语音|智能|模型',text):return None
+  result=collect_one(name,previous.get(name.lower()),editorial,end,year_start,repo=repo)
+  if result:
+   result['statsThrough']=end if result['historyStatus']=='ok' else None
+   result['lastAttemptAt']=result['fetchedAt']
   return result
  with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
   futures={executor.submit(work,name):name for name in names}
@@ -287,16 +307,21 @@ def main():
    except Exception as e:
     failures.append(name);record_attempt(discovery,name,'retry');print(f'Failed {name}: {e}',file=sys.stderr,flush=True)
  save_state(discovery)
- if not projects:raise SystemExit('No fresh projects: previous published data preserved')
  # Do not publish a misleading severely incomplete batch.
  if len(failures)>max(3,len(names)*0.2):raise SystemExit('Too many failed repositories: previous published data preserved')
- projects=retain_previous(projects,previous,end)
+ projects=retain_previous(projects,previous,end,{name.lower() for name in names},now.isoformat())
  projects.sort(key=lambda p:(-p['stars'],p['fullName'].lower()))
  missing_history=missing_period_history(projects)
+ coverage=collection_coverage(projects,discovery,excluded,end)
+ if coverage['pendingUpdates']:warnings.append(f'{coverage["pendingUpdates"]} 个已收录项目待更新或暂缺完整本期数据，后续批次继续处理；未更新指标不参榜。')
  if missing_history:warnings.append(f'{len(missing_history)} 个项目的部分 Star 历史不可用，缺失指标不参与对应榜单。')
  payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API + GraphQL API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}
+ payload['coverage']=coverage
  # First successfully published daily archive is immutable; refresh only changes latest.json.
- if not snapshot_path.exists():atomic_json(snapshot_path,payload)
+ # Before 08:00 Beijing the UTC source day has not advanced yet. Do not freeze
+ # yesterday's source data into today's archive during an hourly continuation.
+ archive_day=(dt.date.fromisoformat(capture_date)-dt.timedelta(days=1)).isoformat()
+ if not snapshot_path.exists() and end==archive_day:atomic_json(snapshot_path,payload)
  atomic_json(latest_path,payload)
  index=[{'date':p.stem,'file':'snapshots/'+p.name} for p in sorted(snapshot_path.parent.glob('*.json'),reverse=True)]
  atomic_json(ROOT/'public/data/index.json',{'snapshots':index})

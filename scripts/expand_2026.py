@@ -18,10 +18,12 @@ from validate_data import validate_dataset, validate_history
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--target', type=int, default=600)
+    parser.add_argument('--batch-size', type=int, default=100, help='Candidate attempts in this import batch, not a total collection target')
     parser.add_argument('--workers', type=int, default=5)
     parser.add_argument('--publish', action='store_true')
     args = parser.parse_args()
+    if args.batch_size < 1:
+        parser.error('--batch-size must be positive')
     latest_path = ROOT / 'public/data/latest.json'
     latest = json.loads(latest_path.read_text())
     candidates = json.loads((ROOT / 'data/candidates-2026.json').read_text())['repositories']
@@ -30,7 +32,7 @@ def main():
     start = '2026-01-01'
     existing = {p['id']: p for p in latest['projects']}
     excluded = set(json.loads((ROOT / 'data/excluded.json').read_text()))
-    selected = [r for r in candidates if r['id'] not in existing and r['full_name'].lower() not in excluded][:max(0, args.target - len(existing))]
+    selected = [r for r in candidates if r['id'] not in existing and r['full_name'].lower() not in excluded][:args.batch_size]
     directory = ROOT / 'work/expansion-2026' / end
     directory.mkdir(parents=True, exist_ok=True)
 
@@ -70,10 +72,16 @@ def main():
     print(json.dumps({'projects': len(existing), 'failures': failures}, ensure_ascii=False), flush=True)
     if not args.publish:
         return
-    if failures or len(existing) < args.target:
-        raise SystemExit('Target not complete; checkpoints retained and published data untouched')
+    if failures:
+        raise SystemExit('Batch incomplete; checkpoints retained and published data untouched')
     projects = sorted(existing.values(), key=lambda p: (-p['stars'], p['fullName'].lower()))
     payload = {**latest, 'projects': projects, 'completedAt': dt.datetime.now(dt.timezone.utc).isoformat()}
+    from collect import collection_coverage
+    from discover import load_state
+    for project in projects:
+        if project.get('historyStatus') == 'ok' and not project.get('stale'):
+            project['statsThrough'] = end
+    payload['coverage'] = collection_coverage(projects, load_state(), excluded, end)
     validate_dataset(payload)
     history = json.loads((ROOT / 'public/data/history.json').read_text())
     history = merge_projects(history, projects, start, end)

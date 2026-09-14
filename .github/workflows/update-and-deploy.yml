@@ -3,11 +3,11 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '17 0 * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
-      refresh:
-        description: Refresh latest data even if today already has an archive
+      force_refresh:
+        description: Recheck already-current projects within this batch
         type: boolean
         default: false
 permissions:
@@ -41,13 +41,13 @@ jobs:
         if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REFRESH: ${{ inputs.refresh }}
+          FORCE_REFRESH: ${{ inputs.force_refresh }}
           RADAR_REST_REQUEST_LIMIT: 940
         run: |
-          if [ "$REFRESH" = "true" ]; then
-            python -B scripts/collect.py --limit 700 --new-limit 12 --no-discover --refresh
+          if [ "$FORCE_REFRESH" = "true" ]; then
+            python -B scripts/collect.py --batch-size 600 --new-limit 40 --no-discover --refresh --force-refresh
           else
-            python -B scripts/collect.py --limit 700 --new-limit 12 --no-discover
+            python -B scripts/collect.py --batch-size 600 --new-limit 40 --no-discover --refresh
           fi
       - name: Validate published dataset
         run: python -B scripts/validate_data.py

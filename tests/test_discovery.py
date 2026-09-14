@@ -20,7 +20,7 @@ def repo(number, **values):
 
 def state_with_tasks(tasks):
     return {'schemaVersion': 1, 'candidates': {}, 'tasks': tasks, 'cycle': 1,
-            'config': {'createdStart': None, 'createdEnd': None, 'topics': list(d.TOPICS)}}
+            'config': {'createdStart': None, 'createdEnd': None, 'topics': list(d.TOPICS), 'minStars': 0}}
 
 
 class DiscoveryTests(unittest.TestCase):
@@ -34,7 +34,7 @@ class DiscoveryTests(unittest.TestCase):
         tasks = d.initial_tasks(TODAY)
         self.assertEqual({t['topic'] for t in tasks[:len(d.TOPICS)]}, set(d.TOPICS))
         self.assertEqual({t['sort'] for t in tasks}, {'stars', 'updated'})
-        self.assertEqual({t['minStars'] for t in tasks}, {10, 100, 1000})
+        self.assertEqual({t['minStars'] for t in tasks}, {0, 10, 100, 1000})
 
     def test_full_page_resumes_after_restart_without_dropping_candidates(self):
         state = state_with_tasks([self.task()])
@@ -76,6 +76,22 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(right['createdEnd'], task['createdEnd'])
         self.assertEqual(dt.date.fromisoformat(left['createdEnd']) + dt.timedelta(days=1),
                          dt.date.fromisoformat(right['createdStart']))
+
+    def test_unbounded_star_search_keeps_open_upper_partition(self):
+        task=self.task()
+        self.assertIn('stars:>=1000', d.search_query(task))
+        left,right=d.split_task(task,[20000,18000])
+        self.assertEqual(left['maxStars']+1,right['minStars'])
+        self.assertIsNone(right['maxStars'])
+
+    def test_zero_star_partition_and_repositories_are_not_excluded(self):
+        task=self.task(minStars=0,maxStars=9)
+        left,right=d.split_task(task)
+        self.assertEqual(left['minStars'],0)
+        self.assertEqual(left['maxStars']+1,right['minStars'])
+        state=state_with_tasks([])
+        self.assertTrue(d.merge_candidate(state,repo(1,stargazers_count=0),'topic:llm',TODAY))
+        self.assertEqual(len(d.pending_candidates(state)),1)
 
     def test_unsplittable_limit_is_reported_and_never_requests_page_eleven(self):
         task = self.task(minStars=100, maxStars=100, page=10,

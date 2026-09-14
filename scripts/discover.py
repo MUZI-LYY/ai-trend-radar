@@ -23,6 +23,7 @@ TOPICS = (
     'nlp', 'speech-recognition', 'ai-tools', 'ai-coding',
     'text-to-image', 'video-generation', 'fine-tuning', 'llm-inference',
     'multimodal', 'ai-assistant', 'agentic-ai', 'retrieval-augmented-generation',
+    'ai', 'artificial-intelligence',
 )
 PAGE_SIZE = 100
 MIN_DATE = '2008-01-01'
@@ -50,19 +51,24 @@ def initial_tasks(today, created_start=None, created_end=None):
     # gives emerging repositories space instead of filling every slot with giants.
     return [dict(topic=topic, minStars=low, maxStars=high, sort=sort, page=1,
                  createdStart=created_start or MIN_DATE, createdEnd=created_end or today)
-            for low, high in ((1000, 10000000), (100, 999), (10, 99))
+            for low, high in ((1000, None), (100, 999), (10, 99), (0, 9))
             for sort in ('stars', 'updated') for topic in TOPICS]
 
 
 def search_query(task):
-    return (f'topic:{task["topic"]} stars:{task["minStars"]}..{task["maxStars"]} '
+    stars = f'>={task["minStars"]}' if task['maxStars'] is None else f'{task["minStars"]}..{task["maxStars"]}'
+    return (f'topic:{task["topic"]} stars:{stars} '
             f'created:{task["createdStart"]}..{task["createdEnd"]} '
             'archived:false fork:false')
 
 
-def split_task(task):
+def split_task(task, observed_stars=()):
     """Keep search result windows below GitHub's 1,000-result ceiling."""
     low, high = task['minStars'], task['maxStars']
+    if high is None:
+        middle = max(low, max(observed_stars, default=max(low, 1)*10) // 2)
+        return [{**task, 'maxStars': middle, 'page': 1},
+                {**task, 'minStars': middle + 1, 'page': 1}]
     if low < high:
         # Star counts are strongly skewed; geometric splits reach useful ranges
         # without spending many whole cycles probing millions of nonexistent stars.
@@ -145,7 +151,8 @@ def record_attempt(state, name, outcome, today=None):
 def discover(state, request, max_requests=24, today=None, persist=None,
              pause=time.sleep, interval=2.2, created_start=None, created_end=None):
     today = today or dt.datetime.now(dt.timezone.utc).date().isoformat()
-    config = {'createdStart': created_start, 'createdEnd': created_end, 'topics': list(TOPICS)}
+    config = {'createdStart': created_start, 'createdEnd': created_end, 'topics': list(TOPICS),
+              'minStars': 0}
     if state.get('config') != config or not state['tasks']:
         state.update(config=config, tasks=initial_tasks(today, created_start, created_end),
                      cycle=state.get('cycle', 0) + 1)
@@ -177,7 +184,7 @@ def discover(state, request, max_requests=24, today=None, persist=None,
                 state['tasks'].append(task)
                 report['errors'].append({'query': query, 'error': 'incomplete_results'})
             elif response['total_count'] > 1000:
-                children = split_task(task)
+                children = split_task(task, [r.get('stargazers_count', 0) for r in response['items']])
                 if children:
                     state['tasks'].extend(children)
                     report['splits'] += 1

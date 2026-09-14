@@ -2,7 +2,7 @@
 import json
 import datetime as dt
 from pathlib import Path
-from collect import period_total
+from collect import period_total, is_current
 from ranking import period_starts, chart_entries
 
 
@@ -43,6 +43,16 @@ def validate_dataset(data):
   for period, actual in project['metrics'].items():
    expected = None if project.get('stale') or project['historyStatus'] != 'ok' else period_total(history, starts[period], data['periodEnd'], project['createdAt'])
    assert actual == expected, f'{label} {period}: published {actual}, source history {expected}'
+ if 'coverage' in data:
+  coverage=data['coverage']
+  assert coverage['sourceDate']==data['periodEnd'], 'Coverage source day mismatch'
+  assert coverage['totalLimit'] is None, 'Unexpected total collection limit'
+  assert coverage['trackedRepositories']==len(ids), 'Coverage collection count mismatch'
+  updated=sum(is_current(p,data['periodEnd']) for p in data['projects'])
+  assert coverage['updatedRepositories']==updated, 'Coverage freshness count mismatch'
+  assert coverage['pendingUpdates']==len(ids)-updated, 'Coverage pending update count mismatch'
+  assert coverage['discoveredRepositories']>=len(ids), 'Discovered count is below collection count'
+  assert type(coverage['pendingCandidates']) is int and coverage['pendingCandidates']>=0, 'Invalid pending candidate count'
  return len(ids)
 
 
