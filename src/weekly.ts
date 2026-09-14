@@ -35,8 +35,8 @@ function dailyBoard(data:Dataset,date:string,source:DailySource):DailyBoard {
  * charts are authoritative; unsaved days are visibly reconstructed from day data.
  * A project contributes only on days it entered that day's positive-growth TOP 30.
  */
-export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:DailySource='latest',failedDates:string[]=[]):WeeklyBoard {
- const end=data.periodEnd,start=weekStart(end);
+export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:DailySource='latest',failedDates:string[]=[],period:'weekly'|'monthly'='weekly'):WeeklyBoard {
+ const end=data.periodEnd,start=period==='monthly'?end.slice(0,7)+'-01':weekStart(end);
  const saved=new Map<string,Dataset>();
  for(const snapshot of [...snapshots].sort((a,b)=>a.capturedAt.localeCompare(b.capturedAt))) {
   if(snapshot.periodEnd<start||snapshot.periodEnd>end)continue;
