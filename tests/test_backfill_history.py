@@ -51,6 +51,17 @@ class HistoryBackfillTests(unittest.TestCase):
         result, count, missing, errors = backfill_project(project, '2025-01-01', '2025-01-01', forbidden)
         self.assertEqual((count, missing, errors), (0, [], []))
 
+    def test_bounded_2025_backfill_preserves_2026_and_only_adds_target_days(self):
+        week = int(dt.datetime(2025, 12, 28, tzinfo=dt.timezone.utc).timestamp())
+        project = self.project(days=[{'date': '2026-01-01', 'stars': 999}])
+        result, count, missing, errors = backfill_project(project, '2025-12-28', '2025-12-31',
+            lambda _: [{'week': week, 'days': [1] * 7, 'total': 7}])
+        days = {d['date']: d['stars'] for d in result['days']}
+        self.assertEqual((count, missing, errors), (1, [], []))
+        self.assertEqual(days['2026-01-01'], 999)
+        self.assertEqual(len(days), 5)
+        self.assertEqual(days['2025-12-31'], 1)
+
     def test_corrupt_week_does_not_write_daily_values(self):
         week = int(dt.datetime(2024, 12, 29, tzinfo=dt.timezone.utc).timestamp())
         project = self.project(days=[])

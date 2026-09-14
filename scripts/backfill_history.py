@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Backfill aggregate Star days; never fabricate historical repository snapshots.
 
-Existing validated daily values are reused. Each completed repository is persisted,
-so rerunning resumes missing coverage without downloading completed histories again.
+Existing validated daily values are reused. Progress is saved every ten completed
+repositories, so rerunning resumes missing coverage without refetching saved histories.
 """
 import argparse
 import concurrent.futures
@@ -100,7 +100,8 @@ def backfill_project(project, start, end, api_get=None):
     from collect import api, flatten_history
     api_get = api_get or api
     project_start = max(start, project['createdAt'][:10])
-    days = {d['date']: d['stars'] for d in project['days'] if project['createdAt'][:10] <= d['date'] <= end}
+    # A bounded historical backfill must preserve already validated later years.
+    days = {d['date']: d['stars'] for d in project['days'] if project['createdAt'][:10] <= d['date']}
     missing = missing_dates(days, start, end, project['createdAt'])
     page = first_missing_page(days, missing, dt.datetime.now(dt.timezone.utc).date())
     requests = 0
@@ -132,21 +133,30 @@ def backfill_project(project, start, end, api_get=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--start', default=DEFAULT_START)
+    parser.add_argument('--end', help='Inclusive backfill end; later stored days are preserved')
     parser.add_argument('--workers', type=int, default=4)
     args = parser.parse_args()
     dt.date.fromisoformat(args.start)
     directory = ROOT / 'public/data'
     latest = json.loads((directory / 'latest.json').read_text())
-    end = min(latest['periodEnd'], (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat())
+    data_end = min(latest['periodEnd'], (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat())
+    end = args.end or data_end
+    dt.date.fromisoformat(end)
+    if not args.start <= end <= data_end:
+        parser.error('--end must be between --start and the latest completed source day')
     path = directory / 'history.json'
     old = json.loads(path.read_text()) if path.exists() else {}
-    payload = merge_projects(old, latest['projects'], args.start, end)
+    payload = merge_projects(old, latest['projects'], args.start, data_end)
     by_id = {p['id']: p for p in payload['projects']}
     requests = 0
     incomplete = []
     errors = []
+    pending = [p for p in payload['projects'] if missing_dates(
+        {d['date']: d['stars'] for d in p['days']}, args.start, end, p['createdAt'])]
+    print(f'Backfill {args.start} through {end}: {len(pending)} repositories need coverage', flush=True)
+    completed = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(args.workers, 6))) as pool:
-        futures = [pool.submit(backfill_project, p, args.start, end) for p in payload['projects']]
+        futures = [pool.submit(backfill_project, p, args.start, end) for p in pending]
         for future in concurrent.futures.as_completed(futures):
             project, count, missing, failures = future.result()
             by_id[project['id']] = project
@@ -157,12 +167,16 @@ def main():
             errors.extend({'fullName': project['fullName'], 'error': error} for error in failures)
             payload['projects'] = sorted(by_id.values(), key=lambda p: p['fullName'].lower())
             payload['generatedAt'] = dt.datetime.now(dt.timezone.utc).isoformat()
-            save_history(payload, directory)
+            completed += 1
+            if completed % 10 == 0 or completed == len(pending):
+                save_history(payload, directory)
             print(f'{project["fullName"]}: {len(project["days"])} days; {count} requests; {len(missing)} missing', flush=True)
     print(json.dumps({'start': args.start, 'end': end, 'projects': len(by_id),
                       'calendarDays': (dt.date.fromisoformat(end) - dt.date.fromisoformat(args.start)).days + 1,
                       'requests': requests, 'incomplete': incomplete, 'errors': errors}, ensure_ascii=False), flush=True)
-    if errors:
+    if not pending:
+        save_history(payload, directory)
+    if errors or incomplete:
         raise SystemExit(1)
 
 
