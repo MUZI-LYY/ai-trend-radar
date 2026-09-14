@@ -3,7 +3,7 @@
 每天收集 GitHub AI 项目的官方数据，用中文介绍项目用途，并提供年榜、月榜、周榜、日榜和历史总榜。支持按年月周日查找已保存的榜单，以及项目分类、能力标签、语言和使用方式筛选。
 
 - 公开仓库：[MUZI-LYY/ai-trend-radar](https://github.com/MUZI-LYY/ai-trend-radar)
-- 网站部署地址：[AI Radar](https://muzi-lyy.github.io/ai-trend-radar/)（首次 GitHub Pages 工作流成功后可访问）
+- 网站部署地址：[AI Radar](https://muzi-lyy.github.io/ai-trend-radar/)
 - 产品需求：[PROJECT_BRIEF.md](PROJECT_BRIEF.md)
 - 数据来源：[DATA_SOURCES.md](DATA_SOURCES.md) · [竞品调研](COMPETITIVE_RESEARCH.md)
 
@@ -49,6 +49,7 @@ npm run dev
 
 ```bash
 npm run test
+npm run lint
 python3 -B scripts/validate_data.py
 npm run build
 npm run preview
