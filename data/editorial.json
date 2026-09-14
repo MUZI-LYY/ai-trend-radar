@@ -2475,5 +2475,211 @@
     "audience": "建设组织级 Agent 平台的工程团队。",
     "reviewedAt": "2026-09-14",
     "related": []
+  },
+  "synthetic-sciences/openscience": {
+    "category": "agents",
+    "related": [
+      "apps",
+      "devtools"
+    ],
+    "kind": "应用 / 工具",
+    "summary": "把文献、代码实验和结果整理放进同一科研 Agent 工作台。",
+    "overview": "OpenScience 围绕科研任务提供 Agent 工作台，可按目标规划步骤、检索资料、运行 Python 或 R 代码并整理结果。桌面、浏览器和命令行入口使用本机项目文件，任务记录保留执行过程，便于检查证据与实验产物。科学结论仍需研究者核查来源、假设和复现结果。",
+    "audience": "需要整理文献、处理研究数据或复现实验的研究人员与科研开发者。",
+    "features": [
+      "文献与证据检索",
+      "Python / R 实验执行",
+      "任务过程与结果记录"
+    ],
+    "ways": [
+      "桌面应用",
+      "CLI",
+      "本地部署"
+    ],
+    "tags": [
+      "科研 Agent",
+      "实验执行",
+      "文献研究"
+    ],
+    "reviewedAt": "2026-09-14"
+  },
+  "skyhook-io/radar": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "summary": "查看 Kubernetes 集群状态，并通过 MCP 向 Agent 提供运维上下文。",
+    "overview": "Radar 将 Kubernetes 资源、拓扑、事件、Helm 和 GitOps 状态汇总到可视化界面，用于排查集群异常与追踪变更。它以 Go 二进制运行，可在本机连接集群或使用 Helm 部署；内置 MCP 服务让 Agent 查询和操作集群。它主要是 Kubernetes 运维工具，AI 能力来自接入的 Agent。",
+    "audience": "需要检查 Kubernetes 运行状态，或将 Agent 接入集群运维的工程师。",
+    "features": [
+      "集群资源与拓扑浏览",
+      "事件和变更排查",
+      "MCP 集群工具接口"
+    ],
+    "ways": [
+      "CLI",
+      "桌面应用",
+      "Kubernetes"
+    ],
+    "tags": [
+      "Kubernetes",
+      "MCP",
+      "集群运维"
+    ],
+    "reviewedAt": "2026-09-14"
+  },
+  "whiteguo233/openbiliclaw": {
+    "category": "agents",
+    "related": [
+      "apps",
+      "knowledge"
+    ],
+    "kind": "应用 / 工具",
+    "summary": "在本地汇总兴趣反馈，跨平台寻找和推荐内容。",
+    "overview": "OpenBiliClaw 用浏览器插件与本地后端连接内容平台，根据用户反馈和对话组织个性化推荐、内容收藏与兴趣资料。界面可在桌面或移动浏览器访问，并可接入 DeepSeek Harness 插件。核心数据保存在本机，调用远程模型时仍需按配置向模型服务发送任务数据；项目对心理画像的描述不等于经过验证的心理测量。",
+    "audience": "希望集中管理多个内容平台的兴趣推荐、收藏和阅读记录的个人用户。",
+    "features": [
+      "跨平台内容发现",
+      "反馈与兴趣资料整理",
+      "推荐收藏和对话入口"
+    ],
+    "ways": [
+      "插件",
+      "桌面应用",
+      "本地部署"
+    ],
+    "tags": [
+      "内容推荐",
+      "跨平台",
+      "本地数据"
+    ],
+    "reviewedAt": "2026-09-14"
+  },
+  "lightseekorg/tokenspeed": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "summary": "面向 Agent 请求负载的大模型推理引擎。",
+    "overview": "TokenSpeed 将 C++ 调度控制层与 Python 执行层分开，管理请求生命周期和 KV 缓存，并通过可插拔内核组织计算实现。它面向需要优化大模型服务执行效率的工程场景。具体模型、加速器兼容性及性能应按项目文档和目标环境测试确认，不能由仓库的速度宣传直接推定。",
+    "audience": "开发大模型服务、研究推理调度或 GPU 内核优化的工程师。",
+    "features": [
+      "请求调度与 KV 缓存管理",
+      "C++ / Python 分层执行",
+      "可插拔计算内核"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "tags": [
+      "LLM 推理",
+      "KV 缓存",
+      "计算内核"
+    ],
+    "reviewedAt": "2026-09-14"
+  },
+  "dust-tt/dust": {
+    "category": "agents",
+    "related": [
+      "apps"
+    ],
+    "kind": "应用 / 工具",
+    "summary": "面向工作场景的自定义 AI Agent 平台。",
+    "overview": "Dust 将项目定位为可定制的 AI Agent 平台，用于把 Agent 引入日常工作。当前仓库 README 摘录仅提供产品定位以及用户指南、开发者平台入口，没有足够信息确认具体集成范围与部署步骤，评估时应进一步查看官方指南。",
+    "audience": "希望评估工作场景定制 Agent 平台的团队与应用开发者。",
+    "features": [
+      "自定义 AI Agent",
+      "用户指南与开发者平台入口"
+    ],
+    "ways": [],
+    "tags": [
+      "自定义 Agent",
+      "团队工具"
+    ],
+    "caveat": "当前采集到的 README 信息较少，具体集成、费用和运行方式待官方指南核实。",
+    "reviewedAt": "2026-09-14"
+  },
+  "kdlbs/kandev": {
+    "category": "coding",
+    "related": [
+      "agents",
+      "automation"
+    ],
+    "kind": "开发工具",
+    "summary": "用看板组织多个编程 Agent，并集中审查代码变更。",
+    "overview": "Kandev 将任务看板、Agent 编排和代码审查放进统一开发环境，可并行运行任务并查看文件、终端、预览和 Git 变更。工作流支持配置不同 Agent、执行环境与人工审查环节，Git worktree 用于隔离并行任务。项目可在本地运行或自行托管，实际执行依赖所接入的 Agent 与模型服务。",
+    "audience": "同时处理多个编程 Agent 任务、需要集中审查和控制交付的开发者。",
+    "features": [
+      "看板与并行任务管理",
+      "可配置 Agent 工作流",
+      "Git 变更审查与工作区隔离"
+    ],
+    "ways": [
+      "桌面应用",
+      "CLI",
+      "本地部署"
+    ],
+    "tags": [
+      "编程 Agent",
+      "任务看板",
+      "代码审查"
+    ],
+    "reviewedAt": "2026-09-14"
+  },
+  "coco-research/coco": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "summary": "为现有编程 Agent 添加技能、任务编排和持久项目状态。",
+    "overview": "CoCo 通过 Markdown 与 YAML 配置接入 Claude Code、Cursor 或 Codex 等宿主，提供角色讨论、技能命令、任务编排和项目状态记录。它不自行运行模型或 Agent 循环，并行执行由宿主能力承担。项目采用 open-core：核心为 MIT 许可，Super Intelligence 部分为专有、自用许可；角色模拟输出不代表对应真实人物参与或背书。",
+    "audience": "希望在现有编程 Agent 中复用技能、组织任务流程和保留项目上下文的开发者。",
+    "features": [
+      "宿主 Agent 技能与命令扩展",
+      "角色讨论与任务编排",
+      "磁盘持久项目状态"
+    ],
+    "ways": [
+      "插件",
+      "本地部署"
+    ],
+    "tags": [
+      "Agent 扩展",
+      "项目记忆",
+      "open-core"
+    ],
+    "caveat": "MIT 核心与专有 Super Intelligence 部分适用不同许可，使用或再分发前应分别查看原文。",
+    "reviewedAt": "2026-09-14"
+  },
+  "ffroliva/gflow-cli": {
+    "category": "visual",
+    "related": [
+      "automation",
+      "agents"
+    ],
+    "kind": "开发工具",
+    "summary": "通过第三方 CLI 和 MCP 批量操作 Google Flow 图像与视频生成。",
+    "overview": "gflow-cli 是非 Google 官方的第三方 Python 工具，通过用户已登录的浏览器会话操作 Google Flow，组织 Veo 视频、Imagen 图像及批量生成流程，并提供 MCP 服务供 Agent 调用。项目处于 alpha 阶段，网页或接口变化可能导致功能失效。生成能力与额度来自用户自己的 Flow 账号，而不是该工具提供的独立模型服务。",
+    "audience": "已有 Google Flow 使用权限，希望尝试批量生成和脚本化创作流程的技术用户。",
+    "features": [
+      "图像与视频生成命令",
+      "批量任务与输出管理",
+      "MCP Agent 接口"
+    ],
+    "ways": [
+      "CLI",
+      "MCP 服务"
+    ],
+    "tags": [
+      "Google Flow",
+      "批量生成",
+      "第三方工具"
+    ],
+    "caveat": "非官方、alpha 工具，与 Google 无隶属关系；需自行确认 Flow 服务条款、账号权限与实际生成计费。",
+    "reviewedAt": "2026-09-14"
   }
 }
