@@ -1,1 +1,10 @@
-["root-project/root", "clima/oceananigans.jl"]
+[
+  "bigbodycobain/shadowbroker",
+  "budtmo/docker-android",
+  "clima/oceananigans.jl",
+  "electerm/electerm",
+  "esimov/caire",
+  "openframeworks/openframeworks",
+  "root-project/root",
+  "zoicware/removewindowsai"
+]

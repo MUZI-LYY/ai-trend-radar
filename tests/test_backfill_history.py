@@ -29,6 +29,16 @@ class HistoryBackfillTests(unittest.TestCase):
         self.assertEqual(missing_dates({'2025-01-03': 0}, '2025-01-01', '2025-01-04',
                                        '2025-01-03T12:00:00Z'), ['2025-01-04'])
 
+    def test_2026_backfill_does_not_truncate_existing_2025_days(self):
+        previous = {'start': '2025-01-01', 'projects': [{'id': 7, 'days': [
+            {'date': '2025-01-01', 'stars': 5}, {'date': '2026-01-01', 'stars': 2}]}]}
+        merged = merge_projects(previous, [self.project()], '2026-01-01', '2026-01-01')
+        self.assertEqual(merged['start'], '2025-01-01')
+        result, requests, missing, errors = backfill_project(merged['projects'][0], '2026-01-01', '2026-01-01',
+                                                            lambda _: self.fail('No missing 2026 data'))
+        self.assertEqual(len(result['days']), 2)
+        self.assertEqual((requests, missing, errors), (0, [], []))
+
     def test_missing_interval_selects_correct_newest_first_api_page(self):
         self.assertEqual(first_missing_page({}, ['2025-01-01', '2025-07-26'],
                                            dt.date(2026, 9, 14)), 3)

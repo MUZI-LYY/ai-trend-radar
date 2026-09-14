@@ -37,6 +37,7 @@ def missing_dates(days, start, end, created):
 
 def merge_projects(previous, projects, start, end):
     """Keep past values for tracked IDs, overlay newly fetched valid aggregate days."""
+    start = min(start, previous.get('start', start))
     old = {p['id']: p for p in previous.get('projects', [])}
     merged = []
     for project in projects:
@@ -58,11 +59,20 @@ def merge_projects(previous, projects, start, end):
 
 def save_history(payload, directory):
     dates = sorted({day['date'] for p in payload['projects'] for day in p['days']})
+    years = []
+    for year in sorted({date[:4] for date in dates}, reverse=True):
+        start, end = year + '-01-01', min(year + '-12-31', payload['end'])
+        eligible = [p for p in payload['projects'] if p['createdAt'][:10] <= end]
+        counts = [{d['date']: d['stars'] for d in p['days'] if start <= d['date'] <= end} for p in eligible]
+        years.append({'year': year, 'start': start, 'end': end,
+                      'projects': sum(bool(days) for days in counts),
+                      'completeProjects': sum(not missing_dates(days, start, end, p['createdAt']) for p, days in zip(eligible, counts)),
+                      'projectDays': sum(len(days) for days in counts)})
     save_json(directory / 'history.json', payload)
     save_json(directory / 'history-index.json', {
         'start': dates[0] if dates else None, 'end': dates[-1] if dates else None,
         'dates': dates, 'source': payload['source'], 'scope': payload['scope'],
-        'generatedAt': payload['generatedAt']})
+        'generatedAt': payload['generatedAt'], 'years': years})
 
 
 def update_history(projects, end, directory=None):
@@ -90,7 +100,7 @@ def backfill_project(project, start, end, api_get=None):
     from collect import api, flatten_history
     api_get = api_get or api
     project_start = max(start, project['createdAt'][:10])
-    days = {d['date']: d['stars'] for d in project['days'] if project_start <= d['date'] <= end}
+    days = {d['date']: d['stars'] for d in project['days'] if project['createdAt'][:10] <= d['date'] <= end}
     missing = missing_dates(days, start, end, project['createdAt'])
     page = first_missing_page(days, missing, dt.datetime.now(dt.timezone.utc).date())
     requests = 0

@@ -30,16 +30,24 @@ jobs:
           python-version: '3.12'
       - name: Test collection and ranking boundaries
         run: python -B -m unittest discover -s tests -v
+      - name: Discover candidate repositories with persistent pagination
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RADAR_REST_REQUEST_LIMIT: 24
+        run: python -B scripts/discover.py --max-requests 24
       - name: Collect public GitHub data
         if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REFRESH: ${{ inputs.refresh }}
+          RADAR_REST_REQUEST_LIMIT: 940
         run: |
           if [ "$REFRESH" = "true" ]; then
-            python -B scripts/collect.py --limit 180 --refresh
+            python -B scripts/collect.py --limit 700 --new-limit 12 --no-discover --refresh
           else
-            python -B scripts/collect.py --limit 180
+            python -B scripts/collect.py --limit 700 --new-limit 12 --no-discover
           fi
       - name: Validate published dataset
         run: python -B scripts/validate_data.py
@@ -48,7 +56,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data
+          git add public/data data/discovery.json
           if ! git diff --cached --quiet; then
             git commit -m 'data: update daily AI trends'
             git push origin HEAD:main

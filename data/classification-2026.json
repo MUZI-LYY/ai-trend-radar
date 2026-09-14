@@ -1,0 +1,3304 @@
+{
+  "microsoft/ml-for-beginners": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "microsoft/ai-for-beginners": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "d2l-ai/d2l-zh": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "d2l-ai/d2l-en": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "avik-jain/100-days-of-ml-code": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "mleveryday/100-days-of-ml-code": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "gokumohandas/made-with-ml": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "fengdu78/coursera-ml-andrewng-notes": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "eriklindernoren/ml-from-scratch": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "amai-gmbh/ai-expert-roadmap": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "eugeneyan/applied-ml": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "academic/awesome-datascience": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "donnemartin/data-science-ipython-notebooks": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "zuzoovn/machine-learning-for-software-engineers": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "harvard-edge/cs249r_book": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "ageron/handson-ml": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "fastai/fastbook": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "trekhleb/homemade-machine-learning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "datawhalechina/pumpkin-book": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "lukasmasuch/best-of-ml-python": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "stefan-jansen/machine-learning-for-trading": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "afshinea/stanford-cs-229-machine-learning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "stas00/ml-engineering": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "dair-ai/ml-youtube-courses": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "ujjwalkarn/machine-learning-tutorials": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "virgili0/virgilio": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "课程教程"
+    ]
+  },
+  "labmlai/annotated_deep_learning_paper_implementations": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "aymericdamien/tensorflow-examples": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "yunjey/pytorch-tutorial": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "floodsung/deep-learning-papers-reading-roadmap": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "mli/paper-reading": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "christoschristofidis/awesome-deep-learning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "terryum/awesome-deep-learning-papers": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "wzmiaomiao/deep-learning-for-image-processing": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "accumulatemore/cv": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "spmallick/learnopencv": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "amusi/cvpr2026-papers-with-code": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "zergtant/pytorch-handbook": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "shusentang/dive-into-dl-pytorch": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "nndl/nndl": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "mrdbourke/pytorch-deep-learning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "nlp-love/ml-nlp": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "mikoto10032/deeplearning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "datawhalechina/leedl-tutorial": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "bharathgs/awesome-pytorch-list": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "kmario23/deep-learning-drizzle": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "extreme-assistant/cvpr2024-paper-code-interpretation": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "microsoft/computervision-recipes": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "深度学习",
+      "论文与教程"
+    ]
+  },
+  "mlabonne/llm-course": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "datawhalechina/happy-llm": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "datawhalechina/self-llm": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "handsonllm/hands-on-large-language-models": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "aishwaryanr/awesome-generative-ai-guide": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "liguodongiot/llm-action": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "ethicalml/awesome-production-machine-learning": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "liyupi/ai-guide": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "datawhalechina/easy-vibe": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "bradyfu/awesome-multimodal-large-language-models": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "googlecloudplatform/generative-ai": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "datawhalechina/llm-universe": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "rucaibox/llmsurvey": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "kalyanks-nlp/llm-engineer-toolkit": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "mooler0410/llmspracticalguide": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "大模型",
+      "教程与资源"
+    ]
+  },
+  "datawhalechina/hello-agents": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "microsoft/ai-agents-for-beginners": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "shareai-lab/learn-claude-code": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "bojieli/ai-agent-book": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "ashishpatel26/500-ai-agents-projects": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "ashishpatel26/500-ai-machine-learning-deep-learning-computer-vision-nlp-projects-with-code": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "patchy631/ai-engineering-hub": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "rohitg00/ai-engineering-from-scratch": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "humanlayer/12-factor-agents": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "nirdiamant/genai_agents": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "nirdiamant/agents-towards-production": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "microsoft/mcp-for-beginners": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "tradecatlabs/vibe-coding-cn": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "walkinglabs/learn-harness-engineering": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "Agent",
+      "实战教程"
+    ]
+  },
+  "nirdiamant/rag_techniques": {
+    "category": "learning",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "RAG",
+      "实战教程"
+    ]
+  },
+  "datawhalechina/all-in-rag": {
+    "category": "learning",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "RAG",
+      "实战教程"
+    ]
+  },
+  "sebastianruder/nlp-progress": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "自然语言处理",
+      "论文与资源"
+    ]
+  },
+  "keon/awesome-nlp": {
+    "category": "learning",
+    "related": [
+      "devtools"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "自然语言处理",
+      "论文与资源"
+    ]
+  },
+  "x1xhlol/system-prompts-and-models-of-ai-tools": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "资源清单",
+      "提示词"
+    ]
+  },
+  "elder-plinius/cl4r1t4s": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "资源清单",
+      "提示词"
+    ]
+  },
+  "dair-ai/prompt-engineering-guide": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "资源清单",
+      "提示词"
+    ]
+  },
+  "eugeneyan/open-llms": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "资源清单",
+      "提示词"
+    ]
+  },
+  "steven2358/awesome-generative-ai": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "资源清单",
+      "提示词"
+    ]
+  },
+  "shubhamsaboo/awesome-llm-apps": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "代码示例",
+      "项目清单"
+    ]
+  },
+  "composiohq/awesome-claude-skills": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "代码示例",
+      "项目清单"
+    ]
+  },
+  "hesreallyhim/awesome-claude-code": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "代码示例",
+      "项目清单"
+    ]
+  },
+  "voltagent/awesome-agent-skills": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "代码示例",
+      "项目清单"
+    ]
+  },
+  "arindam200/awesome-ai-apps": {
+    "category": "learning",
+    "related": [
+      "agents"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "代码示例",
+      "项目清单"
+    ]
+  },
+  "shanraisshan/claude-code-best-practice": {
+    "category": "learning",
+    "related": [
+      "coding"
+    ],
+    "kind": "学习资源",
+    "tags": [
+      "AI编程",
+      "实践指南"
+    ]
+  },
+  "dair-ai/ml-visuals": {
+    "category": "learning",
+    "related": [],
+    "kind": "学习资源",
+    "tags": [
+      "机器学习",
+      "图解素材"
+    ]
+  },
+  "opencv/opencv": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  "roboflow/supervision": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  "google-ai-edge/mediapipe": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  "pytorch/vision": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  "kornia/kornia": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  "ultralytics/ultralytics": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "目标检测",
+      "图像识别"
+    ]
+  },
+  "ultralytics/yolov5": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "目标检测",
+      "图像识别"
+    ]
+  },
+  "ultralytics/yolov3": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "目标检测",
+      "图像识别"
+    ]
+  },
+  "cmu-perceptual-computing-lab/openpose": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "目标检测",
+      "图像识别"
+    ]
+  },
+  "lucidrains/vit-pytorch": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "目标检测",
+      "图像识别"
+    ]
+  },
+  "serengil/deepface": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "人脸识别",
+      "视觉模型"
+    ]
+  },
+  "davidsandberg/facenet": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "人脸识别",
+      "视觉模型"
+    ]
+  },
+  "openai/clip": {
+    "category": "visual",
+    "related": [
+      "models"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "图文理解",
+      "多模态"
+    ]
+  },
+  "mlfoundations/open_clip": {
+    "category": "visual",
+    "related": [
+      "models"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "图文理解",
+      "多模态"
+    ]
+  },
+  "hacksider/deep-live-cam": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "人像处理",
+      "图像编辑"
+    ]
+  },
+  "deepfakes/faceswap": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "人像处理",
+      "图像编辑"
+    ]
+  },
+  "zeyi-lin/hivisionidphotos": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "人像处理",
+      "图像编辑"
+    ]
+  },
+  "tencentarc/gfpgan": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像修复",
+      "图像增强"
+    ]
+  },
+  "advimman/lama": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像修复",
+      "图像增强"
+    ]
+  },
+  "xuebinqin/u-2-net": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像分割",
+      "显著性检测"
+    ]
+  },
+  "upscayl/upscayl": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "超分辨率",
+      "图像增强"
+    ]
+  },
+  "k4yt3x/video2x": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "超分辨率",
+      "图像增强"
+    ]
+  },
+  "huggingface/diffusers": {
+    "category": "visual",
+    "related": [
+      "models",
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "扩散模型",
+      "图像生成"
+    ]
+  },
+  "junyanz/pytorch-cyclegan-and-pix2pix": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像生成",
+      "风格转换"
+    ]
+  },
+  "junyanz/cyclegan": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像生成",
+      "风格转换"
+    ]
+  },
+  "phillipi/pix2pix": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像生成",
+      "风格转换"
+    ]
+  },
+  "graphdeco-inria/gaussian-splatting": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "三维重建",
+      "神经渲染"
+    ]
+  },
+  "nvlabs/instant-ngp": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "三维重建",
+      "神经渲染"
+    ]
+  },
+  "nerfstudio-project/nerfstudio": {
+    "category": "visual",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "三维重建",
+      "神经渲染"
+    ]
+  },
+  "qubvel-org/segmentation_models.pytorch": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "模型与引擎",
+    "tags": [
+      "图像分割",
+      "视觉模型"
+    ]
+  },
+  "harry0703/moneyprinterturbo": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "calesthio/openmontage": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "heygen-com/hyperframes": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "hbai-ltd/toonflow-app": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "chatfire-ai/huobao-drama": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "palmier-io/palmier-pro": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "waooai/waoowaoo": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "AI视频",
+      "内容制作"
+    ]
+  },
+  "acly/krita-ai-diffusion": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "图像生成",
+      "绘画辅助"
+    ]
+  },
+  "easydiffusion/easydiffusion": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "图像生成",
+      "绘画辅助"
+    ]
+  },
+  "blakeblackshear/frigate": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "实时检测",
+      "视频分析"
+    ]
+  },
+  "ahujasid/blender-mcp": {
+    "category": "visual",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "三维设计",
+      "Agent工具"
+    ]
+  },
+  "img2threejs/img2threejs": {
+    "category": "visual",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "三维设计",
+      "Agent工具"
+    ]
+  },
+  "earthtojake/text-to-cad": {
+    "category": "visual",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "三维设计",
+      "Agent工具"
+    ]
+  },
+  "pascalorg/editor": {
+    "category": "visual",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "三维设计",
+      "Agent工具"
+    ]
+  },
+  "dayuanjiang/next-ai-draw-io": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "图表生成",
+      "可视化"
+    ]
+  },
+  "yizhiyanhua-ai/fireworks-tech-graph": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "图表生成",
+      "可视化"
+    ]
+  },
+  "systran/faster-whisper": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "ggml-org/whisper.cpp": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "kaldi-asr/kaldi": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "alphacep/vosk-api": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "modelscope/funasr": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "m-bain/whisperx": {
+    "category": "audio",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音识别",
+      "ASR"
+    ]
+  },
+  "speechbrain/speechbrain": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频处理",
+      "语音模型"
+    ]
+  },
+  "k2-fsa/sherpa-onnx": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频处理",
+      "语音模型"
+    ]
+  },
+  "paddlepaddle/paddlespeech": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频处理",
+      "语音模型"
+    ]
+  },
+  "nvidia-nemo/speech": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频处理",
+      "语音模型"
+    ]
+  },
+  "espnet/espnet": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频处理",
+      "语音模型"
+    ]
+  },
+  "rvc-boss/gpt-sovits": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "corentinj/real-time-voice-cloning": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "coqui-ai/tts": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "2noise/chattts": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "myshell-ai/openvoice": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "openbmb/voxcpm": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "babysor/mockingbird": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "index-tts/index-tts": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "nari-labs/dia": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "mozilla/tts": {
+    "category": "audio",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "rany2/edge-tts": {
+    "category": "audio",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "语音合成",
+      "TTS"
+    ]
+  },
+  "open-mmlab/amphion": {
+    "category": "audio",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音频生成",
+      "音乐生成"
+    ]
+  },
+  "deezer/spleeter": {
+    "category": "audio",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "音源分离",
+      "音频处理"
+    ]
+  },
+  "zackriya-solutions/meetily": {
+    "category": "audio",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "语音转写",
+      "会议记录"
+    ]
+  },
+  "quentinfuxa/whisperlivekit": {
+    "category": "audio",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "语音转写",
+      "会议记录"
+    ]
+  },
+  "jamiepine/voicebox": {
+    "category": "audio",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "配音",
+      "语音生成"
+    ]
+  },
+  "jianchang512/pyvideotrans": {
+    "category": "audio",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "配音",
+      "语音生成"
+    ]
+  },
+  "abus-aikorea/voice-pro": {
+    "category": "audio",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "配音",
+      "语音生成"
+    ]
+  },
+  "tensorflow/tensorflow": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "scikit-learn/scikit-learn": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "keras-team/keras": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "bvlc/caffe": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "fastai/fastai": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "paddlepaddle/paddle": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "tensorflow/tfjs": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "autogluon/autogluon": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "davisking/dlib": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "机器学习",
+      "训练框架"
+    ]
+  },
+  "deepspeedai/deepspeed": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "分布式训练",
+      "训练优化"
+    ]
+  },
+  "hpcaitech/colossalai": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "分布式训练",
+      "训练优化"
+    ]
+  },
+  "lightning-ai/pytorch-lightning": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "分布式训练",
+      "训练优化"
+    ]
+  },
+  "nvidia/megatron-lm": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "分布式训练",
+      "训练优化"
+    ]
+  },
+  "huggingface/peft": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "模型微调",
+      "训练工具"
+    ]
+  },
+  "lightning-ai/litgpt": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "模型微调",
+      "训练工具"
+    ]
+  },
+  "axolotl-ai-cloud/axolotl": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "模型微调",
+      "训练工具"
+    ]
+  },
+  "ludwig-ai/ludwig": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "模型微调",
+      "训练工具"
+    ]
+  },
+  "openrlhf/openrlhf": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "强化学习",
+      "模型训练"
+    ]
+  },
+  "unity-technologies/ml-agents": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "强化学习",
+      "模型训练"
+    ]
+  },
+  "pyg-team/pytorch_geometric": {
+    "category": "devtools",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "图神经网络",
+      "模型训练"
+    ]
+  },
+  "ray-project/ray": {
+    "category": "devtools",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "训练编排",
+      "机器学习"
+    ]
+  },
+  "netflix/metaflow": {
+    "category": "devtools",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "训练编排",
+      "机器学习"
+    ]
+  },
+  "humansignal/label-studio": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "cvat-ai/cvat": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "wkentaro/labelme": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "cvhub520/x-anylabeling": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "voxel51/fiftyone": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "conardli/easy-dataset": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "huggingface/datasets": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "数据标注",
+      "数据集"
+    ]
+  },
+  "zalandoresearch/fashion-mnist": {
+    "category": "devtools",
+    "related": [],
+    "kind": "数据集",
+    "tags": [
+      "数据集",
+      "模型评测"
+    ]
+  },
+  "shap/shap": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "模型评测",
+      "可解释性"
+    ]
+  },
+  "jacobgil/pytorch-grad-cam": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "模型评测",
+      "可解释性"
+    ]
+  },
+  "promptfoo/promptfoo": {
+    "category": "devtools",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "模型评测",
+      "可解释性"
+    ]
+  },
+  "nvidia/deeplearningexamples": {
+    "category": "devtools",
+    "related": [
+      "learning"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "训练示例",
+      "模型部署"
+    ]
+  },
+  "p-e-w/heretic": {
+    "category": "devtools",
+    "related": [
+      "models"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型优化",
+      "权重处理"
+    ]
+  },
+  "karpathy/autoresearch": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "自动研究",
+      "训练实验"
+    ]
+  },
+  "microsoft/airsim": {
+    "category": "devtools",
+    "related": [
+      "visual"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "仿真环境",
+      "自动驾驶"
+    ]
+  },
+  "carla-simulator/carla": {
+    "category": "devtools",
+    "related": [
+      "visual"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "仿真环境",
+      "自动驾驶"
+    ]
+  },
+  "daytonaio/daytona": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "Agent沙箱",
+      "执行环境"
+    ]
+  },
+  "e2b-dev/e2b": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "Agent沙箱",
+      "执行环境"
+    ]
+  },
+  "tencentcloud/cubesandbox": {
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "Agent沙箱",
+      "执行环境"
+    ]
+  },
+  "qwenlm/qwen": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "大模型",
+      "模型运行"
+    ]
+  },
+  "zai-org/chatglm2-6b": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "大模型",
+      "模型运行"
+    ]
+  },
+  "openmoss/moss": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "大模型",
+      "模型运行"
+    ]
+  },
+  "sapientinc/hrm": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "大模型",
+      "模型运行"
+    ]
+  },
+  "ai4finance-foundation/fingpt": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "大模型",
+      "模型运行"
+    ]
+  },
+  "mudler/localai": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "本地推理",
+      "模型部署"
+    ]
+  },
+  "mlc-ai/web-llm": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "本地推理",
+      "模型部署"
+    ]
+  },
+  "bentoml/openllm": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "本地推理",
+      "模型部署"
+    ]
+  },
+  "tiiny-ai/powerinfer": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "本地推理",
+      "模型部署"
+    ]
+  },
+  "bigscience-workshop/petals": {
+    "category": "models",
+    "related": [],
+    "kind": "模型与引擎",
+    "tags": [
+      "本地推理",
+      "模型部署"
+    ]
+  },
+  "berriai/litellm": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型路由",
+      "AI网关"
+    ]
+  },
+  "diegosouzapw/omniroute": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型路由",
+      "AI网关"
+    ]
+  },
+  "decolua/9router": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型路由",
+      "AI网关"
+    ]
+  },
+  "portkey-ai/gateway": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型路由",
+      "AI网关"
+    ]
+  },
+  "kong/kong": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "模型路由",
+      "AI网关"
+    ]
+  },
+  "alexsjones/llmfit": {
+    "category": "models",
+    "related": [],
+    "kind": "开发工具",
+    "tags": [
+      "硬件评估",
+      "模型选择"
+    ]
+  },
+  "microsoft/onnxruntime": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "推理加速",
+      "模型部署"
+    ]
+  },
+  "tencent/ncnn": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "推理加速",
+      "模型部署"
+    ]
+  },
+  "jina-ai/serve": {
+    "category": "models",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "推理加速",
+      "模型部署"
+    ]
+  },
+  "qdrant/qdrant": {
+    "category": "knowledge",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "向量检索",
+      "知识库"
+    ]
+  },
+  "chroma-core/chroma": {
+    "category": "knowledge",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "向量检索",
+      "知识库"
+    ]
+  },
+  "milvus-io/milvus": {
+    "category": "knowledge",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "向量检索",
+      "知识库"
+    ]
+  },
+  "ryancodrai/turbovec": {
+    "category": "knowledge",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "向量检索",
+      "知识库"
+    ]
+  },
+  "alibaba/zvec": {
+    "category": "knowledge",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "向量检索",
+      "知识库"
+    ]
+  },
+  "mem0ai/mem0": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "mempalace/mempalace": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "getzep/graphiti": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "topoteretes/cognee": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "tencentcloud/tencentdb-agent-memory": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "volcengine/openviking": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "memorilabs/memori": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "memvid/memvid": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "nevamind-ai/memu": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "evermind-ai/everos": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "memtensor/memos": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "Agent记忆",
+      "知识图谱"
+    ]
+  },
+  "pathwaycom/llm-app": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "zylon-ai/private-gpt": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "the-vibe-company/quivr": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "deepset-ai/haystack": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "neuml/txtai": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "startrail-org/leann": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "semantica-agi/semantica": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "startrail-org/pixelrag": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "RAG",
+      "检索增强"
+    ]
+  },
+  "chatchat-space/langchain-chatchat": {
+    "category": "knowledge",
+    "related": [
+      "apps"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "知识问答",
+      "文档检索"
+    ]
+  },
+  "cinnamon/kotaemon": {
+    "category": "knowledge",
+    "related": [
+      "apps"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "知识问答",
+      "文档检索"
+    ]
+  },
+  "arc53/docsgpt": {
+    "category": "knowledge",
+    "related": [
+      "apps"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "知识问答",
+      "文档检索"
+    ]
+  },
+  "modsetter/surfsense": {
+    "category": "knowledge",
+    "related": [
+      "apps"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "知识问答",
+      "文档检索"
+    ]
+  },
+  "google/langextract": {
+    "category": "knowledge",
+    "related": [
+      "visual"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "文档处理",
+      "信息提取"
+    ]
+  },
+  "naptha/tesseract.js": {
+    "category": "knowledge",
+    "related": [
+      "visual"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "文档处理",
+      "信息提取"
+    ]
+  },
+  "jaidedai/easyocr": {
+    "category": "knowledge",
+    "related": [
+      "visual"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "文档处理",
+      "信息提取"
+    ]
+  },
+  "paddlepaddle/paddleocr": {
+    "category": "knowledge",
+    "related": [
+      "visual"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "文档处理",
+      "信息提取"
+    ]
+  },
+  "virgiliojr94/book-to-skill": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "知识整理",
+      "Agent技能"
+    ]
+  },
+  "yusufkaraaslan/skill_seekers": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "知识整理",
+      "Agent技能"
+    ]
+  },
+  "agricidaniel/claude-obsidian": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "知识整理",
+      "Agent技能"
+    ]
+  },
+  "hmbown/codewhale": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "esengine/deepseek-reasonix": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "qwenlm/qwen-code": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "bloopai/vibe-kanban": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "snarktank/ralph": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "dyad-sh/dyad": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "wandb/openui": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "plandex-ai/plandex": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "superset-sh/superset": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "1jehuang/jcode": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ]
+  },
+  "yamadashy/repomix": {
+    "category": "coding",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "代码上下文",
+      "仓库理解"
+    ]
+  },
+  "github/github-mcp-server": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "开发工具集成",
+      "MCP"
+    ]
+  },
+  "chromedevtools/chrome-devtools-mcp": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "开发工具集成",
+      "MCP"
+    ]
+  },
+  "glips/figma-context-mcp": {
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "开发工具集成",
+      "MCP"
+    ]
+  },
+  "binary-husky/gpt_academic": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "办公助手",
+      "内容处理"
+    ]
+  },
+  "pdfmathtranslate/pdfmathtranslate": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "办公助手",
+      "内容处理"
+    ]
+  },
+  "career-ops-hq/career-ops": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "办公助手",
+      "内容处理"
+    ]
+  },
+  "madslorentzen/ai-job-search": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "办公助手",
+      "内容处理"
+    ]
+  },
+  "srbhr/resume-matcher": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "办公助手",
+      "内容处理"
+    ]
+  },
+  "blader/humanizer": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "内容写作",
+      "Agent技能"
+    ]
+  },
+  "op7418/humanizer-zh": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "内容写作",
+      "Agent技能"
+    ]
+  },
+  "hardikpandya/stop-slop": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "内容写作",
+      "Agent技能"
+    ]
+  },
+  "koala73/worldmonitor": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "资讯分析",
+      "趋势监测"
+    ]
+  },
+  "sansan0/trendradar": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "资讯分析",
+      "趋势监测"
+    ]
+  },
+  "zhulinsen/daily_stock_analysis": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "金融分析",
+      "研究助手"
+    ]
+  },
+  "xbtlin/ai-berkshire": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "金融分析",
+      "研究助手"
+    ]
+  },
+  "hkuds/deeptutor": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "学习辅导",
+      "AI助教"
+    ]
+  },
+  "jushbjj/mr.-ranedeer-ai-tutor": {
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "学习辅导",
+      "AI助教"
+    ]
+  },
+  "janhq/jan": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "本地对话",
+      "AI客户端"
+    ]
+  },
+  "nesquena/hermes-webui": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "本地对话",
+      "AI客户端"
+    ]
+  },
+  "copilotkit/copilotkit": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI界面",
+      "交互组件"
+    ]
+  },
+  "udecode/plate": {
+    "category": "apps",
+    "related": [
+      "agents"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "AI界面",
+      "交互组件"
+    ]
+  },
+  "openclaw/openclaw": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "hkuds/nanobot": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "nanocoai/nanoclaw": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "elizaos/eliza": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "agentscope-ai/qwenpaw": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "leon-ai/leon": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "自主Agent",
+      "任务执行"
+    ]
+  },
+  "microsoft/semantic-kernel": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "工具调用",
+      "多Agent"
+    ]
+  },
+  "modelcontextprotocol/python-sdk": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "工具调用",
+      "多Agent"
+    ]
+  },
+  "microsoft/jarvis": {
+    "category": "agents",
+    "related": [],
+    "kind": "框架 / SDK",
+    "tags": [
+      "工具调用",
+      "多Agent"
+    ]
+  },
+  "microsoft/playwright-mcp": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "浏览器自动化",
+      "MCP"
+    ]
+  },
+  "vercel-labs/agent-browser": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "浏览器自动化",
+      "MCP"
+    ]
+  },
+  "citrolabs/ego-lite": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "浏览器自动化",
+      "MCP"
+    ]
+  },
+  "jo-inc/camofox-browser": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "浏览器自动化",
+      "MCP"
+    ]
+  },
+  "mvanhorn/last30days-skill": {
+    "category": "agents",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "调研助手",
+      "Agent技能"
+    ]
+  },
+  "screenpipe/screenpipe": {
+    "category": "agents",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "上下文记录",
+      "Agent记忆"
+    ]
+  },
+  "jeecgboot/jeecgboot": {
+    "category": "automation",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "可视化编排",
+      "AI应用"
+    ]
+  },
+  "nocobase/nocobase": {
+    "category": "automation",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "可视化编排",
+      "AI应用"
+    ]
+  },
+  "coze-dev/coze-studio": {
+    "category": "automation",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "可视化编排",
+      "AI应用"
+    ]
+  },
+  "1panel-dev/maxkb": {
+    "category": "agents",
+    "related": [
+      "knowledge"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "企业Agent",
+      "知识问答"
+    ]
+  },
+  "alicevision/meshroom": {
+    "category": "visual",
+    "related": [
+      "automation"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "视觉工作流",
+      "三维处理"
+    ]
+  },
+  "colmap/colmap": {
+    "category": "visual",
+    "related": [],
+    "kind": "应用 / 工具",
+    "tags": [
+      "三维重建",
+      "多视图几何"
+    ]
+  },
+  "pointcloudlibrary/pcl": {
+    "category": "visual",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "点云处理",
+      "三维视觉"
+    ]
+  }
+}

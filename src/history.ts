@@ -1,6 +1,6 @@
 import type {Dataset,Project,Period} from './types';
 import {weekStart,priorDay} from './ranking';
-export interface HistoryIndex {start:string;end:string;dates:string[];source:string;scope:string;generatedAt:string}
+export interface HistoryIndex {years?:{year:string;start:string;end:string;projects:number;completeProjects:number;projectDays:number}[];start:string;end:string;dates:string[];source:string;scope:string;generatedAt:string}
 export interface HistoryData {generatedAt:string;source:string;scope:string;projects:{id:number;fullName:string;createdAt:string;days:{date:string;stars:number}[]}[]}
 export function historyTotal(days:Map<string,number>,start:string,end:string,createdAt:string):number|null {
  const first=createdAt.slice(0,10)>start?createdAt.slice(0,10):start;

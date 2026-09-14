@@ -2,11 +2,27 @@
 """GitHub-only collector. Uses Actions GITHUB_TOKEN or gh's normal API client.
 Never reads credentials from gh, never fabricates missing history or overwrites dated archives.
 """
-import argparse, concurrent.futures, datetime as dt, hashlib, json, os, re, subprocess, sys, time, urllib.request, urllib.error
+import argparse, concurrent.futures, datetime as dt, hashlib, json, os, re, subprocess, sys, time, threading, urllib.request, urllib.error
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 from ranking import period_starts, chart_entries
+from github_metadata import batch_metadata
+REST_REQUEST_LIMIT = int(os.environ.get('RADAR_REST_REQUEST_LIMIT', '960'))
+_rest_requests = 0
+_rest_lock = threading.Lock()
+
+class RequestBudgetExceeded(RuntimeError):
+ pass
+
+def reserve_rest_request():
+ global _rest_requests
+ with _rest_lock:
+  if _rest_requests >= REST_REQUEST_LIMIT:
+   raise RequestBudgetExceeded('REST request budget exhausted; preserving prior records')
+  _rest_requests += 1
+CLASSIFICATION_PATH = ROOT/'data/classification-2026.json'
+CLASSIFICATION_OVERRIDES = json.loads(CLASSIFICATION_PATH.read_text()) if CLASSIFICATION_PATH.exists() else {}
 UTC = dt.timezone.utc
 CATEGORIES = {
  'agents': ('AI Agent', '自主任务执行、工具调用与多智能体协作', ['agent','multi-agent','autogpt','crewai']),
@@ -26,16 +42,17 @@ def atomic_json(path, value):
  path.parent.mkdir(parents=True, exist_ok=True)
  tmp=path.with_suffix(path.suffix+'.tmp'); tmp.write_text(json.dumps(value,ensure_ascii=False,separators=(',',':'))+'\n');tmp.replace(path)
 
-def api(endpoint):
+def api(endpoint, *, raw=False):
  token=os.environ.get('GITHUB_TOKEN')
  for attempt in range(3):
+  reserve_rest_request()
   try:
    if token:
-    req=urllib.request.Request('https://api.github.com/'+endpoint,headers={'Authorization':'Bearer '+token,'User-Agent':'ai-trend-radar','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'})
-    with urllib.request.urlopen(req, timeout=30) as response:return json.load(response)
-   result=subprocess.run(['gh','api','-X','GET','-H','X-GitHub-Api-Version: 2026-03-10',endpoint],capture_output=True,text=True,timeout=40)
+    req=urllib.request.Request('https://api.github.com/'+endpoint,headers={'Authorization':'Bearer '+token,'User-Agent':'ai-trend-radar','Accept':'application/vnd.github.raw+json' if raw else 'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'})
+    with urllib.request.urlopen(req, timeout=30) as response:return response.read().decode('utf-8',errors='replace') if raw else json.load(response)
+   result=subprocess.run(['gh','api','-X','GET','-H','X-GitHub-Api-Version: 2026-03-10','-H','Accept: '+('application/vnd.github.raw+json' if raw else 'application/vnd.github+json'),endpoint],capture_output=True,text=True,timeout=40)
    if result.returncode:raise RuntimeError(result.stderr.strip()[:180])
-   return json.loads(result.stdout)
+   return result.stdout if raw else json.loads(result.stdout)
   except (urllib.error.HTTPError,urllib.error.URLError,RuntimeError,subprocess.TimeoutExpired,json.JSONDecodeError) as e:
    if attempt==2 or ('404' in str(e)):raise RuntimeError(f'{endpoint.split("?")[0]}: {e}') from None
    time.sleep(2**attempt*3)
@@ -77,7 +94,7 @@ def strip_readme(md):
  return '\n\n'.join(s for s in lines if len(s)>35 and not s.startswith(('http','|')) and not any(x in s.lower() for x in ['badge','sponsor','discord.gg']))[:8000]
 
 def classify(repo, readme, editorial):
- full=repo['full_name'];info=editorial.get(full.lower(),{})
+ full=repo['full_name'];edited=editorial.get(full.lower(),{});classified=CLASSIFICATION_OVERRIDES.get(full.lower(),{});info={**classified,**edited}
  topics=repo.get('topics',[])
  text=' '.join([full,repo.get('description') or '',*topics]).lower()
  scores={k:sum(2 if t in topics else 1 for t in ts if t in text) for k,(_,_,ts) in CATEGORIES.items()}
@@ -96,7 +113,7 @@ def classify(repo, readme, editorial):
  overview=info.get('overview') or f'{repo["name"]} 是一个主要使用 {repo.get("language") or "仓库所列技术"} 的{kind}，归入{CATEGORIES[primary][0]}方向。分类依据来自仓库简介和 Topics，具体功能请结合下方 README 原文确认。'
  usage=info.get('usage') or f'建议先阅读仓库 README 中的 Quick Start、Installation 或 Usage 部分，确认当前版本的依赖和运行方式。该仓库提供了 GitHub 源码入口'+('和项目主页。' if repo.get('homepage') else '。')
  caveat=info.get('caveat') or '安装步骤、外部服务费用和硬件要求以项目当前文档为准；仓库公开不代表所有模型、第三方服务或商业使用都没有限制。'
- return {'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'useCases':info.get('useCases',[]),'gettingStarted':info.get('gettingStarted',[]),'requirements':info.get('requirements',[]),'usage':usage,'caveat':caveat,'editorial':bool(info),'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':info.get('reviewedAt'), 'classificationBasis':'编辑整理，依据仓库简介与 README' if info else '依据仓库简介与 Topics 自动归类，待复核'}
+ return {'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'useCases':info.get('useCases',[]),'gettingStarted':info.get('gettingStarted',[]),'requirements':info.get('requirements',[]),'usage':usage,'caveat':caveat,'editorial':bool(edited),'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':info.get('reviewedAt'), 'classificationBasis':'编辑整理，依据仓库简介与 README' if edited else '用途分类已依据仓库简介与 README 复核；项目说明为自动来源整理' if classified else '依据仓库简介与 Topics 自动归类，待复核'}
 
 def trending():
  # HTML is used only for candidate discovery. Reported Trending counts never enter the rankings.
@@ -108,35 +125,75 @@ def trending():
   if m:names.append(m.group(1))
  return names
 
-def collect_one(full, previous, editorial, end, year_start):
- repo=api('repos/'+full)
+def should_refresh_readme(full, previous, now):
+ """Refresh cached text once per week, distributing repositories across seven days."""
+ if not previous or not previous.get('readme'):return True
+ slot=int(hashlib.sha256(full.lower().encode()).hexdigest()[:8],16)%7
+ if now.date().toordinal()%7 != slot:return False
+ stamp=previous.get('readmeFetchedAt')
+ if not stamp:return True
+ try:
+  fetched=dt.datetime.fromisoformat(stamp.replace('Z','+00:00'))
+  return (now-fetched).total_seconds()>=6*86400
+ except (ValueError,TypeError):return True
+
+def cached_history(previous, end):
+ daily={}
+ for item in (previous or {}).get('history',[]):
+  day=item.get('date');value=item.get('stars')
+  if isinstance(day,str) and day<=end and type(value) is int and value>=0:
+   try:dt.date.fromisoformat(day)
+   except ValueError:continue
+   daily[day]=value
+ return daily
+
+def collect_one(full, previous, editorial, end, year_start, repo=None):
+ repo=repo if repo is not None else api('repos/'+full)
  if repo.get('private') or repo.get('fork') or repo.get('disabled'):return None
- fetched=dt.datetime.now(UTC).isoformat()
- # GitHub Contents API provides README content + SHA without embedding any HTML in the website.
- readme='';readme_url=None;sha=None;warnings=[]
+ now=dt.datetime.now(UTC);fetched=now.isoformat()
+ # Reuse the stored plain-text excerpt; refresh deterministic weekly slices.
+ old=previous or {}
+ readme=old.get('readme') or '';readme_url=old.get('readmeUrl');sha=old.get('readmeSha')
+ readme_fetched=old.get('readmeFetchedAt');warnings=[];readme_changed=False
+ if should_refresh_readme(repo['full_name'],previous,now):
+  try:
+   r=api('repos/'+repo['full_name']+'/readme')
+   import base64
+   new_readme=api('repos/'+repo['full_name']+'/readme',raw=True)[:100000] if r.get('encoding')=='none' else base64.b64decode(r.get('content','')).decode('utf-8',errors='replace')[:100000]
+   if not new_readme.strip():raise ValueError('Empty README content')
+   readme=new_readme;sha=r.get('sha');readme_url=r.get('html_url');readme_fetched=fetched;readme_changed=True
+  except Exception:warnings.append('README 获取失败，保留已有摘录' if readme else 'README 获取失败')
+ daily=cached_history(previous,end);history_status='ok';latest_history_ok=False
  try:
-  r=api('repos/'+repo['full_name']+'/readme');sha=r.get('sha');readme_url=r.get('html_url')
-  import base64
-  readme=base64.b64decode(r.get('content','')).decode('utf-8',errors='replace')[:100000]
- except Exception as e:warnings.append('README 获取失败')
- history=[];history_status='ok'
- try:
-  # Two pages normally cover a full calendar year. Stop early at creation or the required boundary.
+  # Page 1 replaces recent daily values; reuse older validated days from the previous
+  # snapshot. Only request older pages when required yearly/weekly coverage is absent.
   for page in range(1,4):
    weeks=api(f'repos/{repo["full_name"]}/stargazers/history?per_page=30&page={page}')
    if not isinstance(weeks,list):raise ValueError('Unexpected star history response')
    if not weeks and page==1:raise ValueError('Empty history is unavailable, not all zero')
-   history+=weeks
-   if len(weeks)<30 or (weeks and dt.datetime.fromtimestamp(weeks[-1]['week'],UTC).date().isoformat()<=year_start):break
-  daily=flatten_history(history,end)
- except Exception as e:daily={};history_status='unavailable';warnings.append('Star 历史暂不可用')
+   fresh=flatten_history(weeks,end)
+   daily.update(fresh)
+   if page==1:latest_history_ok=True
+   if period_total(daily,year_start,end,repo['created_at']) is not None:break
+   if len(weeks)<30:break
+ except Exception:
+  warnings.append('Star 历史部分不可用' if latest_history_ok else 'Star 历史暂不可用')
+  if not latest_history_ok:history_status='unavailable'
  profile=classify(repo,readme,editorial)
+ if not profile['editorial']:
+  from source_profile import build_source_profile
+  source_profile=build_source_profile(repo,readme,readme_url=readme_url or profile['readmeUrl'])
+  if not readme_changed and old.get('profileSource'):
+   source_profile={key:old.get(key,value) for key,value in source_profile.items()}
+  profile.update(source_profile)
+ # The cache is already a sanitized excerpt. Avoid progressively stripping it again.
+ if readme and not readme_changed:profile['readme']=readme
  if readme_url:profile['readmeUrl']=readme_url
  first=previous.get('firstSeen') if previous else fetched[:10]
  created=repo['created_at']
  metrics={p:period_total(daily,s,end,created) if history_status=='ok' else None for p,s in period_starts(end).items()}
  prev_stars=previous.get('stars') if previous else None
- return {**profile,'id':repo['id'],'fullName':repo['full_name'],'name':repo['name'],'owner':repo['owner']['login'],'avatar':repo['owner']['avatar_url'],'url':repo['html_url'],'homepage':repo.get('homepage') if str(repo.get('homepage','')).startswith(('https://','http://')) else None,'stars':repo['stargazers_count'],'forks':repo['forks_count'],'language':repo.get('language') or '未标注','license':(repo.get('license') or {}).get('spdx_id') or '未明确','topics':repo.get('topics',[]),'description':repo.get('description') or '', 'archived':repo['archived'],'createdAt':created,'pushedAt':repo['pushed_at'],'fetchedAt':fetched,'firstSeen':first,'readmeSha':sha,'metrics':metrics,'historyStatus':history_status,'history':[{'date':d,'stars':v} for d,v in sorted(daily.items())],'warnings':warnings,'netSincePrevious':repo['stargazers_count']-prev_stars if prev_stars is not None else None,'netBaselineAt':previous.get('fetchedAt') if previous else None}
+ return {**profile,'id':repo['id'],'fullName':repo['full_name'],'name':repo['name'],'owner':repo['owner']['login'],'avatar':repo['owner']['avatar_url'],'url':repo['html_url'],'homepage':repo.get('homepage') if str(repo.get('homepage','')).startswith(('https://','http://')) else None,'stars':repo['stargazers_count'],'forks':repo['forks_count'],'language':repo.get('language') or '未标注','license':(repo.get('license') or {}).get('spdx_id') or '未明确','topics':repo.get('topics',[]),'description':repo.get('description') or '', 'archived':repo['archived'],'createdAt':created,'pushedAt':repo['pushed_at'],'fetchedAt':fetched,'firstSeen':first,'readmeSha':sha,'readmeFetchedAt':readme_fetched,'metrics':metrics,'historyStatus':history_status,'history':[{'date':d,'stars':v} for d,v in sorted(daily.items())],'warnings':warnings,'netSincePrevious':repo['stargazers_count']-prev_stars if prev_stars is not None else None,'netBaselineAt':previous.get('fetchedAt') if previous else None}
 
 def select_candidates(previous, candidates, limit, new_limit):
  """Never drop tracked records when the budget is lowered; bound only new work."""
@@ -169,7 +226,7 @@ def missing_period_history(projects):
  return [p['fullName'] for p in projects if not p.get('stale') and any(v is None for v in p['metrics'].values())]
 
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int,default=180);parser.add_argument('--new-limit',type=int,default=8);parser.add_argument('--no-discover',action='store_true');parser.add_argument('--refresh',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int,default=800);parser.add_argument('--new-limit',type=int,default=20);parser.add_argument('--no-discover',action='store_true');parser.add_argument('--refresh',action='store_true');args=parser.parse_args()
  now=dt.datetime.now(UTC);capture_date=now.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat();end=(now.date()-dt.timedelta(days=1)).isoformat();year_start=min(period_starts(end).values())
  latest_path=ROOT/'public/data/latest.json';latest=json.loads(latest_path.read_text()) if latest_path.exists() else {'projects':[]}
  snapshot_path=ROOT/'public/data/snapshots'/f'{capture_date}.json'
@@ -178,9 +235,16 @@ def main():
  excluded_path=ROOT/'data/excluded.json'
  excluded={name.lower() for name in json.loads(excluded_path.read_text())} if excluded_path.exists() else set()
  previous={r['fullName'].lower():r for r in latest['projects'] if r['fullName'].lower() not in excluded}
+ from discover import load_state, pending_candidates, record_attempt, save_state
+ discovery=load_state()
  candidates={key:r['fullName'] for key,r in previous.items()}
+ for candidate in pending_candidates(discovery,tracked=latest['projects'],excluded=excluded):
+  candidates[candidate['fullName'].lower()]=candidate['fullName']
  for n in SEEDS:candidates[n.lower()]=n
- warnings=[];queries=['topic:llm stars:>300 archived:false','topic:ai-agents stars:>100 archived:false','topic:generative-ai stars:>300 archived:false','topic:machine-learning stars:>1000 archived:false']
+ warnings=[]
+ topics=['llm','ai-agents','generative-ai','machine-learning','rag','mcp','text-to-speech','computer-vision','deep-learning','ai','large-language-models','diffusion','reinforcement-learning','nlp','speech-recognition','ai-tools']
+ rotation=now.date().toordinal()*4%len(topics)
+ queries=[f'topic:{topics[(rotation+i)%len(topics)]} stars:>100 archived:false' for i in range(4)]
  if not args.no_discover:
   from urllib.parse import urlencode
   for query in queries:
@@ -202,8 +266,10 @@ def main():
  names=select_candidates(previous,candidates,args.limit,args.new_limit)
  if new and not room:warnings.append('达到收录预算上限，已有项目继续更新，新项目发现暂停；可调整采集 limit。')
  projects=[];failures=[]
+ metadata=batch_metadata(names)
+ if len(metadata)<len(names):warnings.append('部分批量元数据不可用，将在 REST 预算内尝试单仓库获取。')
  def work(name):
-  result=collect_one(name,previous.get(name.lower()),editorial,end,year_start)
+  result=collect_one(name,previous.get(name.lower()),editorial,end,year_start,repo=metadata.get(name.lower()))
   if result and name.lower() not in previous and name.lower() not in {s.lower() for s in SEEDS}:
    text=' '.join([result['fullName'],result['description'],*result['topics']]).lower()
    if not re.search(r'\b(ai|llm|rag|agent|agents|gpt|ml|mcp)\b|artificial.intelligence|machine.learning|deep.learning|diffusion|neural|语音|智能|模型',text):return None
@@ -214,8 +280,13 @@ def main():
    name=futures[f]
    try:
     result=f.result()
-    if result:projects.append(result);print(f'Collected {result["fullName"]}: {result["stars"]} stars; history={result["historyStatus"]}',flush=True)
-   except Exception as e:failures.append(name);print(f'Failed {name}: {e}',file=sys.stderr,flush=True)
+    if result:
+     projects.append(result);print(f'Collected {result["fullName"]}: {result["stars"]} stars; history={result["historyStatus"]}',flush=True)
+     record_attempt(discovery,name,'admitted')
+    else:record_attempt(discovery,name,'rejected')
+   except Exception as e:
+    failures.append(name);record_attempt(discovery,name,'retry');print(f'Failed {name}: {e}',file=sys.stderr,flush=True)
+ save_state(discovery)
  if not projects:raise SystemExit('No fresh projects: previous published data preserved')
  # Do not publish a misleading severely incomplete batch.
  if len(failures)>max(3,len(names)*0.2):raise SystemExit('Too many failed repositories: previous published data preserved')
@@ -223,7 +294,7 @@ def main():
  projects.sort(key=lambda p:(-p['stars'],p['fullName'].lower()))
  missing_history=missing_period_history(projects)
  if missing_history:warnings.append(f'{len(missing_history)} 个项目的部分 Star 历史不可用，缺失指标不参与对应榜单。')
- payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}
+ payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API + GraphQL API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}
  # First successfully published daily archive is immutable; refresh only changes latest.json.
  if not snapshot_path.exists():atomic_json(snapshot_path,payload)
  atomic_json(latest_path,payload)
