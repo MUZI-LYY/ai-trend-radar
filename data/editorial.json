@@ -1,0 +1,2479 @@
+{
+  "ollama/ollama": {
+    "category": "models",
+    "kind": "应用 / 工具",
+    "summary": "把开源大模型运行在自己的电脑上。",
+    "overview": "Ollama 将模型下载、运行和服务接口整合在一起，适合快速搭建本地模型环境。用户可以通过命令行管理模型，也可以让其他应用连接本地接口。它重点解决模型运行与分发，不负责完整的知识库或工作流产品。",
+    "tags": [
+      "本地推理",
+      "模型管理",
+      "模型服务"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "audience": "希望体验本地大模型、搭建私有模型服务的开发者和研究者。",
+    "features": [
+      "本地推理",
+      "模型管理",
+      "模型服务"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "langgenius/dify": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "用可视化工作流搭建 Agent 和知识库应用。",
+    "overview": "Dify 把模型接入、提示词、知识库检索和工作流编排放在一个界面中。团队可以组织多步骤 AI 任务，将应用发布为聊天界面或 API。它适合把原型变成可反复使用的应用，但模型能力和费用仍取决于所接入的服务。",
+    "tags": [
+      "可视化编排",
+      "RAG",
+      "Agent 应用"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署",
+      "官方在线体验"
+    ],
+    "audience": "需要验证 AI 产品流程、构建企业知识问答的产品团队和开发者。",
+    "features": [
+      "可视化编排",
+      "RAG",
+      "Agent 应用"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "knowledge"
+    ]
+  },
+  "langchain-ai/langchain": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "连接大模型、工具和数据的应用开发框架。",
+    "overview": "LangChain 提供模型调用、工具集成和应用开发组件，帮助开发者组合不同供应商的模型与外部数据。它更适合在代码中搭建 AI 应用，而非作为一个开箱即用的聊天产品。复杂持久工作流可结合其生态中的编排组件实现。",
+    "tags": [
+      "工具调用",
+      "模型集成",
+      "应用开发"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "需要用代码控制模型调用、工具和应用逻辑的开发者。",
+    "features": [
+      "工具调用",
+      "模型集成",
+      "应用开发"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "langchain-ai/langgraph": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "用有状态的图组织可靠的 Agent 工作流。",
+    "overview": "LangGraph 将复杂 Agent 过程表达为状态、节点与转移，支持构建长时间运行、需要中断或人工介入的工作流。开发者可以明确控制每一步如何更新状态，适合比一次对话调用更复杂的应用。",
+    "tags": [
+      "状态管理",
+      "工作流编排",
+      "人工介入"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "需要持久状态、复杂任务流和运行控制的 Agent 开发者。",
+    "features": [
+      "状态管理",
+      "工作流编排",
+      "人工介入"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "open-webui/open-webui": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "为本地和远程模型提供统一的聊天界面。",
+    "overview": "Open WebUI 提供可自行部署的 AI 交互界面，可连接 Ollama 或兼容的模型接口。它帮助用户集中管理聊天和模型入口，并可结合知识资料扩展问答。界面服务与模型服务是两部分，需要分别确认可用性与资源条件。",
+    "tags": [
+      "聊天界面",
+      "本地模型",
+      "知识问答"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "希望统一使用多个模型、搭建自有聊天入口的个人与团队。",
+    "features": [
+      "聊天界面",
+      "本地模型",
+      "知识问答"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "n8n-io/n8n": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "把 AI 能力接入日常业务自动化流程。",
+    "overview": "n8n 通过节点连接业务系统与外部 API，可以组织定时任务、数据处理、通知和 AI 调用。用户可以在图形界面组合步骤，并在必要时编写代码。它适合跨系统自动化，复杂流程仍需关注错误处理和凭据管理。",
+    "tags": [
+      "可视化编排",
+      "应用集成",
+      "定时任务"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署",
+      "官方在线体验"
+    ],
+    "audience": "需要连接多个业务工具、自动执行重复任务的运营和开发团队。",
+    "features": [
+      "可视化编排",
+      "应用集成",
+      "定时任务"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "huggingface/transformers": {
+    "category": "models",
+    "kind": "框架 / SDK",
+    "summary": "加载和使用文本、视觉、音频等预训练模型。",
+    "overview": "Transformers 为多种模型架构提供统一的加载与调用方式，是 Hugging Face 生态的重要开发库。开发者可以使用预训练权重执行推理，也可以结合训练工具进行适配。不同模型的许可、硬件要求和任务能力应单独核对。",
+    "tags": [
+      "预训练模型",
+      "多模态",
+      "模型推理"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "需要在代码中使用预训练模型的机器学习工程师和研究者。",
+    "features": [
+      "预训练模型",
+      "多模态",
+      "模型推理"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "vllm-project/vllm": {
+    "category": "models",
+    "kind": "模型与引擎",
+    "summary": "面向大语言模型服务的高吞吐推理引擎。",
+    "overview": "vLLM 重点优化大模型推理服务的吞吐和显存使用，支持模型服务部署及兼容接口。它更适合部署多人访问的模型服务，而非面向普通用户的桌面应用。部署前需要核对模型架构、加速设备和软件版本的兼容性。",
+    "tags": [
+      "推理加速",
+      "模型服务",
+      "批量推理"
+    ],
+    "ways": [
+      "Python",
+      "模型服务"
+    ],
+    "audience": "负责大模型在线服务和推理基础设施的工程团队。",
+    "features": [
+      "推理加速",
+      "模型服务",
+      "批量推理"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "ggml-org/llama.cpp": {
+    "category": "models",
+    "kind": "模型与引擎",
+    "summary": "用 C/C++ 在多种硬件上运行大语言模型。",
+    "overview": "llama.cpp 提供轻量的大语言模型推理实现，围绕模型量化和多硬件运行展开。它包含命令行工具与服务能力，适合研究本地推理和构建嵌入式模型应用。模型需要满足支持的格式，性能随模型规模与硬件变化。",
+    "tags": [
+      "量化",
+      "本地推理",
+      "GGUF"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "audience": "希望控制本地推理资源、研究轻量模型运行的开发者。",
+    "features": [
+      "量化",
+      "本地推理",
+      "GGUF"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "comfyanonymous/comfyui": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "用节点工作流组织图像和多模态生成过程。",
+    "overview": "ComfyUI 通过节点式界面组合模型、提示词和图像处理步骤，让生成过程能够保存、复用与调整。它适合需要精细控制流程的创作者和技术用户。不同工作流依赖的模型及第三方节点需要分别安装与确认兼容性。",
+    "tags": [
+      "节点工作流",
+      "图像生成",
+      "多模态"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "需要复用生成流程、精细控制图像效果的创作者与开发者。",
+    "features": [
+      "节点工作流",
+      "图像生成",
+      "多模态"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "automatic1111/stable-diffusion-webui": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "在浏览器界面中使用 Stable Diffusion。",
+    "overview": "Stable Diffusion WebUI 为图像生成提供本地网页界面，常见流程包括文生图、图生图与局部编辑。它通过扩展生态支持不同使用方式，适合希望直接调整生成参数的用户。实际可用功能取决于模型、扩展和运行环境。",
+    "tags": [
+      "文生图",
+      "图生图",
+      "图像编辑"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望通过图形界面体验和调整图像生成的用户。",
+    "features": [
+      "文生图",
+      "图生图",
+      "图像编辑"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "openai/whisper": {
+    "category": "audio",
+    "kind": "模型与引擎",
+    "summary": "用于多语言语音识别的模型与推理代码。",
+    "overview": "Whisper 将音频内容转换为文字，提供不同规模的模型以平衡速度和识别能力。它适合字幕、录音整理及语音数据处理，是语音识别能力组件，不是完整的会议产品。识别质量与音频语言、噪声及所选模型有关。",
+    "tags": [
+      "ASR",
+      "音频转文字",
+      "多语言"
+    ],
+    "ways": [
+      "CLI",
+      "Python SDK"
+    ],
+    "audience": "需要将录音、视频语音或音频资料转为文字的开发者。",
+    "features": [
+      "ASR",
+      "音频转文字",
+      "多语言"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "funaudiollm/cosyvoice": {
+    "category": "audio",
+    "kind": "模型与引擎",
+    "summary": "面向自然语音合成的模型与工具。",
+    "overview": "CosyVoice 提供语音生成相关模型及推理代码，可用于构建文本转语音和语音交互应用。不同版本的模型能力与使用方法有所差异，需要按官方示例选择权重与环境。涉及声音样本时应确认样本的使用授权。",
+    "tags": [
+      "TTS",
+      "语音合成",
+      "语音生成"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "audience": "研究语音合成或为应用加入声音输出的开发者。",
+    "features": [
+      "TTS",
+      "语音合成",
+      "语音生成"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "blaizzy/mlx-audio": {
+    "category": "audio",
+    "kind": "框架 / SDK",
+    "summary": "在 Apple Silicon 上使用音频与语音模型。",
+    "overview": "MLX Audio 围绕 Apple 的 MLX 生态提供音频模型运行方式，适合在兼容的 Mac 上探索本地语音任务。它将模型能力与本地硬件结合，实际支持的模型、输入格式和任务以当前版本文档为准。",
+    "tags": [
+      "Apple Silicon",
+      "本地语音",
+      "MLX"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "audience": "使用 Apple Silicon 设备研究本地语音应用的开发者。",
+    "features": [
+      "Apple Silicon",
+      "本地语音",
+      "MLX"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "infiniflow/ragflow": {
+    "category": "knowledge",
+    "kind": "应用 / 工具",
+    "summary": "从文档解析到检索问答的一体化 RAG 引擎。",
+    "overview": "RAGFlow 关注真实业务文档的理解、切分与检索，将解析结果用于有来源依据的问答。它适合需要将多种文档组织为知识库的场景。应用效果不仅依赖模型，还取决于文档质量、解析方式和检索配置。",
+    "tags": [
+      "RAG",
+      "文档解析",
+      "知识问答"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "需要处理复杂资料、搭建团队知识库的开发者和业务团队。",
+    "features": [
+      "RAG",
+      "文档解析",
+      "知识问答"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "docling-project/docling": {
+    "category": "knowledge",
+    "kind": "框架 / SDK",
+    "summary": "把复杂文档转换为便于 AI 使用的结构化内容。",
+    "overview": "Docling 提供文档解析和格式转换能力，用于把 PDF 等资料转为结构化结果。它适合作为 RAG、文档搜索和数据准备流程中的上游组件。解析结果仍应抽样检查，尤其是扫描件、复杂表格和版面元素。",
+    "tags": [
+      "文档解析",
+      "PDF",
+      "结构化提取"
+    ],
+    "ways": [
+      "CLI",
+      "Python SDK"
+    ],
+    "audience": "需要批量处理文档、搭建知识库数据管道的开发者。",
+    "features": [
+      "文档解析",
+      "PDF",
+      "结构化提取"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "microsoft/markitdown": {
+    "category": "knowledge",
+    "kind": "开发工具",
+    "summary": "把常见文件转换为 Markdown。",
+    "overview": "MarkItDown 是面向文档转换的 Python 工具，将不同文件中的文字与结构转成 Markdown，方便进入大模型或知识处理流程。它侧重便于阅读和后续处理的文本表达，不是所有文档版式的完整复刻工具。",
+    "tags": [
+      "Markdown",
+      "文档转换",
+      "数据预处理"
+    ],
+    "ways": [
+      "CLI",
+      "Python SDK"
+    ],
+    "audience": "需要整理文件内容、为 AI 应用准备输入资料的用户与开发者。",
+    "features": [
+      "Markdown",
+      "文档转换",
+      "数据预处理"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "run-llama/llama_index": {
+    "category": "knowledge",
+    "kind": "框架 / SDK",
+    "summary": "连接私有数据与大语言模型的数据框架。",
+    "overview": "LlamaIndex 提供数据接入、索引和检索相关组件，帮助开发者围绕自己的文档与业务数据构建 AI 应用。它适合知识问答和数据检索，也可结合工作流与 Agent。具体检索效果需要结合数据集评测。",
+    "tags": [
+      "RAG",
+      "数据索引",
+      "数据连接"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "需要把业务资料接入模型应用的开发者和数据团队。",
+    "features": [
+      "RAG",
+      "数据索引",
+      "数据连接"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "crewaiinc/crewai": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "组织分工协作的多 Agent 任务。",
+    "overview": "CrewAI 以 Agent 角色、任务和执行流程组织多智能体协作，便于描述不同角色如何使用工具并完成目标。它适合探索分工明确的研究和内容处理流程。多 Agent 不自动保证结果更好，需要验证成本、输出质量和错误传播。",
+    "tags": [
+      "多 Agent",
+      "角色分工",
+      "任务编排"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "希望实验多角色协作、构建 Agent 流程的开发者。",
+    "features": [
+      "多 Agent",
+      "角色分工",
+      "任务编排"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "microsoft/autogen": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "构建能够协作和使用工具的 Agent 系统。",
+    "overview": "AutoGen 提供多智能体应用开发组件，用于组织消息、工具与协作过程。它适合研究多个 Agent 如何完成复杂任务，也能作为实验性应用基础。不同版本的 API 和项目维护方向可能变化，应优先阅读当前仓库说明。",
+    "tags": [
+      "多 Agent",
+      "工具调用",
+      "协作编排"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "多智能体研究者和需要定制 Agent 交互过程的开发者。",
+    "features": [
+      "多 Agent",
+      "工具调用",
+      "协作编排"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "significant-gravitas/autogpt": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "探索能够执行多步骤任务的 AI 自动化。",
+    "overview": "AutoGPT 围绕自主 Agent 与任务自动化构建工具，目标是让模型结合工具执行连续步骤。仓库中可能包含不同使用入口和组件，应从官方当前的部署或入门说明开始。实际执行任务前需要限制工具权限并验证结果。",
+    "tags": [
+      "任务自动化",
+      "Agent",
+      "工具调用"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "关注自主 Agent 应用和自动化原型的开发者。",
+    "features": [
+      "任务自动化",
+      "Agent",
+      "工具调用"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "aider-ai/aider": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "在终端中与 AI 一起修改代码。",
+    "overview": "Aider 将对话式 AI 编程带入已有代码仓库，可以围绕需求修改文件并结合 Git 工作流。它适合偏好终端和版本控制的开发者。模型选择、上下文大小与代码库结构会影响成本及修改质量，生成结果仍需测试。",
+    "tags": [
+      "终端编程",
+      "代码修改",
+      "Git 集成"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望在现有仓库中使用 AI 辅助开发的程序员。",
+    "features": [
+      "终端编程",
+      "代码修改",
+      "Git 集成"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "openhands/openhands": {
+    "category": "coding",
+    "kind": "应用 / 工具",
+    "summary": "让 AI Agent 在开发环境中处理软件任务。",
+    "overview": "OpenHands 为软件开发 Agent 提供与代码、终端和开发环境交互的能力，适合研究自动修复与工程任务执行。它比单次代码补全更接近一个可操作的开发过程。应为执行环境设置边界，并通过测试确认任务完成情况。",
+    "tags": [
+      "软件 Agent",
+      "终端执行",
+      "代码修改"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "研究软件开发自动化或评估编程 Agent 的工程团队。",
+    "features": [
+      "软件 Agent",
+      "终端执行",
+      "代码修改"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "anthropics/claude-code": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "在终端中理解代码并完成开发任务。",
+    "overview": "Claude Code 是 Anthropic 的 Agent 编程工具，可结合仓库上下文进行代码理解、修改和命令执行。此仓库提供相关发布信息与使用资料；公开仓库不意味着工具的全部实现或模型服务免费开放。使用前应核对当前登录方式和服务计划。",
+    "tags": [
+      "终端编程",
+      "代码理解",
+      "工具调用"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望将 Agent 融入日常开发流程的程序员。",
+    "features": [
+      "终端编程",
+      "代码理解",
+      "工具调用"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "google-gemini/gemini-cli": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "把 Gemini 的 Agent 能力带入终端。",
+    "overview": "Gemini CLI 提供基于 Gemini 的命令行交互，可围绕代码仓库与工具完成任务。它适合习惯终端操作的开发者，并可通过相应扩展机制接入更多能力。认证方式、可用额度和模型选择应以当前官方说明为准。",
+    "tags": [
+      "终端编程",
+      "代码理解",
+      "Agent"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "需要在终端使用 Gemini 开发能力的用户。",
+    "features": [
+      "终端编程",
+      "代码理解",
+      "Agent"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "sst/opencode": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "面向终端工作流的 AI 编程 Agent。",
+    "overview": "OpenCode 提供终端中的 Agent 编程体验，围绕代码上下文、模型接入和工具执行组织开发过程。它适合希望自选模型供应商并保留终端习惯的开发者。使用具体模型的认证、额度与计费由对应供应商决定。",
+    "tags": [
+      "终端编程",
+      "多模型",
+      "代码修改"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望选择不同模型完成工程任务的开发者。",
+    "features": [
+      "终端编程",
+      "多模型",
+      "代码修改"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "flowiseai/flowise": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "通过可视化界面组合大模型应用流程。",
+    "overview": "Flowise 将模型应用组件呈现为可连接的节点，帮助用户搭建聊天、检索和 Agent 流程。它适合快速验证应用逻辑，并将可复用流程交给接口或产品调用。上线前需要核对数据权限、模型费用和流程错误处理。",
+    "tags": [
+      "可视化编排",
+      "RAG",
+      "Agent 流程"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "希望用可视化方式搭建大模型应用的团队。",
+    "features": [
+      "可视化编排",
+      "RAG",
+      "Agent 流程"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "knowledge"
+    ]
+  },
+  "mintplex-labs/anything-llm": {
+    "category": "knowledge",
+    "kind": "应用 / 工具",
+    "summary": "围绕自己的文档与模型建立问答空间。",
+    "overview": "AnythingLLM 把模型连接、文档资料和对话工作区组合在一起，帮助用户对自己的内容提问。它提供不同运行方式，适合个人和团队搭建知识问答入口。不同部署形式的数据存储和模型请求路径需要分别核对。",
+    "tags": [
+      "知识问答",
+      "RAG",
+      "工作区"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望与文档对话、建立个人或团队知识库的用户。",
+    "features": [
+      "知识问答",
+      "RAG",
+      "工作区"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "apps"
+    ]
+  },
+  "itzcrazykns/perplexica": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "将网络搜索与 AI 回答结合的搜索应用。",
+    "overview": "Vane（原 Perplexica） 围绕检索和模型生成组织搜索体验，帮助用户从网络资料获得带来源的回答。它适合研究 AI 搜索交互或搭建可控制的搜索入口。结果质量依赖检索服务和模型，引用内容仍需检查。",
+    "tags": [
+      "AI 搜索",
+      "来源引用",
+      "检索问答"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "希望体验可自行部署 AI 搜索的用户和开发者。",
+    "features": [
+      "AI 搜索",
+      "来源引用",
+      "检索问答"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "lobehub/lobe-chat": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "组织、调度和管理持续工作的 AI Agent 团队。",
+    "overview": "LobeHub 当前定位为 Agent 工作平台，围绕 Agent 的组织、任务调度和结果汇报管理持续运行的 AI 团队。它提供可交互的操作界面，让用户配置并跟进 Agent 工作。项目已从早期 LobeChat 形态演进，部署与模型接入方式应按当前仓库文档选择。",
+    "tags": [
+      "Agent 团队",
+      "任务调度",
+      "协作界面"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望集中管理多个 Agent 和持续任务的个人与团队。",
+    "features": [
+      "组织 Agent",
+      "调度任务",
+      "查看工作汇报"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "apps",
+      "automation"
+    ]
+  },
+  "unslothai/unsloth": {
+    "category": "devtools",
+    "kind": "框架 / SDK",
+    "summary": "优化大模型微调过程中的速度和资源使用。",
+    "overview": "Unsloth 围绕模型微调和运行优化提供开发工具，帮助用户适配自己的数据与任务。它适合需要在资源约束下进行模型实验的工程师。性能提升取决于模型、硬件、精度与训练配置，应使用自己的任务验证。",
+    "tags": [
+      "微调",
+      "训练优化",
+      "大语言模型"
+    ],
+    "ways": [
+      "Python"
+    ],
+    "audience": "需要用自有数据微调模型的机器学习开发者。",
+    "features": [
+      "微调",
+      "训练优化",
+      "大语言模型"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "models"
+    ]
+  },
+  "hiyouga/llama-factory": {
+    "category": "devtools",
+    "kind": "应用 / 工具",
+    "summary": "统一多个模型的微调与训练流程。",
+    "overview": "LLaMA-Factory 为不同大语言模型提供统一的微调入口和配置方式，可用于管理数据、训练参数及模型适配。它适合将微调实验组织成可重复的流程。训练前需要核对模型许可证、数据格式和硬件需求。",
+    "tags": [
+      "模型微调",
+      "训练配置",
+      "数据管理"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "audience": "希望运行和比较模型微调实验的工程师。",
+    "features": [
+      "模型微调",
+      "训练配置",
+      "数据管理"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "models"
+    ]
+  },
+  "langfuse/langfuse": {
+    "category": "devtools",
+    "kind": "应用 / 工具",
+    "summary": "观察大模型应用的调用过程与输出质量。",
+    "overview": "Langfuse 提供大模型应用可观测性与评估相关能力，帮助团队查看调用链、提示词和结果。它适合排查 Agent 行为、比较提示词变化和管理应用质量。采集日志时应控制内容范围，避免不必要地记录敏感输入。",
+    "tags": [
+      "可观测性",
+      "模型评测",
+      "调用追踪"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署",
+      "官方在线体验"
+    ],
+    "audience": "需要持续改进大模型应用质量的产品与工程团队。",
+    "features": [
+      "可观测性",
+      "模型评测",
+      "调用追踪"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "rasbt/llms-from-scratch": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "通过代码理解大语言模型的构建过程。",
+    "overview": "LLMs from Scratch 是围绕大语言模型实现的学习材料，帮助读者理解模型组件、训练思路及相关代码。它适合希望深入基础原理的学习者。课程代码的作用是教学，不应直接等同于成熟生产服务。",
+    "tags": [
+      "模型原理",
+      "代码教学",
+      "从零实现"
+    ],
+    "ways": [
+      "代码示例"
+    ],
+    "audience": "有 Python 基础、希望理解大语言模型内部机制的学习者。",
+    "features": [
+      "模型原理",
+      "代码教学",
+      "从零实现"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "microsoft/generative-ai-for-beginners": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "面向入门者的生成式 AI 应用课程。",
+    "overview": "Generative AI for Beginners 通过课程与示例介绍生成式 AI 概念和应用开发。读者可以按主题学习模型调用、提示词和应用模式。部分示例依赖外部云服务，实际运行前应确认所需账户与资源。",
+    "tags": [
+      "入门教程",
+      "生成式 AI",
+      "应用开发"
+    ],
+    "ways": [
+      "课程",
+      "代码示例"
+    ],
+    "audience": "希望系统学习生成式 AI 应用基础的开发者与产品人员。",
+    "features": [
+      "入门教程",
+      "生成式 AI",
+      "应用开发"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "f/prompts.chat": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "按场景组织和分享 AI 提示词。",
+    "overview": "prompts.chat 围绕提示词的收集、组织与分享提供资源和相关应用。它适合寻找不同任务的提示词思路，并根据实际模型进行改写。提示词效果受模型、上下文和任务定义影响，不能把样例当成固定可靠的指令。",
+    "tags": [
+      "提示词",
+      "场景资源",
+      "Prompt"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "需要寻找提示词示例、优化任务表达方式的 AI 用户。",
+    "features": [
+      "提示词",
+      "场景资源",
+      "Prompt"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "github/spec-kit": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "以规范为起点组织 AI 辅助软件开发。",
+    "overview": "Spec Kit 围绕规范驱动开发提供模板与工作流，将需求、计划和实现步骤连接起来。它适合希望让 AI 开发过程具有明确目标与产物约束的团队。模板需要结合项目实际调整，不能替代对需求和实现的审查。",
+    "tags": [
+      "规范驱动开发",
+      "开发流程",
+      "AI 编程"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望改进 Agent 开发流程和需求表达的工程团队。",
+    "features": [
+      "规范驱动开发",
+      "开发流程",
+      "AI 编程"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "modelcontextprotocol/servers": {
+    "category": "agents",
+    "kind": "资源与示例",
+    "summary": "了解 MCP 如何让模型连接工具与数据。",
+    "overview": "该仓库提供 Model Context Protocol 服务器相关实现与参考资料，帮助开发者理解如何通过标准协议暴露工具和资源。它适合学习集成方式或寻找服务器线索。不同服务器的维护状态、权限和运行条件应分别检查。",
+    "tags": [
+      "MCP",
+      "工具集成",
+      "协议示例"
+    ],
+    "ways": [
+      "代码示例"
+    ],
+    "audience": "为 AI 助手接入外部工具或数据的开发者。",
+    "features": [
+      "MCP",
+      "工具集成",
+      "协议示例"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "browser-use/browser-use": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "让 AI Agent 通过浏览器完成网页任务。",
+    "overview": "Browser Use 提供将浏览器操作连接到 Agent 的能力，可用于页面信息处理和多步骤网页任务。它适合研究浏览器自动化与模型决策的组合。网页变化、登录状态和任务权限都会影响执行结果，需要可观察和可中断的运行方式。",
+    "tags": [
+      "浏览器操作",
+      "网页自动化",
+      "Agent"
+    ],
+    "ways": [
+      "Python"
+    ],
+    "audience": "需要构建网页操作 Agent 的开发者。",
+    "features": [
+      "浏览器操作",
+      "网页自动化",
+      "Agent"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "firecrawl/firecrawl": {
+    "category": "knowledge",
+    "kind": "开发工具",
+    "summary": "把网页内容转换为便于 AI 使用的数据。",
+    "overview": "Firecrawl 提供网页抓取、内容提取等能力，将网站内容转换为更适合模型处理的格式。它可以作为研究、检索和知识库管道的数据入口。自建与托管方式的能力和资源需求可能不同，使用时按对应文档核对。",
+    "tags": [
+      "网页抓取",
+      "内容提取",
+      "Markdown"
+    ],
+    "ways": [
+      "API",
+      "本地部署"
+    ],
+    "audience": "为 AI 应用准备网站数据或构建研究流程的开发者。",
+    "features": [
+      "网页抓取",
+      "内容提取",
+      "Markdown"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "comfy-org/comfyui": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "用节点工作流组织图像和多模态生成过程。",
+    "overview": "ComfyUI 通过节点式界面组合模型、提示词和图像处理步骤，让生成过程能够保存、复用与调整。它适合需要精细控制流程的创作者和技术用户。不同工作流依赖的模型及第三方节点需要分别安装与确认兼容性。",
+    "tags": [
+      "节点工作流",
+      "图像生成",
+      "多模态"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "需要复用生成流程、精细控制图像效果的创作者与开发者。",
+    "features": [
+      "节点工作流",
+      "图像生成",
+      "多模态"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "anomalyco/opencode": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "面向终端工作流的 AI 编程 Agent。",
+    "overview": "OpenCode 提供终端中的 Agent 编程体验，围绕代码上下文、模型接入和工具执行组织开发过程。它适合希望自选模型供应商并保留终端习惯的开发者。使用具体模型的认证、额度与计费由对应供应商决定。",
+    "tags": [
+      "终端编程",
+      "多模型",
+      "代码修改"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望选择不同模型完成工程任务的开发者。",
+    "features": [
+      "终端编程",
+      "多模型",
+      "代码修改"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "lobehub/lobehub": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "组织、调度和管理持续工作的 AI Agent 团队。",
+    "overview": "LobeHub 当前定位为 Agent 工作平台，围绕 Agent 的组织、任务调度和结果汇报管理持续运行的 AI 团队。它提供可交互的操作界面，让用户配置并跟进 Agent 工作。项目已从早期 LobeChat 形态演进，部署与模型接入方式应按当前仓库文档选择。",
+    "tags": [
+      "Agent 团队",
+      "任务调度",
+      "协作界面"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望集中管理多个 Agent 和持续任务的个人与团队。",
+    "features": [
+      "组织 Agent",
+      "调度任务",
+      "查看工作汇报"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "apps",
+      "automation"
+    ]
+  },
+  "qwenaudio/cosyvoice": {
+    "category": "audio",
+    "kind": "模型与引擎",
+    "summary": "面向自然语音合成的模型与工具。",
+    "overview": "CosyVoice 提供语音生成相关模型及推理代码，可用于构建文本转语音和语音交互应用。不同版本的模型能力与使用方法有所差异，需要按官方示例选择权重与环境。涉及声音样本时应确认样本的使用授权。",
+    "tags": [
+      "TTS",
+      "语音合成",
+      "语音生成"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "audience": "研究语音合成或为应用加入声音输出的开发者。",
+    "features": [
+      "TTS",
+      "语音合成",
+      "语音生成"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "hiyouga/llamafactory": {
+    "category": "devtools",
+    "kind": "应用 / 工具",
+    "summary": "统一多个模型的微调与训练流程。",
+    "overview": "LLaMA-Factory 为不同大语言模型提供统一的微调入口和配置方式，可用于管理数据、训练参数及模型适配。它适合将微调实验组织成可重复的流程。训练前需要核对模型许可证、数据格式和硬件需求。",
+    "tags": [
+      "模型微调",
+      "训练配置",
+      "数据管理"
+    ],
+    "ways": [
+      "Python",
+      "本地部署"
+    ],
+    "audience": "希望运行和比较模型微调实验的工程师。",
+    "features": [
+      "模型微调",
+      "训练配置",
+      "数据管理"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "models"
+    ]
+  },
+  "itzcrazykns/vane": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "将网络搜索与 AI 回答结合的搜索应用。",
+    "overview": "Vane（原 Perplexica） 围绕检索和模型生成组织搜索体验，帮助用户从网络资料获得带来源的回答。它适合研究 AI 搜索交互或搭建可控制的搜索入口。结果质量依赖检索服务和模型，引用内容仍需检查。",
+    "tags": [
+      "AI 搜索",
+      "来源引用",
+      "检索问答"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "希望体验可自行部署 AI 搜索的用户和开发者。",
+    "features": [
+      "AI 搜索",
+      "来源引用",
+      "检索问答"
+    ],
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "nousresearch/hermes-agent": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "提供记忆与技能积累的个人 AI Agent。",
+    "overview": "Hermes Agent 将对话、工具执行、长期记忆和可复用技能组合为持续工作的助手。它可以从过去的任务记录中寻找上下文，并把重复工作整理为技能，适合探索跨会话的个人自动化。实际能力取决于所接入的模型、工具和运行环境。",
+    "tags": [
+      "长期记忆",
+      "技能管理",
+      "工具调用"
+    ],
+    "features": [
+      "长期记忆",
+      "技能管理",
+      "工具调用"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "audience": "需要持续任务助手、希望管理个人 Agent 记忆和技能的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "langflow-ai/langflow": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "可视化搭建并发布 AI Agent 与工作流。",
+    "overview": "Langflow 把模型、数据和工具呈现为可连接的组件，帮助用户搭建 Agent 或多步骤应用。流程可通过服务接口连接其他产品，仓库也提供 MCP 相关集成。它适合快速验证流程结构，复杂业务仍需要处理异常和运行状态。",
+    "tags": [
+      "可视化编排",
+      "Agent 流程",
+      "MCP"
+    ],
+    "features": [
+      "可视化编排",
+      "Agent 流程",
+      "MCP"
+    ],
+    "ways": [
+      "本地部署",
+      "API"
+    ],
+    "audience": "搭建 AI 应用原型和可复用工作流的产品与工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "knowledge"
+    ]
+  },
+  "tauricresearch/tradingagents": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "用多 Agent 分工研究金融市场信息。",
+    "overview": "TradingAgents 以不同分析角色组织大模型对市场资料的处理，把信息研究、讨论与交易决策模拟连接起来。它提供的是研究框架，可用于观察多 Agent 如何处理金融任务。模型输出和历史实验不能证明未来投资收益，实际数据源及调用成本需按文档配置。",
+    "tags": [
+      "多 Agent",
+      "金融研究",
+      "决策模拟"
+    ],
+    "features": [
+      "多 Agent",
+      "金融研究",
+      "决策模拟"
+    ],
+    "ways": [
+      "Python SDK",
+      "CLI"
+    ],
+    "audience": "研究金融信息处理与多智能体协作的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "pytorch/pytorch": {
+    "category": "devtools",
+    "kind": "框架 / SDK",
+    "summary": "构建和训练神经网络的基础开发框架。",
+    "overview": "PyTorch 提供张量计算、自动求导和神经网络开发组件，支持研究者编写模型与训练过程。它是大量 AI 项目的底层依赖，适合从实验到应用的模型开发。加速设备支持与安装包版本需要匹配，框架本身不包含一套现成的业务产品。",
+    "tags": [
+      "张量计算",
+      "自动求导",
+      "模型训练"
+    ],
+    "features": [
+      "张量计算",
+      "自动求导",
+      "模型训练"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "机器学习工程师、模型研究者和深度学习学习者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "panniantong/agent-reach": {
+    "category": "agents",
+    "kind": "开发工具",
+    "summary": "为 Agent 提供跨网站的信息读取与搜索工具。",
+    "overview": "Agent Reach 通过统一的命令行入口组织网页和不同内容平台的访问，让 Agent 获取研究所需的外部资料。它侧重数据接入，而非训练模型。不同平台可能需要额外依赖、登录状态或网络条件，作者的免 API 费描述不代表所有场景都无运行成本。",
+    "tags": [
+      "网页搜索",
+      "内容读取",
+      "工具集成"
+    ],
+    "features": [
+      "网页搜索",
+      "内容读取",
+      "工具集成"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "需要为研究型 Agent 扩展网络信息来源的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "666ghj/mirofish": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "用多 Agent 模拟群体互动和情景演化。",
+    "overview": "MiroFish 围绕群体智能模拟组织角色、交互与结果分析，可用于探索不同条件下的行为情景。项目把预测作为目标，但模拟输出并非经过验证的现实预测。适合研究多智能体仿真和提出假设，应结合独立事实检验结果。",
+    "tags": [
+      "多 Agent",
+      "群体模拟",
+      "情景分析"
+    ],
+    "features": [
+      "多 Agent",
+      "群体模拟",
+      "情景分析"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "探索社会模拟、群体行为和 Agent 实验的研究者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "stablyai/orca": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "统一管理并行工作的多个编程 Agent。",
+    "overview": "Orca 提供面向编程 Agent 的工作环境，将不同任务分配到独立工作区，并组织桌面、移动端与远程运行入口。它适合同时推进多个代码任务，复用已有模型服务或工具订阅。并行产物仍需要整合与验证，不能把多个 Agent 的完成声明直接视为代码可用。",
+    "tags": [
+      "并行编程",
+      "独立工作区",
+      "远程开发"
+    ],
+    "features": [
+      "并行编程",
+      "独立工作区",
+      "远程开发"
+    ],
+    "ways": [
+      "桌面应用"
+    ],
+    "audience": "同时管理多个 AI 编程任务的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "asgeirtj/system_prompts_leaks": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "第三方整理的 AI 产品系统提示词资料。",
+    "overview": "该仓库收集作者声称提取自不同 AI 产品的系统提示词，可用于观察提示词结构和产品行为设计。它不是这些产品的官方文档，内容真实性、版本和完整性均需另行核实。更适合作为研究线索，不宜作为实现或配置某个产品的权威依据。",
+    "tags": [
+      "提示词",
+      "产品研究",
+      "第三方资料"
+    ],
+    "features": [
+      "提示词",
+      "产品研究",
+      "第三方资料"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "研究 AI 交互和提示词结构的学习者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "photoprism/photoprism": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "通过机器学习辅助整理个人照片库。",
+    "overview": "PhotoPrism 是可自行部署的照片管理应用，结合自动内容识别、分类和搜索帮助用户整理大量图片。它将 AI 放在照片检索和组织流程中，适合管理个人或家庭媒体资料。部署前需确认存储、索引所需资源及当前版本功能边界。",
+    "tags": [
+      "照片管理",
+      "图像识别",
+      "媒体搜索"
+    ],
+    "features": [
+      "照片管理",
+      "图像识别",
+      "媒体搜索"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望自行管理和检索照片资料的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "apps"
+    ]
+  },
+  "herdrdev/herdr": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "为编程 Agent 提供持续运行的终端环境。",
+    "overview": "Herdr 将编程 Agent 的运行环境、终端会话和任务上下文组织在一起，减少长任务对单次界面会话的依赖。它适合需要持续执行和恢复上下文的开发流程。运行环境仍需安装相应编程工具，并核对模型认证与代码访问权限。",
+    "tags": [
+      "持续会话",
+      "终端管理",
+      "编程 Agent"
+    ],
+    "features": [
+      "持续会话",
+      "终端管理",
+      "编程 Agent"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "运行长时间 AI 开发任务的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "crosstalk-solutions/project-nomad": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "把离线知识资料和可选本地 AI 放到自有设备上。",
+    "overview": "Project NOMAD 是离线优先的知识与教育服务器，可以组织百科、书籍、课程和地图等资源，并按需接入本地 AI。它适合网络不稳定环境或希望本地保留资料的用户。AI 属于可选组件，离线使用前需要准备内容和模型，硬件与存储需求随资料规模变化。",
+    "tags": [
+      "离线知识",
+      "本地 AI",
+      "教育资源"
+    ],
+    "features": [
+      "离线知识",
+      "本地 AI",
+      "教育资源"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "需要离线知识服务或个人资料服务器的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge",
+      "learning"
+    ]
+  },
+  "sgl-project/sglang": {
+    "category": "models",
+    "kind": "模型与引擎",
+    "summary": "部署大语言模型与多模态模型的推理服务。",
+    "overview": "SGLang 提供模型服务和执行相关组件，重点关注推理吞吐、调度与应用集成。它适合把支持的模型部署成可调用服务，供多用户或其他 AI 应用使用。具体性能与模型、设备和请求结构有关，应使用自己的任务负载评估。",
+    "tags": [
+      "模型服务",
+      "推理加速",
+      "多模态"
+    ],
+    "features": [
+      "模型服务",
+      "推理加速",
+      "多模态"
+    ],
+    "ways": [
+      "Python",
+      "模型服务"
+    ],
+    "audience": "负责模型部署和推理基础设施的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "can1357/oh-my-pi": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "在终端中连接代码上下文和开发工具的 Agent。",
+    "overview": "Oh My Pi 围绕终端编程提供代码操作与开发工具集成，使模型能够在仓库中完成连续修改任务。它适合习惯命令行的开发者，强调将代码分析和实际执行结合。使用前需要配置支持的模型，并通过版本控制与测试检查修改结果。",
+    "tags": [
+      "终端编程",
+      "代码修改",
+      "工具集成"
+    ],
+    "features": [
+      "终端编程",
+      "代码修改",
+      "工具集成"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望在终端中完成 AI 辅助开发的程序员。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "debpalash/voicestudio": {
+    "category": "audio",
+    "kind": "应用 / 工具",
+    "summary": "在本地完成语音生成、转写与配音工作。",
+    "overview": "VoiceStudio 将声音克隆、语音合成、转写、听写和有声书等音频流程整合为本地工具。它适合探索多种语音能力的统一工作台。当前 README 提到 Electron 重构，安装方式及稳定性应按最新说明核对；不同引擎对设备、模型和语言的支持并不相同。",
+    "tags": [
+      "TTS",
+      "ASR",
+      "视频配音"
+    ],
+    "features": [
+      "TTS",
+      "ASR",
+      "视频配音"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "处理配音、录音转写和音频内容的创作者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "kestra-io/kestra": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "用事件与时间表编排数据和 AI 任务。",
+    "overview": "Kestra 将任务依赖、调度和执行状态组织为可管理的工作流，可连接数据系统及模型调用。它适合把单个脚本转为可重复运行的流程，并观察失败与重试情况。它是通用编排平台，AI 能力来自接入的组件和服务。",
+    "tags": [
+      "任务调度",
+      "事件驱动",
+      "工作流编排"
+    ],
+    "features": [
+      "任务调度",
+      "事件驱动",
+      "工作流编排"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "管理数据管道、批处理和 AI 自动化的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "mastra-ai/mastra": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "使用 TypeScript 开发 AI Agent 应用。",
+    "overview": "Mastra 提供 Agent、工具和工作流等开发组件，帮助 TypeScript 团队把模型能力接入实际应用。它适合在现有 JavaScript 技术栈中组织多步骤 AI 任务。开发者仍需选择模型、定义工具边界，并验证状态恢复与输出质量。",
+    "tags": [
+      "TypeScript SDK",
+      "工具调用",
+      "Agent 流程"
+    ],
+    "features": [
+      "TypeScript SDK",
+      "工具调用",
+      "Agent 流程"
+    ],
+    "ways": [
+      "TypeScript SDK"
+    ],
+    "audience": "使用 TypeScript 构建 AI 产品的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "automation"
+    ]
+  },
+  "alibaba/open-code-review": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "结合规则与模型分析生成代码审查意见。",
+    "overview": "Open Code Review 将确定性的分析流程与大模型 Agent 结合，围绕代码差异生成定位到行的审查意见。它适合为已有代码评审流程补充自动检查，涉及多语言规则与模型接口配置。自动审查会出现漏报或误报，应由开发者核对并结合项目测试判断。",
+    "tags": [
+      "代码审查",
+      "差异分析",
+      "多语言"
+    ],
+    "features": [
+      "代码审查",
+      "差异分析",
+      "多语言"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "希望把 AI 审查接入工程流程的开发团队。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "tencent/weknora": {
+    "category": "knowledge",
+    "kind": "应用 / 工具",
+    "summary": "把文档组织为可检索、推理和维护的知识空间。",
+    "overview": "WeKnora 围绕文档理解与 RAG 构建知识平台，把原始资料接入检索问答，并扩展到推理 Agent 和知识 Wiki。它适合企业资料或个人知识库的问答场景。实际检索质量依赖解析、索引、模型和数据内容，需要用真实问题进行评估。",
+    "tags": [
+      "RAG",
+      "文档理解",
+      "知识 Wiki"
+    ],
+    "features": [
+      "RAG",
+      "文档理解",
+      "知识 Wiki"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "搭建文档知识服务的产品和工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "rowboatlabs/rowboat": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "用持久记忆辅助工作的桌面 AI 助手。",
+    "overview": "Rowboat 将桌面 AI 协作与记忆机制结合，通过知识关联保留跨任务上下文。它适合需要持续研究、资料整理和任务跟进的个人工作场景。记忆质量取决于接入的信息和整理方式，连接工作资料前应了解存储位置与模型调用路径。",
+    "tags": [
+      "长期记忆",
+      "知识关联",
+      "桌面助手"
+    ],
+    "features": [
+      "长期记忆",
+      "知识关联",
+      "桌面助手"
+    ],
+    "ways": [
+      "桌面应用"
+    ],
+    "audience": "希望在日常工作中使用持续上下文助手的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "knowledge"
+    ]
+  },
+  "argoproj/argo-workflows": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "在 Kubernetes 上执行可重复的数据和模型工作流。",
+    "overview": "Argo Workflows 以容器任务和依赖关系描述批处理流程，可作为模型训练、数据处理和评测的调度基础设施。它是通用工作流引擎，本站将其作为 AI 工程配套工具收录。使用它需要 Kubernetes 环境，不是直接供普通用户聊天的 AI 应用。",
+    "tags": [
+      "Kubernetes",
+      "任务编排",
+      "训练管道"
+    ],
+    "features": [
+      "Kubernetes",
+      "任务编排",
+      "训练管道"
+    ],
+    "ways": [
+      "Kubernetes"
+    ],
+    "audience": "已有容器集群并需要组织模型任务的基础设施团队。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "triggerdotdev/trigger.dev": {
+    "category": "automation",
+    "kind": "应用 / 工具",
+    "summary": "开发能够持续执行和恢复的 AI 后台任务。",
+    "overview": "Trigger.dev 为长时间运行的任务与 AI 工作流提供开发和部署能力，帮助应用处理等待、重试及多步骤执行。它适合将模型调用接入后台业务流程。具体可用部署方式、配额和运行成本应以当前项目与托管服务文档为准。",
+    "tags": [
+      "后台任务",
+      "持久工作流",
+      "任务重试"
+    ],
+    "features": [
+      "后台任务",
+      "持久工作流",
+      "任务重试"
+    ],
+    "ways": [
+      "TypeScript SDK"
+    ],
+    "audience": "需要运行长期 AI 任务的应用开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "ag-ui-protocol/ag-ui": {
+    "category": "agents",
+    "kind": "协议与实现",
+    "summary": "定义 Agent 与前端应用之间的交互事件。",
+    "overview": "AG-UI 是连接 Agent 后端与用户界面的交互协议，通过结构化事件传递消息、状态与工具执行过程。它适合把不同 Agent 框架接入可交互的前端。协议本身不是模型服务，需要搭配兼容的运行端和界面实现。",
+    "tags": [
+      "交互协议",
+      "事件流",
+      "前端集成"
+    ],
+    "features": [
+      "交互协议",
+      "事件流",
+      "前端集成"
+    ],
+    "ways": [
+      "代码示例"
+    ],
+    "audience": "开发 Agent 用户界面和框架适配层的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "apps",
+      "devtools"
+    ]
+  },
+  "ggml-org/ggml": {
+    "category": "models",
+    "kind": "框架 / SDK",
+    "summary": "面向机器学习推理的底层张量库。",
+    "overview": "ggml 提供张量运算和相关底层实现，为轻量模型推理项目提供基础组件。它适合需要深入控制运行效率和设备适配的开发者，也被同生态中的模型工具采用。它不是开箱即用的聊天产品，集成需要编译与模型运行方面的经验。",
+    "tags": [
+      "张量计算",
+      "底层推理",
+      "模型运行"
+    ],
+    "features": [
+      "张量计算",
+      "底层推理",
+      "模型运行"
+    ],
+    "ways": [
+      "C/C++"
+    ],
+    "audience": "开发推理引擎或研究底层优化的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "openvinotoolkit/openvino": {
+    "category": "models",
+    "kind": "开发工具",
+    "summary": "优化并部署支持的深度学习推理模型。",
+    "overview": "OpenVINO 提供模型转换、优化与运行工具，帮助团队把已有模型部署到支持的计算设备。它适合关注延迟、资源利用和端侧运行的推理场景。需要分别核对模型算子、设备驱动及版本兼容性，实际速度以目标硬件测量为准。",
+    "tags": [
+      "模型优化",
+      "推理部署",
+      "设备加速"
+    ],
+    "features": [
+      "模型优化",
+      "推理部署",
+      "设备加速"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "负责 AI 推理优化和端侧部署的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "langchain-ai/open-swe": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "让 Agent 在独立环境中异步处理开发任务。",
+    "overview": "Open SWE 围绕软件工程任务执行组织 Agent，使其可以在开发环境中理解仓库、修改代码并形成可评审结果。它适合研究异步编程 Agent 与团队开发流程的结合。任务完成仍需依赖测试和代码评审，并配置运行环境与模型服务。",
+    "tags": [
+      "异步编程",
+      "环境隔离",
+      "代码修改"
+    ],
+    "features": [
+      "异步编程",
+      "环境隔离",
+      "代码修改"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "评估软件任务自动执行的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "omnigent-ai/omnigent": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "在统一运行环境中编排多种 Agent 工具。",
+    "overview": "Omnigent 将不同编程 Agent 和自定义工具接入统一框架，围绕策略、隔离及协作组织任务。它适合希望替换底层 Agent 工具而保留上层流程的团队。接入的各个工具仍有独立的认证、许可和运行条件，需要按集成文档配置。",
+    "tags": [
+      "多 Agent",
+      "运行管理",
+      "策略控制"
+    ],
+    "features": [
+      "多 Agent",
+      "运行管理",
+      "策略控制"
+    ],
+    "ways": [
+      "CLI",
+      "桌面应用",
+      "本地部署"
+    ],
+    "audience": "管理多供应商 Agent 工作流的开发团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "coding"
+    ]
+  },
+  "multimodal-art-projection/yue": {
+    "category": "audio",
+    "kind": "模型与引擎",
+    "summary": "通过旋律规划与音频模型生成和编辑歌曲。",
+    "overview": "当前主分支为 YuE2，把歌词和风格提示先转换为可编辑的旋律、和弦规划，再生成包含人声与伴奏的歌曲。仓库还介绍了歌曲改编和基于对话的音乐编辑流程。原 YuE 的代码、文档与许可保留在 YuE-v1 分支，使用时应确认所选版本及模型要求。",
+    "tags": [
+      "音乐生成",
+      "旋律规划",
+      "歌曲编辑"
+    ],
+    "features": [
+      "旋律与和弦规划",
+      "人声与伴奏生成",
+      "歌曲改编与编辑"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "研究 AI 音乐或搭建生成流程的创作者与开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "librephotos/librephotos": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "自行部署带智能整理能力的照片库。",
+    "overview": "LibrePhotos 将照片管理与机器学习辅助功能结合，帮助用户在自有服务器上整理、浏览和检索媒体。它适合希望保留照片数据控制权的个人或家庭。首次索引可能消耗较多资源，实际功能和运行需求需按当前部署说明确认。",
+    "tags": [
+      "照片管理",
+      "图像识别",
+      "本地媒体"
+    ],
+    "features": [
+      "照片管理",
+      "图像识别",
+      "本地媒体"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "需要自建照片管理服务的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "apps"
+    ]
+  },
+  "maximhq/bifrost": {
+    "category": "devtools",
+    "kind": "开发工具",
+    "summary": "为多个模型供应商提供统一 AI 网关。",
+    "overview": "Bifrost 将模型请求路由、负载分配和治理能力放到统一入口中，帮助应用管理不同模型服务。它适合需要集中控制模型调用的工程团队。仓库中的性能对比取决于测试条件，部署时应以自己的请求量、延迟和故障情景进行验证。",
+    "tags": [
+      "AI 网关",
+      "模型路由",
+      "负载均衡"
+    ],
+    "features": [
+      "AI 网关",
+      "模型路由",
+      "负载均衡"
+    ],
+    "ways": [
+      "本地部署",
+      "API"
+    ],
+    "audience": "管理多模型服务接入的基础设施团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "models"
+    ]
+  },
+  "strands-agents/harness-sdk": {
+    "category": "agents",
+    "kind": "框架 / SDK",
+    "summary": "控制 Agent 从工具调用到运行过程的 SDK。",
+    "overview": "Strands Harness SDK 提供 Python 与 TypeScript 的 Agent 开发组件，帮助开发者组织模型、工具和完整执行流程。它适合需要定制运行行为的应用，模型与云环境可按支持情况选择。生产使用需要验证工具错误处理、状态管理和部署依赖。",
+    "tags": [
+      "Agent SDK",
+      "运行控制",
+      "工具调用"
+    ],
+    "features": [
+      "Agent SDK",
+      "运行控制",
+      "工具调用"
+    ],
+    "ways": [
+      "Python SDK",
+      "TypeScript SDK"
+    ],
+    "audience": "需要控制 Agent 执行细节的应用开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "devtools"
+    ]
+  },
+  "lance-format/lance": {
+    "category": "devtools",
+    "kind": "开发工具",
+    "summary": "为多模态 AI 数据提供存储与检索格式。",
+    "overview": "Lance 是面向多模态数据的开放数据格式，结合随机访问、向量索引和数据版本管理支持 AI 数据流程。它适合在训练、检索和分析之间共享大规模数据。迁移前应检查与现有工具的兼容性，并使用实际数据评估存储和查询表现。",
+    "tags": [
+      "多模态数据",
+      "向量索引",
+      "数据版本"
+    ],
+    "features": [
+      "多模态数据",
+      "向量索引",
+      "数据版本"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "管理 AI 数据集和检索管道的数据工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "knowledge"
+    ]
+  },
+  "tokenrhythm/opensquilla": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "把模型、工具和多种交互入口组成 Agent 运行环境。",
+    "overview": "OpenSquilla 提供命令行、网页及聊天相关入口，围绕上下文和工具执行组织 Agent 任务。项目强调 Token 使用效率，但成本优势仍取决于模型与任务。适合评估个人 Agent 工作流，需按当前文档设置模型和运行依赖。",
+    "tags": [
+      "Agent 运行",
+      "多入口",
+      "上下文管理"
+    ],
+    "features": [
+      "Agent 运行",
+      "多入口",
+      "上下文管理"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "audience": "实验个人 Agent 与工具自动化的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "makazhanalpamys/soup": {
+    "category": "devtools",
+    "kind": "开发工具",
+    "summary": "用统一配置组织大模型微调实验。",
+    "overview": "Soup 通过 YAML 配置和训练工具简化微调流程，并探索在资源受限设备上管理模型层与训练内存。它适合希望复用实验配置的模型开发者。仓库的低显存训练主张与具体模型、配置和速度有关，不能据此保证任意模型都能在普通笔记本上实用运行。",
+    "tags": [
+      "模型微调",
+      "配置管理",
+      "训练优化"
+    ],
+    "features": [
+      "模型微调",
+      "配置管理",
+      "训练优化"
+    ],
+    "ways": [
+      "Python"
+    ],
+    "audience": "研究资源约束下模型微调的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "tech-leads-club/agent-skills": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "为编程 Agent 整理可复用的技能资源。",
+    "overview": "该仓库组织面向不同编程 Agent 的技能，帮助开发者复用专业任务说明和工作步骤。它适合寻找开发流程模板或扩展 Agent 能力。仓库声称的验证不等于对所有环境的保证，安装前需要阅读技能内容并检查与目标工具的兼容性。",
+    "tags": [
+      "Agent 技能",
+      "开发模板",
+      "技能目录"
+    ],
+    "features": [
+      "Agent 技能",
+      "开发模板",
+      "技能目录"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "希望整理和复用编程 Agent 技能的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "coding"
+    ]
+  },
+  "internlm/xtuner": {
+    "category": "devtools",
+    "kind": "模型与引擎",
+    "summary": "面向大模型尤其 MoE 架构的训练引擎。",
+    "overview": "XTuner 提供模型训练与相关工程能力，当前仓库强调超大规模混合专家模型的训练。它适合组织大模型训练实验和研究并行效率。具体模型支持、集群配置和训练方法随版本演进，需要按当前文档选择环境与配置。",
+    "tags": [
+      "模型训练",
+      "MoE",
+      "训练引擎"
+    ],
+    "features": [
+      "模型训练",
+      "MoE",
+      "训练引擎"
+    ],
+    "ways": [
+      "Python"
+    ],
+    "audience": "负责大模型训练和分布式实验的研究团队。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "snailsploit/claude-red": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "面向安全研究的 Agent 技能资料库。",
+    "overview": "Claude Red 将不同安全测试主题整理为 Claude 技能文件，供研究者了解任务方法和检查思路。它是第三方技能集合，不是自动验证安全性的服务。资源包含双用途的攻击研究主题，适合在明确授权的测试环境内评估，并自行审阅技能内容。",
+    "tags": [
+      "安全研究",
+      "Agent 技能",
+      "测试资源"
+    ],
+    "features": [
+      "安全研究",
+      "Agent 技能",
+      "测试资源"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "开展授权安全测试与防御研究的专业人员。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "ibm/mcp-context-forge": {
+    "category": "devtools",
+    "kind": "开发工具",
+    "summary": "集中管理 MCP、Agent 与 API 工具入口。",
+    "overview": "MCP Context Forge 在工具服务之前提供网关、注册与代理能力，将 MCP、A2A 和常见 API 组织为统一发现入口。它适合需要管理大量工具连接的团队。部署时需结合现有认证、网络与工具权限设计，网关不会自动判断业务操作是否正确。",
+    "tags": [
+      "MCP",
+      "工具网关",
+      "服务注册"
+    ],
+    "features": [
+      "MCP",
+      "工具网关",
+      "服务注册"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署",
+      "API"
+    ],
+    "audience": "管理企业 Agent 工具集成的平台团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "kirodotdev/kirocrew": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "为跨会话开发任务保留持续工作区。",
+    "overview": "KiroCrew 围绕开发工作的长期上下文和执行过程提供持久工作区，目标是让任务在单次对话之后仍能继续组织。它适合探索持续开发助手和项目记忆。实际可持续执行的能力取决于运行环境、模型服务及任务配置，应在测试仓库验证。",
+    "tags": [
+      "持续工作区",
+      "开发上下文",
+      "编程 Agent"
+    ],
+    "features": [
+      "持续工作区",
+      "开发上下文",
+      "编程 Agent"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "研究跨会话 AI 开发流程的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "visualize-ml/linear-algebra-made-easy---learn-with-python-and-visualization": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "通过 Python 和可视化学习线性代数。",
+    "overview": "《线性代数不难》将矩阵、向量和相关数学主题组织为可视化学习资料与代码示例。它为理解机器学习算法提供数学基础，适合配合实验观察抽象概念。它属于 AI 基础学习资源，不能作为可直接使用的模型或应用服务。",
+    "tags": [
+      "线性代数",
+      "Python 教学",
+      "数学可视化"
+    ],
+    "features": [
+      "线性代数",
+      "Python 教学",
+      "数学可视化"
+    ],
+    "ways": [
+      "课程",
+      "代码示例"
+    ],
+    "audience": "补充机器学习数学基础的学习者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "jnmetacode/agency-orchestrator": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "按角色与流程组织多 Agent 协作任务。",
+    "overview": "Agency Orchestrator 将任务目标映射到不同专业角色，通过配置组织协作和产物检查，并提供不同交互入口。它适合实验多角色研究、写作和开发流程。角色数量及作者演示不能代替结果质量评估，仍需核对模型成本和验收条件。",
+    "tags": [
+      "多 Agent",
+      "角色分工",
+      "任务编排"
+    ],
+    "features": [
+      "多 Agent",
+      "角色分工",
+      "任务编排"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "希望探索多角色 Agent 协作的开发者与产品人员。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "prism-shadow/penguin-harness": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "观察并编排多个 Agent 的应用开发过程。",
+    "overview": "Penguin Harness 围绕多 Agent 自动开发组织规划、执行和可观察过程，适合研究 AI 如何协作构建软件。项目涉及自我改进等探索性目标，不代表已经具备可靠的自主改进能力。建议以有明确验收条件的小任务评估其流程。",
+    "tags": [
+      "多 Agent",
+      "应用开发",
+      "运行观察"
+    ],
+    "features": [
+      "多 Agent",
+      "应用开发",
+      "运行观察"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "研究 Agent 软件开发流程的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "nvidia-ai-blueprints/video-search-and-summarization": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "用视觉语言模型构建视频检索与分析服务。",
+    "overview": "该 NVIDIA Blueprint 提供 GPU 加速的视频分析参考架构，结合视觉语言模型、检索和 Agent 实现视觉问答、摘要及报告。它适合评估复杂视频资料的自动理解方案。属于参考实现，部署需要核对 GPU、模型服务和各组件的依赖与许可。",
+    "tags": [
+      "视频理解",
+      "视觉问答",
+      "视频摘要"
+    ],
+    "features": [
+      "视频理解",
+      "视觉问答",
+      "视频摘要"
+    ],
+    "ways": [
+      "模型服务"
+    ],
+    "audience": "搭建视频分析和多模态应用的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "knowledge"
+    ]
+  },
+  "rlaope/oh-my-hermes": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "通过插件为 Hermes 增加记忆与任务工作流。",
+    "overview": "Oh My Hermes 是围绕 Hermes Agent 的扩展项目，将编程能力、长期记忆和模型相关工作流打包为插件。它适合已经使用 Hermes 并希望调整工作方式的用户。第三方插件需要匹配宿主版本，并在安装前确认配置和对原有行为的影响。",
+    "tags": [
+      "Hermes 插件",
+      "长期记忆",
+      "工作流"
+    ],
+    "features": [
+      "Hermes 插件",
+      "长期记忆",
+      "工作流"
+    ],
+    "ways": [
+      "插件"
+    ],
+    "audience": "希望扩展 Hermes Agent 的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "coding",
+      "automation"
+    ]
+  },
+  "quixio/quix-streams": {
+    "category": "devtools",
+    "kind": "框架 / SDK",
+    "summary": "使用 Python DataFrame 处理 Kafka 实时数据。",
+    "overview": "Quix Streams 把实时流处理表达为 Python 数据操作，适合清洗、转换和聚合连续事件，也可为机器学习应用准备实时输入。它属于数据工程基础组件，模型推理需由其他代码或服务提供。使用前需要 Kafka 环境并理解数据流的处理语义。",
+    "tags": [
+      "流处理",
+      "Kafka",
+      "实时数据"
+    ],
+    "features": [
+      "流处理",
+      "Kafka",
+      "实时数据"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "为 AI 应用建设实时数据管道的数据工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "ksimback/hermes-ecosystem": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "整理 Hermes 的安装、技能和生态工具。",
+    "overview": "Hermes Ecosystem 以资源目录和选择建议组织 Hermes 周边工具，帮助用户找到安装入口、工作模式和技能组合。它适合初次了解生态或比较扩展方案。目录是第三方整理，工具的维护状态、兼容性和实际用途应回到原始项目确认。",
+    "tags": [
+      "Hermes 生态",
+      "资源目录",
+      "技能导航"
+    ],
+    "features": [
+      "Hermes 生态",
+      "资源目录",
+      "技能导航"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "希望了解 Hermes 工具生态的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "xuzhougeng/wisp-science": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "把模型、代码和科研工具放到本地研究工作台。",
+    "overview": "Wisp Science 提供本地优先的科研桌面环境，连接 Python、R、MCP 工具和不同运行资源，用于资料分析与科学计算。它适合需要在研究上下文中组合模型和代码的用户。不同工具及远程环境需要分别配置，计算结论仍需按科学方法复核。",
+    "tags": [
+      "科研助手",
+      "Python/R",
+      "MCP"
+    ],
+    "features": [
+      "科研助手",
+      "Python/R",
+      "MCP"
+    ],
+    "ways": [
+      "桌面应用"
+    ],
+    "audience": "从事数据分析、生物信息或科学计算的研究者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "neurotechx/moabb": {
+    "category": "devtools",
+    "kind": "框架 / SDK",
+    "summary": "在统一流程中比较脑机接口算法。",
+    "overview": "MOABB 围绕脑机接口数据集、处理流程和评估组织可复现实验，帮助研究者比较机器学习算法。它适合需要跨数据集检验方法的 BCI 研究。数据许可、预处理和评价设置会影响结果，不能把单个分数推广到所有实际使用场景。",
+    "tags": [
+      "脑机接口",
+      "算法评测",
+      "可复现实验"
+    ],
+    "features": [
+      "脑机接口",
+      "算法评测",
+      "可复现实验"
+    ],
+    "ways": [
+      "Python SDK"
+    ],
+    "audience": "研究 BCI 与信号机器学习算法的研究者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "anywhere-labs/agents-anywhere": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "跨设备访问和管理 Agent 开发工作区。",
+    "overview": "Agents Anywhere 将 Agent 工作台延伸到多个设备，帮助用户查看任务、操作工作区并跟进执行过程。它适合需要在桌面与移动场景之间切换的开发者。跨设备访问依赖具体部署与连接方案，应按项目文档配置服务和认证。",
+    "tags": [
+      "跨设备",
+      "编程 Agent",
+      "工作台"
+    ],
+    "features": [
+      "跨设备",
+      "编程 Agent",
+      "工作台"
+    ],
+    "ways": [
+      "桌面应用",
+      "CLI",
+      "本地部署",
+      "官方在线体验"
+    ],
+    "audience": "希望远程管理 Agent 开发任务的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "invergent-ai/surogate": {
+    "category": "devtools",
+    "kind": "开发工具",
+    "summary": "用 C++ 与 CUDA 构建大模型训练和服务能力。",
+    "overview": "Surogate 重点探索大模型训练与推理的执行效率，提供偏底层的工程实现。它适合对吞吐和设备资源控制有较高要求的开发者。性能主张需要在目标模型与 GPU 环境下复现，安装和调试门槛通常高于普通图形应用。",
+    "tags": [
+      "模型训练",
+      "CUDA",
+      "模型服务"
+    ],
+    "features": [
+      "模型训练",
+      "CUDA",
+      "模型服务"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "研究大模型执行效率的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "models"
+    ]
+  },
+  "dondai44423/donsetch": {
+    "category": "knowledge",
+    "kind": "开发工具",
+    "summary": "为 Agent 提供网页读取、搜索和抓取能力。",
+    "overview": "Donsetch 用 Rust 实现面向 Agent 的网络资料获取工具，把网页访问、搜索与抓取放在统一入口中。它适合作为研究或知识整理流程的数据接入层。免密钥的使用方式仍受上游网站与网络条件影响，网页内容需核对时效和来源。",
+    "tags": [
+      "网页抓取",
+      "搜索",
+      "内容读取"
+    ],
+    "features": [
+      "网页抓取",
+      "搜索",
+      "内容读取"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "需要让 Agent 获取网络资料的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "agentpit-io/hunter-community": {
+    "category": "apps",
+    "kind": "应用 / 工具",
+    "summary": "自行部署面向金融研究的 AI 工作空间。",
+    "overview": "Hunter Community 将多 Agent、编程工具和 MCP 连接组合为金融信息研究环境。它适合整理市场资料、实验分析流程和比较模型输出。项目中的量化与研究能力不构成投资收益保证，使用时需要了解数据来源、模型成本及计算方法。",
+    "tags": [
+      "金融研究",
+      "多 Agent",
+      "自托管"
+    ],
+    "features": [
+      "金融研究",
+      "多 Agent",
+      "自托管"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "audience": "研究金融 AI 工作流的开发者与分析人员。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "hypit-ai/hypit": {
+    "category": "visual",
+    "kind": "应用 / 工具",
+    "summary": "用 Agent 编排视频内容制作和变体生成。",
+    "overview": "Hypit 将脚本、素材和视频处理步骤组织为可执行工作流，帮助创作者探索批量内容制作。它关注整个视频生成过程，而非只生成文字脚本。仓库中的传播效果属于作者主张，实际输出质量、素材权利及模型服务条件需要自行核对。",
+    "tags": [
+      "视频生成",
+      "内容工作流",
+      "批量变体"
+    ],
+    "features": [
+      "视频生成",
+      "内容工作流",
+      "批量变体"
+    ],
+    "ways": [
+      "CLI"
+    ],
+    "audience": "实验 AI 视频制作流程的创作者与开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "yonatangross/orchestkit": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "为 Claude Code 整理技能、角色和开发钩子。",
+    "overview": "OrchestKit 将编程技能、Agent 角色与工具钩子组合为可安装的开发工具包，帮助用户复用工程工作流。它适合已经使用 Claude Code 并希望扩展任务组织方式的开发者。稳定版与实验版本可能存在差异，需按文档选择并检查与当前项目的适配性。",
+    "tags": [
+      "开发技能",
+      "Agent 角色",
+      "工作流钩子"
+    ],
+    "features": [
+      "开发技能",
+      "Agent 角色",
+      "工作流钩子"
+    ],
+    "ways": [
+      "插件"
+    ],
+    "audience": "希望扩展 Claude Code 工程流程的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "dominic789654/awesome-deepseek-harness": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "整理 DeepSeek Harness 的插件和扩展资源。",
+    "overview": "该仓库汇总 DeepSeek Harness 的技能、MCP 服务器、界面和编排工具，帮助用户寻找不同任务的扩展方式。它属于第三方资源导航，适合建立生态认知。实际安装应以各原始仓库为准，目录收录不代表全部功能已验证。",
+    "tags": [
+      "DeepSeek 生态",
+      "资源目录",
+      "MCP"
+    ],
+    "features": [
+      "DeepSeek 生态",
+      "资源目录",
+      "MCP"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "希望了解 DeepSeek Harness 扩展的用户。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents",
+      "coding"
+    ]
+  },
+  "jentic/jentic-public-apis": {
+    "category": "learning",
+    "kind": "学习资源",
+    "summary": "为 Agent 集成提供机器可读的 API 目录。",
+    "overview": "Jentic Public APIs 收集公开服务的 OpenAPI 规范，帮助开发者查找接口并生成工具集成。它适合作为 API 发现入口，机器可读描述可以减少手工梳理工作。目录许可不替代服务本身的使用条款，认证、配额和接口时效仍需向原服务核验。",
+    "tags": [
+      "OpenAPI",
+      "API 目录",
+      "工具集成"
+    ],
+    "features": [
+      "OpenAPI",
+      "API 目录",
+      "工具集成"
+    ],
+    "ways": [
+      "资源导航"
+    ],
+    "audience": "为 Agent 寻找外部服务接口的开发者。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "morluto/jacobian": {
+    "category": "agents",
+    "kind": "开发工具",
+    "summary": "向 Agent 暴露可组合的数学计算工具。",
+    "overview": "Jacobian 通过工具接口提供数学相关能力，让 Agent 在推理过程中调用计算组件。它适合实验模型与确定性数学工具的协作。工具输出需要结合输入假设、精度和适用范围解释，不能仅凭一次调用就认定整个数学推导正确。",
+    "tags": [
+      "数学工具",
+      "MCP",
+      "计算辅助"
+    ],
+    "features": [
+      "数学工具",
+      "MCP",
+      "计算辅助"
+    ],
+    "ways": [
+      "MCP 服务",
+      "CLI",
+      "Python SDK"
+    ],
+    "audience": "开发数学助手或研究工具增强推理的工程师。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  },
+  "looptroop-ai/looptroop": {
+    "category": "coding",
+    "kind": "开发工具",
+    "summary": "在本地组织从计划到评审的多 Agent 开发。",
+    "overview": "LoopTroop 将多模型计划、任务恢复和独立工作树结合，支持围绕仓库执行连续代码任务并形成人工可评审的交付。它适合研究较大开发任务的编排方式。运行需要兼容的编程工具和模型配置，合并前应核对测试与代码差异。",
+    "tags": [
+      "任务规划",
+      "独立工作区",
+      "编程编排"
+    ],
+    "features": [
+      "任务规划",
+      "独立工作区",
+      "编程编排"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "实验仓库级 Agent 开发的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": [
+      "agents"
+    ]
+  },
+  "cloudgeni-ai/opengeni": {
+    "category": "agents",
+    "kind": "应用 / 工具",
+    "summary": "为组织提供可自托管的持久 Agent 运行环境。",
+    "overview": "OpenGeni 围绕持续会话、执行回放、人工批准和凭据管理组织 Agent 运行，可部署在自有设备或隔离环境。它适合需要明确运行控制的团队。平台提供治理组件，但具体工具权限和业务审批规则仍需由部署方配置与验证。",
+    "tags": [
+      "持久会话",
+      "执行回放",
+      "自托管"
+    ],
+    "features": [
+      "持久会话",
+      "执行回放",
+      "自托管"
+    ],
+    "ways": [
+      "本地部署"
+    ],
+    "audience": "建设组织级 Agent 平台的工程团队。",
+    "reviewedAt": "2026-09-14",
+    "related": []
+  }
+}

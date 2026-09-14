@@ -1,0 +1,82 @@
+{
+  "research_date": "2026-09-14",
+  "note": "Third-party page/file observations; not independently verified official current counts.",
+  "github_ranking": {
+    "url": "https://raw.githubusercontent.com/EvanLi/Github-Ranking/master/Data/github-ranking-2026-09-14.csv",
+    "retrieved_at": "2026-09-14T12:52:54.298575+00:00",
+    "rows": 3600,
+    "unique_repo_urls": 3449,
+    "ranking_groups": 36,
+    "fields": [
+      "rank",
+      "item",
+      "repo_name",
+      "stars",
+      "forks",
+      "language",
+      "repo_url",
+      "username",
+      "issues",
+      "last_commit",
+      "description"
+    ],
+    "samples": [
+      {
+        "rank": "42",
+        "item": "top-100-stars",
+        "repo_name": "ollama",
+        "stars": "180845",
+        "forks": "17843",
+        "language": "Go",
+        "repo_url": "https://github.com/ollama/ollama",
+        "username": "ollama",
+        "issues": "2490",
+        "last_commit": "2026-09-14T03:35:49Z",
+        "description": "Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models."
+      },
+      {
+        "rank": "54",
+        "item": "top-100-stars",
+        "repo_name": "dify",
+        "stars": "155637",
+        "forks": "24579",
+        "language": "TypeScript",
+        "repo_url": "https://github.com/langgenius/dify",
+        "username": "langgenius",
+        "issues": "367",
+        "last_commit": "2026-09-14T03:58:39Z",
+        "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack."
+      }
+    ],
+    "voicestudio_present": false
+  },
+  "voicestudio_observations": [
+    {
+      "source": "https://github.com/trending",
+      "source_window": "stars today",
+      "period_stars": 2632,
+      "total_stars": 28206,
+      "retrieved_at": "2026-09-14T12:41:05.538425+00:00"
+    },
+    {
+      "source": "https://github.com/trending?since=monthly",
+      "source_window": "stars this month",
+      "period_stars": 15895,
+      "total_stars": 28221,
+      "retrieved_at": "2026-09-14T12:48:40.228803+00:00"
+    },
+    {
+      "source": "https://www.star-history.com/",
+      "source_window": "2026-09-06 to 2026-09-12",
+      "displayed_growth": 5818,
+      "displayed_rank": 9,
+      "retrieved_at": "2026-09-14T12:48:38.685090+00:00"
+    }
+  ],
+  "ossinsight_notice": {
+    "source": "https://ossinsight.io/",
+    "retrieved_at": "2026-09-14T12:48:37.819580+00:00",
+    "heading": "Star-based rankings are paused",
+    "text": "GitHub changed how its public events feed is paginated, and our ingestion read only the first slice, so star, pull request and issue events since mid-2025 were badly under-captured. Rankings that depend on those counts would be misleading, so we pause them instead of publishing numbers we know are wrong. History before May 2025, repository totals synced directly from GitHub, and commit activity are unaffected."
+  }
+}
