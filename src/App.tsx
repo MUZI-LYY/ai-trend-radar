@@ -22,7 +22,7 @@ function HistoryChart({project}:{project:Project}){const [span,setSpan]=useState
 
 export default function App(){
  const [dataCache]=useState(()=>new Map<string,Promise<unknown>>());
- const [dataVersion]=useState(()=>Date.now().toString());
+ const [dataVersion,setDataVersion]=useState(()=>Date.now().toString());
  const [data,setData]=useState<Dataset|null>(null),[dates,setDates]=useState<{date:string;file:string}[]>([]),[error,setError]=useState(''),[loading,setLoading]=useState(false);
  const [historyIndex,setHistoryIndex]=useState<HistoryIndex|null>(null),[dailyScope,setDailyScope]=useState<'top'|'all'>('top');
  const [boardHistory,setBoardHistory]=useState<BoardHistory|null>(null);
@@ -60,7 +60,7 @@ export default function App(){
  const filterActive=!!search||language!=='all'||kind!=='all'||!!tag||way!=='all'||maintenance!=='all';
  const categoryLabel=(id:string)=>data?.categories.find(c=>c.id===id)?.label??id;
  function selectTag(t:string){setDailyScope('all');setTag(t);window.location.hash='#/';}
- function home(){setPeriod('daily');setDate('latest');setDailyScope('top');setCategory('all');clear()}
+ function home(){dataCache.clear();setDataVersion(Date.now().toString());setPeriod('daily');setDate('latest');setDailyScope('top');setCategory('all');clear()}
  function changePeriod(p:Period){setPeriod(p);if(p==='all'&&date.startsWith('history:'))setDate('latest')}
  function chooseHistory(d:string){if(d==='latest'){home();return}if(period==='all')setPeriod('daily');setDate('history:'+d)}
  return <><a className="skip-link" href="#main">跳到主要内容</a><header className="masthead"><div className="header-inner"><a className="brand" href="#/" onClick={home}><span className="brand-mark"><Radar size={23}/></span><strong>AI Radar<span>开源趋势观察</span></strong></a><nav aria-label="主导航"><a href="#/" onClick={home} aria-current={!full&&!methodology?'page':undefined}>发现榜单</a><a href="#/about" aria-current={methodology?'page':undefined}>数据说明</a></nav><a className="github-top" href={repoUrl} target="_blank" rel="noreferrer"><Github size={18}/><span>GitHub</span><ArrowUpRight size={14}/></a></div></header>

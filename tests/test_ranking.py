@@ -25,3 +25,7 @@ class RankingTests(unittest.TestCase):
   projects[34]['stale']=True;projects[33]['metrics']['daily']=None
   result=daily_leaders(projects)
   self.assertEqual(len(result),30);self.assertEqual(result[0],32);self.assertNotIn(34,result);self.assertNotIn(33,result)
+
+ def test_zero_growth_does_not_enter_daily_chart(self):
+  project={'id':1,'fullName':'o/zero','stars':999,'metrics':{'daily':0}}
+  self.assertEqual(daily_leaders([project]),[])
