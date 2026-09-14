@@ -38,3 +38,44 @@ test('reversed, impossible, and unfinished source dates are rejected',()=>{
   assert.throws(()=>replayRange(latest,history,start,end));
  }
 });
+
+const {prepareDailyRange}=await import(url((await compile('history')).replace("'./ranking'",JSON.stringify(ranking))));
+const {aggregateDailyBoards}=await import(url((await compile('weekly')).replace("'./ranking'",JSON.stringify(ranking))));
+const {dailyLeaders}=await import(ranking);
+test('custom chart uses only daily TOP 30 contributions inside inclusive arbitrary boundaries',()=>{
+ const dates=['2025-12-30','2025-12-31','2026-01-01','2026-01-02','2026-01-03'];
+ const make=(id,values)=>({id,fullName:`o/${String(id).padStart(2,'0')}`,stars:id,createdAt:'2020-01-01',metrics:{daily:0,weekly:999999,monthly:999999},history:dates.map((date,i)=>({date,stars:values[i]}))});
+ const data={periodEnd:'2026-01-02',capturedAt:'2026-01-03T00:00:00Z',projects:[make(1,[999999,200,0,1,999999]),...Array.from({length:30},(_,i)=>make(i+2,[999999,100,0,100,999999]))]};
+ const board=aggregateDailyBoards(data,[],'retrospective',[],'custom','2025-12-31');
+ assert.equal(board.days.length,3);assert.equal(board.rows.length,31);assert.equal(board.days[1].rows.length,0);
+ assert.equal(board.rows.find(r=>r.project.id===1).growth,200);assert.equal(board.rows.reduce((n,r)=>n+r.growth,0),6100);
+ assert.deepEqual(board.rows.find(r=>r.project.id===1).contributions.map(c=>c.date),['2025-12-31']);
+ const shorter=aggregateDailyBoards(data,[],'retrospective',[],'custom','2026-01-02');
+ assert.equal(shorter.rows.length,30);assert.ok(!shorter.rows.some(r=>r.project.id===1));
+ for(const start of [undefined,'2026-01-03','2025-02-30'])assert.throws(()=>aggregateDailyBoards(data,[],'retrospective',[],'custom',start));
+});
+test('current-end custom chart exactly matches latest daily board, including ties and stale projects',()=>{
+ const live={...latest,projects:[
+  {...latest.projects[0],stars:1,stale:false,metrics:{daily:5}},
+  {...latest.projects[1],stars:1000,stale:false,metrics:{daily:5}},
+  {...latest.projects[2],stars:9999,stale:true,metrics:{daily:999}},
+ ]};
+ const source={...history,projects:live.projects.map(p=>({id:p.id,days:[{date:'2026-01-03',stars:2},{date:'2026-01-04',stars:999}]}))};
+ const before=structuredClone({live,source});const prepared=prepareDailyRange(live,source,'2026-01-03','2026-01-04');
+ const board=aggregateDailyBoards(prepared.boardData,[],prepared.anchor,[],'custom','2026-01-03');
+ assert.deepEqual(board.days.at(-1).rows.map(r=>r.project.id),dailyLeaders(live.projects));
+ assert.equal(board.days[0].rows.length,3); // A stale current fetch does not erase valid earlier history.
+ assert.equal(board.days.at(-1).rows[0].growth,5);
+ assert.deepEqual({live,source},before);
+});
+test('custom and monthly/weekly boards agree for identical dates; missing saved days stay missing',()=>{
+ const data={periodEnd:'2026-09-08',capturedAt:'2026-09-09T00:00:00Z',projects:[{id:1,fullName:'o/a',createdAt:'2020-01-01',stars:1,metrics:{daily:4},history:[{date:'2026-09-07',stars:3},{date:'2026-09-08',stars:4}]}]};
+ for(const [period,start] of [['weekly','2026-09-07'],['monthly','2026-09-01']]){
+  const standard=aggregateDailyBoards(data,[],'latest',[],period);
+  const custom=aggregateDailyBoards(data,[],'latest',[],'custom',start);
+  assert.deepEqual(custom,standard);
+ }
+ const saved={...data,date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z',periodEnd:'2026-09-07',projects:[{...data.projects[0],metrics:{daily:10}}]};
+ assert.equal(aggregateDailyBoards(data,[saved],'latest',[],'custom','2026-09-07').rows[0].growth,14);
+ assert.equal(aggregateDailyBoards(data,[],'latest',['2026-09-07'],'custom','2026-09-07').unavailableDays,1);
+});

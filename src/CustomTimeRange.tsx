@@ -21,6 +21,6 @@ export default function CustomTimeRange({min,max,value,onApply}:{min:string;max:
    <label htmlFor={id+'-end'}>结束日期<input id={id+'-end'} type="date" name="end" required min={min} max={max} value={end} aria-invalid={!!error} aria-describedby={id+'-hint'} onChange={e=>{setEnd(e.target.value);setError('')}}/></label>
    <button type="submit">查看榜单</button>
   </div>
-  <p id={id+'-hint'} role={error?'alert':undefined}>{error||'按起止日期（含当天）统计新增 Star，独立展示区间榜单。'}</p>
+  <p id={id+'-hint'} role={error?'alert':undefined}>{error||'汇总起止日期（含当天）内每天日榜 TOP 30，项目去重，只累加上榜日新增 Star。'}</p>
  </form>
 }

@@ -15,11 +15,11 @@ export interface WeeklyBoard {
  retrospectiveDays:number;unavailableDays:number;
 }
 
-function dailyBoard(data:Dataset,date:string,source:DailySource):DailyBoard {
+function dailyBoard(data:Dataset,date:string,source:DailySource,histories?:Map<number,Map<string,number>>):DailyBoard {
  const replay=source==='retrospective';
  const eligible=data.projects.filter(p=>p.createdAt.slice(0,10)<=date);
  const values=eligible.map(project=>({project,growth:replay?
-  project.history.find(d=>d.date===date)?.stars:
+  histories?.get(project.id)?.get(date):
   project.stale?undefined:project.metrics.daily}));
  const missingProjects=values.filter(p=>p.growth===undefined||p.growth===null).length;
  const available=values.filter((p):p is {project:Project;growth:number}=>typeof p.growth==='number');
@@ -35,8 +35,10 @@ function dailyBoard(data:Dataset,date:string,source:DailySource):DailyBoard {
  * charts are authoritative; unsaved days are visibly reconstructed from day data.
  * A project contributes only on days it entered that day's positive-growth TOP 30.
  */
-export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:DailySource='latest',failedDates:string[]=[],period:'weekly'|'monthly'='weekly'):WeeklyBoard {
- const end=data.periodEnd,start=period==='monthly'?end.slice(0,7)+'-01':weekStart(end);
+export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:DailySource='latest',failedDates:string[]=[],period:'weekly'|'monthly'|'custom'='weekly',rangeStart?:string):WeeklyBoard {
+ const end=data.periodEnd,start=period==='custom'?rangeStart!:period==='monthly'?end.slice(0,7)+'-01':weekStart(end);
+ if(!start||!/^\d{4}-\d{2}-\d{2}$/.test(start)||!Number.isFinite(Date.parse(start))||new Date(start).toISOString().slice(0,10)!==start||start>end)throw Error('无效的日榜汇总起止日期');
+ const histories=new Map(data.projects.map(p=>[p.id,new Map(p.history.map(d=>[d.date,d.stars]))]));
  const saved=new Map<string,Dataset>();
  for(const snapshot of [...snapshots].sort((a,b)=>a.capturedAt.localeCompare(b.capturedAt))) {
   if(snapshot.periodEnd<start||snapshot.periodEnd>end)continue;
@@ -46,12 +48,12 @@ export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:Dai
  const dates:string[]=[];
  for(let date=end;date>=start;date=priorDay(date))dates.unshift(date);
  const days=dates.map(date=>{
-  if(date===end)return dailyBoard(data,date,anchor);
+  if(date===end)return dailyBoard(data,date,anchor,histories);
   if(failedDates.includes(date))return {date,source:'unavailable' as const,rows:[],missingProjects:0};
   const snapshot=saved.get(date);
   if(snapshot)return dailyBoard(snapshot,date,'snapshot');
   if(anchor==='snapshot')return {date,source:'unavailable' as const,rows:[],missingProjects:0};
-  return dailyBoard(data,date,'retrospective');
+  return dailyBoard(data,date,'retrospective',histories);
  });
  const current=new Map(data.projects.map(p=>[p.id,p]));
  const byId=new Map<number,WeeklyRow>();

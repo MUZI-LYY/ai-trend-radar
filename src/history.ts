@@ -31,3 +31,16 @@ export function replayRange(latest:Dataset,history:HistoryData,start:string,end:
   history:project.history.filter(day=>day.date>=start),
  })),metric:'自定义区间新增 Star'};
 }
+
+/** Preserve full interval metrics for details, while matching the actual latest
+ * daily TOP 30 (including stale exclusions and ties) when the range ends today. */
+export function prepareDailyRange(latest:Dataset,history:HistoryData,start:string,end:string):{data:Dataset;boardData:Dataset;anchor:'latest'|'retrospective'}{
+ const data=replayRange(latest,history,start,end);
+ if(end!==latest.periodEnd)return {data,boardData:data,anchor:'retrospective'};
+ const current=new Map(latest.projects.map(p=>[p.id,p]));
+ const boardData={...data,projects:data.projects.map(p=>{
+  const live=current.get(p.id)!;
+  return {...p,stale:live.stale,metrics:{...p.metrics,daily:live.metrics.daily}};
+ })};
+ return {data,boardData,anchor:'latest'};
+}
