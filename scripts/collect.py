@@ -96,7 +96,7 @@ def classify(repo, readme, editorial):
  overview=info.get('overview') or f'{repo["name"]} 是一个主要使用 {repo.get("language") or "仓库所列技术"} 的{kind}，归入{CATEGORIES[primary][0]}方向。分类依据来自仓库简介和 Topics，具体功能请结合下方 README 原文确认。'
  usage=info.get('usage') or f'建议先阅读仓库 README 中的 Quick Start、Installation 或 Usage 部分，确认当前版本的依赖和运行方式。该仓库提供了 GitHub 源码入口'+('和项目主页。' if repo.get('homepage') else '。')
  caveat=info.get('caveat') or '安装步骤、外部服务费用和硬件要求以项目当前文档为准；仓库公开不代表所有模型、第三方服务或商业使用都没有限制。'
- return {'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'usage':usage,'caveat':caveat,'editorial':bool(info),'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':info.get('reviewedAt'), 'classificationBasis':'编辑整理，依据仓库简介与 README' if info else '依据仓库简介与 Topics 自动归类，待复核'}
+ return {'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'useCases':info.get('useCases',[]),'gettingStarted':info.get('gettingStarted',[]),'requirements':info.get('requirements',[]),'usage':usage,'caveat':caveat,'editorial':bool(info),'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':info.get('reviewedAt'), 'classificationBasis':'编辑整理，依据仓库简介与 README' if info else '依据仓库简介与 Topics 自动归类，待复核'}
 
 def trending():
  # HTML is used only for candidate discovery. Reported Trending counts never enter the rankings.
@@ -231,6 +231,8 @@ def main():
  atomic_json(ROOT/'public/data/index.json',{'snapshots':index})
  entries=chart_entries(json.loads(p.read_text()) for p in snapshot_path.parent.glob('*.json'))
  atomic_json(ROOT/'public/data/board-history.json',{'chartSize':30,'entries':entries})
+ from backfill_history import update_history
+ update_history(projects,end)
  # Do not retain per-person stars. Only repo metadata and aggregate day counts are stored.
  print(json.dumps({'projects':len(projects),'historyAvailable':sum(p['historyStatus']=='ok' and not p.get('stale') for p in projects),'date':capture_date,'status':payload['status']}),flush=True)
 if __name__=='__main__':main()

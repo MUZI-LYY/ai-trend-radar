@@ -43,3 +43,6 @@ next-env.d.ts
 __pycache__/
 *.py[cod]
 *.tmp
+
+# Temporary parallel editorial drafts
+/data/editorial-rich-*.json

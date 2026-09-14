@@ -58,6 +58,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Test historical replay in frontend
+        run: node --test tests/history.test.mjs
       - run: npm run lint
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3

@@ -9,7 +9,7 @@ def period_starts(end):
          'monthly': end[:7]+'-01', 'yearly': end[:4]+'-01-01'}
 
 def daily_leaders(projects):
- valid = [p for p in projects if not p.get('stale') and p['metrics'].get('daily') is not None]
+ valid = [p for p in projects if not p.get('stale') and p['metrics'].get('daily') is not None and p['metrics']['daily'] > 0]
  return [p['id'] for p in sorted(valid, key=lambda p: (-p['metrics']['daily'], -p['stars'], p['fullName'].lower()))[:DAILY_CHART_SIZE]]
 
 def chart_entry(payload):

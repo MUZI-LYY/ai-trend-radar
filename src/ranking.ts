@@ -15,7 +15,7 @@ export function normalizeDataset(data:Dataset):Dataset {
  })};
 }
 export function compareNames(a:string,b:string){const left=a.toLowerCase(),right=b.toLowerCase();return left<right?-1:left>right?1:0}
-export function dailyLeaders(projects:Project[],limit=30){return projects.filter(p=>!p.stale&&p.metrics.daily!=null).sort((a,b)=>b.metrics.daily!-a.metrics.daily!||b.stars-a.stars||compareNames(a.fullName,b.fullName)).slice(0,limit).map(p=>p.id)}
+export function dailyLeaders(projects:Project[],limit=30){return projects.filter(p=>!p.stale&&(p.metrics.daily??0)>0).sort((a,b)=>b.metrics.daily!-a.metrics.daily!||b.stars-a.stars||compareNames(a.fullName,b.fullName)).slice(0,limit).map(p=>p.id)}
 export function tenure(id:number,end:string,currentIds:number[],history:BoardHistory|null){
  if(!history)return null;
  if(!currentIds.includes(id))return {days:0,since:''};
