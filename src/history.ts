@@ -20,3 +20,14 @@ export function replayHistory(latest:Dataset,history:HistoryData,end:string):Dat
  return {...latest,date:end,periodEnd:end,periodStarts:starts,projects,viewType:'retrospective',metadataDate:latest.date,
   status:'complete',warnings:[],failedRepositories:[],scope:history.scope,metric:'官方日统计回溯计算'};
 }
+
+/** A separate inclusive interval ranking; never mutates the standard period data. */
+export function replayRange(latest:Dataset,history:HistoryData,start:string,end:string):Dataset{
+ const valid=(day:string)=>/^\d{4}-\d{2}-\d{2}$/.test(day)&&Number.isFinite(Date.parse(day))&&new Date(day).toISOString().slice(0,10)===day;
+ if(!valid(start)||!valid(end)||start>end||end>latest.periodEnd)throw new Error('请选择有效的起止日期，结束日期不能晚于最新统计日。');
+ const replay=replayHistory(latest,history,end);
+ return {...replay,projects:replay.projects.map(project=>({...project,
+  customGrowth:historyTotal(new Map(project.history.map(day=>[day.date,day.stars])),start,end,project.createdAt),
+  history:project.history.filter(day=>day.date>=start),
+ })),metric:'自定义区间新增 Star'};
+}

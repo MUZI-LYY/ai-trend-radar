@@ -1,5 +1,6 @@
 export type Period = 'daily' | 'weekly' | 'monthly' | 'yearly' | 'all';
 export interface Project {
+ customGrowth?: number | null;
  id: number; fullName: string; name: string; owner: string; avatar: string; url: string; homepage: string | null;
  stars: number; forks: number; language: string; license: string; topics: string[]; description: string;
  archived: boolean; stale?: boolean; createdAt: string; pushedAt: string; fetchedAt: string; firstSeen: string;

@@ -10,7 +10,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "collect": "python3 scripts/collect.py",
-    "test": "python3 -m unittest discover -s tests -v && node --test tests/history.test.mjs",
+    "test": "python3 -m unittest discover -s tests -v && node --test tests/*.test.mjs",
     "lint": "oxlint src"
   },
   "dependencies": {
