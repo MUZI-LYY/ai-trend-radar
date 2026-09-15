@@ -1,0 +1,3577 @@
+{
+  "reviewedAt": "2026-09-15",
+  "reviewedCount": 880,
+  "rules": [
+    "按主要用途设一个主分类；实现技术仅在确有独立用途时添加关联分类。",
+    "项目形态使用固定词表；具体功能用标签、简介和详细介绍表达。",
+    "保留具有实质 AI 功能、训练评测能力或明确 AI 工作流集成的项目；通用工具仅被 AI 调用或广告宣传不足以纳入。",
+    "公开仓库与开放源代码许可分别判断，当前专有或源码可见许可需明确标记。",
+    "2025 年历史回溯使用当前分类和介绍，仅纳入所选日期之前已经创建的项目。"
+  ],
+  "kinds": [
+    "MCP 服务",
+    "协议 / 标准",
+    "学习资源",
+    "应用 / 工具",
+    "开发工具",
+    "技能 / 插件",
+    "数据集",
+    "框架 / SDK",
+    "模型与引擎",
+    "研究实现"
+  ],
+  "patches": [
+    {
+      "fullName": "0x4m4/hexstrike-ai",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "主体通过MCP服务器连接AI客户端与安全工具"
+    },
+    {
+      "fullName": "0xPlaygrounds/rig",
+      "changes": {
+        "related": [
+          "knowledge"
+        ]
+      },
+      "reason": "Rust库重点提供模型、工具及检索组件，没有业务连接器或工作流产品作为主要交付物"
+    },
+    {
+      "fullName": "666ghj/BettaFish",
+      "changes": {
+        "category": "apps",
+        "related": [
+          "agents",
+          "knowledge"
+        ]
+      },
+      "reason": "舆情分析与研究报告是直接使用目的，多Agent是实现机制"
+    },
+    {
+      "fullName": "666ghj/MiroFish",
+      "changes": {
+        "category": "apps",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "面向用户的情景和群体模拟应用，多Agent为实现方式"
+    },
+    {
+      "fullName": "ace-trump-tech/DeltaForce-OBS-Locker",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "reason": "现有材料声称研究示例，暂按研究实现统一形态；真实性问题另列排除建议"
+    },
+    {
+      "fullName": "Acly/krita-ai-diffusion",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "实际安装到Krita中使用的扩散模型绘画插件"
+    },
+    {
+      "fullName": "adongwanai/AgentGuide",
+      "changes": {
+        "related": [
+          "agents",
+          "knowledge"
+        ]
+      },
+      "reason": "课程主线是Agent工程，RAG是其中一部分"
+    },
+    {
+      "fullName": "ag-ui-protocol/ag-ui",
+      "changes": {
+        "kind": "协议 / 标准"
+      },
+      "reason": "主体是Agent与前端之间的交互事件协议，SDK是配套实现"
+    },
+    {
+      "fullName": "ahujasid/blender-mcp",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "对外入口为MCP服务器，Blender插件承担软件端执行"
+    },
+    {
+      "fullName": "AIDotNet/OpenDeepWiki",
+      "changes": {
+        "related": [
+          "coding"
+        ]
+      },
+      "reason": "核心资料来自代码仓库，直接服务代码理解与文档开发"
+    },
+    {
+      "fullName": "algorithmicsuperintelligence/openevolve",
+      "changes": {
+        "category": "coding",
+        "related": [
+          "devtools"
+        ],
+        "kind": "框架 / SDK"
+      },
+      "reason": "通过模型生成并评估程序变体来优化代码，属于编程进化框架"
+    },
+    {
+      "fullName": "alibaba/page-agent",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "核心交付为嵌入网页的JavaScript Agent库"
+    },
+    {
+      "fullName": "alirezarezvani/claude-skills",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "交付技能、脚本和参考模板，供现有编码助手调用"
+    },
+    {
+      "fullName": "amitshekhariitbhu/ai-engineering-interview-questions",
+      "changes": {
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "内容是AI工程面试及模型/RAG/Agent工程知识，并非AI编码助手教程"
+    },
+    {
+      "fullName": "amusi/awesome-object-detection",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "按方法整理目标检测论文、综述和代码入口，不是应用软件"
+    },
+    {
+      "fullName": "Anionex/dsh-vision-toolkit",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "为DeepSeek Harness安装视觉工具扩展，非独立业务自动化平台"
+    },
+    {
+      "fullName": "anthropics/claude-plugins-official",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "可安装的Claude Code插件目录，包含技能扩展"
+    },
+    {
+      "fullName": "apache/airflow",
+      "changes": {
+        "tags": [
+          "工作流",
+          "DAG",
+          "任务调度",
+          "MLOps",
+          "通用基础设施"
+        ]
+      },
+      "reason": "通用工作流平台在此作为ML/AI管线基础设施收录，标明非AI专用"
+    },
+    {
+      "fullName": "argmaxinc/argmax-oss-swift",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供可嵌入Apple应用的Swift音频框架"
+    },
+    {
+      "fullName": "argoproj/argo-workflows",
+      "changes": {
+        "tags": [
+          "Kubernetes",
+          "任务编排",
+          "训练管道",
+          "通用基础设施"
+        ]
+      },
+      "reason": "Kubernetes通用编排引擎用于训练管线，标明基础设施属性"
+    },
+    {
+      "fullName": "asgeirtj/system_prompts_leaks",
+      "changes": {
+        "tags": [
+          "提示词",
+          "产品研究",
+          "第三方资料",
+          "来源待核实"
+        ]
+      },
+      "reason": "第三方整理资料不能被标记视为已验证的官方系统提示"
+    },
+    {
+      "fullName": "ashishpatel26/LLM-Finetuning",
+      "changes": {
+        "category": "learning",
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "主要以LoRA与Transformers示例教授微调，属于学习材料"
+    },
+    {
+      "fullName": "ashishps1/learn-ai-engineering",
+      "changes": {
+        "kind": "学习资源",
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "主体是覆盖数学到应用开发的学习路线，非可运行应用"
+    },
+    {
+      "fullName": "automazeio/ccpm",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "通过可安装技能组织规格和多智能体开发流程"
+    },
+    {
+      "fullName": "awslabs/mcp",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "仓库直接交付一组AWS MCP服务器"
+    },
+    {
+      "fullName": "bentoml/BentoML",
+      "changes": {
+        "category": "models",
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "主要用途为模型推理API、队列和服务部署"
+    },
+    {
+      "fullName": "blader/humanizer",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": []
+      },
+      "reason": "写作润色以Agent技能交付，使用编码助手作为宿主不构成编程用途"
+    },
+    {
+      "fullName": "bulletphysics/bullet3",
+      "changes": {
+        "related": [],
+        "tags": [
+          "物理仿真",
+          "机器人",
+          "强化学习",
+          "仿真环境"
+        ]
+      },
+      "reason": "物理仿真SDK用于强化学习环境，不交付模型权重或推理服务"
+    },
+    {
+      "fullName": "bytedeco/javacv",
+      "changes": {
+        "category": "visual",
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "主要提供Java视觉/多媒体库接口，训练并非主功能"
+    },
+    {
+      "fullName": "carloslfu/slotstream",
+      "changes": {
+        "related": []
+      },
+      "reason": "SSD卸载与专家流式加载属于推理基础设施，与终端AI应用无直接次分类关系"
+    },
+    {
+      "fullName": "chaitanyagiri/munder-difflin",
+      "changes": {
+        "category": "coding",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "核心是将现有编程CLI组织为开发团队"
+    },
+    {
+      "fullName": "charmbracelet/crush",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "reason": "实际交付终端编程助手"
+    },
+    {
+      "fullName": "CHENG-LIANG1/real-company-interview-ai-coding-projects",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "实际交付面试项目题和方法复盘资料"
+    },
+    {
+      "fullName": "chenhg5/cc-connect",
+      "changes": {
+        "category": "coding",
+        "related": [
+          "agents",
+          "automation"
+        ]
+      },
+      "reason": "核心用途为远程访问本机编程Agent，消息平台是桥接通道"
+    },
+    {
+      "fullName": "chroma-core/chroma",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供AI向量检索存储服务及开发接口"
+    },
+    {
+      "fullName": "ChromeDevTools/chrome-devtools-mcp",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "通过MCP服务器暴露Chrome调试和自动化工具"
+    },
+    {
+      "fullName": "chuspeeism/dashi-ppt-skill",
+      "changes": {
+        "category": "apps",
+        "related": [
+          "visual"
+        ],
+        "kind": "技能 / 插件"
+      },
+      "reason": "实际任务是生成演示文稿，编码Agent只是技能运行宿主"
+    },
+    {
+      "fullName": "Cinnamon/kotaemon",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付可部署的文档问答界面"
+    },
+    {
+      "fullName": "cloneofsimo/lora",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "reason": "为扩散模型提供LoRA微调、权重合并和转换工具"
+    },
+    {
+      "fullName": "cobusgreyling/loop-engineering",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "reason": "除模式资料外提供初始化、诊断、审计等可执行CLI"
+    },
+    {
+      "fullName": "code-yeongyu/oh-my-openagent",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "为现有编码助手安装编排和记忆扩展，不是通用交互应用"
+    },
+    {
+      "fullName": "codexu/note-gen",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付本地Markdown笔记应用"
+    },
+    {
+      "fullName": "ComposioHQ/composio",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "为Agent提供工具调用、认证和会话连接SDK"
+    },
+    {
+      "fullName": "ConardLi/garden-skills",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": [
+          "visual"
+        ]
+      },
+      "reason": "交付网页设计和演示制作技能，缺乏知识库检索主功能依据"
+    },
+    {
+      "fullName": "CopilotKit/CopilotKit",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "供开发者集成Agent前端交互的SDK"
+    },
+    {
+      "fullName": "coreyhaines31/marketingskills",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": []
+      },
+      "reason": "交付面向Agent的营销任务技能文件；技能用于营销任务执行，非学习教程集合"
+    },
+    {
+      "fullName": "corsairdev/corsair",
+      "changes": {
+        "category": "automation",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "主功能为第三方应用集成与OAuth连接，而非模型训练开发"
+    },
+    {
+      "fullName": "coze-dev/coze-studio",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "提供创建和部署Agent的可视化平台"
+    },
+    {
+      "fullName": "cvat-ai/cvat",
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "devtools",
+        "related": [
+          "visual"
+        ]
+      },
+      "reason": "交付团队使用的视觉数据标注平台；主要工作是生产训练/评估标注数据，与X-AnyLabeling一致放入训练数据工具"
+    },
+    {
+      "fullName": "czlonkowski/n8n-mcp",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "实际交付n8n节点文档与配置查询MCP服务器"
+    },
+    {
+      "fullName": "d2l-ai/d2l-en",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "实际交付交互式深度学习教材"
+    },
+    {
+      "fullName": "danielmiessler/Fabric",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "以CLI和服务接口调用可复用任务提示模式"
+    },
+    {
+      "fullName": "dataelement/bisheng",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付企业LLM应用搭建和运行平台"
+    },
+    {
+      "fullName": "datawhalechina/easy-rl",
+      "changes": {
+        "kind": "学习资源",
+        "related": []
+      },
+      "reason": "实际交付强化学习教材及补充材料；强化学习教材讲授算法，不交付模型服务，取消泛化次分类"
+    },
+    {
+      "fullName": "datawhalechina/leedl-tutorial",
+      "changes": {
+        "kind": "学习资源",
+        "related": []
+      },
+      "reason": "实际交付课程整理与数学推导教材；深度学习课程与数学教材，不交付模型服务，取消泛化次分类"
+    },
+    {
+      "fullName": "datawhalechina/self-llm",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "实际交付开源模型部署与微调教程"
+    },
+    {
+      "fullName": "datawhalechina/zero-to-sglang",
+      "changes": {
+        "kind": "学习资源",
+        "related": [
+          "models"
+        ]
+      },
+      "reason": "通过简化实现教授SGLang推理原理，交付物是课程"
+    },
+    {
+      "fullName": "davidsandberg/facenet",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "reason": "提供FaceNet论文思路的训练、对齐和验证实现"
+    },
+    {
+      "fullName": "dbeaver/dbeaver",
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "apps",
+        "related": [],
+        "tags": [
+          "数据库客户端",
+          "SQL",
+          "数据分析",
+          "AI辅助",
+          "通用工具"
+        ]
+      },
+      "reason": "交付数据库管理桌面应用；现有AI功能面向终端用户辅助SQL和数据库操作，并非训练框架"
+    },
+    {
+      "fullName": "ddbourgin/numpy-ml",
+      "changes": {
+        "category": "learning",
+        "related": [
+          "devtools"
+        ],
+        "kind": "学习资源"
+      },
+      "reason": "以可读NumPy代码教授算法内部原理，非面向部署的应用或模型服务"
+    },
+    {
+      "fullName": "deanpeters/Product-Manager-Skills",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": []
+      },
+      "reason": "提供可供Agent读取的产品管理技能和方法文件；围绕PRD、研究与路线图完成产品工作，技能可直接用于Agent任务"
+    },
+    {
+      "fullName": "deepfakes/faceswap",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付素材提取、训练与转换的软件流程"
+    },
+    {
+      "fullName": "deepseek-ai/Janus",
+      "changes": {
+        "category": "visual",
+        "related": [
+          "models"
+        ]
+      },
+      "reason": "主任务是视觉理解和图像生成，按用途与其他视觉模型保持一致"
+    },
+    {
+      "fullName": "deepspeedai/DeepSpeed",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供分布式深度学习优化库"
+    },
+    {
+      "fullName": "DeusData/codebase-memory-mcp",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "以MCP服务暴露代码知识图谱查询"
+    },
+    {
+      "fullName": "DLR-RM/stable-baselines3",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "交付可复用PyTorch强化学习算法库"
+    },
+    {
+      "fullName": "dolthub/dolt",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "reason": "实际交付带版本控制的SQL数据库"
+    },
+    {
+      "fullName": "Donchitos/Claude-Code-Game-Studios",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "为现有Claude Code配置角色和流程的模板扩展"
+    },
+    {
+      "fullName": "dottxt-ai/outlines",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供类型和结构约束的大模型生成库"
+    },
+    {
+      "fullName": "dyad-sh/dyad",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付本地AI应用构建器"
+    },
+    {
+      "fullName": "earthtojake/text-to-cad",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "reason": "交付CAD和制造任务的Agent技能，不是独立建模软件"
+    },
+    {
+      "fullName": "easydiffusion/easydiffusion",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付本地图像生成的安装器和浏览器界面"
+    },
+    {
+      "fullName": "Eigenwise/atomic-agents",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "交付Pydantic结构化Agent开发框架"
+    },
+    {
+      "fullName": "EKKOLearnAI/hermes-studio",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付多Agent工作空间与会话管理界面"
+    },
+    {
+      "fullName": "elder-plinius/G0DM0D3",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付多模型聊天与响应比较界面"
+    },
+    {
+      "fullName": "emcie-co/parlant",
+      "changes": {
+        "kind": "框架 / SDK",
+        "related": [
+          "apps"
+        ]
+      },
+      "reason": "交付以规则、知识和工具控制对话的Agent框架，没有模型引擎主功能"
+    },
+    {
+      "fullName": "Emily2040/seedance-2.0",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": []
+      },
+      "reason": "提供视频策划与提示规划的Agent技能；面向视频分镜和提示规划的任务技能，不是学习课程"
+    },
+    {
+      "fullName": "eriklindernoren/ML-From-Scratch",
+      "changes": {
+        "kind": "学习资源",
+        "related": []
+      },
+      "reason": "以简明算法实现讲解机器学习原理；从零实现用于理解机器学习算法，不提供模型推理产品"
+    },
+    {
+      "fullName": "espeak-ng/espeak-ng",
+      "changes": {
+        "kind": "模型与引擎",
+        "tags": [
+          "语音合成",
+          "音素",
+          "轻量引擎",
+          "共振峰合成"
+        ]
+      },
+      "reason": "实际交付传统共振峰语音合成引擎，应与神经TTS区分"
+    },
+    {
+      "fullName": "espnet/espnet",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供语音训练、推理和实验工具包"
+    },
+    {
+      "fullName": "eugeneyan/open-llms",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "交付开放模型选型目录"
+    },
+    {
+      "fullName": "every-app/open-seo",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付自托管SEO工作台，并附MCP入口"
+    },
+    {
+      "fullName": "explosion/spaCy",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供可编程NLP流水线和训练库"
+    },
+    {
+      "fullName": "fangmumu111-bot/chatgpt-plus-pro-codex-cn-guide",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "交付第三方订阅说明资料，并无软件交付物；商业推广问题另列排除建议"
+    },
+    {
+      "fullName": "FareedKhan-dev/train-llm-from-scratch",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "教程演示从零训练和对齐LLM，而非发布供部署的训练模型"
+    },
+    {
+      "fullName": "fastai/fastai",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供基于PyTorch的高层训练库"
+    },
+    {
+      "fullName": "feder-cr/AIHawk",
+      "changes": {
+        "related": [
+          "automation"
+        ]
+      },
+      "reason": "自然语言浏览器操作没有编程功能依据"
+    },
+    {
+      "fullName": "FellouAI/eko",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供JavaScript Agent工作流开发框架"
+    },
+    {
+      "fullName": "Fission-AI/OpenSpec",
+      "changes": {
+        "kind": "开发工具",
+        "related": []
+      },
+      "reason": "提供规格驱动编码需求和变更管理工具；实际用于规格驱动开发和代码协作，并非学习教程"
+    },
+    {
+      "fullName": "FlagOpen/FlagEmbedding",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供嵌入与重排序模型的开发库"
+    },
+    {
+      "fullName": "flashinfer-ai/flashinfer",
+      "changes": {
+        "kind": "框架 / SDK",
+        "category": "models",
+        "related": [
+          "devtools"
+        ]
+      },
+      "reason": "提供供推理服务调用的GPU内核库；GPU内核面向LLM推理服务，主类应为模型与推理"
+    },
+    {
+      "fullName": "floodsung/Deep-Learning-Papers-Reading-Roadmap",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "reason": "交付深度学习论文阅读路线图"
+    },
+    {
+      "fullName": "Fosowl/agenticSeek",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "reason": "交付可运行的本地通用Agent"
+    },
+    {
+      "fullName": "FoundationAgents/MetaGPT",
+      "changes": {
+        "category": "coding",
+        "related": [
+          "agents"
+        ]
+      },
+      "reason": "以产品、架构和工程角色将自然语言需求推进为软件交付"
+    },
+    {
+      "fullName": "FoundationVision/VAR",
+      "changes": {
+        "category": "visual",
+        "related": [
+          "models"
+        ]
+      },
+      "reason": "模型核心任务是自回归图像生成"
+    },
+    {
+      "fullName": "Future-House/paper-qa",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "交付可编程科学文献检索问答工具包"
+    },
+    {
+      "fullName": "GeeeekExplorer/nano-vllm",
+      "changes": {
+        "kind": "模型与引擎",
+        "category": "models",
+        "related": [
+          "learning"
+        ]
+      },
+      "reason": "交付轻量LLM离线推理引擎实现；主要交付离线推理实现，教学属性作为相关分类保留"
+    },
+    {
+      "fullName": "getzep/graphiti",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "reason": "提供时序知识图谱和Agent记忆开发框架"
+    },
+    {
+      "fullName": "github/CopilotForXcode",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": []
+      },
+      "reason": "通过Xcode插件/扩展接入Copilot补全和对话"
+    },
+    {
+      "fullName": "github/github-mcp-server",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "reason": "GitHub官方仓库操作MCP服务器"
+    },
+    {
+      "fullName": "gitleaks/gitleaks",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "reason": "基于规则和正则扫描密钥，非模型或推理引擎"
+    },
+    {
+      "fullName": "GLips/Figma-Context-MCP",
+      "evidence": "这个仓库提供连接 Figma API 的 MCP 服务，让 Cursor 等编码工具根据文件、画框或分组链接获取设计上下文。服务会简化原始响应，保留与布局和样式相关的信息，减少模型处理大量无关节点的负担。用户仍由原来的编码助手完成组件实现，项目本身不是独立设计编辑器，也不保证一次生成即可还原所有视觉细节。接入需要 Figma Access Token 与客户端配置，使用者应选定具体节点并在代码预览中核对结果，复杂交互和响应式行为可能需要额外说明。",
+      "reason": "现有类型“Figma 设计上下文 MCP”描述了具体功能；按 README 所述交付形态规范到“MCP 服务”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "sourceUrls": [
+        "https://github.com/GLips/Figma-Context-MCP/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "google-ai-edge/mediapipe",
+      "evidence": "MediaPipe 将可直接接入应用的 Tasks API、预训练模型以及模型定制和评估工具组合起来，覆盖实时或流式媒体的机器学习场景。开发者可从现成解决方案开始，也能使用底层 Framework 构建自己的计算管线，将能力部署到移动设备、网页或桌面。项目提供手部、姿态等媒体理解方向的示例，适合交互式视觉应用与边缘设备开发。不同平台和任务的接口需分别核对，旧版 Solutions 已进入迁移阶段；输入在设备端处理，但 Tasks 会发送性能和使用指标。",
+      "reason": "现有类型“端侧机器学习工具集”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/google-ai-edge/mediapipe/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "google-research/google-research",
+      "evidence": "Google Research 发布多个独立研究实现的代码集合，适合按具体子项目查找实验。 仓库体量较大，各目录对应不同研究任务，使用者应先定位论文或目标方法，再阅读该目录的环境和数据说明，而非把整个仓库当成统一软件安装。官方建议只下载需要的子目录，贡献时也可浅克隆降低历史体积。源码、数据和子项目说明具有各自使用条件，研究代码并不等于经过产品化支持；README明确说明这不是官方Google产品。",
+      "reason": "这是多个独立研究代码实现的集合，不是按章节编排的课程。 主要交付研究代码而非教学课程，应在研究开发工具中查看。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "devtools",
+        "related": [
+          "learning"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/google-research/google-research/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "google/adk-python",
+      "evidence": "Google ADK 将智能体开发组织为可版本管理的 Python 代码，提供工具接入、多智能体委派和工作流运行时。开发者可设置路由、循环、并行汇合、重试及人工参与节点，连接函数、OpenAPI 或 MCP 工具，并选择本地或云端部署。它针对 Gemini 做了优化，也提供其他模型集成。当前大版本改变了智能体 API、事件模型和会话结构，旧数据与旧客户端的兼容范围需要专门核对；框架提供编排能力，不会自动确保任务或工具结果正确。",
+      "reason": "主要次级能力是代码定义的工作流运行时；框架本身不是终端用户 AI 应用。",
+      "changes": {
+        "related": [
+          "automation"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/google/adk-python/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "google/langextract",
+      "evidence": "LangExtract 让开发者用自然语言说明和少量示例定义抽取任务，再由大模型将报告、记录等非结构化文本转换为结构化结果。它为抽取项记录原文字符区间，支持生成可交互的 HTML 高亮视图，方便逐条检查依据。对长文档，项目结合分块、并行与多轮处理，也可选择云端模型或 Ollama 本地模型。结构与来源定位提高了审阅便利性，但不保证推断内容正确；若模型把示例中的文字误当输入，结果可能没有字符区间，需要调用方识别和过滤。",
+      "reason": "现有类型“带来源定位的信息抽取库”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/google/langextract/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "googleapis/mcp-toolbox",
+      "evidence": "MCP Toolbox for Databases 让智能体、IDE 和应用通过 MCP 使用数据库，既提供查看表结构、执行查询等通用工具，也允许按业务定义受限的结构化查询和语义检索工具。服务负责连接池，并提供认证与 OpenTelemetry 观测集成，应用可通过 SDK 接入多种智能体框架。项目由原 genai-toolbox 更名而来，旧文档中的名称需要对应理解。使用通用 SQL 工具和预定义查询的权限范围不同，生产接入必须按实际数据访问目标设置，不能把服务集成认证理解为所有查询自动安全。",
+      "reason": "现有类型“应用 / 工具”描述了具体功能；按 README 所述交付形态规范到“MCP 服务”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "sourceUrls": [
+        "https://github.com/googleapis/mcp-toolbox/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "GoogleCloudPlatform/agent-starter-pack",
+      "evidence": "Agent Starter Pack 曾为 Google Cloud 上的生成式 Agent 项目提供脚手架，包含应用代码、基础设施、持续集成、评估和可观测性，帮助团队从示例走向可部署项目。它也提供 RAG 数据管线及远程模板机制，可在已有 Agent 周围补充部署资产。当前 README 已明确进入维护模式，活跃开发转向 agents-cli，不再增加新功能、模板或部署目标。因此它适合了解和维护已采用该体系的项目，新项目应先查看迁移后的工具，再决定是否继续使用旧模板。",
+      "reason": "现有类型“Google Cloud Agent 项目模板”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/GoogleCloudPlatform/agent-starter-pack/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "gptme/gptme",
+      "evidence": "gptme 是可在笔记本、SSH、tmux 或无界面环境运行的个人 Agent，支持多家云端模型及本地 llama.cpp。它能读取上下文、修改文件、执行 Shell 或 Python，并通过浏览器与视觉工具处理网页和图像。项目还提供插件、技能、经验规则、会话与持久 Agent 模板，可把一次性任务扩展为更长期的工作空间。用户可以选择交互式终端、脚本入口或其他客户端，但模型配置、沙箱和工具权限需要按运行方式确认，早期演示也不完全反映当前界面。",
+      "reason": "现有类型“终端个人 Agent”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/gptme/gptme/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "gradio-app/gradio",
+      "evidence": "Gradio 为 Python 函数、模型或 API 包装网页界面，通过输入和输出组件连接实际处理逻辑，适合快速展示模型与收集交互反馈。应用可以在脚本、Jupyter 或 Colab 中运行，并用内置分享功能提供访问链接；本地开发也支持热重载。开发者不必先编写完整前端，但仍需要明确数据类型、模型加载和执行耗时。分享链接解决临时访问，不等同于长期生产托管，公开应用的并发、错误处理和文件访问范围也应根据实际场景配置。",
+      "reason": "通过 Python 组件 API 构建模型演示界面的库，交付形态为开发框架。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/gradio-app/gradio/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "graphdeco-inria/gaussian-splatting",
+      "evidence": "该仓库是 3D Gaussian Splatting 原始论文的作者实现，用多视角图像与相机校准得到的稀疏点初始化场景，再优化高斯的位置、形状等参数，并通过专用渲染器合成新视角。项目提供训练、参考评测素材和查看工具，后续加入深度正则、抗锯齿、曝光补偿及部分 VR 查看支持。它适合复现研究或探索三维场景表达，用户仍需准备符合格式的数据及 GPU 环境。论文中的实时帧率来自特定实验，不代表所有场景与设备都达到相同性能。",
+      "reason": "现有类型“3D Gaussian Splatting 参考实现”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/graphdeco-inria/gaussian-splatting/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "greensock/gsap-skills",
+      "evidence": "gsap-skills 将 GSAP 的核心补间、时间线、ScrollTrigger、MotionPath、Flip 等用法整理为智能体技能，并包含 React、Vue、Svelte 和原生 JavaScript 集成及性能指导。项目支持通过技能工具或不同宿主的配置方式加载，帮助助手减少生命周期和插件使用错误。它是动画开发知识包，实际网页仍需要安装 GSAP 并编写、验证代码；不同宿主读取规则的位置也不一致。README 的插件授权说明应结合当前 GSAP 许可核对，不能把技能目录本身当成动画运行库。",
+      "reason": "README 明确是 Official AI skills for GSAP，属于供宿主加载的技能集。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/greensock/gsap-skills/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "GreyDGL/PentestGPT",
+      "evidence": "PentestGPT 将安全测试过程拆为多个阶段，并把前一步的发现交给后续 Agent，同时记录实时活动和会话状态。新版自主流程使用 Claude Code 或 Codex 后端，另保留人工参与的 legacy 模式，通过推理、生成和解析会话维护测试任务树，支持更多模型提供商。项目提供容器环境与会话恢复，适合在授权实验环境研究 Agent 如何组织安全工具及报告。两种模式的后端支持不同，模型输出和工具发现需要人工确认，演示完成能力不代表真实环境测试覆盖率。",
+      "reason": "现有类型“安全测试 Agent 框架”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/GreyDGL/PentestGPT/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "guillaumemeyer/watermarks-remover",
+      "evidence": "以技能和 Python 服务处理自有内容中的 AI 来源标记与文本残留。 项目将技能作为HTTP客户端，把具体处理放在独立服务中，也提供只处理面向用户文本的自包含技能。其范围包含不同厂商的来源表面和标记类别，适合研究文件隐私与内容清理，但README中的覆盖声明不等于已证明能消除所有统计水印或来源记录。操作会改变可追溯信息，使用前应保留原稿并确认确属自己可处理的内容，不能据此承诺绕过检测。",
+      "reason": "README 明确由 Agent skill 与 Python 服务组成，以技能作为调用入口。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/guillaumemeyer/watermarks-remover/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HandsOnLLM/Hands-On-Large-Language-Models",
+      "evidence": "该仓库收录 Jay Alammar 与 Maarten Grootendorst 所著大语言模型实践书的示例，帮助读者把书中的概念解释与代码实验联系起来。内容围绕语言模型的表示、生成、检索及进一步训练应用展开，适合配合章节逐步动手。作者主要在 Google Colab 上构建和测试示例，也提供本地安装与 Conda 环境指南，便于用户选择计算平台。它提供的是配套实验材料，而非整本教材的替代品；不同操作系统、Python 和依赖版本可能导致输出细节与书中不同。",
+      "reason": "现有类型“大语言模型图书配套代码”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "haotian-liu/LLaVA",
+      "evidence": "LLaVA 将图像信息接入语言模型，研究如何通过视觉指令数据让模型回答图片相关问题。仓库提供论文、模型库、训练与微调入口，并链接 LLaVA-NeXT、视频扩展、评估及其他社区集成，适合学习视觉语言模型的训练路线或复现实验。多个版本的语言骨干、图像分辨率、资源要求和任务范围不同，视频及工具使用等关联项目能力不应归并到任意 LLaVA 模型。展示和基准结果具有版本背景，实际回答仍可能误识别图像细节，需要结合所选模型和数据评估。",
+      "reason": "视觉语言模型及训练推理代码，不是面向用户的完整应用。 视觉指令调优及图像问答是 LLaVA 的核心定位，应标出视觉关联。",
+      "changes": {
+        "kind": "模型与引擎",
+        "related": [
+          "visual"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/haotian-liu/LLaVA/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "hardikpandya/stop-slop",
+      "evidence": "Stop Slop 是一份面向文字修订的技能文件，将常见的 AI 写作痕迹拆成惯用短语、结构套路和句子节奏等类别。使用者可在支持技能的助手中安装，也可以把主文件及参考资料放入项目知识，或选取适合自己的规则作为写作指引。它关注删去空泛开场、夸饰和固定对比结构，使文章更直接，但这些规则体现特定编辑偏好，不是普遍适用的语言标准。实际修改仍需保留作者含义，并根据中文、英文、文体和读者需求调整，不能仅以禁词判断质量。",
+      "reason": "现有类型“写作风格修订技能”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。 这是文字风格编辑技能，主要用途为写作修订，不是学习资源或自动化平台。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": []
+      },
+      "sourceUrls": [
+        "https://github.com/hardikpandya/stop-slop/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Helicone/helicone",
+      "evidence": "Helicone 面向 AI 应用工程师，通过网关或日志集成收集模型请求，把会话、链路、成本和延迟组织成可查看的数据。用户可以在界面中调试 Agent、聊天或文档流程，比较提示词，并利用版本管理和实验工具迭代应用。项目提供 Docker Compose 自部署路径，也有托管网关、数据接口与其他产品服务。需要区分开源可观测组件和托管模型访问能力，接入后日志内容及保留方式也要结合部署配置确定，README 的接入行数并不代表所有框架无需额外调整。",
+      "reason": "现有类型“模型网关与可观测平台”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/Helicone/helicone/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HisMax/RedInk",
+      "evidence": "RedInk 面向社交平台图文制作，先依据主题生成页面大纲，再让用户为每页补充描述并调用图像模型生成内容。它支持单页重生成、批量处理和历史记录，帮助持续调整封面与内页，并提供 Web 设置页面管理文本及图像提供商。用户可以通过 Docker 或本地前后端运行项目，生成文件需要挂载目录才能在容器重建后保留。效果与速度取决于外部模型和配额，并发功能需要提供商支持；项目使用非商业许可，商业部署或运营应按作者要求另行获得许可。",
+      "reason": "现有类型“社交图文生成应用”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/HisMax/RedInk/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HKUDS/ClawWork",
+      "evidence": "用职业任务、完成质量和模型成本评估 AI 工作表现的实验系统。 ClawWork 让Agent完成GDPVal等来源的专业任务，并通过收入与Token支出的机制观察工作质量和持续运行能力。它支持不同模型进行比较，配套仪表盘展示本地任务数据，适合研究任务价值与调用成本的关系。页面中的“赚取金额”属于实验设定或作者报告，并不代表用户可获得相同真实收入；任务评分、数据同步与成本假设都影响结果解释。",
+      "reason": "以 GDPVal 职业任务、质量评分和成本机制比较 Agent 的实验评测系统。 项目核心是评估 Agent 职业任务质量与成本，应按评测工具归类。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/HKUDS/ClawWork/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HKUDS/LightRAG",
+      "evidence": "LightRAG 围绕文档索引与知识图谱组织检索增强生成，提供导入、查询、来源引用和知识可视化界面。当前实现支持多种切分策略、重排序与存储后端，可分别配置抽取、查询、关键词和视觉角色使用的模型，并通过 MinerU 或 Docling 接入多模态解析。它也提供评估与追踪集成，便于观察检索上下文和回答效果。部署者需要协调模型、嵌入、解析与存储服务，文档删除等变更也可能涉及图谱重建；项目名中的快并不是所有数据集都能直接获得的性能保证。",
+      "reason": "现有类型“图谱增强检索框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/HKUDS/LightRAG/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HKUDS/OpenSpace",
+      "evidence": "OpenSpace 为不同编码和任务智能体提供共享技能库，将技能打包浏览、检索和导入与任务执行证据联系起来。项目用质量摘要和任务轨迹帮助团队判断技能在哪些场景有效，并提供私有部署、网页看板和终端入口，让可复用流程不只散落在个人目录。它强调通过实际结果演进技能，但上传轨迹和指标需要有代表性，失败原因也不能仅靠分数自动确定。公开浏览与私有技能的访问范围不同，接入前应核对轨迹内容、权限及所用智能体的兼容方式。",
+      "reason": "提供技能检索、管理、评测与轨迹平台，不是自主执行任务的 Agent 本体。",
+      "changes": {
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/HKUDS/OpenSpace/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "HKUDS/RAG-Anything",
+      "evidence": "RAG-Anything 为含图表和公式的文档提供解析到检索问答的多阶段流程，在 LightRAG 上增加针对不同内容类型的处理器及跨模态关系组织。用户既可交给解析器处理 PDF、Office 等材料，也可直接导入已有的结构化内容列表，再结合文字与视觉模型查询。它适合技术文档、论文和报告等不能仅靠纯文本理解的资料。当前 README 指出这些能力已经原生整合进 LightRAG，选择独立库还是主项目时应查看版本兼容，解析质量和视觉模型能力仍限制最终答案。",
+      "reason": "现有类型“多模态 RAG 框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/HKUDS/RAG-Anything/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Hmbown/Codewhale",
+      "evidence": "Codewhale 是 Rust 编写的开源编码 Agent，在终端或本地 Web 客户端中连接托管或本地模型，执行文件阅读、编辑、命令运行和结果检查。较大任务可分给不同角色与模型，用户也能保存会话、设置持续目标并审查工作流。项目区分只探索的计划模式与实际修改的工作模式，提供不同审批设置及撤销恢复入口。当前源码、开发预览和公开发行版可能不一致，图形工作台与计算机操作插件也各有可用性要求，使用时应以所安装版本为准。",
+      "reason": "现有类型“Rust 终端编程 Agent”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/Hmbown/Codewhale/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "huggingface/agents-course",
+      "evidence": "Hugging Face Agents Course 将智能体学习分为四个单元，从基本概念逐步走向带基准评估的最终作业。仓库提供在线课程与注册入口，并用于维护课程内容、纠错和接受贡献，适合希望按明确教学顺序理解智能体的读者。README 本身较简短，没有列出每个单元全部技术栈，因此具体框架、模型和实验环境应到对应课程页面核对。它属于学习资源而非现成智能体产品，完成练习主要证明掌握课程任务，不代表在任意真实业务中已经具备可靠自治能力。",
+      "reason": "课程以 Agent 基础与基准作业为中心，没有把模型运行或训练作为独立交付。",
+      "changes": {
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/huggingface/agents-course/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "huggingface/datasets",
+      "evidence": "Datasets 用统一 Python 接口读取 Hugging Face Hub 或本地文件中的数据，覆盖文本、图片、音频等多种类型，并能与常见机器学习框架的数据加载流程衔接。开发者可以映射处理函数、组织训练验证分片，也可用流式方式处理不适合一次下载的数据。它适合把数据准备从零散脚本整理成更一致的流程，并分享版本化数据集。库的开源许可与各数据集的许可是两回事；为了复现实验，README 建议固定所使用数据仓库的 revision，避免后续更新改变样本。",
+      "reason": "现有类型“机器学习数据集工具库”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/huggingface/datasets/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "humanlayer/12-factor-agents",
+      "evidence": "12-Factor Agents 是围绕生产级模型应用的工程指南，讨论如何在普通软件流程中合理使用模型步骤。内容涵盖自然语言转工具调用、提示词与上下文控制、执行状态、暂停恢复、人工参与、错误压缩和无状态处理等方向，强调开发者应理解并掌握自己的执行逻辑。它适合设计 Agent 架构时作为讨论框架，帮助团队识别模型循环之外的数据与流程问题。仓库主要是解释和示例，不是一个装上就能保证可靠性的框架，原则需要根据任务和现有系统选择应用。",
+      "reason": "现有类型“Agent 工程原则指南”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/humanlayer/12-factor-agents/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "hybridgroup/gocv",
+      "evidence": "GoCV 让 Go 应用调用 OpenCV 的计算机视觉功能，涵盖摄像头读取、图像处理、分类器和深度网络等方向。仓库提供捕获图像、流式 MJPEG、目标计数与人脸跟踪的命令行示例，并支持按条件接入 CUDA 或 OpenVINO 加速。它适合已使用 Go 构建服务或设备程序的开发者，将视觉处理放入同一语言体系。安装需要匹配的 OpenCV 原生库，图像 Mat 的底层内存也不由 Go 垃圾回收器完整管理，使用者必须关闭资源并检查长时间运行的内存表现。",
+      "reason": "现有类型“Go 的 OpenCV 绑定”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/hybridgroup/gocv/blob/release/README.md"
+      ]
+    },
+    {
+      "fullName": "img2threejs/img2threejs",
+      "evidence": "img2threejs 以参考图像为输入，组织 Agent 分析轮廓、身份细节、材质和结构，再生成由几何体、程序化材质与着色器组成的 Three.js 模型。输出是 TypeScript 的 THREE.Group 工厂，并考虑旋转轴、连接点和碰撞体等运行时层级，便于继续做动画。项目提供对象与角色的不同分析路线，以及可恢复的状态记录和质量检查。它适合可视化原型与程序化建模实验，但单张图片无法确定被遮挡结构，画廊中也有明确标注未完成的示例，不能把可渲染等同于还原完成。",
+      "reason": "现有类型“程序化三维重建技能”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/img2threejs/img2threejs/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "InsForge/InsForge",
+      "evidence": "InsForge 将 Postgres、用户认证、S3 兼容存储、模型网关及函数部署组织成统一后端，智能体可以读取结构和运行日志，也能配置资源与迁移。自托管和云端通过 MCP 提供工具，CLI 与技能路线则在 README 中明确为云端专用。平台适合让编码助手从前端原型继续构建实际后端，但长运行容器计算仍标为私有预览，不能视作所有部署已开放。数据库权限、凭据和迁移仍需与应用需求对应，自动部署不替代业务功能和数据持久化验证。",
+      "reason": "后端平台主要提供数据库、认证、存储、部署与模型网关；Postgres 不等同于知识库/RAG 产品。",
+      "changes": {
+        "related": [
+          "agents",
+          "devtools"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/InsForge/InsForge/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "InternLM/xtuner",
+      "evidence": "XTuner V1 面向大规模 MoE 模型训练，重点优化并行策略、显存组织和长序列场景，而不只是提供一个简单微调按钮。它希望用较小的专家并行维度组织训练，结合 FSDP、序列并行与硬件适配处理大型混合专家模型，并为多模态预训练、监督微调和 GRPO 等算法提供训练后端。对研究团队而言，它可用于检验模型和算法在目标集群上的扩展能力。README 同时列有仍在演进的算法方向，因此应该区分已支持功能与路线规划，不把展示的特定硬件吞吐直接作为自己实验的性能预期。",
+      "reason": "现有类型“模型与引擎”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/InternLM/xtuner/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "iOfficeAI/AionUi",
+      "evidence": "AionUi 面向希望在桌面完成文件、编程和日常办公任务的用户，内置 Agent 引擎，也能连接已安装的 Claude Code、Codex、Hermes 等工具。应用通过会话和并行上下文组织工作，并集中管理 MCP 工具、模型与助手预设。README 重点介绍演示文稿、Word 和电子表格等可编辑产物流程，结合内置 OfficeCLI 和相关技能生成或修改文件。它降低了直接操作多个命令行工具的门槛，但实际模型、第三方 Agent 与远程访问能力各有配置条件，零配置宣传不等于无需模型凭据。",
+      "reason": "现有类型“桌面 Agent 协作应用”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/iOfficeAI/AionUi/blob/main/readme.md"
+      ]
+    },
+    {
+      "fullName": "jacobgil/pytorch-grad-cam",
+      "evidence": "pytorch-grad-cam 汇集 GradCAM 等视觉归因方法，用热力图帮助观察模型某个输出与输入区域之间的关系。它支持常见 CNN、视觉 Transformer，也提供目标检测、分割和图像相似度等非分类任务的教程。使用者需要选择解释目标与中间层，特殊结构还需把激活变换回空间形式，并可用平滑和评价指标比较不同设置。该库适合研究模型行为和排查预测异常，热力图只是特定归因方法的结果，不能直接证明模型具有正确推理或因果理解。",
+      "reason": "现有类型“视觉模型解释工具库”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。 主要用于模型归因、解释和诊断；视觉是被分析的领域。",
+      "changes": {
+        "kind": "开发工具",
+        "category": "devtools",
+        "related": [
+          "visual"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/jacobgil/pytorch-grad-cam/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "jamez-bondos/awesome-gpt4o-images",
+      "evidence": "awesome-gpt4o-images 收集来自社交平台和社区的图像生成案例，配有提示词、作者来源及部分替换字段说明，覆盖玩偶、图标、场景转换和视觉风格等方向。部分任务依赖参考图片，读者可据此理解如何描述主体、材质、构图和编辑目标。它不是图像模型或统一生成服务，案例展示也受当时模型版本及输入素材影响。README 中关于最新模型的措辞具有时间背景，复用前应核对当前服务能力和图片许可，同样提示不保证得到相同画面。",
+      "reason": "图像案例与提示词目录，没有统一生成应用。 收集的是图像生成提示与案例，次级用途是图像创作而非泛应用。",
+      "changes": {
+        "kind": "学习资源",
+        "related": [
+          "visual"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/jamez-bondos/awesome-gpt4o-images/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "jamiepine/voicebox",
+      "evidence": "Voicebox 为输入和输出语音提供统一桌面工作空间，既能用参考音频建立声音配置并生成朗读，也能通过热键听写到文本区域。项目支持多个 TTS 引擎、Whisper 识别、音效处理以及多轨故事编辑器，还可通过 REST API 或 MCP 为 Agent 添加语音。不同引擎对语言、表达标签和硬件的支持各异，用户应按任务选择并测试。应用强调本地模型与文件处理，但安装资源和平台支持要核对当前版本，Linux 目前没有预编译包，需要按指南自行构建。",
+      "reason": "现有类型“本地语音工作室”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/jamiepine/voicebox/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "jaywalnut310/vits",
+      "evidence": "VITS 提供端到端文本转语音方法，把变分推断、归一化流和对抗训练结合，并通过随机时长预测器表达同一文字在节奏和音高上的多种说法。仓库附论文说明、预训练模型和交互式示例，训练文档分别介绍单说话人 LJ Speech 与多说话人 VCTK 数据准备。它适合研究语音生成架构和复现实验，论文中的主观评分依赖具体数据和条件。使用自己的数据还需构建单调对齐搜索及预处理流程，不能仅替换文本就获得任意人物的声音。",
+      "reason": "VITS 论文作者的训练和推理参考实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/jaywalnut310/vits/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "JCodesMore/ai-website-cloner-template",
+      "evidence": "该模板帮助编码 Agent 根据一个网站链接收集截图、布局样式和交互状态，再形成组件规格并在 Next.js 项目中重建页面。流程包含字体与资源整理、并行组件实现、装配和视觉对比，基础栈使用 React、TypeScript、Tailwind 与 shadcn/ui。它适合迁移自己的网站、恢复遗失源码或学习真实页面结构，但重建的是新的实现，原站后端和全部行为不会因外观相近而自动恢复。作者要求先通过 GitHub 模板创建个人仓库，再在自己的副本中工作。",
+      "reason": "现有类型“网站重建工程模板”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/JCodesMore/ai-website-cloner-template/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "jina-ai/discoart",
+      "evidence": "DiscoArt 将基于 CLIP 引导扩散的绘图过程整理为开发者接口，可从 Python、命令行或 Notebook 调用并管理生成结果。项目增加配置恢复、持久化和后续分析能力，也可通过 gRPC、HTTP 或 WebSocket 服务接入其他多模态应用。它适合探索 Disco Diffusion 算法和搭建生成基础组件，README 明确其重点是 API 与基础设施，消费级可视化交互不在核心范围。运行需要 CUDA 版 PyTorch，而第三方托管平台的价格、隐私与使用条款独立于本仓库。",
+      "reason": "现有类型“Disco Diffusion 开发接口”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/jina-ai/discoart/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "jnMetaCode/agency-agents-zh",
+      "evidence": "该仓库翻译并扩展 Agency Agents 的角色定义，为工程、设计、营销、产品和企业职能等任务提供中文角色资料。每份定义包含身份、工作流程和交付物，用户可按需要安装到编码助手，或在配套编排工具中让不同角色围绕同一任务协作。社区版本还加入面向中国平台运营和垂直行业的角色。它主要提供角色与方法提示，并非每个角色都具备真实领域资质或独立工具能力；各客户端格式不同，全部安装可能降低自动匹配效果，README 的角色数量也存在版本差异。",
+      "reason": "现有类型“中文 Agent 角色库”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。 交付是中文专家角色与工作方法定义，不自带可运行的多 Agent 框架。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "learning",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/jnMetaCode/agency-agents-zh/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Junchao-cs/SolarWM",
+      "evidence": "SolarWM 围绕可交互视频世界模型整理数据契约、训练流程与推理代码，把观测、相机几何、字幕和来源等信息组织为统一格式。模型路线跨多个视频骨干，通过双向适配、教师强制初始化和分布匹配蒸馏，把原始模型推进到相机控制的因果生成。仓库发布分阶段代码和部分权重，适合研究长时间滚动生成与数据混合设计。不同骨干需要独立环境，完整数据载荷不包含在代码仓库中；基础代码与模型、数据各有许可，不能因代码为 Apache 2.0 就忽略上游限制。",
+      "reason": "现有类型“视频世界模型训练框架”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/Junchao-cs/SolarWM/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "junyanz/CycleGAN",
+      "evidence": "学习无需成对样本的图像到图像转换，是 CycleGAN 论文的早期 Torch 实现。 项目通过循环一致性的训练思路研究两个图像域之间的转换，例如绘画与照片或不同对象外观，并包含pix2pix及相关方法。它提供训练和演示入口，但当前README推荐另一个持续维护的PyTorch版本。旧Torch实现适合历史复现，环境配置和数据准备应按对应版本执行；生成转换可能改变内容细节，不适合把结果当作原始事实影像。",
+      "reason": "CycleGAN 论文的旧 Torch 研究实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/junyanz/CycleGAN/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "junyanz/pytorch-CycleGAN-and-pix2pix",
+      "evidence": "pytorch-CycleGAN-and-pix2pix 同时实现有配对数据的 pix2pix 和无配对数据的 CycleGAN，供研究图像域之间的转换。仓库提供训练、测试提示及自定义模型和数据集模板，当前代码更新支持较新的 Python、PyTorch 和单机多 GPU 训练。README 同时链接 CUT 和 Turbo 等后续项目，它们属于不同方法，不能视作当前模型自动具备的速度与效果。原论文结果可能对应早期 Lua/Torch 实现，复现比较时应核对版本、数据和评估条件，生成图像也可能改变真实内容细节。",
+      "reason": "CycleGAN 与 pix2pix 论文的 PyTorch 实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "JushBJJ/Mr.-Ranedeer-AI-Tutor",
+      "evidence": "Mr. Ranedeer 是面向个性化学习的提示词项目，允许学习者调整知识深度、沟通方式、语气和推理风格，再请模型生成课程计划与测试题。用户可以使用作者提供的 GPT 入口，或把提示词载入兼容聊天工具，并通过配置、计划、测验和语言等命令控制交互。它适合自学时形成循序渐进的讨论结构，但课程与反馈仍由模型生成，可能出现错误或不适合实际水平。README 的部分 GPT-4、Code Interpreter 与插件说明具有历史版本背景，当前可用性应在所用产品核对。",
+      "reason": "现有类型“个性化教学提示词”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。 可直接载入聊天模型的个性化导师提示，主要用途是辅导应用，不是学习 AI 技术的课程。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": []
+      },
+      "sourceUrls": [
+        "https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "kaldi-asr/kaldi",
+      "evidence": "Kaldi 是语音识别领域的工具包，代码主要围绕 C++ 与脚本工作流组织，适合学习和复现语音系统的训练、识别及说话人相关处理。仓库的 egs 目录提供按语料构建示例系统的入口，项目网站另有技术说明和开发教程。它不是下载即用的轻量听写界面，使用者通常需要编译工具、准备数据并理解脚本各阶段。安装文档区分 UNIX 与原生 Windows，部分移动端和 WebAssembly 路径依赖交叉编译，具体平台支持和可选 CUDA 条件需要分别核对。",
+      "reason": "现有类型“语音识别研究工具包”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/kaldi-asr/kaldi/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "karanb192/itr-wala",
+      "evidence": "itr-wala 面向印度所得税申报准备，将 Form 16、AIS 等资料理解与税额计算分开：智能体辅助读取材料，代码引擎执行所支持评税年度和税制的计算。仓库提供输入校验、边界测试与随机化验证，帮助检查抵扣、优惠、附加税及滞纳相关规则。它保留支付、提交和电子验证由用户完成，属于申报辅助而不是代替专业判断。规则具有年度和适用人群限制，README 中的截止日与费用可能随政策改变，使用前应与官方税务资料核对并检查输入数字。",
+      "reason": "README 以安装技能/插件进入报税流程，内部再调用确定性计算引擎。 业务目标是印度报税准备；代码引擎是计算手段，不属于 AI 编程助手。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps"
+      },
+      "sourceUrls": [
+        "https://github.com/karanb192/itr-wala/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "karpathy/autoresearch",
+      "evidence": "Autoresearch 把自动研究简化为一个范围受限的循环：Agent 修改 train.py，用固定五分钟训练预算运行实验，检查验证指标，再保留或丢弃改动继续尝试。prepare.py 负责固定的数据与评估基础，program.md 由人编写来指导 Agent，核心代码来自 nanochat 的简化单 GPU 训练实现。这个设计让研究者把精力放在实验规则与目标上，并可通过日志比较迭代。指标和时间预算服务于特定硬件上的优化研究，不应把不同机器得到的结果直接横向比较。",
+      "reason": "现有类型“研究项目”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/karpathy/autoresearch/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "katanemo/plano",
+      "evidence": "Plano 是面向 Agent 应用的代理服务器，将模型与 Agent 路由、工具链追踪和过滤钩子从业务代码中抽离。它基于 Envoy 组织独立的数据平面，允许应用用模型名、别名或偏好选择后端，并通过 OpenTelemetry 收集调用信息。Agent 可作为实现 OpenAI 兼容接口的 HTTP 服务接入，开发者按需要启用编排或仅使用模型路由。它适合已有多个服务的团队统一基础能力，但初次体验使用的托管模型与生产自托管条件不同，不能把示例免费访问视为长期服务保证。",
+      "reason": "现有类型“Agent 代理与数据平面”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/katanemo/plano/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "keploy/keploy",
+      "evidence": "Keploy 使用网络层流量捕捉记录 API 调用、数据库交互和部分消息事件，形成可回放的测试及 Mock，帮助开发者保存真实业务路径。它还利用已有记录与 OpenAPI 描述探索边界输入，输出 API、语句或分支等覆盖信息，并可接入 CI 和团队 Mock 管理。项目适合为已有服务补充集成回归测试，但录制流量只能覆盖实际观察到的行为，不能仅凭宣传比例推断测试充分。底层依赖 eBPF 与协议解析，需先核对系统和目标依赖是否受支持。",
+      "reason": "现有类型“API 录制回放测试工具”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/keploy/keploy/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Kilo-Org/kilocode",
+      "evidence": "Kilo Code 支持 VS Code、JetBrains 和命令行入口，用户可以在项目中提出任务，再由不同角色完成代码、计划、问答、调试或审查。它具备跨文件修改、终端和浏览器工具以及 MCP 扩展，可在任务中切换模型；平台还提供云端运行和自动审查等独立服务。项目核心采用 MIT 许可，具体模型目录和计费则取决于连接方式及服务账户。命令行发行包按处理器和系统区分，自动运行选项会取消权限提示，应在明确控制的环境中使用。",
+      "reason": "现有类型“多入口编程 Agent”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/Kilo-Org/kilocode/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "KKKKhazix/khazix-skills",
+      "evidence": "khazix-skills 将作者实际使用的智能体流程整理为独立技能，涵盖把模糊想法写成目标任务书、检查项目文档与记忆一致性、磁盘占用分析、AI 动态读取及写作等。每个目录包含可由兼容助手加载的结构化说明，适合按具体任务选用。不同技能的操作范围差异较大，例如只读报告与清理动作、外部站点读取与本地文件整理需要分别理解。README 中的运行时长、效率及个人模型搭配属于作者经验，不能成为固定承诺；接入时应保留用户已有目标和权限边界。",
+      "reason": "每个目录是 Agent Skills 格式指令集，不是独立运行应用。 技能集合覆盖目标规划、项目整理、写作等多种任务，不能全部限制为编码用途。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "agents",
+        "related": [
+          "coding",
+          "apps"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/KKKKhazix/khazix-skills/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "KlingAIResearch/LivePortrait",
+      "evidence": "LivePortrait 是相关肖像动画论文的官方 PyTorch 实现，围绕运动迁移、拼接和重定向控制让静态人像或肖像视频产生动画。项目提供 Gradio 界面、姿态和局部编辑，以及人类与部分动物模型，用户可按驱动素材调整表情和画面。它适合授权肖像创作和动画研究，输出效果依赖来源图像、驱动幅度与检测结果。Windows 有便捷发行包，Apple Silicon 可运行人像模式，但动物模式依赖 X-Pose，当前不支持 macOS，安装时需选用相应依赖。",
+      "reason": "现有类型“肖像动画模型实现”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/KlingAIResearch/LivePortrait/blob/main/readme.md"
+      ]
+    },
+    {
+      "fullName": "kornia/kornia",
+      "evidence": "Kornia 将滤波、几何变换、图像增强和特征匹配等视觉操作表示为可批处理的张量运算，便于与 PyTorch 自动微分和 GPU 训练结合。它包含数据增强序列、自动增强策略及部分预训练特征模型，适合需要把图像处理纳入端到端学习的开发者。项目近期强调明确坐标约定、符合性测试和可复现基准，因此选型时不仅要看算子数量，也应核对精度与设备支持。CPU 半精度仍有已知失败项，某些 ONNX 或生成式功能还需要额外依赖。",
+      "reason": "现有类型“可微几何视觉库”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/kornia/kornia/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "kserve/kserve",
+      "evidence": "KServe 用 Kubernetes 资源组织模型服务，支持多框架预测模型，以及结合 vLLM、llm-d 等后端的语言模型推理。它提供路由、扩缩容、模型缓存、灰度部署和推理图等能力，帮助平台团队统一管理不同类型工作负载。生成式与预测式任务的扩缩容和缓存机制并不相同，标准安装与无服务器安装也有功能差异。项目适合已有集群的模型服务基础设施，实际延迟、GPU 利用率及缩容效果取决于运行后端和负载，不能直接由平台功能清单推断。",
+      "reason": "Kubernetes 模型服务平台，编排 vLLM 等引擎而非单一模型或推理引擎。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/kserve/kserve/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "kyegomez/tree-of-thoughts",
+      "evidence": "这个仓库尝试把 Tree of Thoughts 方法包装成可接入用户模型的实现，用分支式探索来研究复杂问题求解。README 将它定位为即插即用工具，并列出环境变量配置方向，但当前材料对完整调用流程和评测细节介绍有限。待办明确包含 DFS 深度或循环控制、BFS、新的蒙特卡洛搜索和树可视化，说明不能把所有搜索方法当成已经提供。它适合阅读与实验推理搜索思路，文中的推理提升比例没有在简介中给出充分验证背景，不能视为对任意模型的效果保证。",
+      "reason": "现有类型“思维树推理实验实现”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。 这是模型推理搜索方法的实验实现；并非教程资料。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "models",
+        "related": [
+          "devtools"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/kyegomez/tree-of-thoughts/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "LAION-AI/Open-Assistant",
+      "evidence": "OpenAssistant 曾通过社区提交、排名和标注对话样本来构建开放聊天助手，仓库包含数据收集界面、后台及推理相关代码。其流程与指令学习和人类反馈数据建设相连，适合研究开放助手发展的历史和数据组织方法。当前 README 顶部明确项目已完成并结束，最终 oasst2 数据集发布在 Hugging Face。页面下方仍保留旧的在线服务与贡献号召，不能视为现时运行承诺；本地 Docker 开发栈也主要供开发使用，不是普通用户直接启动聊天机器人的安装包。",
+      "reason": "现有类型“已结束的开放助手项目”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。 已结束的对话数据收集、标注与助手研发工程，应与教程资源区分。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "devtools"
+      },
+      "sourceUrls": [
+        "https://github.com/LAION-AI/Open-Assistant/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "langroid/langroid",
+      "evidence": "Langroid 用 Agent 和 Task 抽象组织多智能体应用，为各个角色配置语言模型、向量存储和工具，再通过消息协作解决问题。它提供文档问答、SQL 对话、结构化提取和 MCP 工具集成等入口，开发者可以逐步组合适合业务的能力。项目独立于其他大型 LLM 框架，强调可扩展与开发体验，但不同模型和工具调用方式仍有兼容条件。多智能体并不自动提升质量，任务传递、终止条件和检索依据需要验证，README 的客户评价也不能当作通用性能对比。",
+      "reason": "框架组合 Agent、检索和外部模型接口，不负责模型运行或训练，移除泛化的 models 关联。",
+      "changes": {
+        "related": [
+          "knowledge"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/langroid/langroid/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "larksuite/cli",
+      "evidence": "Lark CLI 由 larksuite 团队维护，为人和 Agent 提供飞书与 Lark 的命令行入口。它覆盖消息、文档、多维表格、日历和任务等领域，通过快捷命令、生成的 API 命令以及原始 API 三层满足不同复杂度的需求。工具支持结构化成功错误输出、请求预览与系统钥匙串保存凭据，便于接入自动化。使用者仍需创建或配置应用并完成授权，实际权限由组织和用户访问范围决定；仓库提供的技能数量随版本变化，外部操作不能只因 CLI 可用就忽略授权边界。",
+      "reason": "现有类型“官方飞书与 Lark 命令行工具”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/larksuite/cli/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "LearningCircuit/local-deep-research",
+      "evidence": "Local Deep Research 让用户选择本地或云端模型，组合网页、学术搜索和私有文档开展多轮研究，再整理带引用的报告。它提供不同研究策略和本地知识库能力，部署路线包含 Docker 与 Python 安装，并支持数据库加密。README 的高分属于给定模型和样本的项目评测，不能保证任意问题正确；本地部署也不意味着所连接搜索和云模型完全离线。实际引用、资料覆盖及服务网络需核对，Docker Desktop 与原生 Linux 的网络配置也不同。",
+      "reason": "调用多个模型和搜索引擎产出研究报告的助手，不是底层模型引擎。 主要给用户交付带引用的深度研究报告；知识检索和多轮 Agent 是实现能力。",
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "apps",
+        "related": [
+          "knowledge",
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/LearningCircuit/local-deep-research/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "leejet/stable-diffusion.cpp",
+      "evidence": "stable-diffusion.cpp 基于 ggml 提供原生推理路线，可加载受支持的扩散模型并在不同设备后端生成图像或视频。它支持部分 LoRA、图像条件、量化、VAE 分块与放大流程，也提供权重转换和嵌入式 Web 界面，方便作为本地工具或其他语言应用的后端。用户可以先从预编译包和小型模型开始，再调整内存与速度参数。项目发展较快，API、命令行和模型支持都会变化；各模型的附加组件、格式和许可证仍需单独取得与核对。",
+      "reason": "现有类型“C/C++ 扩散模型推理引擎”描述了具体功能；按 README 所述交付形态规范到“模型与引擎”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "模型与引擎"
+      },
+      "sourceUrls": [
+        "https://github.com/leejet/stable-diffusion.cpp/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "lencx/ChatGPT",
+      "evidence": "这个仓库曾提供面向 Mac、Windows 和 Linux 的第三方 ChatGPT 桌面应用，通过桌面包装呈现聊天服务。当前 README 主要介绍项目方向变化，保留旧版下载入口，并推荐作者后续的 Noi 作为更丰富的 AI 封装应用。它适合了解早期桌面客户端实现或查看历史版本，而不是把仓库名称理解为 OpenAI 官方客户端。有关官方应用的平台发布描述也来自较早背景，实际支持应查询官方来源；现有简介没有确认未来二点零版本已经发布。",
+      "reason": "现有类型“第三方 ChatGPT 桌面封装”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/lencx/ChatGPT/blob/v2-dev/README.md"
+      ]
+    },
+    {
+      "fullName": "lidge-jun/opencodex",
+      "evidence": "OpenCodex 以本地代理转换 Codex 的 Responses API 与其他提供商协议，处理流式输出、工具调用、推理信息和图像等交互。它提供网页仪表盘管理模型后端与路由，也支持部分编码客户端和账号连接管理，适合研究客户端与模型接口之间的适配。实际兼容性依赖客户端版本和目标模型，协议转换并不能让所有模型具备相同工具能力。仓库提供常规安装及容器部署路线，默认绑定本机；账号选择功能不保证规避服务额度或限制，接入还需遵守原服务条件。",
+      "reason": "现有类型“编码工具模型协议代理”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/lidge-jun/opencodex/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lightningpixel/modly",
+      "evidence": "Modly 是图像到三维网格的桌面应用，用户可在工作流中连接输入图像、网格生成和场景展示节点，再在生成页面运行。它支持从 GitHub 安装模型或处理扩展，已有网格还可在应用内平滑和减面。项目提供脚本调用正在运行桌面应用的 CLI，方便 Agent 查询能力、执行工作流和导出产物。它适合拥有本地 GPU 的三维创作者，模型能力和资源需求取决于扩展；macOS 仅面向 Apple Silicon，单独启动后端也不代表桌面桥接已经就绪。",
+      "reason": "现有类型“本地三维生成桌面应用”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/lightningpixel/modly/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Lightricks/ComfyUI-LTXVideo",
+      "evidence": "为 ComfyUI 中的 LTX 视频模型补充自定义节点与工作流的扩展。 当前LTX-2已进入ComfyUI核心，本仓库重点提供额外节点和范例，帮助用户组合文本或图像条件的视频生成过程。安装后节点出现在对应分类，所需模型可在首次使用时下载。它不是独立运行的视频生成器，需要与ComfyUI和匹配模型配合；不同工作流使用完整或蒸馏模型，资源与输出特征应分别确认，避免混用模型文件。",
+      "reason": "README 明确是 ComfyUI 自定义节点扩展，需要宿主。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/Lightricks/ComfyUI-LTXVideo/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "Lightricks/LTX-2",
+      "evidence": "LTX-2 仓库提供音视频生成模型的推理与 LoRA 训练入口，当前快速开始推荐 LTX-2.5，并按 transformer、编码器、VAE 和上采样器等组件下载权重。蒸馏管线用于较快试用，DFR 路线在同一蒸馏模型上加入细节适配与处理步骤，具有更高的时间和显存要求。项目支持量化及 CPU、磁盘卸载选项，但不同管线所需组件不同，不能混用完整和蒸馏模型。音画同步、生成细节与可重复性仍需检查，模型访问还须遵循发布方条款。",
+      "reason": "LTX 的主体为同步音视频生成，应与其他视频模型一起浏览。",
+      "changes": {
+        "category": "visual",
+        "related": [
+          "audio",
+          "models"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/Lightricks/LTX-2/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "liguodongiot/llm-action",
+      "evidence": "LLM Action 围绕大模型工程化整理原理与实战文章，从参数高效微调的方法比较，到分布式训练、推理服务、量化、剪枝和蒸馏。内容连接 PEFT、Megatron、DeepSpeed、TensorRT-LLM 等工具，并介绍中文知识、长文本和指令遵循等评估方向。它适合已有模型基础的工程师按问题寻找实践路径，先理解方法的资源和精度取舍，再进入对应框架。仓库是跨技术栈资料集合，不是一套统一环境的软件，各教程的硬件、版本和数据条件需独立核对。",
+      "reason": "现有类型“大模型工程实践资料”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/liguodongiot/llm-action/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lingfengQAQ/webnovel-writer",
+      "evidence": "面向长篇连载的 Claude Code 创作插件，组织设定、大纲、写章和一致性记忆。 系统在写作前检索资料，完成章节后记录新事实、审查设定与伏笔，再更新摘要、长期记忆和只读看板，重点是跨章节保持连贯，而非一次生成整本小说。作者同时说明后续版本形态仍在调整，旧CLI计划与新插件设计不能混为已交付能力。规模宣传不代表任何作品都能保持一致，情节质量和人物动机仍需要作者逐章审读。",
+      "reason": "README 明确为运行在 Claude Code 上的长篇创作插件。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/lingfengQAQ/webnovel-writer/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "liyupi/ai-guide",
+      "evidence": "AI Guide 面向希望理解和使用 AI 工具的中文读者，提供产品介绍、工具用法、概念、提示词和项目实践资料。其 Vibe Coding 路线覆盖基础上手、编码工具选择、实际项目、上下文与质量管理，以及需求、架构和产品运营等主题。读者可按章节学习，也可从导航中查找具体工具的参考方法。项目强调入门实践，但学习速度和产品收入取决于个人基础、需求与执行，README 的宣传承诺不应当作保证；教程内容与建站代码使用不同许可。",
+      "reason": "现有类型“中文 AI 编程与工具教程”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/liyupi/ai-guide/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lucidrains/DALLE-pytorch",
+      "evidence": "DALLE-pytorch 研究把文本与图像离散标记交给 Transformer 建模，提供训练和采样入口，并讨论使用不同预训练 VAE 或 VQGAN 编码图像。仓库展示社区在风景、鸟类、布局和服装数据上的小规模实验，便于理解数据、视觉词表和模型规模的关系。它是第三方研究复现，不是 OpenAI 当前图像服务的源码或等效产品。历史示例的环境、权重和训练条件需逐项核对，替换编码器会改变序列长度与效果，不能直接继承论文或服务的生成质量。",
+      "reason": "第三方 DALL-E 论文复现，不是官方可用模型服务。 DALL-E 论文复现以图像生成为目的，需归入图像与视频。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "visual",
+        "related": [
+          "models",
+          "devtools"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/lucidrains/DALLE-pytorch/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lucidrains/DALLE2-pytorch",
+      "evidence": "该仓库围绕 DALL-E 2 论文结构实现文本到图像研究管线，将 CLIP 表征、图像解码器和扩散先验连接起来。先验学习从文本嵌入预测图像嵌入，解码器再根据图像表征生成结果，代码同时提供相关训练和分布式工作。它适合研究图像表征与生成之间的关系，也能作为理解早期大规模文生图方案的材料。项目由社区复现，并非官方 DALL-E 服务或其完整权重；训练需要兼容 CLIP、数据与大量计算资源，README 的早期研究状态也不等同于当前模型排名。",
+      "reason": "现有类型“DALL-E 2 研究复现”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/lucidrains/DALLE2-pytorch/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lucidrains/imagen-pytorch",
+      "evidence": "imagen-pytorch 围绕 Imagen 论文的级联扩散路线，用预训练 T5 文本嵌入为多阶段去噪模型提供条件，并实现动态裁剪、噪声条件和较省内存的 U-Net 等组件。仓库提供训练接口和分布式训练集成，适合研究文本条件、低分辨率生成与上采样阶段的关系。它是社区复现，并非 Google 官方 Imagen 服务，README 的领先效果表述具有论文发表时的背景。自有训练的质量取决于数据和资源，架构实现相似并不意味着已经取得原论文模型和权重。",
+      "reason": "Imagen 论文的社区训练实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/lucidrains/imagen-pytorch/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lucidrains/vit-pytorch",
+      "evidence": "vit-pytorch 用 PyTorch 展示把图像切成 patch、送入 Transformer 并完成分类的结构，方便读者直接查看模型参数和代码。仓库还收录简化 ViT、可变分辨率路线、蒸馏及其他架构改进，适合对照论文开展小规模实验。用户可根据图像尺寸设置 patch、维度、层数和池化方式，再建立训练流程。它主要提供模型实现，预训练模型另有推荐项目；不同变体的尺寸和 PyTorch 版本要求不相同，不能将单个基线示例直接套到全部架构。",
+      "reason": "现有类型“视觉 Transformer 实现库”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/lucidrains/vit-pytorch/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "lutzroeder/netron",
+      "evidence": "Netron 是模型文件查看器，帮助开发者在图形界面中检查网络结构、层之间的连接及相关元数据。它支持 ONNX、TensorFlow Lite、PyTorch、Core ML 等常见格式，也为若干其他框架提供实验性支持。用户可使用浏览器版、桌面安装包或 Python 启动方式，打开自己导出的模型并定位不熟悉的节点。它适合模型交接和导出格式检查，但职责是查看结构，不能替代推理正确性测试或性能评估；对实验性格式，显示完整度还需结合模型和版本验证。",
+      "reason": "现有类型“模型结构可视化工具”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/lutzroeder/netron/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "MaaAssistantArknights/MaaAssistantArknights",
+      "evidence": "MAA 面向《明日方舟》玩家，提供日常任务自动化、公招界面识别和材料识别等能力，并可将材料信息导出给相关规划工具。项目支持多个客户端与服务器方向，也提供跨平台 CLI 和多语言接口，方便用户在自有环境集成任务。它属于特定游戏场景的视觉自动化工具，不是通用大模型或 Agent 框架。安装需按新手文档匹配游戏与连接环境，国际服部分功能测试不充分；代码、额外用户协议、Logo 和随包 DirectML 的权利范围也需要区分。",
+      "reason": "现有类型“游戏日常辅助工具”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/MaaAssistantArknights/MaaAssistantArknights/blob/dev-v2/README.md"
+      ]
+    },
+    {
+      "fullName": "MadsLorentzen/ai-job-search",
+      "evidence": "基于 Claude Code 的求职工作流，帮助评估职位、调整简历和准备面试。 用户复制仓库并填写个人档案后，可围绕职位信息组织匹配分析、求职信和面试练习。它把重复准备工作变成有结构的材料流程，适合持续跟进多个申请。作者分享的求职结果属于个人经历，不是采用项目后可复制的成功率。生成简历必须保持经历真实，职位条款与提交材料应人工检查，自动化准备也不等于已获得代为发送申请的授权。",
+      "reason": "以 Claude Code 为宿主的求职指令和个人材料工作流。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/MadsLorentzen/ai-job-search/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "mahseema/awesome-ai-tools",
+      "evidence": "这个仓库按用途收集 AI 产品、模型和开发工具，提供名称、简介及外部链接，覆盖聊天、写作、会议、语音与面向开发者的应用。维护者通过社区提交补充条目，并连接外部目录与新闻订阅，适合快速发现某个工作场景中的候选工具。它本身不提供统一运行环境，也没有在 README 中给出可复现的统一测评方法，所谓优秀或热门属于策展描述。部分产品名称与模型代际说明较旧，实际功能、开源状态和计费必须回到各产品官方页面核对。",
+      "reason": "现有类型“AI 工具资源目录”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/mahseema/awesome-ai-tools/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Marker-Inc-Korea/AutoRAG",
+      "evidence": "AutoRAG 当前主体是基于 Pi 定制的文档检索 Agent，由同一个已配置模型完成候选检索、原文阅读、证据判断和答案整理。它连接现有文档及 CLI 管理的数据源，并使用本地 BM25、向量或混合检索，记录反馈帮助后续查询。此前以流水线自动优化闻名的 Python AutoRAG 已移入 legacy，仍维护修复但新功能集中于新版本。选型时必须先区分这两条产品路线；新版本所说无需额外 API Key 依赖已有认证运行时，并不意味着没有模型和嵌入环境。",
+      "reason": "现有类型“文档检索 Agent”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/Marker-Inc-Korea/AutoRAG/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "meilisearch/meilisearch",
+      "evidence": "Meilisearch 帮助网站和应用建立面向用户的搜索体验，包含输入即搜、拼写容错、同义词、筛选、排序和地理检索，并可结合嵌入进行混合搜索。开发者通过 REST API 或 SDK 导入文档、配置索引和权限，再在前端展示结果。README 也列出对话搜索、个性化和分片复制等方向，但项目区分社区与企业功能，不能把所有列表能力视为 MIT 核心默认包含。部署和效果调优仍需结合数据规模、语言和嵌入服务，官方演示响应速度不能替代实际负载测试。",
+      "reason": "现有类型“应用搜索引擎”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。 核心交付是文档全文与向量混合搜索引擎，知识检索比泛开发工具更具体。",
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "knowledge",
+        "related": [
+          "devtools"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/meilisearch/meilisearch/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "MemTensor/MemOS",
+      "evidence": "MemOS 把长期记忆的写入、检索、编辑和删除组织为统一接口，支持文本、图像、工具轨迹及角色等信息，并以多个 memory cube 管理用户或项目之间的知识范围。项目提供异步摄入和自然语言反馈修正，也有面向 OpenClaw、Hermes 与 DeepSeek Harness 的本地或云插件。它适合需要跨任务保留上下文的助手，用户可以查看与修正记忆，而不是只依赖聊天窗口。不同插件部署路径及数据位置各异，宣传中的完成率和 token 节省来自特定评测，不能保证移植后的效果。",
+      "reason": "现有类型“Agent 长期记忆系统”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/MemTensor/MemOS/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "metalbear-co/mirrord",
+      "evidence": "mirrord 将本地代码与集群中的目标 Pod 连接起来，使开发者在本机运行和调试程序时，访问远端服务、环境变量及相关流量。它通过集群侧组件转发这些交互，并提供 VS Code、IntelliJ 和 CLI 入口，也可用于编码 Agent 验证修改。这样可以减少每次代码调整都重建部署的等待，但不会自动隔离所有共享数据写入。工具使用现有 kubeconfig 权限，并按配置需要额外 Linux capabilities；数据库分支、队列拆分等保护能力属于另行提供的产品范围。",
+      "reason": "现有类型“Kubernetes 本地调试工具”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/metalbear-co/mirrord/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/agent-framework",
+      "evidence": "Microsoft Agent Framework 为 Agent 和多 Agent 系统提供共同开发基础，支持顺序、并发、交接和群组协作等图式流程，并包含流式输出、检查点与人工参与。开发者可连接不同模型提供商，通过中间件组织请求处理，再用 OpenTelemetry 和 DevUI 观察运行。它也提供 YAML 声明及从 Semantic Kernel、AutoGen 迁移的资料，适合已有较复杂编排需求的团队。当前仓库主要覆盖 Python 与 .NET，Go SDK 位于独立仓库；实验室包和托管服务应与稳定核心分别核对。",
+      "reason": "现有类型“多语言 Agent 开发框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/agent-framework/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/ailab",
+      "evidence": "Microsoft AI Lab 以实验项目介绍人工智能应用，README 提及定制视觉、attnGAN、认知搜索、机器阅读理解和开发工具等方向。各实验结合演示、源码、短视频和问题说明，帮助开发者理解技术如何回应具体组织或工程需求。仓库正文属于简短的项目总览，未给统一部署环境，也不能据最新措辞推断所有实验持续更新。它更适合作为历史学习与发现入口，进入单项实验后应核对代码维护时间、云服务变化和运行条件，避免将多个展示项目当成一个完整 AI 平台。",
+      "reason": "多个 AI Lab 实验的学习发现入口，不是一个统一应用。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/ailab/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/AirSim",
+      "evidence": "AirSim 以 Unreal Engine 插件为主要形态模拟无人机和汽车，提供图像、姿态和控制 API，并支持部分飞控的软件在环与硬件在环实验。研究者可在场景中收集相机、深度和分割数据，也能切换纯计算机视觉模式，直接调整相机位置生成资料。项目适合测试感知、控制或强化学习算法，API 可通过多种语言访问。Unity 版本标为实验性，仿真结果向真实设备迁移仍有差异，环境构建、物理参数与传感设置都需要根据研究目标验证。",
+      "reason": "现有类型“无人载具仿真平台”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。 主要提供算法训练、传感器数据采集和测试仿真环境，而不是生成图像的终端应用。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "devtools",
+        "related": [
+          "visual",
+          "models"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/AirSim/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/JARVIS",
+      "evidence": "JARVIS 对应 HuggingGPT 的研究思路，由语言模型分析用户需求并拆分任务，再依据模型描述选择专家模型、执行并综合回答。仓库提供 CLI、Gradio 和部分中间结果 API，也包含相关任务评估与工具说明研究的入口。它适合研究多模态模型协作和早期 Agent 规划管线，支持本地、远程及混合配置。轻量配置不用下载所有专家模型，但依赖远程端点可用性；完整本地运行资源较大，README 的旧服务与模型示例需要结合当前接口重新验证。",
+      "reason": "现有类型“模型协作研究系统”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/JARVIS/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/onnxruntime",
+      "evidence": "ONNX Runtime 为来自不同机器学习框架的模型提供推理执行，通过图优化和硬件执行提供商适配 CPU、GPU 及其他加速环境。它支持深度学习与部分经典机器学习模型，也包含面向特定训练场景的加速路线，便于将模型从研究环境迁移到应用。跨平台能力依赖算子、模型格式、驱动与后端支持，不能假设导出的任何模型都可在所有设备等效运行。部署前应比较原框架与运行时输出，核对精度和性能；项目说明也提示可能收集使用数据，应查看对应配置。",
+      "reason": "跨平台模型推理及训练加速运行时，属于模型执行引擎。",
+      "changes": {
+        "kind": "模型与引擎"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/onnxruntime/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/playwright-mcp",
+      "evidence": "Playwright MCP 把 Playwright 浏览器能力开放给兼容的 Agent 客户端，主要通过页面无障碍树提供结构化状态，便于定位和操作元素。它适合持续保留浏览器状态的探索任务、交互调试与自动化测试，也提供连接现有浏览器会话的扩展路线。项目本身是浏览器工具接口，决策和任务判断仍由客户端模型负责。README 同时指出高频编码任务可比较 Playwright CLI 加技能方式，因为大量工具结构和网页快照会占用上下文；不同客户端的安装和会话配置需要分别检查。",
+      "reason": "现有类型“浏览器自动化 MCP 服务”描述了具体功能；按 README 所述交付形态规范到“MCP 服务”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "MCP 服务"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/playwright-mcp/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "microsoft/unilm",
+      "evidence": "UniLM 已发展为多项目研究集合，包含统一语言预训练、MiniLM、LayoutLM、BEiT、Kosmos、BitNet 等方向，覆盖模型架构、跨语言、文档和多模态表示。首页以研究主题连接论文、代码与相关仓库，帮助读者追踪方法脉络并找到目标实现。它适合模型研究和文档 AI 选型，但不是一个统一安装即可调用所有模型的产品，部分内容只是独立项目的入口。使用者应进入具体目录核对代码、权重、数据与训练条件，也不能把某个研究方向的许可推广到全部子项目。",
+      "reason": "现有类型“基础模型研究集合”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/microsoft/unilm/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "mindscale-noah/MindMemOS",
+      "evidence": "MindMemOS 提供长期记忆的存储与搜索层，覆盖用户偏好、项目事实和工具经验，并通过反馈、离线整理与 schema 学习持续调整内容。项目把经验记忆与技能候选关联，支持在交互前召回上下文、交互后写入记录，提供 HTTP API、Python SDK、CLI 及部分 Agent 插件。用户可选择官方云服务或本地部署，但本地仍需配置生成、嵌入与存储，重排序按需要启用。向量维度与 Qdrant 设置必须一致，跨 Agent 共享也应按项目范围管理，不能仅因记忆持久化就认为全部内容准确。",
+      "reason": "现有类型“跨 Agent 记忆层”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/mindscale-noah/MindMemOS/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "MineDojo/Voyager",
+      "evidence": "Voyager 研究语言模型驱动的开放式 Minecraft 智能体，核心由自动课程、可执行代码技能库和迭代反馈三部分构成。模型生成行为代码，依据游戏环境、执行错误和自检结果改进，再保存可复用技能，展示跨任务和新世界的迁移。它通过模型接口进行交互，不需要针对每项技能重新训练模型参数。论文里的探索成绩来自特定实验，实际复现还依赖游戏版本、模组和模型服务，不能将 Minecraft 技能直接视为真实物理世界的自主能力。",
+      "reason": "开放式 Minecraft Agent 的论文实验代码。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/MineDojo/Voyager/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "MITDeepLearning/introtodeeplearning",
+      "evidence": "这个仓库收录 MIT 深度学习导论的编程实验，课程视频和讲义位于项目网站。学习者可按自己的节奏完成实验，在 Google Colab 中打开 Notebook、选择 GPU，并补全标为 TODO 的代码，观察模型训练与应用结果。仓库同时提供辅助函数包，减少课程中重复的基础操作。它适合跟随课程建立实践理解，但实验竞赛的提交规则与开放学习是不同环节，云端 GPU 的实际可用性也需以账号状态为准；对外使用或改编材料要保留相应来源和许可信息。",
+      "reason": "现有类型“MIT 深度学习课程实验”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/MITDeepLearning/introtodeeplearning/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "mlc-ai/web-llm",
+      "evidence": "WebLLM 把模型推理放在浏览器中执行，通过 WebGPU 使用本地设备算力，并提供接近 OpenAI 风格的聊天接口。开发者可构建流式聊天、结构化 JSON 和浏览器扩展，使用 Worker 减少对界面的阻塞，也能按 MLC 格式接入定制模型。它适合不希望每次请求都依赖服务器推理的 Web 应用，但首次仍要下载模型文件，显存、浏览器和缓存条件会限制可运行规模。实际支持的是配置列表中的模型子集，函数调用在 README 中仍标为开发中，不能理解为完整 API 功能等价。",
+      "reason": "现有类型“浏览器端语言模型引擎”描述了具体功能；按 README 所述交付形态规范到“模型与引擎”，具体用途保留在标签与介绍。 WebLLM 直接在 WebGPU 上执行语言模型推理，应属于模型与推理。",
+      "changes": {
+        "kind": "模型与引擎",
+        "category": "models",
+        "related": [
+          "devtools"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/mlc-ai/web-llm/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "mlfoundations/open_clip",
+      "evidence": "OpenCLIP 从开放 CLIP 实现发展为图像、文本及部分音频方向的训练库，用户可加载预训练编码器，比较图文相似度或进行零样本分类。当前 main 还加入可变分辨率、captioning 和多种新模型族，并重构训练任务、批次结构及分布式支持。它适合多模态表示研究，但训练栈变动较大，README 要求希望保留旧稳定接口的用户固定 v3 分支或三点系列版本。推理兼容目标不能替代实际检查，权重对应的预处理、文本编码及上游许可仍需逐项确认。",
+      "reason": "现有类型“开放 CLIP 与多模态训练库”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/mlfoundations/open_clip/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "modelcontextprotocol/python-sdk",
+      "evidence": "官方 MCP Python SDK 帮助开发者把工具、资源和提示词开放给 AI 客户端，也可编写连接其他 MCP 服务的客户端。它支持 stdio、Streamable HTTP 与 SSE，利用 Python 类型和函数说明组织接口，附加 CLI 可用于运行、开发和安装服务。当前 README 明确稳定线已经是 v2，包含协议支持和架构重写；旧 v1 仍维护关键修复，但直接安装 mcp 会进入新版。它适合 Python 工具集成，升级前需查看破坏性变更，协议统一也不代替服务自身的权限与业务验证。",
+      "reason": "现有类型“官方 MCP Python SDK”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/modelcontextprotocol/python-sdk/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "modelcontextprotocol/servers",
+      "evidence": "MCP Servers 仓库存放 Model Context Protocol 的一组参考服务实现，帮助开发者理解如何把工具、资源与数据暴露给支持 MCP 的 AI 客户端。当前维护范围是一小批由 MCP 指导组维护的示例，包括文件、Git、网页获取、时间、记忆与协议测试服务；完整的公开服务发现应使用 MCP Registry。开发者可以连接其中一个示例，观察客户端如何发现并调用工具，再以官方 SDK 构建自己的服务。仓库明确把这些实现定位为教学参考，历史上列出的部分服务已经归档或交给其他维护方。",
+      "reason": "仓库主体是 MCP 官方参考服务器实现；这些服务用于教学和 SDK 示范，不是自主 Agent。 参考工具服务器本身没有自主规划循环；主要服务 MCP 开发与教学。",
+      "changes": {
+        "kind": "MCP 服务",
+        "category": "devtools",
+        "related": [
+          "learning",
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/modelcontextprotocol/servers/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "modelscope/ms-swift",
+      "evidence": "MS-SWIFT 由 ModelScope 社区提供，围绕继续预训练、监督微调、偏好优化和强化学习等任务组织模型适配与数据流程。它支持参数高效与全参数训练，集成分布式并行、量化和多种推理后端，也能处理嵌入、重排序及多模态任务。开发者可选受支持模型与数据模板构建实验，再开展评估和部署。项目覆盖面广，但不同硬件、模型和算法组合有独立限制；README 中特定模型的最低显存或加速比例不能直接用于估算所有任务的资源。",
+      "reason": "现有类型“大模型微调部署框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。 主体是模型训练、微调和强化学习基础框架，而不是一个基础模型。",
+      "changes": {
+        "kind": "框架 / SDK",
+        "category": "devtools",
+        "related": [
+          "models"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/modelscope/ms-swift/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Mooler0410/LLMsPracticalGuide",
+      "evidence": "这份指南基于大模型实践综述整理资源，通过演化树展示语言模型之间的发展关系，并按模型结构、提示方法、开放对齐工作和使用限制组织链接。仓库还发布图示的 PowerPoint 源文件，便于研究和教学中理解模型谱系。它适合建立知识地图后回到论文与模型卡进一步学习，并非实时全面的产品目录。部分条目与更新说明来自早期大模型阶段，引用时需核对时间；模型和训练数据的商业、研究限制也必须以原始许可为准。",
+      "reason": "现有类型“大模型实践资源与演化图”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/Mooler0410/LLMsPracticalGuide/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "morluto/jacobian",
+      "evidence": "Jacobian 为 Agent 提供可搜索、可执行并带类型约定的数学操作。Agent 先用 math.find 找到满足需求的操作或查看其契约，再用 math.run 执行，将结构化结果继续组合成下一步推理。项目刻意把工具划分为语义范围较小的数学动作，而不是预先规定整个求解策略，让模型决定如何连接这些动作。底层组合 SymPy、NetworkX、Z3、Python-FLINT 等能力，并提供 MCP、命令行和 Python 接口。结果会标明精确性、近似和不完整性，适合构建能核对中间数学步骤的研究工具链。",
+      "reason": "现有类型“开发工具”描述了具体功能；按 README 所述交付形态规范到“MCP 服务”，具体用途保留在标签与介绍。 提供确定性的数学原语工具服务器，Agent 如何解题由客户端决定。",
+      "changes": {
+        "kind": "MCP 服务",
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/morluto/jacobian/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "mudler/LocalAI",
+      "evidence": "LocalAI 提供一个较小核心，将 llama.cpp、vLLM、Whisper、MLX 等推理引擎作为独立后端按模型需要下载。它用统一 API 组织文本、视觉、语音、图片和视频任务，并包含用户认证、配额以及工具型 Agent 能力，方便应用连接自有基础设施。开发者可以按硬件选择 CPU 或不同 GPU 后端，而不必安装所有组件。宣传中的无需 GPU 表示存在 CPU 路径，并不保证任意模型都能在普通设备高效运行；兼容接口与每个后端支持的功能仍需实测。",
+      "reason": "现有类型“本地多模态推理服务”描述了具体功能；按 README 所述交付形态规范到“模型与引擎”，具体用途保留在标签与介绍。 核心是统一多种后端的本地多模态推理服务，应放在模型与推理。",
+      "changes": {
+        "kind": "模型与引擎",
+        "category": "models",
+        "related": [
+          "devtools",
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/mudler/LocalAI/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "mukul975/Anthropic-Cybersecurity-Skills",
+      "evidence": "面向 Agent 的社区网络安全技能库，按安全领域与多个框架整理流程。 条目将安全分析任务写成结构化技能，并映射ATT&CK、NIST等知识框架，供兼容平台学习或调用。它覆盖防御、评估以及具有双重用途的研究内容，适合建立安全任务索引和检查流程。项目明确说明与Anthropic公司无官方关系，名称不能视为认证；技能数量和“生产级”宣传也不代表经过统一审计，应仅在自有或明确授权环境中验证。",
+      "reason": "社区安全技能指令库，不是教程课程或独立安全工具。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/mukul975/Anthropic-Cybersecurity-Skills/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "multica-ai/multica",
+      "evidence": "Multica 将编码智能体作为可分派工作的成员放入项目和任务看板，关联需求、运行日志、决策与代码差异，完成后交由人审阅。它支持多种已有 CLI，运行由用户控制的机器或云主机承载，并提供团队分组、技能复用、周期任务及用量查看。平台重点是把分散终端中的工作连接到同一任务背景，模型本身仍来自所选助手。代码运行在自有机器不意味着模型调用绝不发送内容，数据流与权限仍取决于各 CLI 配置；自动重试和审阅流程也需用实际任务验证。",
+      "reason": "任务与差异审查面向软件开发，平台编排的是已有编码 Agent。",
+      "changes": {
+        "category": "coding",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/multica-ai/multica/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "mvanhorn/last30days-skill",
+      "evidence": "Last30Days 是面向近期信息检索的 Agent 技能，围绕 Reddit、Hacker News、GitHub、视频和社交平台等来源并行搜索，再根据内容与互动信号组织摘要。用户可补充自己的 API Key 或浏览器会话解锁更多来源，适合发现社区实践、近期发布与产品反馈。项目将当前运行规范放在具体技能目录中，README 仅概述流程。平台互动量反映关注度，不能直接证明内容真实或具有代表性；来源可用性、时间范围和认证条件各异，应在结果中保留原始链接与采集边界。",
+      "reason": "现有类型“近期跨平台研究技能”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。 供 Agent 执行近期多来源研究的技能；不以教授 AI 技术为主要用途。",
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/mvanhorn/last30days-skill/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "n8n-io/self-hosted-ai-starter-kit",
+      "evidence": "这个 n8n 启动套件用 Docker Compose 预配置服务网络与存储，把低代码工作流、模型运行、向量数据库和关系数据库组合起来。用户可在 n8n 中打开示例聊天流程，并选择 Ollama 和 Qdrant 建立本地知识任务，适合快速验证文档分析或工具型助手原型。它提供不同设备的运行建议，Apple Silicon 若希望使用 GPU，通常需在宿主机运行 Ollama 再从容器连接。项目明确不是充分优化的生产部署，正式使用还要结合真实权限、持久化和维护需求调整。",
+      "reason": "现有类型“本地 AI 工作流启动模板”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/n8n-io/self-hosted-ai-starter-kit/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "naptha/tesseract.js",
+      "evidence": "Tesseract.js 用 WebAssembly 包装 Tesseract 识别引擎，帮助 JavaScript 应用从图片中提取文字。它可通过 npm、ESM 或脚本标签接入浏览器，也可在 Node.js 服务中创建 worker 处理多张图像。调用方可以选择输出文字或额外结构，并在批处理时复用 worker 降低重复初始化开销。项目不修改核心识别模型，准确率仍受图片清晰度与语言数据影响；它明确不直接支持 PDF，文档页面应先转换为图像或选择另外的文档处理库。",
+      "reason": "现有类型“JavaScript OCR 库”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/naptha/tesseract.js/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "nerfstudio-project/nerfstudio",
+      "evidence": "Nerfstudio 为神经辐射场研究提供可组合组件，把创建、训练和测试三维场景的步骤连接起来。用户可从标准场景与推荐模型入门，在训练中使用 Web 查看器观察结果，之后替换个人数据或实现新的模型组件。项目同时维护教程与社区方法入口，适合希望理解 NeRF 结构而不重复搭建基础设施的研究者。默认安装依赖 NVIDIA CUDA、PyTorch 和 tiny-cuda-nn，远程查看需要配置端口转发，模型与数据的规模也会影响训练时间与资源。",
+      "reason": "现有类型“NeRF 研究与训练平台”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "netdata/netdata",
+      "evidence": "Netdata 是面向系统、容器、数据库和服务的实时监控平台，通过自动发现采集器生成细粒度指标与可视化，并使用机器学习辅助发现异常。用户可在单节点界面分析性能，也能配置 Parent 汇总更长时间的数据与告警，或接入云端管理多节点。它适合排查基础设施变化，AI 能力是监控体系的一部分，而不是通用聊天助手。自动发现不能覆盖所有服务配置，告警发送也需要相应渠道条件；性能和资源占用应在自己的节点验证。",
+      "reason": "现有类型“基础设施可观测平台”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/netdata/netdata/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "neuml/txtai",
+      "evidence": "txtai 以结合向量索引、图网络与关系数据的嵌入数据库为基础，支持语义检索、SQL 查询和多模态索引。开发者可添加问答、摘要、翻译或转录流水线，再用工作流与 Agent 组合多个步骤，构建知识问答及信息处理应用。它提供 Web 和 MCP API，以及其他语言的接入方式，可本地运行或容器化扩展。框架默认设置方便试用，但模型、存储及可选依赖仍需按任务选择；使用远端模型时，本地部署框架也不代表推理内容完全留在本机。",
+      "reason": "现有类型“语义搜索与模型工作流框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/neuml/txtai/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "nickjvandyke/opencode.nvim",
+      "evidence": "opencode.nvim 保留 Neovim 的操作方式，通过 OpenCode 的现有 TUI 与 API 建立编程协作。用户可将光标、选区或缓冲区引用插入提示词，选用审查和解释等常用提示，并在外部修改后更新编辑器内容。插件可以连接已有服务器，也能启动集成终端实例，适合希望在 Vim 工作流中调用 OpenCode 的开发者。它不包含模型引擎，仍依赖运行中的 OpenCode；服务需要打开端口，而引用的文件由 OpenCode 从磁盘读取，未保存的编辑未必被看到。",
+      "reason": "现有类型“Neovim 的 OpenCode 插件”描述了具体功能；按 README 所述交付形态规范到“技能 / 插件”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/nickjvandyke/opencode.nvim/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "nidhinjs/prompt-master",
+      "evidence": "帮助用户把需求整理成更明确提示词的 Claude 技能，可面向不同 AI 工具。 Prompt Master把模糊任务转为包含目标、上下文和约束的指令，适合在编程、写作、图像或自动化工具前进行需求梳理。它通过技能方式使用，而不是改变目标模型本身。README的“不浪费Token”及一次成功等表述属于宣传，好的提示仍可能遇到能力、信息和工具限制；用户需要检查是否加入未经提供的假设，再用结果反馈迭代。",
+      "reason": "README 明确 A Claude skill，用于整理提示词。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/nidhinjs/prompt-master/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NikoDemon80/ComfyUI-H3-Motion-Context",
+      "evidence": "ComfyUI-H3-Motion-Context 试图通过前一片段尾部的潜变量和音频窗口约束下一段，减少普通像素解码再编码带来的颜色与清晰度变化，并让声音从接点之前的上下文延续。节点包包括裁剪、潜变量保存加载和接缝检测，启动渲染前会检查与当前 ComfyUI 实现的假设是否一致。它面向片段链式生成，单纯锚定图片可能直接使用现有 H3 节点即可。跨段运动和音频连续性仍需逐段验证，README 的连续效果不是无限拼接质量保证，版本变化也可能使节点拒绝运行。",
+      "reason": "ComfyUI 节点包，需要 ComfyUI 与 H3 模型工作流。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/NikoDemon80/ComfyUI-H3-Motion-Context/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NirDiamant/agents-towards-production",
+      "evidence": "这份教程集按 Agent 产品需要的组件组织实践，涵盖状态工作流、向量记忆、搜索、工具授权、浏览器操作、评估、可观测和部署。每个主题位于独立目录，以 Notebook 或代码演示具体接入过程，帮助读者按现有应用缺口补充能力。它适合已经做过基础 Agent、准备理解工程落地环节的开发者。示例涉及不同厂商和框架，运行条件、费用和服务可用性并不统一，所谓生产级是教程目标，不能替代针对实际应用的负载、权限和质量验证。",
+      "reason": "现有类型“Agent 工程实践教程”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/NirDiamant/agents-towards-production/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "nl8590687/ASRT_SpeechRecognition",
+      "evidence": "ASRT 基于 TensorFlow Keras 组织中文语音识别，结合卷积网络、时序结构、注意力与 CTC 等方法，提供训练配置与预训练服务端发布包。用户可以采用默认中文语料组合，也可先转换数据格式加入自有语料，再通过 RPC SDK 或 REST API 接入应用。它适合学习中文语音识别部署和模型训练，但不同模型版本可能需要修改代码引用，数据配置也必须与实际下载一致。README 支持 Linux 训练与推理，Windows 仅推理，完整训练还要求对应 GPU 与软件版本。",
+      "reason": "现有类型“中文语音识别系统”描述了具体功能；按 README 所述交付形态规范到“模型与引擎”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "模型与引擎"
+      },
+      "sourceUrls": [
+        "https://github.com/nl8590687/ASRT_SpeechRecognition/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "nltk/nltk",
+      "evidence": "NLTK 将自然语言处理研究与教学所需的 Python 模块、数据集和教程集中在同一生态中，适合通过可读代码和语料学习语言处理方法。仓库本身是工具包源码入口，详细用法与教材位于官方文档站，用户应根据具体任务选取模块和所需数据，而不是默认下载全部材料。当前 README 列出支持的 Python 范围，并明确代码、文档和各语料使用不同许可。它属于研究开发基础工具，所附资源不等于已训练的通用聊天模型，商业使用语料前尤其需要阅读各自来源说明。",
+      "reason": "NLTK 是供 Python 调用的 NLP 模块工具包。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/nltk/nltk/blob/develop/README.md"
+      ]
+    },
+    {
+      "fullName": "nndl/nndl",
+      "evidence": "NNDL 仓库维护邱锡鹏《神经网络与深度学习》系列的阅读入口、章节资料和勘误。通识版通过故事与直观例子建立认识，第二版则系统讨论神经网络、优化、Transformer、图网络、强化学习和大模型，并可配合 PyTorch 实践。读者可以按数学基础选择版本，先建立直觉再深入算法。当前电子稿仍在出版前修订阶段，引用或反馈需要注明版本和下载日期；第一版资料保留在独立分支，第二版 LaTeX 源码并未公开在本仓库中。",
+      "reason": "现有类型“神经网络中文教材”描述了具体功能；按 README 所述交付形态规范到“学习资源”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "学习资源"
+      },
+      "sourceUrls": [
+        "https://github.com/nndl/nndl/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "nomic-ai/gpt4all",
+      "evidence": "GPT4All 提供面向日常电脑的本地大模型应用，用户下载桌面客户端后选择模型即可体验，不强制依赖云 API 或独立 GPU。项目包含本地聊天界面、模型获取入口和 LocalDocs 资料聊天，也提供围绕 llama.cpp 实现的 Python 客户端用于程序集成。它适合重视本机处理、希望减少模型服务配置的用户。不同系统和处理器有明确支持条件，实际可运行的模型大小与速度取决于内存和硬件，应先用适合设备的小模型验证，而不是把“普通电脑可运行”理解为所有模型都流畅。",
+      "reason": "本地模型运行与 LocalDocs 文档问答是明确的产品能力，应标出关联。",
+      "changes": {
+        "related": [
+          "models",
+          "knowledge"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/nomic-ai/gpt4all/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "nullclaw/nullclaw",
+      "evidence": "NullClaw 将个人 AI 助手的运行基础整理为原生 Zig 程序，强调小型二进制和可替换的子系统接口，用户通过配置选择模型及消息渠道。项目提供中英文操作指南、交互式初始化和容器流程，也展示将策略放入 WebAssembly 的边缘运行方向。它适合资源受限设备或希望研究原生 Agent 基础设施的开发者。程序体积与启动数据是特定构建的结果，不包含远端模型成本或全部系统资源；源码当前要求精确 Zig 版本，某些渠道还需要额外工具。",
+      "reason": "现有类型“Zig 轻量助手基础设施”描述了具体功能；按 README 所述交付形态规范到“应用 / 工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "应用 / 工具"
+      },
+      "sourceUrls": [
+        "https://github.com/nullclaw/nullclaw/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "Nutlope/hallmark",
+      "evidence": "面向网页设计的 Agent 技能，根据需求选择结构、主题并进行自检。 Hallmark先从设计简报决定页面宏观组织，再配置视觉主题或自定义方向，输出可独立运行的HTML与CSS。它通过检查规则和生成前自评减少重复的默认布局，适合辅助做出更贴合内容的页面。审美和可用性仍需结合真实用户与设备验证，主题数量或反模板口号不能保证每次结果优秀，也不能替代无障碍和交互测试。",
+      "reason": "README 明确是网页设计 skill，依赖 Claude Code 等宿主。",
+      "changes": {
+        "kind": "技能 / 插件"
+      },
+      "sourceUrls": [
+        "https://github.com/Nutlope/hallmark/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NVIDIA-NeMo/Guardrails",
+      "evidence": "NeMo Guardrails 在应用与语言模型之间加入可编程规则，用于约束话题、回复形式、对话路径和工具使用，也可配合知识问答进行输出检查。开发者能够把认证、支持流程或其他业务要求表达成可维护配置，并根据场景选择不同保护机制。它提供研究说明与评估入口，便于理解规则实际覆盖范围。保护效果取决于模型、配置及攻击方式，README 的示例评估不能保证所有提示注入或越界行为都被阻止；接入后仍需用自己的正常和异常对话测试。",
+      "reason": "README 明确为应用添加 programmable guardrails 的 library/toolkit。 给模型应用配置规则与保护机制的开发库，不是自主 Agent 系统。",
+      "changes": {
+        "kind": "框架 / SDK",
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/NVIDIA-NeMo/Guardrails/blob/develop/README.md"
+      ]
+    },
+    {
+      "fullName": "NVIDIA-NeMo/Speech",
+      "evidence": "NeMo Speech 为 PyTorch 开发者提供语音模型代码、训练和预训练检查点，覆盖自动语音识别、文本转语音及语音语言模型。仓库拆分后转向音频和相关多模态任务，当前三点版本不再等同于早期包含更多模态的 NeMo 总仓库。用户可用官方锁定环境或安装到满足最低条件的现有 PyTorch 栈，选择适用模型开展推理和定制。不同模型的语言、流式延迟与显存条件各异，README 发布指标来自指定硬件，不应直接作为本地并发能力承诺。",
+      "reason": "现有类型“语音模型训练框架”描述了具体功能；按 README 所述交付形态规范到“框架 / SDK”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "框架 / SDK"
+      },
+      "sourceUrls": [
+        "https://github.com/NVIDIA-NeMo/Speech/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NVIDIA/NemoClaw",
+      "evidence": "NemoClaw 是让受支持 Agent 在 OpenShell 沙箱内运行的参考栈，提供引导安装、推理提供商配置、网络策略、集成、快照与生命周期命令。用户可以选择 OpenClaw、Hermes 或 LangChain Deep Agents 等路线，再按宿主机条件部署。它适合评估工具型 Agent 的隔离运行方式，但只是配置与运行基础，不能保证 Agent 输出或任意外部工具天然可靠。项目仍为 alpha，平台预设与贡献者开发流程有所区别，正式使用需遵照当前先决条件并检查沙箱实际行为。",
+      "reason": "现有类型“沙箱 Agent 参考栈”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。 主要安装配置沙箱、网络策略和运行时；自主 Agent 来自外部受支持项目。",
+      "changes": {
+        "kind": "开发工具",
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/NVIDIA/NemoClaw/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NVIDIA/pix2pixHD",
+      "evidence": "pix2pixHD 提供高分辨率图像到图像转换的 PyTorch 实现，典型任务是将街景语义标签生成照片式图像，或根据面部标签合成人像。仓库包含 Cityscapes 样例、预训练模型使用与训练脚本，并将中间结果保存为网页供查看。它适合复现条件 GAN 研究，所需显存随分辨率和精度变化，完整数据集还要从原站注册获取。README 明确表示多 GPU 训练脚本未经过作者测试，因此不能将其视为已验证路线；生成画面细节也不一定忠于真实场景。",
+      "reason": "pix2pixHD 论文的作者 PyTorch 参考实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/NVIDIA/pix2pixHD/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "NVIDIA/SkillSpector",
+      "evidence": "SkillSpector 可读取仓库、网页、压缩包、目录或单文件，对技能内容进行静态分析，并可选用模型做语义评估。它识别提示注入、数据外传、权限、依赖和工具使用等模式，输出终端、JSON、Markdown 或 SARIF 报告，支持基线抑制已知误报。项目适合在安装技能前辅助审查，也可嵌入 CI 或 MCP 工具。风险评分基于检测规则而非安全保证，网络漏洞查询有离线回退，文件和归档限制还会影响覆盖范围，读报告时应检查分析是否完整。",
+      "reason": "现有类型“Agent 技能扫描工具”描述了具体功能；按 README 所述交付形态规范到“开发工具”，具体用途保留在标签与介绍。",
+      "changes": {
+        "kind": "开发工具"
+      },
+      "sourceUrls": [
+        "https://github.com/NVIDIA/SkillSpector/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NVlabs/instant-ngp",
+      "evidence": "通过多分辨率哈希编码训练神经图形表示，支持 NeRF、SDF、图像与体数据。 instant-ngp使用tiny-cuda-nn训练和渲染紧凑网络，让照片场景或其他图形数据形成可查询的神经表示。它适合研究场景重建和实时可视化，也提供对应显卡的预编译入口。速度与训练效果依输入、GPU及设置而变，宣传中的秒级例子不能外推到任意场景；商业用途与代码、模型相关条款应按项目说明核对。",
+      "reason": "多分辨率哈希编码神经图形研究实现。",
+      "changes": {
+        "kind": "研究实现"
+      },
+      "sourceUrls": [
+        "https://github.com/NVlabs/instant-ngp/blob/master/README.md"
+      ]
+    },
+    {
+      "fullName": "NVlabs/Sana",
+      "evidence": "SANA 仓库汇集高分辨率图像和视频生成研究，包含 SANA、Sprint、Video、世界模型与流式编辑等多条路线，各自提供不同训练和推理配置。图像路线以效率导向的扩散 Transformer 为核心，视频后续版本则涉及图文条件、短片生成及相关注意力设计。它适合研究生成效率和不同模态任务，但各模型的时长、分辨率、控制方式与发布状态不同，不能把整个家族能力归于一个权重。README 的速度数字来自特定硬件与实验，实际部署应按所选模型文档验证。",
+      "reason": "发布 SANA 生成模型家族的训练、推理和权重入口。",
+      "changes": {
+        "kind": "模型与引擎"
+      },
+      "sourceUrls": [
+        "https://github.com/NVlabs/Sana/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "NVlabs/ToolOrchestra",
+      "evidence": "ToolOrchestra 通过强化学习训练编排器，让其在推理与调用工具之间交替，根据任务选择搜索、代码工具或专门模型。训练同时考虑完成结果、效率和偏好奖励，并提供合成环境及工具任务的数据流程。仓库发布代码、训练数据、检查点和多个评测入口，适合研究如何把不同模型组成可学习的执行系统。公开性能与成本比较依赖特定工具集和服务配置，复现需要准备对应端点、数据与计算环境，不能仅用编排模型参数量估算整个系统成本。",
+      "reason": "现有类型“工具编排强化学习框架”描述了具体功能；按 README 所述交付形态规范到“研究实现”，具体用途保留在标签与介绍。 主体是训练工具编排器的强化学习框架和评估实验，不是通用模型运行服务。",
+      "changes": {
+        "kind": "研究实现",
+        "category": "devtools",
+        "related": [
+          "agents",
+          "models"
+        ]
+      },
+      "sourceUrls": [
+        "https://github.com/NVlabs/ToolOrchestra/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "ollama/ollama",
+      "evidence": "Ollama 把模型运行、模型管理和应用连接集中到一套本地工具及服务接口中。用户先安装运行环境、从模型库选择模型，再通过交互入口体验生成效果，或让自己的程序调用 REST API。其他聊天界面、知识库产品和编程 Agent 可以接到 Ollama，复用同一模型服务，因此它常作为个人 AI 工具组合中的模型运行层。项目提供桌面系统安装与官方 Docker 镜像，并列出多种应用集成。真正能运行的模型规模、上下文长度与速度取决于电脑资源和模型配置，应从适合机器的小模型开始。",
+      "reason": "管理并执行本地模型、暴露服务 API 的运行引擎。",
+      "changes": {
+        "kind": "模型与引擎"
+      },
+      "sourceUrls": [
+        "https://github.com/ollama/ollama/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "onnx/onnx",
+      "evidence": "定义机器学习模型交换格式、计算图和算子标准的开放项目。 ONNX让不同框架与硬件工具围绕共同模型表示协作，主要关注推理所需能力。仓库提供Python包、图操作工具、算子定义和中间表示规范，可用于检查或转换导出的模型。它本身不是运行所有模型的推理引擎，执行仍需兼容运行时；导出后是否等价取决于算子版本、动态形状和后端支持，必须比较输入输出。",
+      "reason": "定义模型表示、计算图与算子标准，本身不是推理运行时。",
+      "changes": {
+        "kind": "协议 / 标准"
+      },
+      "sourceUrls": [
+        "https://github.com/onnx/onnx/blob/main/README.md"
+      ]
+    },
+    {
+      "fullName": "op7418/CodePilot",
+      "reason": "多模型桌面客户端是终端用户应用。",
+      "sourceUrls": [
+        "https://github.com/op7418/CodePilot/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具"
+      }
+    },
+    {
+      "fullName": "op7418/guizang-ppt-skill",
+      "reason": "交付 SKILL.md 和网页演示生成流程，需要宿主 Agent。",
+      "sourceUrls": [
+        "https://github.com/op7418/guizang-ppt-skill/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "op7418/Humanizer-zh",
+      "reason": "交付中文写作检查技能文件。 主用途为中文文本编辑，与编程无关；宿主使用 Claude Code 不构成编程分类。",
+      "sourceUrls": [
+        "https://github.com/op7418/Humanizer-zh/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": []
+      }
+    },
+    {
+      "fullName": "open-jarvis/OpenJarvis",
+      "reason": "提供本地 Agent 原语、评估与学习循环框架。",
+      "sourceUrls": [
+        "https://github.com/open-jarvis/OpenJarvis/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "open-mmlab/mmagic",
+      "reason": "提供统一模型配置、训练及评估接口的图像视频工具箱。",
+      "sourceUrls": [
+        "https://github.com/open-mmlab/mmagic/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "openai/openai-agents-python",
+      "reason": "Python 多 Agent 工作流 SDK。",
+      "sourceUrls": [
+        "https://github.com/openai/openai-agents-python/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "openJiuwen-ai/jiuwenswarm",
+      "reason": "可通过网页和终端直接操作的多 Agent 系统。",
+      "sourceUrls": [
+        "https://github.com/openJiuwen-ai/jiuwenswarm/blob/develop/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具"
+      }
+    },
+    {
+      "fullName": "OpenRLHF/OpenRLHF",
+      "reason": "提供分布式强化学习训练管线。 主要用途是 RLHF 训练和后训练开发，应归训练开发工具。",
+      "sourceUrls": [
+        "https://github.com/OpenRLHF/OpenRLHF/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK",
+        "category": "devtools",
+        "related": [
+          "models",
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "OpenSenseNova/SenseNova-Skills",
+      "reason": "每个目录是按 Agent Skills 规范交付的办公技能。",
+      "sourceUrls": [
+        "https://github.com/OpenSenseNova/SenseNova-Skills/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "oraios/serena",
+      "reason": "通过 MCP 向编码客户端提供符号检索和重构工具。",
+      "sourceUrls": [
+        "https://github.com/oraios/serena/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "MCP 服务"
+      }
+    },
+    {
+      "fullName": "OthmanAdi/planning-with-files",
+      "reason": "交付持久规划技能及生命周期钩子。 主要服务编码 Agent 的任务规划，相关学习分类无依据。",
+      "sourceUrls": [
+        "https://github.com/OthmanAdi/planning-with-files/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "oumi-ai/oumi",
+      "reason": "核心是模型开发、训练和评估框架，不是模型权重。",
+      "sourceUrls": [
+        "https://github.com/oumi-ai/oumi/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "owainlewis/awesome-artificial-intelligence",
+      "reason": "AI 工程课程、图书和实践资源目录。",
+      "sourceUrls": [
+        "https://github.com/owainlewis/awesome-artificial-intelligence/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "学习资源"
+      }
+    },
+    {
+      "fullName": "PaddlePaddle/models",
+      "reason": "交付飞桨模型与开发套件入口，保留历史模型代码。",
+      "sourceUrls": [
+        "https://github.com/PaddlePaddle/models/blob/release/2.4/README.md"
+      ],
+      "changes": {
+        "kind": "模型与引擎"
+      }
+    },
+    {
+      "fullName": "PaddlePaddle/PaddleX",
+      "reason": "统一模型训练、调用和部署的低代码工具。",
+      "sourceUrls": [
+        "https://github.com/PaddlePaddle/PaddleX/blob/release/3.7/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "pascalorg/editor",
+      "reason": "主要交付可交互三维建筑编辑器。",
+      "sourceUrls": [
+        "https://github.com/pascalorg/editor/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具"
+      }
+    },
+    {
+      "fullName": "petergyang/no-ai-slop",
+      "reason": "交付写作审查规则及宿主技能/插件包。 写作风格编辑属于 AI 应用，未交付独立自动化工作流。",
+      "sourceUrls": [
+        "https://github.com/petergyang/no-ai-slop/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": []
+      }
+    },
+    {
+      "fullName": "piskvorky/gensim",
+      "reason": "Python 主题模型、文本向量和相似检索开发库。",
+      "sourceUrls": [
+        "https://github.com/piskvorky/gensim/blob/develop/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "pliang279/awesome-multimodal-ml",
+      "reason": "多模态论文、数据集和课程资料目录。 清单涵盖广泛多模态研究，单列 audio 误导范围，以 models 表达研究对象。",
+      "sourceUrls": [
+        "https://github.com/pliang279/awesome-multimodal-ml/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "学习资源",
+        "related": [
+          "models"
+        ]
+      }
+    },
+    {
+      "fullName": "PointCloudLibrary/pcl",
+      "reason": "C++ 点云与几何处理基础库。",
+      "sourceUrls": [
+        "https://github.com/PointCloudLibrary/pcl/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "Portkey-AI/gateway",
+      "reason": "模型路由和重试网关不执行模型推理，主要是应用开发基础设施。",
+      "sourceUrls": [
+        "https://github.com/Portkey-AI/gateway/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "devtools",
+        "related": []
+      }
+    },
+    {
+      "fullName": "postgresml/postgresml",
+      "reason": "交付 PostgreSQL 的 pgml 扩展，非独立数据库或模型。",
+      "sourceUrls": [
+        "https://github.com/postgresml/postgresml/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "PrefectHQ/fastmcp",
+      "reason": "声明 Python 函数后构建 MCP 服务和客户端的应用框架。",
+      "sourceUrls": [
+        "https://github.com/PrefectHQ/fastmcp/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "princeton-nlp/tree-of-thought-llm",
+      "reason": "思维树论文代码、提示与输出轨迹，不是入门教程库。 研究 LLM 分支推理和搜索，应归模型研究而非教学资源。",
+      "sourceUrls": [
+        "https://github.com/princeton-nlp/tree-of-thought-llm/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "研究实现",
+        "category": "models",
+        "related": []
+      }
+    },
+    {
+      "fullName": "promptfoo/promptfoo",
+      "reason": "主要交付 LLM 评估和红队 CLI，库接口是扩展入口。",
+      "sourceUrls": [
+        "https://github.com/promptfoo/promptfoo/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "promptslab/Awesome-Prompt-Engineering",
+      "reason": "提示工程与上下文工程资源清单。 通用提示与上下文工程清单不以音频或图像为主要方向。",
+      "sourceUrls": [
+        "https://github.com/promptslab/Awesome-Prompt-Engineering/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "学习资源",
+        "related": []
+      }
+    },
+    {
+      "fullName": "pyg-team/pytorch_geometric",
+      "reason": "在 PyTorch 上构建和训练图神经网络的库。 主要提供图神经网络开发训练接口，而非单一模型或推理服务。",
+      "sourceUrls": [
+        "https://github.com/pyg-team/pytorch_geometric/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK",
+        "category": "devtools",
+        "related": [
+          "models"
+        ]
+      }
+    },
+    {
+      "fullName": "qax-os/excelize",
+      "reason": "纯 Go 电子表格处理库。",
+      "sourceUrls": [
+        "https://github.com/qax-os/excelize/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "qdrant/qdrant",
+      "reason": "主要交付独立运行的向量数据库与检索服务，而非客户端 SDK。",
+      "sourceUrls": [
+        "https://github.com/qdrant/qdrant/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "qubvel-org/segmentation_models.pytorch",
+      "reason": "可组合架构、骨干、损失和指标的 Python 分割模型库。",
+      "sourceUrls": [
+        "https://github.com/qubvel-org/segmentation_models.pytorch/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "QwenAudio/SenseVoice",
+      "reason": "公开语音基础模型权重与推理代码。",
+      "sourceUrls": [
+        "https://github.com/QwenAudio/SenseVoice/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "模型与引擎"
+      }
+    },
+    {
+      "fullName": "QwenLM/Qwen",
+      "reason": "初代 Qwen 预训练及聊天模型仓库。",
+      "sourceUrls": [
+        "https://github.com/QwenLM/Qwen/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "模型与引擎"
+      }
+    },
+    {
+      "fullName": "QwenLM/Qwen-VL",
+      "reason": "视觉语言模型及微调、推理代码。",
+      "sourceUrls": [
+        "https://github.com/QwenLM/Qwen-VL/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "模型与引擎"
+      }
+    },
+    {
+      "fullName": "raga-ai-hub/RagaAI-Catalyst",
+      "reason": "Python 平台 SDK，调用认证平台完成追踪和评估。",
+      "sourceUrls": [
+        "https://github.com/raga-ai-hub/RagaAI-Catalyst/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "ray-project/ray",
+      "reason": "Python 分布式运行时及训练和服务库。",
+      "sourceUrls": [
+        "https://github.com/ray-project/ray/blob/master/README.rst"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "recommenders-team/recommenders",
+      "reason": "推荐系统工具函数和算法实验接口，配套 Notebook 教学。",
+      "sourceUrls": [
+        "https://github.com/recommenders-team/recommenders/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "rerun-io/rerun",
+      "reason": "多模态时序数据记录、查询、观察工具及其 SDK。 主要面向机器人及视觉数据的开发诊断，不是视觉生成或识别模型。",
+      "sourceUrls": [
+        "https://github.com/rerun-io/rerun/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "devtools",
+        "related": [
+          "visual"
+        ]
+      }
+    },
+    {
+      "fullName": "ringhyacinth/Star-Office-UI",
+      "reason": "像素办公室是直接查看 Agent 状态的看板应用。",
+      "sourceUrls": [
+        "https://github.com/ringhyacinth/Star-Office-UI/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具"
+      }
+    },
+    {
+      "fullName": "rlaope/oh-my-hermes",
+      "reason": "扩展已有 Hermes Agent 的工作流程插件，不是独立 Agent。",
+      "sourceUrls": [
+        "https://github.com/rlaope/oh-my-hermes/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "rockbenben/ChatGPT-Shortcut",
+      "reason": "实际可运行的提示词搜索、收藏和管理应用。 主要是提示词管理软件；学习只是不构成产品主用途的附带用途。",
+      "sourceUrls": [
+        "https://github.com/rockbenben/ChatGPT-Shortcut/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "apps",
+        "related": []
+      }
+    },
+    {
+      "fullName": "RSSNext/Folo",
+      "reason": "交付带摘要与翻译的 RSS 阅读应用。 主要是 RSS 阅读、摘要和翻译，不是 RAG 或知识索引系统。",
+      "sourceUrls": [
+        "https://github.com/RSSNext/Folo/blob/dev/README.md"
+      ],
+      "changes": {
+        "kind": "应用 / 工具",
+        "category": "apps",
+        "related": []
+      }
+    },
+    {
+      "fullName": "RunanywhereAI/runanywhere-sdks",
+      "reason": "提供跨平台端侧多模态 SDK。",
+      "sourceUrls": [
+        "https://github.com/RunanywhereAI/runanywhere-sdks/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "ruvnet/RuVector",
+      "reason": "Rust 记忆存储、向量检索和反馈接口基础库，不是训练后的模型。",
+      "sourceUrls": [
+        "https://github.com/ruvnet/RuVector/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "RyanCodrai/turbovec",
+      "reason": "Rust 向量索引及 Python 绑定。",
+      "sourceUrls": [
+        "https://github.com/RyanCodrai/turbovec/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "Ryze-AI-Adgent/open-seo-mcp-skills",
+      "reason": "通过 Ryze MCP 获取数据的 SEO/GEO 技能集合。",
+      "sourceUrls": [
+        "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "SciPhi-AI/R2R",
+      "reason": "带 REST 接口的 RAG 后端检索服务。",
+      "sourceUrls": [
+        "https://github.com/SciPhi-AI/R2R/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "sebastianruder/NLP-progress",
+      "reason": "按任务维护数据集、论文成绩和基准索引。",
+      "sourceUrls": [
+        "https://github.com/sebastianruder/NLP-progress/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "学习资源"
+      }
+    },
+    {
+      "fullName": "sentient-agi/OML-1.0-Fingerprinting",
+      "reason": "生成指纹数据、微调并评估模型的研究工具链。",
+      "sourceUrls": [
+        "https://github.com/sentient-agi/OML-1.0-Fingerprinting/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "serengil/deepface",
+      "reason": "Python 人脸分析框架，封装多种独立模型。",
+      "sourceUrls": [
+        "https://github.com/serengil/deepface/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "shap/shap",
+      "reason": "模型输出解释器和可视化接口库。",
+      "sourceUrls": [
+        "https://github.com/shap/shap/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "框架 / SDK"
+      }
+    },
+    {
+      "fullName": "sickn33/agentic-awesome-skills",
+      "reason": "AAS Core 是技能搜索、选择清单验证和规划工具，README 明确它是主要产品。 核心是技能选择验证和生命周期管理开发工具。",
+      "sourceUrls": [
+        "https://github.com/sickn33/agentic-awesome-skills/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "devtools",
+        "related": [
+          "agents",
+          "coding"
+        ]
+      }
+    },
+    {
+      "fullName": "simonlin1212/a-stock-data",
+      "reason": "交付自包含 SKILL 文件及嵌入式 Python，而非一般 Python SDK。 主要解决股票数据研究的技能，编程助手只是宿主。",
+      "sourceUrls": [
+        "https://github.com/simonlin1212/a-stock-data/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "sirmalloc/ccstatusline",
+      "reason": "为 Claude Code 状态栏扩展展示格式。",
+      "sourceUrls": [
+        "https://github.com/sirmalloc/ccstatusline/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "SnailSploit/Claude-Red",
+      "reason": "交付可以直接加载的安全研究 SKILL.md 文件。 实际执行安全工作流的 Agent 技能，应作为开发与安全工具，而非普通学习清单。",
+      "sourceUrls": [
+        "https://github.com/SnailSploit/Claude-Red/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "devtools",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "srbhr/Resume-Matcher",
+      "reason": "用途为求职简历与岗位匹配，编程相关分类没有依据。",
+      "sourceUrls": [
+        "https://github.com/srbhr/Resume-Matcher/blob/main/README.md"
+      ],
+      "changes": {
+        "related": []
+      }
+    },
+    {
+      "fullName": "steel-dev/steel-browser",
+      "reason": "主要作用是为 Agent 运行网页操作提供浏览器自动化服务。",
+      "sourceUrls": [
+        "https://github.com/steel-dev/steel-browser/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "automation",
+        "related": [
+          "agents",
+          "devtools"
+        ]
+      }
+    },
+    {
+      "fullName": "supabase/supabase",
+      "reason": "通用应用后端开发平台，提供 AI 向量工具。",
+      "sourceUrls": [
+        "https://github.com/supabase/supabase/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具"
+      }
+    },
+    {
+      "fullName": "t8y2/dbx",
+      "reason": "与其他 AI 数据库客户端一致，主用途是数据库工作区应用。",
+      "sourceUrls": [
+        "https://github.com/t8y2/dbx/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "apps",
+        "related": [
+          "devtools",
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "TabularisDB/tabularis",
+      "reason": "可直接使用的 AI 数据库客户端应用，非训练开发框架。",
+      "sourceUrls": [
+        "https://github.com/TabularisDB/tabularis/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "apps",
+        "related": [
+          "devtools",
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "tanweai/pua",
+      "reason": "以技能包改变编码 Agent 工作流程，不是独立应用。",
+      "sourceUrls": [
+        "https://github.com/tanweai/pua/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "tech-leads-club/agent-skills",
+      "reason": "提供技能注册目录、交互安装、更新和锁文件管理工具。 核心是编码技能注册、安装和维护，非教程合集。",
+      "sourceUrls": [
+        "https://github.com/tech-leads-club/agent-skills/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "devtools",
+        "related": [
+          "coding",
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "Tencent-Hunyuan/UniRL",
+      "reason": "主要交付多模态强化学习后训练框架，不是可直接推理的模型。",
+      "sourceUrls": [
+        "https://github.com/Tencent-Hunyuan/UniRL/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "devtools",
+        "related": [
+          "models"
+        ]
+      }
+    },
+    {
+      "fullName": "tirth8205/code-review-graph",
+      "reason": "向编码 Agent 提供持久代码图和增量检索的 MCP/CLI 服务。",
+      "sourceUrls": [
+        "https://github.com/tirth8205/code-review-graph/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "MCP 服务"
+      }
+    },
+    {
+      "fullName": "titanwings/distilly",
+      "reason": "README 指明规范创建者是 distilly Skill，输出也是 Agent Skill。",
+      "sourceUrls": [
+        "https://github.com/titanwings/distilly/blob/dot-skill/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "toon-format/toon",
+      "reason": "核心交付结构化数据编码格式，SDK 和 CLI 实现该规范。",
+      "sourceUrls": [
+        "https://github.com/toon-format/toon/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "协议 / 标准"
+      }
+    },
+    {
+      "fullName": "Unity-Technologies/ml-agents",
+      "reason": "主要提供 Unity 场景的强化/模仿学习训练工具，而非 LLM 任务执行 Agent。",
+      "sourceUrls": [
+        "https://github.com/Unity-Technologies/ml-agents/blob/develop/Readme.md"
+      ],
+      "changes": {
+        "category": "devtools",
+        "related": [
+          "models"
+        ]
+      }
+    },
+    {
+      "fullName": "vectorize-io/hindsight",
+      "reason": "核心是跨会话记忆存取、整理和知识检索，Agent 是使用方。",
+      "sourceUrls": [
+        "https://github.com/vectorize-io/hindsight/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "knowledge",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "vercel-labs/agent-browser",
+      "reason": "直接供 Agent 驱动网页的浏览器自动化 CLI。 主要交付网页操作与检查的自动化命令行。",
+      "sourceUrls": [
+        "https://github.com/vercel-labs/agent-browser/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "automation",
+        "related": [
+          "agents",
+          "devtools"
+        ]
+      }
+    },
+    {
+      "fullName": "Vincentwei1021/video-shotcraft",
+      "reason": "Remotion 视频制作的 Agent 技能及素材。",
+      "sourceUrls": [
+        "https://github.com/Vincentwei1021/video-shotcraft/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "VoltAgent/awesome-claude-code-subagents",
+      "reason": "交付可安装的 Claude Code 子 Agent 定义和插件，不只是外链目录。 交付用于编码任务的可安装子 Agent 定义。",
+      "sourceUrls": [
+        "https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "coding",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "wanshuiyin/Auto-claude-code-research-in-sleep",
+      "reason": "可安装到已有编码宿主的研究流程技能。 用于机器学习实验和自动研究的可执行工作流，而非学习教程。",
+      "sourceUrls": [
+        "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "devtools",
+        "related": [
+          "agents",
+          "automation"
+        ]
+      }
+    },
+    {
+      "fullName": "worldbench/DiffusionOPSD",
+      "reason": "主要研究扩散模型奖励后训练，而非面向用户的图像生成能力。",
+      "sourceUrls": [
+        "https://github.com/worldbench/DiffusionOPSD/blob/main/README.md"
+      ],
+      "changes": {
+        "category": "devtools",
+        "related": [
+          "visual",
+          "models"
+        ]
+      }
+    },
+    {
+      "fullName": "wshobson/agents",
+      "reason": "交付插件、Agent、技能及命令的单一源码，不只是资料清单。 实际交付编程工作流插件，学习用途不应覆盖主要用途。",
+      "sourceUrls": [
+        "https://github.com/wshobson/agents/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "coding",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "wuyoscar/GPT-Image2-Skill",
+      "reason": "提供图像生成和提示提炼技能及调用 CLI。",
+      "sourceUrls": [
+        "https://github.com/wuyoscar/GPT-Image2-Skill/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "xbtlin/ai-berkshire",
+      "reason": "交付投资研究 Agent 技能集合。",
+      "sourceUrls": [
+        "https://github.com/xbtlin/ai-berkshire/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "xpzouying/xiaohongshu-mcp",
+      "reason": "本地服务将小红书检索和发布操作暴露为 MCP 工具。",
+      "sourceUrls": [
+        "https://github.com/xpzouying/xiaohongshu-mcp/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "MCP 服务"
+      }
+    },
+    {
+      "fullName": "yamadashy/repomix",
+      "reason": "面向模型的代码库打包、压缩和 token 统计 CLI。 主要为编程助手准备代码上下文，与其他代码上下文工具保持一致。",
+      "sourceUrls": [
+        "https://github.com/yamadashy/repomix/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "coding",
+        "related": [
+          "devtools"
+        ]
+      }
+    },
+    {
+      "fullName": "Yeachan-Heo/oh-my-claudecode",
+      "reason": "为 Claude Code 增加编排工作流的插件及配套运行时。",
+      "sourceUrls": [
+        "https://github.com/Yeachan-Heo/oh-my-claudecode/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "yizhiyanhua-ai/fireworks-tech-graph",
+      "reason": "技术图解生成的 Agent 技能包。",
+      "sourceUrls": [
+        "https://github.com/yizhiyanhua-ai/fireworks-tech-graph/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "yonatangross/orchestkit",
+      "reason": "为编程宿主提供技能、角色和检查 hooks 的插件包。",
+      "sourceUrls": [
+        "https://github.com/yonatangross/orchestkit/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "yvgude/lean-ctx",
+      "reason": "编码上下文选择、命令输出压缩和成本观测工具。 主要优化代码开发会话上下文，非通用训练工具。",
+      "sourceUrls": [
+        "https://github.com/yvgude/lean-ctx/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "开发工具",
+        "category": "coding",
+        "related": [
+          "knowledge",
+          "devtools"
+        ]
+      }
+    },
+    {
+      "fullName": "zalandoresearch/fashion-mnist",
+      "reason": "交付训练与评估用数据集，而非教程资料；模型类别不必重复。",
+      "sourceUrls": [
+        "https://github.com/zalandoresearch/fashion-mnist/blob/master/README.md"
+      ],
+      "changes": {
+        "category": "devtools",
+        "related": [
+          "visual"
+        ]
+      }
+    },
+    {
+      "fullName": "zhaoxuya520/reverse-skill",
+      "reason": "交付授权逆向任务的技能路由和工作流配置。",
+      "sourceUrls": [
+        "https://github.com/zhaoxuya520/reverse-skill/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件"
+      }
+    },
+    {
+      "fullName": "zilliztech/claude-context",
+      "reason": "主要通过 MCP 提供语义代码搜索，核心包用于复用。",
+      "sourceUrls": [
+        "https://github.com/zilliztech/claude-context/blob/master/README.md"
+      ],
+      "changes": {
+        "kind": "MCP 服务"
+      }
+    },
+    {
+      "fullName": "zubair-trabzada/geo-seo-claude",
+      "reason": "网站 GEO/SEO 审查和报告技能。 主要是营销与搜索可见性分析的 Agent 应用技能，不是 AI 开发框架。",
+      "sourceUrls": [
+        "https://github.com/zubair-trabzada/geo-seo-claude/blob/main/README.md"
+      ],
+      "changes": {
+        "kind": "技能 / 插件",
+        "category": "apps",
+        "related": [
+          "agents"
+        ]
+      }
+    },
+    {
+      "fullName": "BerriAI/litellm",
+      "changes": {
+        "category": "devtools",
+        "related": []
+      },
+      "reason": "统一模型 API 的网关负责路由与调用管理，本身不执行模型推理，与 Portkey、Bifrost 保持同一主分类。"
+    },
+    {
+      "fullName": "diegosouzapw/OmniRoute",
+      "changes": {
+        "category": "devtools",
+        "related": []
+      },
+      "reason": "统一模型 API 的网关负责路由与调用管理，本身不执行模型推理，与 Portkey、Bifrost 保持同一主分类。"
+    },
+    {
+      "fullName": "palmier-io/palmier-pro",
+      "changes": {
+        "tags": [
+          "视频编辑",
+          "MCP",
+          "AppleSilicon",
+          "历史源码开放",
+          "当前版本专有"
+        ]
+      },
+      "reason": "AI用途成立，保留项目并在标签中明确当前许可形态。"
+    },
+    {
+      "fullName": "screenpipe/screenpipe",
+      "changes": {
+        "tags": [
+          "工作历史",
+          "本地记录",
+          "智能体上下文",
+          "源码可见",
+          "商业许可"
+        ]
+      },
+      "reason": "AI用途成立，保留项目并在标签中明确当前许可形态。"
+    }
+  ],
+  "decisions": [
+    {
+      "fullName": "ace-trump-tech/DeltaForce-OBS-Locker",
+      "reason": "仓库宣传模型名称、可用性与简介中的编码文本相互矛盾，缺少可验证AI项目交付证据；不应以未经核实的游戏辅助宣传计入AI趋势。",
+      "sourceUrls": [
+        "https://github.com/ace-trump-tech/DeltaForce-OBS-Locker"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "alibaba/nacos",
+      "reason": "README主体为通用服务发现、配置与微服务治理；可承载AI服务不足以成为AI项目，当前证据无AI核心功能。",
+      "sourceUrls": [
+        "https://github.com/alibaba/nacos"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "apache/seatunnel",
+      "reason": "主体是通用数据同步、CDC和批流集成；MCP为独立仓库，可用于AI数据准备不等于该仓库属于AI项目。",
+      "sourceUrls": [
+        "https://github.com/apache/seatunnel"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "binhnguyennus/awesome-scalability",
+      "reason": "主体是通用系统设计、可靠性和架构阅读目录，AI/ML仅背景章节；计入AI榜会把通用工程热度误当AI趋势。",
+      "sourceUrls": [
+        "https://github.com/binhnguyennus/awesome-scalability"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "casdoor/casdoor",
+      "reason": "主体是通用身份认证与SSO平台；兼容MCP认证不构成AI专用产品或开发框架。",
+      "sourceUrls": [
+        "https://github.com/casdoor/casdoor"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "CloakHQ/CloakBrowser",
+      "reason": "主体是调整指纹与自动化信号的Chromium浏览器，未发现AI模型或智能体作为核心交付物。",
+      "sourceUrls": [
+        "https://github.com/CloakHQ/CloakBrowser"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "cporter202/API-mega-list",
+      "reason": "主体是通用API目录并混有推广，AI使用仅为潜在消费场景，不宜计入AI技术趋势。",
+      "sourceUrls": [
+        "https://github.com/cporter202/API-mega-list"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "Developer-Y/cs-video-courses",
+      "reason": "主体是整个计算机科学大学课程目录，机器学习只是若干分支之一；建议只收录专注AI的课程仓库。",
+      "sourceUrls": [
+        "https://github.com/Developer-Y/cs-video-courses"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "dolthub/dolt",
+      "reason": "主体是Git风格版本化SQL数据库；Agent记忆是可用场景之一，不能据此把通用数据库认定为AI核心项目。",
+      "sourceUrls": [
+        "https://github.com/dolthub/dolt"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "drawdb-io/drawdb",
+      "reason": "主体是手工ER图与SQL结构生成工具，无AI模型或智能体功能证据。",
+      "sourceUrls": [
+        "https://github.com/drawdb-io/drawdb"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "fangmumu111-bot/chatgpt-plus-pro-codex-cn-guide",
+      "reason": "主体是第三方订阅充值推广与导购，不提供AI软件、模型或技术研究实现，不应与技术项目共同排名。",
+      "sourceUrls": [
+        "https://github.com/fangmumu111-bot/chatgpt-plus-pro-codex-cn-guide"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "flipped-aurora/gin-vue-admin",
+      "reason": "主体是Gin/Vue通用后台脚手架和规则代码生成；新增MCP/技能入口未改变其通用后台平台主用途。",
+      "sourceUrls": [
+        "https://github.com/flipped-aurora/gin-vue-admin"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "gitleaks/gitleaks",
+      "reason": "主体是规则/正则密钥扫描工具，不使用AI；被标为模型与引擎属于明确误收。",
+      "sourceUrls": [
+        "https://github.com/gitleaks/gitleaks"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "go-kratos/kratos",
+      "reason": "通用 Go 微服务框架；能承载 AI 服务不构成 AI 项目的主体能力。",
+      "evidence": "Kratos is a lightweight Go framework for building cloud-native microservices.",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/go-kratos/kratos/blob/main/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "hummingbot/hummingbot",
+      "reason": "主体是确定性自动交易执行框架；LLM 决策由独立 Condor 项目提供，建议放到通用生态而非 AI 核心榜。",
+      "evidence": "Condor is the AI harness ... connects LLM-powered decision-making to deterministic trade execution via the Hummingbot API.",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/hummingbot/hummingbot/blob/master/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "JuliaLang/julia",
+      "reason": "通用技术计算编程语言；机器学习由额外生态包实现，语言本体不宜混入 AI 热榜。",
+      "evidence": "Julia is a high-level, high-performance dynamic language for technical computing.",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/JuliaLang/julia/blob/master/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "keploy/keploy",
+      "reason": "当前 README 核心实现是 eBPF 流量录制、回放与测试；AI-Gen era 标语不足以证明 AI 主体能力。",
+      "evidence": "It records API calls, database queries, and streaming events — then replays them as tests ... uses eBPF to capture traffic at the network layer.",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/keploy/keploy/blob/main/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "medusajs/medusa",
+      "reason": "主体为电子商务基础模块，Agent 可使用不改变其通用商业后端定位。",
+      "evidence": "Building blocks for digital commerce",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/medusajs/medusa/blob/develop/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "nukeop/nuclear",
+      "reason": "主体为音乐播放与媒体插件；可选 MCP 遥控入口不足以当成 AI 音频应用。",
+      "evidence": "Nuclear is a free, open-source music player ... MCP server lets your AI agent drive the player.",
+      "recommendation": "exclude_from_ai_rankings",
+      "sourceUrls": [
+        "https://github.com/nukeop/nuclear/blob/master/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "qax-os/excelize",
+      "recommendation": "exclude",
+      "reason": "纯 Go 电子表格处理库；README 的核心能力是文件读写、图表和流式处理，没有 AI 模型或专门 AI 集成。可被 Agent 调用不足以使其成为 AI 项目。",
+      "sourceUrls": [
+        "https://github.com/qax-os/excelize/blob/master/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "quixio/quix-streams",
+      "recommendation": "exclude",
+      "reason": "通用 Kafka 数据工程/流处理框架；AI/ML 只作为下游用途，当前 README 未展示专门模型、Agent 或 AI 工作流能力。",
+      "sourceUrls": [
+        "https://github.com/quixio/quix-streams/blob/main/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "realsenseai/librealsense",
+      "recommendation": "exclude",
+      "reason": "核心是深度相机设备流与标定 SDK；组织名含 AI 不证明项目提供 AI 算法，闭源 Perception 库属于另行产品。",
+      "sourceUrls": [
+        "https://github.com/realsenseai/librealsense/blob/master/readme.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "Snailclimb/JavaGuide",
+      "recommendation": "exclude",
+      "reason": "核心是通用 Java 后端和面试教程，AI 内容主要是外部 AIGuide/实战项目推荐，不能将另一仓库的能力归于 JavaGuide。",
+      "sourceUrls": [
+        "https://github.com/Snailclimb/JavaGuide/blob/main/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "TheAlgorithms/C-Plus-Plus",
+      "recommendation": "review",
+      "reason": "通用算法教学仓库确含机器学习实现，但绝大多数范围是通用算法和数据结构；建议从 AI 热榜候选排除，机器学习基础资源页可以保留。",
+      "sourceUrls": [
+        "https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/README.md"
+      ],
+      "decision": "exclude"
+    },
+    {
+      "fullName": "palmier-io/palmier-pro",
+      "recommendation": "review",
+      "reason": "当前 Palmier 二进制已改专有，v0.7.6 和 last-gpl-source 保留 GPL 历史源码；AI 相关性成立，若产品范围限定当前开源项目，应单独标注历史开源而非整库误排。",
+      "sourceUrls": [
+        "https://github.com/palmier-io/palmier-pro/blob/main/README.md"
+      ],
+      "decision": "retain_with_license_tags"
+    },
+    {
+      "fullName": "screenpipe/screenpipe",
+      "recommendation": "review",
+      "reason": "Screenpipe 的 AI 相关性明确，但当前是源码可见商业许可；如站点只收开放源代码许可项目需单独判断，不能因为有源码称完全开源。",
+      "sourceUrls": [
+        "https://github.com/screenpipe/screenpipe/blob/main/README.md"
+      ],
+      "decision": "retain_with_license_tags"
+    }
+  ],
+  "normalizedWaysProjects": 376
+}

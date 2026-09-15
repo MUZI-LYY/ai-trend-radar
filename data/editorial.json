@@ -1,7 +1,7 @@
 {
   "ollama/ollama": {
     "category": "models",
-    "kind": "应用 / 工具",
+    "kind": "模型与引擎",
     "summary": "把开源大模型运行在自己的电脑上。",
     "overview": "Ollama 把模型运行、模型管理和应用连接集中到一套本地工具及服务接口中。用户先安装运行环境、从模型库选择模型，再通过交互入口体验生成效果，或让自己的程序调用 REST API。其他聊天界面、知识库产品和编程 Agent 可以接到 Ollama，复用同一模型服务，因此它常作为个人 AI 工具组合中的模型运行层。项目提供桌面系统安装与官方 Docker 镜像，并列出多种应用集成。真正能运行的模型规模、上下文长度与速度取决于电脑资源和模型配置，应从适合机器的小模型开始。",
     "tags": [
@@ -52,7 +52,7 @@
     "ways": [
       "Docker",
       "本地部署",
-      "官方在线体验"
+      "在线演示"
     ],
     "audience": "需要把知识问答、内容生产或业务步骤做成可重复应用的产品团队，以及负责部署和系统集成的开发者。",
     "features": [
@@ -203,7 +203,7 @@
     "ways": [
       "Docker",
       "本地部署",
-      "官方在线体验"
+      "在线演示"
     ],
     "audience": "需要连接多个 SaaS 或内部系统、定期处理数据，并希望结合可视化操作与少量代码的运营及开发团队。",
     "features": [
@@ -1117,7 +1117,7 @@
     "ways": [
       "Docker",
       "本地部署",
-      "官方在线体验"
+      "在线演示"
     ],
     "audience": "需要排查 AI 应用问题、持续评估质量并管理提示版本的开发者与产品工程团队。",
     "features": [
@@ -1149,7 +1149,7 @@
       "从零实现"
     ],
     "ways": [
-      "代码示例"
+      "示例代码"
     ],
     "audience": "有较好 Python 基础，希望真正理解语言模型结构、训练和微调，而不仅停留在调用 API 的学习者。",
     "features": [
@@ -1188,7 +1188,7 @@
     ],
     "ways": [
       "课程",
-      "代码示例"
+      "示例代码"
     ],
     "audience": "有基础编程能力、希望系统理解生成式 AI 应用开发的学习者，以及组织入门培训的讲师。",
     "features": [
@@ -1280,8 +1280,8 @@
     ]
   },
   "modelcontextprotocol/servers": {
-    "category": "agents",
-    "kind": "资源与示例",
+    "category": "devtools",
+    "kind": "MCP 服务",
     "summary": "了解 MCP 如何让模型连接工具与数据。",
     "overview": "MCP Servers 仓库存放 Model Context Protocol 的一组参考服务实现，帮助开发者理解如何把工具、资源与数据暴露给支持 MCP 的 AI 客户端。当前维护范围是一小批由 MCP 指导组维护的示例，包括文件、Git、网页获取、时间、记忆与协议测试服务；完整的公开服务发现应使用 MCP Registry。开发者可以连接其中一个示例，观察客户端如何发现并调用工具，再以官方 SDK 构建自己的服务。仓库明确把这些实现定位为教学参考，历史上列出的部分服务已经归档或交给其他维护方。",
     "tags": [
@@ -1290,7 +1290,7 @@
       "协议示例"
     ],
     "ways": [
-      "代码示例"
+      "示例代码"
     ],
     "audience": "学习 MCP、开发自有工具服务，或想理解 AI 客户端与外部资源如何通信的应用开发者。",
     "features": [
@@ -1301,7 +1301,8 @@
     ],
     "reviewedAt": "2026-09-14",
     "related": [
-      "devtools"
+      "learning",
+      "agents"
     ],
     "usage": "先确认目标服务仍在当前维护列表中，阅读它自己的 README 和客户端配置说明。选一个与任务匹配的参考服务接入测试客户端，观察工具发现、参数与返回结果，再参考 SDK 模式开发自己的服务；需要找行业工具时转到 MCP Registry。",
     "caveat": "这些服务明确是参考实现，不等同于生产就绪方案。文件和 Git 等服务的实际访问范围取决于配置；旧文章中的 GitHub、数据库等示例可能已归档，需要核对维护去向。",
@@ -1790,7 +1791,7 @@
     ]
   },
   "666ghj/mirofish": {
-    "category": "agents",
+    "category": "apps",
     "kind": "应用 / 工具",
     "summary": "用多 Agent 模拟群体互动和情景演化。",
     "overview": "MiroFish 把一组现实资料转成多智能体模拟场景：先从新闻、政策草案或故事中抽取实体关系，构建知识图谱与记忆，再为模拟角色设置人格和行为条件，让角色在环境中互动。模拟结束后，ReportAgent 会读取过程形成报告，用户也能继续与模拟角色对话，追问某个结论如何产生。它的特色是把假设、角色和互动过程变成可探索的实验空间，适合比较不同设定下的情境走向。仓库所称的“预测”属于模型模拟输出，不能直接视为现实事件的可靠概率或经验证预测。",
@@ -1809,7 +1810,9 @@
     ],
     "audience": "需要做情境推演的研究者、政策或传播方案分析人员，以及探索互动叙事的创作者。",
     "reviewedAt": "2026-09-14",
-    "related": [],
+    "related": [
+      "agents"
+    ],
     "usage": "从 README 的演示了解输入与输出，再按照源码部署或 Docker 说明启动前后端。准备一份范围明确的事件资料，写清希望比较的变量与问题，先跑小规模场景，最后同时检查报告、角色设定与互动记录。",
     "caveat": "模拟高度依赖种子资料、角色设定和模型行为。项目的“预测万物”是定位表达；金融、政策等现实判断需要额外数据与验证，不能把模拟次数等同于预测可靠性。",
     "useCases": [
@@ -1868,7 +1871,8 @@
     "tags": [
       "提示词",
       "产品研究",
-      "第三方资料"
+      "第三方资料",
+      "来源待核实"
     ],
     "features": [
       "按不同 AI 产品汇集系统提示文本，为提示结构与产品规则研究提供样本。",
@@ -2297,7 +2301,8 @@
     "tags": [
       "Kubernetes",
       "任务编排",
-      "训练管道"
+      "训练管道",
+      "通用基础设施"
     ],
     "features": [
       "用顺序步骤或 DAG 声明容器依赖，支持多任务并行与分阶段处理。",
@@ -2362,7 +2367,7 @@
   },
   "ag-ui-protocol/ag-ui": {
     "category": "agents",
-    "kind": "协议与实现",
+    "kind": "协议 / 标准",
     "summary": "定义 Agent 与前端应用之间的交互事件。",
     "overview": "AG-UI 定义 Agent 后端与用户界面之间的交互协议。后端把运行过程表达为统一事件，前端据此呈现流式消息、工具执行和状态变化，并将用户输入或界面上下文传回 Agent。它解决的是不同 Agent 框架和前端之间各自维护接口的成本，仓库提供参考 HTTP 实现、连接器及 Dojo 示例供开发者接入。协议可适配 SSE、WebSocket 等传输方式，不限定使用某一种模型；对需要把 Agent 嵌入现有产品的团队，价值在于统一实时交互，而不是直接提供业务 Agent 本身。",
     "tags": [
@@ -2376,7 +2381,7 @@
       "提供参考连接器和小型 Dojo 示例，便于分别验证消息、状态与界面组件。"
     ],
     "ways": [
-      "代码示例"
+      "示例代码"
     ],
     "audience": "正在把 Agent 接入 Web 产品、需要流式状态和可交互界面的前后端开发者。",
     "reviewedAt": "2026-09-14",
@@ -2816,8 +2821,8 @@
     ]
   },
   "tech-leads-club/agent-skills": {
-    "category": "learning",
-    "kind": "学习资源",
+    "category": "devtools",
+    "kind": "开发工具",
     "summary": "为编程 Agent 整理可复用的技能资源。",
     "overview": "Agent Skills 是面向多种编程 Agent 的技能目录与安装工具。用户通过向导按分类或搜索挑选技能，选择目标 Agent、复制或符号链接方式，以及用户全局或项目局部作用范围。工具按需下载所选材料并本地缓存，仓库以内容哈希、锁文件、静态分析和审阅流程管理技能来源与更新，还提供可搜索目录的 MCP 入口。技能本质上是说明、资源和工作流程，不是新的模型权重；项目的价值在于更清楚地选择、安装和维护能力包，而非一次安装整个目录就能获得所有专业能力。",
     "tags": [
@@ -2837,7 +2842,8 @@
     "audience": "希望给编程 Agent 安装可维护的专业工作流程，并清楚控制技能来源和作用范围的开发者。",
     "reviewedAt": "2026-09-14",
     "related": [
-      "coding"
+      "coding",
+      "agents"
     ],
     "usage": "使用仓库给出的 CLI 启动安装向导，先搜索与当前项目直接相关的少量技能。选择目标 Agent 和项目局部范围，阅读下载内容并验证技能是否被正确加载；更新时使用向导检查已安装项，避免同时引入大量互相重叠的流程。",
     "caveat": "扫描、哈希和人工整理能提供检查依据，但不代表每个技能都安全或适合所有项目。技能可能引用需要额外安装的工具，载入后仍应遵守项目约束，并核对实际运行和写入行为。",
@@ -2857,7 +2863,7 @@
   },
   "internlm/xtuner": {
     "category": "devtools",
-    "kind": "模型与引擎",
+    "kind": "框架 / SDK",
     "summary": "面向大模型尤其 MoE 架构的训练引擎。",
     "overview": "XTuner V1 面向大规模 MoE 模型训练，重点优化并行策略、显存组织和长序列场景，而不只是提供一个简单微调按钮。它希望用较小的专家并行维度组织训练，结合 FSDP、序列并行与硬件适配处理大型混合专家模型，并为多模态预训练、监督微调和 GRPO 等算法提供训练后端。对研究团队而言，它可用于检验模型和算法在目标集群上的扩展能力。README 同时列有仍在演进的算法方向，因此应该区分已支持功能与路线规划，不把展示的特定硬件吞吐直接作为自己实验的性能预期。",
     "tags": [
@@ -2887,8 +2893,8 @@
     ]
   },
   "snailsploit/claude-red": {
-    "category": "learning",
-    "kind": "学习资源",
+    "category": "devtools",
+    "kind": "技能 / 插件",
     "summary": "面向安全研究的 Agent 技能资料库。",
     "overview": "Claude Red 是面向授权安全研究的 Claude 技能资料库。仓库把不同安全测试领域的方法整理为独立 SKILL.md 文件，让用户按任务加载相关知识与检查思路，而不是在每次会话中重复说明背景。资料覆盖多个安全方向，适用于研究学习、CTF 准备、漏洞分诊和已授权的红队项目；内容本身是供 Agent 参考的技能说明，不是独立扫描平台或已经执行的检测结果。它的价值在于结构化组织专业资料与工作步骤，具体工具是否安装、环境是否适配和结论是否成立都需要单独核实。",
     "tags": [
@@ -2907,7 +2913,9 @@
     ],
     "audience": "从事授权安全评估、漏洞研究教学、CTF 学习与安全方法整理的专业人员。",
     "reviewedAt": "2026-09-14",
-    "related": [],
+    "related": [
+      "agents"
+    ],
     "usage": "先浏览技能索引，按明确的授权研究范围选择资料并阅读完整文件。按照所用 Claude 环境的技能安装说明加载选中的内容，在隔离练习或已授权项目中检查建议是否适用；保留独立验证结果，不把技能文本或模型回答当作已完成测试。",
     "caveat": "项目是方法与提示材料集合，目标技能数量不等于已交付数量，也不证明每项经过相同验证。所引用工具需另行确认版本与环境；使用范围应与具体授权或练习目标一致。",
     "useCases": [
@@ -3010,7 +3018,7 @@
     ],
     "ways": [
       "课程",
-      "代码示例"
+      "示例代码"
     ],
     "audience": "希望用中文资料、Python 和图形辅助学习线性代数，并为机器学习补足数学基础的学习者。",
     "reviewedAt": "2026-09-14",
@@ -3141,7 +3149,7 @@
   },
   "rlaope/oh-my-hermes": {
     "category": "agents",
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "summary": "通过插件为 Hermes 增加记忆与任务工作流。",
     "overview": "Oh My Hermes 是建立在 Hermes Agent 之上的工作流程插件，保留 Hermes 的自然语言交互，补充任务路由、规划、研究、编程交接和长期项目记忆。它根据任务特征选择流程与所需技能，把工作分成可并行的路径，并要求结果记录实际完成了什么、依据是什么。项目还维护针对模型的工作配置与技能包，意在让既有 Hermes 用户复用较完整的操作流程。它本身不是独立 Agent 或模型运行器，编程执行、工具调用和消息入口仍依靠 Hermes 及所接执行工具。",
     "tags": [
@@ -3344,7 +3352,7 @@
       "桌面应用",
       "CLI",
       "本地部署",
-      "官方在线体验"
+      "在线演示"
     ],
     "audience": "需要跨设备查看编程 Agent 进展，或将服务器作为执行机器的开发者。",
     "reviewedAt": "2026-09-14",
@@ -3498,7 +3506,7 @@
   },
   "yonatangross/orchestkit": {
     "category": "coding",
-    "kind": "开发工具",
+    "kind": "技能 / 插件",
     "summary": "为 Claude Code 整理技能、角色和开发钩子。",
     "overview": "OrchestKit 是为编程 Agent 提供技能、角色和工程检查 hooks 的工具包。它通过设置向导识别项目技术栈、推荐适合的技能与 MCP 配置，再把探索、实现、验证、审查等流程组织成可调用的工作能力。完整 Claude Code 插件包含自动执行的 hooks，其他客户端安装路径可能只提供部分能力，因此不能把不同入口视为完全相同。项目同时记录本地检查状态和相关事件，供工作流程使用。它适合希望在既有编程 Agent 上复用明确工程习惯的团队，采用前应检查这些规则与项目实际约束是否一致。",
     "tags": [
@@ -3600,8 +3608,8 @@
     ]
   },
   "morluto/jacobian": {
-    "category": "agents",
-    "kind": "开发工具",
+    "category": "devtools",
+    "kind": "MCP 服务",
     "summary": "向 Agent 暴露可组合的数学计算工具。",
     "overview": "Jacobian 为 Agent 提供可搜索、可执行并带类型约定的数学操作。Agent 先用 math.find 找到满足需求的操作或查看其契约，再用 math.run 执行，将结构化结果继续组合成下一步推理。项目刻意把工具划分为语义范围较小的数学动作，而不是预先规定整个求解策略，让模型决定如何连接这些动作。底层组合 SymPy、NetworkX、Z3、Python-FLINT 等能力，并提供 MCP、命令行和 Python 接口。结果会标明精确性、近似和不完整性，适合构建能核对中间数学步骤的研究工具链。",
     "tags": [
@@ -3616,13 +3624,15 @@
       "同一数学库提供 MCP、CLI 和 Python 接口，适配不同程序入口。"
     ],
     "ways": [
-      "MCP 服务",
+      "MCP",
       "CLI",
       "Python SDK"
     ],
     "audience": "希望为科研、符号计算和数学推理 Agent 提供可执行工具，而不是仅依靠模型口头推导的开发者与研究者。",
     "reviewedAt": "2026-09-14",
-    "related": [],
+    "related": [
+      "agents"
+    ],
     "usage": "先检查系统是否满足已测试的平台与依赖条件，再运行仓库安装设置流程，预览准备写入哪些 Agent 配置。接入后从一个简单数学任务开始，让 Agent 先查操作契约再执行，核对结果的不确定性标记，最后尝试组合多个操作。",
     "caveat": "仓库测试发布契约集中于 glibc Linux x86-64、CPython 3.12/3.13，其他平台不在同等验证范围内。安装设置不会替你安装 Node、Python 或 uv，工具结果的适用条件仍需检查。",
     "useCases": [
@@ -3993,7 +4003,7 @@
     ],
     "ways": [
       "CLI",
-      "MCP 服务"
+      "MCP"
     ],
     "tags": [
       "Google Flow",
@@ -4075,7 +4085,7 @@
       "代码审查"
     ],
     "ways": [
-      "Agent 插件"
+      "插件"
     ],
     "related": [],
     "audience": "希望在编程 Agent 中复用规划与审查流程的用户与开发者。",
@@ -4116,7 +4126,7 @@
       "多 Agent"
     ],
     "ways": [
-      "Agent 插件",
+      "插件",
       "CLI"
     ],
     "related": [],
@@ -4159,7 +4169,7 @@
     "ways": [
       "Web UI",
       "CLI",
-      "源码部署"
+      "自托管"
     ],
     "related": [],
     "audience": "研究插件化 Agent 运行框架的用户与开发者。",
@@ -4307,7 +4317,7 @@
   },
   "karpathy/autoresearch": {
     "category": "devtools",
-    "kind": "研究项目",
+    "kind": "研究实现",
     "summary": "让 Agent 在单 GPU 小模型训练中迭代实验并记录结果。",
     "overview": "Autoresearch 把自动研究简化为一个范围受限的循环：Agent 修改 train.py，用固定五分钟训练预算运行实验，检查验证指标，再保留或丢弃改动继续尝试。prepare.py 负责固定的数据与评估基础，program.md 由人编写来指导 Agent，核心代码来自 nanochat 的简化单 GPU 训练实现。这个设计让研究者把精力放在实验规则与目标上，并可通过日志比较迭代。指标和时间预算服务于特定硬件上的优化研究，不应把不同机器得到的结果直接横向比较。",
     "features": [
@@ -4326,7 +4336,7 @@
     ],
     "ways": [
       "Python",
-      "CLI Agent"
+      "CLI"
     ],
     "related": [],
     "audience": "研究 Agent 驱动的模型训练优化的用户与开发者。",
@@ -4367,7 +4377,7 @@
       "工作记录"
     ],
     "ways": [
-      "Agent 插件",
+      "插件",
       "Web UI"
     ],
     "related": [],
@@ -4528,7 +4538,7 @@
       "Notebook"
     ],
     "ways": [
-      "在线资料",
+      "文档阅读",
       "Colab Notebook"
     ],
     "related": [],
@@ -4570,7 +4580,7 @@
     "ways": [
       "Docker",
       "Web UI",
-      "源码部署"
+      "自托管"
     ],
     "related": [],
     "audience": "完成多步骤资料研究与交付的用户与开发者。",
@@ -4611,7 +4621,7 @@
       "可运行课程"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "Notebook"
     ],
     "related": [],
@@ -4651,7 +4661,7 @@
       "实践框架"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "PDF",
       "Python"
     ],
@@ -4694,7 +4704,7 @@
       "方法指南"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "资料索引"
     ],
     "related": [],
@@ -4737,7 +4747,10 @@
       "桌面应用",
       "Python SDK"
     ],
-    "related": [],
+    "related": [
+      "models",
+      "knowledge"
+    ],
     "audience": "希望在本机体验语言模型的用户与开发者。",
     "useCases": [
       "希望在本机体验语言模型",
@@ -4929,7 +4942,7 @@
     ]
   },
   "foundationagents/metagpt": {
-    "category": "agents",
+    "category": "coding",
     "kind": "框架 / SDK",
     "summary": "把产品、架构与工程角色组织成多 Agent 协作流程。",
     "overview": "MetaGPT 用软件团队的角色与标准操作流程组织多个大模型 Agent。用户输入需求后，产品、架构、项目和工程角色逐步产出用户故事、需求、数据结构、API 与文档等内容，把自然语言目标向软件交付过程推进。仓库也提供 Data Interpreter 代码任务入口以及开发自定义 Agent 的教程。它强调角色之间通过流程协作，适合研究多 Agent 如何拆解和传递任务；这些角色名称并不意味着已经具有人类团队同等判断力，最终设计与代码仍需通过真实运行和审查验证。",
@@ -4951,7 +4964,9 @@
       "Python SDK",
       "CLI"
     ],
-    "related": [],
+    "related": [
+      "agents"
+    ],
     "audience": "研究角色式软件开发协作的用户与开发者。",
     "useCases": [
       "研究角色式软件开发协作",
@@ -5280,7 +5295,7 @@
     ],
     "ways": [
       "Agent 技能",
-      "Agent 插件"
+      "插件"
     ],
     "summary": "让编程 Agent 优先选用满足需求的简单实现，减少过度设计。",
     "overview": "Ponytail 是面向编程 Agent 的简化实现技能与插件。它要求 Agent 先阅读相关代码、追踪真实流程，再选择足以解决问题的最简单方案；例如能使用原生界面能力时，先考虑是否真的需要新增组件和依赖。项目同时强调不能为了代码变短而删除输入验证、错误处理、安全或无障碍功能。它提供不同强度模式以及审阅、审计等技能，部分客户端还能通过生命周期 hooks 持续注入规则。核心目标是减少不必要的工程复杂度，节省代码和调用成本是可能的结果，并不保证在所有模型和任务中成立。",
@@ -5415,7 +5430,7 @@
     ],
     "ways": [
       "Agent 技能",
-      "Agent 插件"
+      "插件"
     ],
     "summary": "把规格、实现、验证和代码审查组织成可调用的工程工作流。",
     "overview": "Addy Osmani 的 Agent Skills 将资深工程师常用的开发步骤整理为结构化技能，让编程 Agent 在规格、实现、API 设计、前端开发、测试和审阅等阶段采用明确流程。每个技能包含步骤、检查点与完成证据，相关参考材料按需加载；专门角色用于有针对性的审查。用户可显式调用生命周期命令，也可根据任务自动激活技能。项目提供一次批准计划后连续实现的模式，但仍保留逐任务测试与失败暂停。适合希望让 Agent 工作更可检查的团队，采用时应按现有仓库逐步引入合适部分。",
@@ -5595,7 +5610,7 @@
     "ways": [
       "CLI",
       "Agent hook",
-      "Agent 插件"
+      "插件"
     ],
     "summary": "在终端命令输出进入 Agent 上下文前过滤和压缩冗余信息。",
     "overview": "RTK 是一个 Rust 编写的命令行代理，针对测试结果、Git 状态、日志和文件检索等命令输出做过滤、分组、截断与去重，再把更紧凑的结果交给模型。支持的 Agent 可通过 hook 或插件在执行前把 shell 命令改写为 RTK 版本，用户也能显式调用代理。失败或截断时可以保留原始输出，便于进一步调查。它处理的是工具输出这一部分上下文，不会自动压缩所有模型输入。尤其内置 Read、Grep、Glob 等调用不经过 Bash hook，是否生效取决于客户端和实际调用路径。",
@@ -5812,10 +5827,8 @@
     ]
   },
   "diegosouzapw/omniroute": {
-    "category": "models",
-    "related": [
-      "devtools"
-    ],
+    "category": "devtools",
+    "related": [],
     "kind": "开发工具",
     "tags": [
       "AI网关",
@@ -6089,9 +6102,9 @@
     ]
   },
   "666ghj/bettafish": {
-    "category": "agents",
+    "category": "apps",
     "related": [
-      "apps",
+      "agents",
       "knowledge"
     ],
     "kind": "应用 / 工具",
@@ -6252,7 +6265,7 @@
     ],
     "category": "agents",
     "related": [
-      "automation"
+      "knowledge"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -6419,7 +6432,7 @@
     ],
     "category": "visual",
     "related": [],
-    "kind": "研究项目",
+    "kind": "研究实现",
     "tags": [
       "资料待核实",
       "游戏视觉",
@@ -6503,6 +6516,7 @@
     ],
     "category": "learning",
     "related": [
+      "agents",
       "knowledge"
     ],
     "kind": "学习资源",
@@ -6513,7 +6527,7 @@
       "求职路线"
     ],
     "ways": [
-      "在线资料",
+      "文档阅读",
       "实践指南"
     ],
     "reviewedAt": "2026-09-15",
@@ -6556,7 +6570,7 @@
       "复习资料"
     ],
     "ways": [
-      "网页阅读",
+      "文档阅读",
       "资料下载"
     ],
     "reviewedAt": "2026-09-15",
@@ -6718,7 +6732,7 @@
     ],
     "category": "knowledge",
     "related": [
-      "apps"
+      "coding"
     ],
     "kind": "应用 / 工具",
     "tags": [
@@ -6769,7 +6783,7 @@
       "课程导航"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -6800,20 +6814,19 @@
       "可运行项目示例的 Python 环境",
       "使用所选模型的接口凭据，或按文档接入 Claude Code CLI"
     ],
-    "category": "devtools",
+    "category": "coding",
     "related": [
-      "agents",
-      "coding"
+      "devtools"
     ],
-    "kind": "模型与引擎",
+    "kind": "框架 / SDK",
     "tags": [
       "代码进化",
       "程序优化",
       "自动评估"
     ],
     "ways": [
-      "Python库",
-      "命令行"
+      "Python 库",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -6848,7 +6861,7 @@
     "related": [
       "automation"
     ],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "网页智能体",
       "JavaScript",
@@ -6891,15 +6904,15 @@
     "related": [
       "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "技能库",
       "工作流",
       "编码助手"
     ],
     "ways": [
-      "技能安装",
-      "阅读资料"
+      "Agent 技能",
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -6941,7 +6954,7 @@
       "基础模型"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "模型权重"
     ],
     "reviewedAt": "2026-09-15",
@@ -6974,14 +6987,14 @@
     ],
     "category": "learning",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "目标检测",
       "论文导航",
       "计算机视觉"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7014,9 +7027,9 @@
     ],
     "category": "visual",
     "related": [
-      "automation"
+      "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "视觉工具",
       "OCR",
@@ -7065,7 +7078,7 @@
     ],
     "ways": [
       "自托管",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7100,7 +7113,7 @@
     "related": [
       "models"
     ],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "Swift",
       "语音识别",
@@ -7108,7 +7121,7 @@
     ],
     "ways": [
       "SDK",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7150,7 +7163,7 @@
       "应用原型"
     ],
     "ways": [
-      "阅读资料",
+      "文档阅读",
       "示例代码"
     ],
     "reviewedAt": "2026-09-15",
@@ -7183,17 +7196,16 @@
     ],
     "category": "learning",
     "related": [
-      "knowledge",
-      "agents"
+      "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "AI工程",
       "学习路线",
       "资源导航"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7236,7 +7248,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7271,15 +7283,15 @@
     "related": [
       "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "项目管理",
       "多智能体",
       "规格驱动"
     ],
     "ways": [
-      "技能安装",
-      "命令行"
+      "Agent 技能",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7321,8 +7333,8 @@
       "分布式训练"
     ],
     "ways": [
-      "Python库",
-      "命令行"
+      "Python 库",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7403,7 +7415,7 @@
       "自托管"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API"
     ],
     "reviewedAt": "2026-09-15",
@@ -7444,7 +7456,7 @@
       "模型微调"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "自托管"
     ],
     "reviewedAt": "2026-09-15",
@@ -7486,7 +7498,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7527,7 +7539,7 @@
       "模型评估"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7610,7 +7622,7 @@
     ],
     "ways": [
       "源码工作区",
-      "技能集成"
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7652,7 +7664,7 @@
       "商业智能"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "SDK",
       "MCP"
     ],
@@ -7739,7 +7751,7 @@
     ],
     "ways": [
       "自托管",
-      "在线服务"
+      "云服务"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7779,7 +7791,7 @@
       "视频合成"
     ],
     "ways": [
-      "网页界面",
+      "Web UI",
       "桌面应用"
     ],
     "reviewedAt": "2026-09-15",
@@ -7821,7 +7833,7 @@
       "经典教材"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7852,19 +7864,19 @@
       "需要 Node.js20+ 和 npm",
       "导出 PDF/PPTX 需要本机 Chrome、Chromium 或 Edge"
     ],
-    "category": "coding",
+    "category": "apps",
     "related": [
-      "agents"
+      "visual"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "演示文稿",
       "PPTX导出",
       "网页编辑"
     ],
     "ways": [
-      "技能安装",
-      "本地网页"
+      "Agent 技能",
+      "本地部署"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7907,7 +7919,7 @@
     ],
     "ways": [
       "SDK",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -7949,7 +7961,7 @@
       "计算机视觉"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "SDK"
     ],
     "reviewedAt": "2026-09-15",
@@ -7983,10 +7995,9 @@
     ],
     "category": "coding",
     "related": [
-      "agents",
-      "apps"
+      "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "多智能体",
       "编码编排",
@@ -7994,7 +8005,7 @@
     ],
     "ways": [
       "插件",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8035,8 +8046,8 @@
       "智能体工作流"
     ],
     "ways": [
-      "阅读资料",
-      "技能安装"
+      "文档阅读",
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8069,16 +8080,16 @@
     ],
     "category": "coding",
     "related": [
-      "knowledge"
+      "visual"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "网页设计",
       "演示工程",
       "技能集"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "源码项目"
     ],
     "reviewedAt": "2026-09-15",
@@ -8162,7 +8173,7 @@
       "任务调度"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Telegram",
       "自托管"
     ],
@@ -8237,7 +8248,7 @@
     ],
     "category": "automation",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "MCP 服务",
     "tags": [
       "n8n",
       "MCP",
@@ -8286,7 +8297,7 @@
       "LLMOps"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8372,7 +8383,7 @@
       "中文学习"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "示例代码"
     ],
     "reviewedAt": "2026-09-15",
@@ -8415,7 +8426,7 @@
       "中文学习"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "示例代码"
     ],
     "reviewedAt": "2026-09-15",
@@ -8458,7 +8469,7 @@
       "南瓜书"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "PDF"
     ],
     "reviewedAt": "2026-09-15",
@@ -8491,15 +8502,17 @@
       "线性代数及概率基础有帮助，CUDA 知识可选"
     ],
     "category": "learning",
-    "related": [],
-    "kind": "模型与引擎",
+    "related": [
+      "models"
+    ],
+    "kind": "学习资源",
     "tags": [
       "推理教程",
       "SGLang",
       "KVCache"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "示例代码"
     ],
     "reviewedAt": "2026-09-15",
@@ -8540,7 +8553,7 @@
       "流程图"
     ],
     "ways": [
-      "在线服务",
+      "云服务",
       "桌面应用",
       "MCP"
     ],
@@ -8573,18 +8586,18 @@
       "需要 Python 与 NumPy 等项目依赖",
       "强化学习示例需额外安装对应环境依赖"
     ],
-    "category": "devtools",
+    "category": "learning",
     "related": [
-      "models"
+      "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "NumPy",
       "算法实现",
       "机器学习教学"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "源码阅读"
     ],
     "reviewedAt": "2026-09-15",
@@ -8670,7 +8683,7 @@
       "Python"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8711,7 +8724,7 @@
     ],
     "ways": [
       "桌面应用",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8744,14 +8757,14 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "强化学习",
       "PyTorch",
       "基线算法"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8793,7 +8806,7 @@
       "Python示例"
     ],
     "ways": [
-      "笔记本",
+      "Notebook",
       "源码阅读"
     ],
     "reviewedAt": "2026-09-15",
@@ -8870,14 +8883,14 @@
     "related": [
       "agents"
     ],
-    "kind": "开发工具",
+    "kind": "技能 / 插件",
     "tags": [
       "CAD",
       "CAE",
       "制造技能"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8910,14 +8923,14 @@
     ],
     "category": "agents",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "结构化输出",
       "Pydantic",
       "组件化"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8956,7 +8969,7 @@
       "透明度研究"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -8989,9 +9002,9 @@
     ],
     "category": "agents",
     "related": [
-      "models"
+      "apps"
     ],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "对话控制",
       "客服智能体",
@@ -9043,7 +9056,7 @@
     ],
     "ways": [
       "自托管",
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9076,14 +9089,15 @@
     ],
     "category": "audio",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "模型与引擎",
     "tags": [
       "语音合成",
       "音素",
-      "轻量引擎"
+      "轻量引擎",
+      "共振峰合成"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "SDK"
     ],
     "reviewedAt": "2026-09-15",
@@ -9125,7 +9139,7 @@
       "技术文章"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9167,7 +9181,7 @@
       "本地存储"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "自托管"
     ],
     "reviewedAt": "2026-09-15",
@@ -9285,7 +9299,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "模型与引擎",
+    "kind": "学习资源",
     "tags": [
       "从零训练",
       "PyTorch",
@@ -9326,7 +9340,6 @@
     ],
     "category": "agents",
     "related": [
-      "coding",
       "automation"
     ],
     "kind": "应用 / 工具",
@@ -9336,7 +9349,7 @@
       "网页操作"
     ],
     "ways": [
-      "本地网页",
+      "本地部署",
       "MCP"
     ],
     "reviewedAt": "2026-09-15",
@@ -9412,14 +9425,14 @@
     ],
     "category": "knowledge",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "BGE",
       "向量嵌入",
       "重排序"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "模型权重"
     ],
     "reviewedAt": "2026-09-15",
@@ -9502,7 +9515,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9535,14 +9548,14 @@
     ],
     "category": "knowledge",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "文献问答",
       "RAG",
       "引用"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9584,7 +9597,7 @@
       "本地日志"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "桌面应用"
     ],
     "reviewedAt": "2026-09-15",
@@ -9617,17 +9630,15 @@
       "需要 Copilot 服务访问及所列系统权限"
     ],
     "category": "coding",
-    "related": [
-      "apps"
-    ],
-    "kind": "应用 / 工具",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "Xcode",
       "Copilot",
       "Swift"
     ],
     "ways": [
-      "桌面扩展"
+      "插件"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9660,14 +9671,14 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "模型与引擎",
+    "kind": "开发工具",
     "tags": [
       "密钥检测",
       "代码安全",
       "CI"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "CI集成"
     ],
     "reviewedAt": "2026-09-15",
@@ -9744,7 +9755,7 @@
     ],
     "category": "agents",
     "related": [
-      "apps"
+      "automation"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -9753,7 +9764,7 @@
       "多智能体"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9786,7 +9797,7 @@
     ],
     "category": "knowledge",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "MCP 服务",
     "tags": [
       "数据库",
       "MCP",
@@ -9837,8 +9848,8 @@
       "JSON"
     ],
     "ways": [
-      "命令行",
-      "技能安装"
+      "CLI",
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9871,15 +9882,15 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "Python界面",
       "模型演示",
       "交互原型"
     ],
     "ways": [
-      "Python库",
-      "网页界面"
+      "Python 库",
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9912,14 +9923,14 @@
     ],
     "category": "coding",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "GSAP",
       "网页动画",
       "技能集"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -9961,7 +9972,7 @@
       "CDP"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "容器"
     ],
     "reviewedAt": "2026-09-15",
@@ -9994,8 +10005,10 @@
       "训练和微调需对应数据及配置"
     ],
     "category": "models",
-    "related": [],
-    "kind": "应用 / 工具",
+    "related": [
+      "visual"
+    ],
+    "kind": "模型与引擎",
     "tags": [
       "LLaVA",
       "视觉语言模型",
@@ -10083,8 +10096,8 @@
       "FFmpeg"
     ],
     "ways": [
-      "命令行",
-      "技能安装"
+      "CLI",
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10125,7 +10138,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10156,8 +10169,10 @@
       "需要支持的智能体集成",
       "私有部署与轨迹上传按项目文档配置"
     ],
-    "category": "agents",
-    "related": [],
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
     "kind": "应用 / 工具",
     "tags": [
       "技能管理",
@@ -10165,8 +10180,8 @@
       "质量评估"
     ],
     "ways": [
-      "网页界面",
-      "命令行"
+      "Web UI",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10209,8 +10224,8 @@
     ],
     "ways": [
       "自托管",
-      "网页界面",
-      "终端界面"
+      "Web UI",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10242,8 +10257,7 @@
     ],
     "category": "learning",
     "related": [
-      "agents",
-      "models"
+      "agents"
     ],
     "kind": "学习资源",
     "tags": [
@@ -10294,7 +10308,7 @@
       "参数高效微调"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10336,7 +10350,7 @@
       "策略框架"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API"
     ],
     "reviewedAt": "2026-09-15",
@@ -10413,7 +10427,7 @@
     "category": "coding",
     "related": [
       "agents",
-      "knowledge"
+      "devtools"
     ],
     "kind": "应用 / 工具",
     "tags": [
@@ -10463,7 +10477,7 @@
       "适配器"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "浏览器扩展"
     ],
     "reviewedAt": "2026-09-15",
@@ -10497,16 +10511,16 @@
     ],
     "category": "learning",
     "related": [
-      "apps"
+      "visual"
     ],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "图像提示",
       "案例库",
       "创作灵感"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10541,7 +10555,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "研究实现",
     "tags": [
       "VITS",
       "端到端TTS",
@@ -10590,8 +10604,8 @@
     ],
     "ways": [
       "桌面应用",
-      "命令行",
-      "网页界面"
+      "CLI",
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10706,7 +10720,7 @@
     ],
     "category": "visual",
     "related": [],
-    "kind": "模型与引擎",
+    "kind": "研究实现",
     "tags": [
       "CycleGAN",
       "pix2pix",
@@ -10755,7 +10769,7 @@
     ],
     "ways": [
       "桌面应用",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10786,19 +10800,19 @@
       "需要兼容的智能体与项目运行环境",
       "需要对应年度的 Form16、AIS 等材料"
     ],
-    "category": "coding",
+    "category": "apps",
     "related": [
       "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "税务计算",
       "印度ITR",
       "确定性引擎"
     ],
     "ways": [
-      "技能安装",
-      "命令行"
+      "Agent 技能",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10839,7 +10853,7 @@
       "多语言"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10883,7 +10897,7 @@
     ],
     "ways": [
       "桌面应用",
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -10914,18 +10928,19 @@
       "需要兼容 Agent Skills 的助手",
       "每项技能的外部工具依赖需分别核对"
     ],
-    "category": "coding",
+    "category": "agents",
     "related": [
-      "agents"
+      "coding",
+      "apps"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "中文技能",
       "目标定义",
       "项目整理"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11001,7 +11016,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "模型与引擎",
+    "kind": "应用 / 工具",
     "tags": [
       "模型服务",
       "Kubernetes",
@@ -11085,7 +11100,6 @@
     ],
     "category": "agents",
     "related": [
-      "models",
       "knowledge"
     ],
     "kind": "框架 / SDK",
@@ -11095,7 +11109,7 @@
       "Python"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11126,11 +11140,12 @@
       "需要可用模型端点及搜索服务",
       "x86 CPU需支持 AVX，Windows PDF 导出需 Pango"
     ],
-    "category": "knowledge",
+    "category": "apps",
     "related": [
-      "automation"
+      "knowledge",
+      "agents"
     ],
-    "kind": "模型与引擎",
+    "kind": "应用 / 工具",
     "tags": [
       "深度研究",
       "引用报告",
@@ -11138,7 +11153,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11178,7 +11193,7 @@
       "NPU"
     ],
     "ways": [
-      "本地服务",
+      "本地部署",
       "可嵌入二进制"
     ],
     "reviewedAt": "2026-09-15",
@@ -11262,7 +11277,7 @@
       "分布式训练"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11293,9 +11308,10 @@
       "快速开始权重下载约66GiB",
       "natten 后端仅适用于 Linux/CUDA，其他后端按平台配置"
     ],
-    "category": "models",
+    "category": "visual",
     "related": [
-      "audio"
+      "audio",
+      "models"
     ],
     "kind": "模型与引擎",
     "tags": [
@@ -11304,7 +11320,7 @@
       "LoRA"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "模型权重"
     ],
     "reviewedAt": "2026-09-15",
@@ -11345,7 +11361,7 @@
       "模板管理"
     ],
     "ways": [
-      "网页应用",
+      "Web UI",
       "桌面应用",
       "浏览器扩展"
     ],
@@ -11378,12 +11394,12 @@
       "需要项目 PyTorch 依赖",
       "训练需图文数据、对应编码器和计算资源"
     ],
-    "category": "models",
+    "category": "visual",
     "related": [
-      "visual",
+      "models",
       "devtools"
     ],
-    "kind": "模型与引擎",
+    "kind": "研究实现",
     "tags": [
       "DALL-E复现",
       "Transformer",
@@ -11425,14 +11441,14 @@
     "related": [
       "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "研究实现",
     "tags": [
       "Imagen复现",
       "扩散模型",
       "T5"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "示例代码"
     ],
     "reviewedAt": "2026-09-15",
@@ -11474,7 +11490,7 @@
       "工具选型"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11516,8 +11532,8 @@
       "说话人区分"
     ],
     "ways": [
-      "命令行",
-      "Python库"
+      "CLI",
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11557,7 +11573,7 @@
       "强制对齐"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11598,7 +11614,7 @@
     ],
     "ways": [
       "编辑器",
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11683,7 +11699,7 @@
       "原文存储"
     ],
     "ways": [
-      "本地服务",
+      "本地部署",
       "MCP"
     ],
     "reviewedAt": "2026-09-15",
@@ -11726,7 +11742,7 @@
       "工作流"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11767,7 +11783,7 @@
     ],
     "ways": [
       "Go库",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11799,14 +11815,14 @@
     ],
     "category": "learning",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "微软AI",
       "实验案例",
       "学习入口"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11846,8 +11862,8 @@
       "维护模式"
     ],
     "ways": [
-      "命令行",
-      "Python库"
+      "CLI",
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -11882,7 +11898,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "框架 / SDK",
+    "kind": "模型与引擎",
     "tags": [
       "ONNX",
       "推理运行时",
@@ -11972,7 +11988,7 @@
     ],
     "ways": [
       "数据库",
-      "PythonSDK"
+      "Python SDK"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12005,7 +12021,7 @@
     ],
     "category": "agents",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "研究实现",
     "tags": [
       "Minecraft",
       "具身智能体",
@@ -12138,9 +12154,8 @@
       "开发工具"
     ],
     "ways": [
-      "网页界面",
-      "命令行",
-      "终端界面"
+      "Web UI",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12180,7 +12195,7 @@
       "字幕生成"
     ],
     "ways": [
-      "本地网页"
+      "本地部署"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12263,8 +12278,8 @@
       "练习"
     ],
     "ways": [
-      "在线阅读",
-      "笔记本"
+      "文档阅读",
+      "Notebook"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12295,8 +12310,10 @@
       "需要受支持的编码 CLI",
       "需要运行守护进程的本地或云主机"
     ],
-    "category": "agents",
-    "related": [],
+    "category": "coding",
+    "related": [
+      "agents"
+    ],
     "kind": "应用 / 工具",
     "tags": [
       "团队协作",
@@ -12305,7 +12322,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12470,7 +12487,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12510,7 +12527,7 @@
       "实验管理"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12553,7 +12570,7 @@
       "技能模板"
     ],
     "ways": [
-      "本地应用"
+      "桌面应用"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12588,7 +12605,7 @@
     "related": [
       "audio"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "ComfyUI",
       "视频续接",
@@ -12637,8 +12654,8 @@
       "检索评估"
     ],
     "ways": [
-      "笔记本",
-      "阅读资料"
+      "Notebook",
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12671,14 +12688,14 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "NLTK",
       "自然语言处理",
       "语料工具"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12751,16 +12768,18 @@
       "需要项目支持的运行环境",
       "需要所选模型和业务工具配置"
     ],
-    "category": "agents",
-    "related": [],
-    "kind": "应用 / 工具",
+    "category": "devtools",
+    "related": [
+      "agents"
+    ],
+    "kind": "框架 / SDK",
     "tags": [
       "对话规则",
       "NeMo",
       "行为控制"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -12835,7 +12854,7 @@
     ],
     "category": "visual",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "研究实现",
     "tags": [
       "pix2pixHD",
       "条件GAN",
@@ -12877,7 +12896,7 @@
     "related": [
       "models"
     ],
-    "kind": "应用 / 工具",
+    "kind": "模型与引擎",
     "tags": [
       "SANA",
       "扩散模型",
@@ -12959,18 +12978,16 @@
       "需要可加载技能或规则的助手",
       "无需独立运行模型服务"
     ],
-    "category": "coding",
-    "related": [
-      "agents"
-    ],
-    "kind": "应用 / 工具",
+    "category": "apps",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "中文写作",
       "文本编辑",
       "技能"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13054,7 +13071,7 @@
       "零样本分类"
     ],
     "ways": [
-      "Python库",
+      "Python 库",
       "模型权重"
     ],
     "reviewedAt": "2026-09-15",
@@ -13096,7 +13113,7 @@
     ],
     "ways": [
       "SDK",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13172,7 +13189,7 @@
     "related": [
       "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "MCP 服务",
     "tags": [
       "语义代码工具",
       "重构",
@@ -13212,15 +13229,15 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "模型与引擎",
+    "kind": "框架 / SDK",
     "tags": [
       "模型微调",
       "合成数据",
       "模型评估"
     ],
     "ways": [
-      "Python库",
-      "命令行"
+      "Python 库",
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13345,7 +13362,7 @@
       "自托管"
     ],
     "ways": [
-      "网页应用"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13385,8 +13402,8 @@
       "版式保留"
     ],
     "ways": [
-      "命令行",
-      "桌面界面",
+      "CLI",
+      "桌面应用",
       "容器"
     ],
     "reviewedAt": "2026-09-15",
@@ -13459,16 +13476,16 @@
     ],
     "category": "learning",
     "related": [
-      "audio"
+      "models"
     ],
-    "kind": "应用 / 工具",
+    "kind": "学习资源",
     "tags": [
       "多模态学习",
       "论文目录",
       "课程资料"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13499,10 +13516,8 @@
       "需要网关运行环境",
       "需要所选提供商有效凭据"
     ],
-    "category": "models",
-    "related": [
-      "devtools"
-    ],
+    "category": "devtools",
+    "related": [],
     "kind": "开发工具",
     "tags": [
       "AI网关",
@@ -13544,14 +13559,14 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "FastMCP",
       "MCP开发",
       "Python"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13582,18 +13597,15 @@
       "当前 README 未列统一运行环境；阅读资料无需配置模型服务。"
     ],
     "category": "learning",
-    "related": [
-      "audio",
-      "visual"
-    ],
-    "kind": "应用 / 工具",
+    "related": [],
+    "kind": "学习资源",
     "tags": [
       "提示工程",
       "上下文工程",
       "研究导航"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13635,7 +13647,7 @@
       "数据变换"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13670,7 +13682,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "框架 / SDK",
+    "kind": "开发工具",
     "tags": [
       "Qdrant",
       "向量搜索",
@@ -13713,7 +13725,7 @@
     "related": [
       "models"
     ],
-    "kind": "应用 / 工具",
+    "kind": "模型与引擎",
     "tags": [
       "SenseVoice",
       "多语言ASR",
@@ -13754,7 +13766,7 @@
     ],
     "category": "models",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "模型与引擎",
     "tags": [
       "Qwen-VL",
       "视觉语言",
@@ -13839,15 +13851,15 @@
     "related": [
       "learning"
     ],
-    "kind": "应用 / 工具",
+    "kind": "框架 / SDK",
     "tags": [
       "推荐系统",
       "离线评估",
       "笔记本"
     ],
     "ways": [
-      "Python库",
-      "笔记本"
+      "Python 库",
+      "Notebook"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13888,7 +13900,7 @@
     ],
     "ways": [
       "自托管",
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -13930,7 +13942,7 @@
       "区域统计"
     ],
     "ways": [
-      "Python库"
+      "Python 库"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -14016,7 +14028,7 @@
     ],
     "ways": [
       "自托管",
-      "网页界面"
+      "Web UI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -14049,7 +14061,7 @@
     ],
     "category": "knowledge",
     "related": [],
-    "kind": "模型与引擎",
+    "kind": "框架 / SDK",
     "tags": [
       "向量记忆",
       "Rust",
@@ -14134,7 +14146,9 @@
     "tags": [
       "工作历史",
       "本地记录",
-      "智能体上下文"
+      "智能体上下文",
+      "源码可见",
+      "商业许可"
     ],
     "ways": [
       "桌面应用",
@@ -14171,7 +14185,7 @@
     ],
     "category": "devtools",
     "related": [],
-    "kind": "应用 / 工具",
+    "kind": "开发工具",
     "tags": [
       "模型指纹",
       "来源识别",
@@ -14219,7 +14233,7 @@
       "工作流资料"
     ],
     "ways": [
-      "阅读资料"
+      "文档阅读"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -14286,7 +14300,7 @@
     ],
     "ways": [
       "CLI",
-      "HTTP服务"
+      "HTTP API"
     ],
     "summary": "用统一命令行连接模型，支持终端对话、Shell 辅助、文档检索和工具型 Agent。",
     "overview": "AIChat 面向终端用户将多个模型提供方放进统一接口，既可单次处理命令输入，也可在带历史与补全的 REPL 中持续对话。它支持读取标准输入、文件、目录或 URL，按角色和会话保存背景，再结合 RAG 文档与函数工具构成 Agent。用户还可以用宏复用常见步骤，或启用轻量 HTTP 服务与网页入口，适合把模型能力接到现有命令行工作流。生成的 Shell 命令和工具动作仍需结合系统与任务判断，统一客户端不会自动提供模型额度或替代外部工具的安装配置。",
@@ -14331,9 +14345,9 @@
       "运行监控"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker Compose",
-      "桌面客户端"
+      "桌面应用"
     ],
     "summary": "在统一工作区构建、部署和观察 Agent 与工作流，并连接文件、知识和业务工具。",
     "overview": "Sim 将 Agent、工作流、文件和结构化数据放进同一界面，用户可通过可视化、对话或代码方式组织任务，再接入模型、业务应用和知识来源。运行记录、计划与日志帮助团队观察执行过程，适合快速制作工具协作流程并持续维护。自托管向导会配置数据库与密钥、启动发布的容器镜像，源码模式则有独立开发路径。项目同时提供桌面入口和托管服务，其中 Chat 依赖 Sim 管理的服务与配置，并不意味着安装容器后所有体验都自动完全离线。不同集成还需准备各自账户和权限。",
@@ -14470,7 +14484,7 @@
     ],
     "ways": [
       "示例代码",
-      "文章阅读"
+      "文档阅读"
     ],
     "summary": "LearnOpenCV 博客配套代码集合，围绕计算机视觉、深度学习和 AI 文章提供实践示例。",
     "overview": "learnopencv 为 LearnOpenCV 博客中的计算机视觉、深度学习和 AI 研究文章集中保存配套代码，主要以 C++ 与 Python 示例帮助读者把文章中的方法落实到实际程序。使用时应先定位具体文章和对应目录，理解问题与输入输出，再按照该示例自己的环境要求运行，适合学习算法实现或寻找实验起点。它是跨主题的案例集合，不是一个统一安装和稳定 API 的软件库，所有目录也未必共享相同依赖。维护方还提供商业咨询服务，那些生产交付能力与这个公开教学仓库的现成内容应分别看待。",
@@ -14548,10 +14562,10 @@
     ]
   },
   "steel-dev/steel-browser": {
-    "category": "devtools",
+    "category": "automation",
     "related": [
       "agents",
-      "automation"
+      "devtools"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -14608,8 +14622,8 @@
     ],
     "ways": [
       "Python",
-      "Web",
-      "云部署"
+      "Web UI",
+      "云服务"
     ],
     "summary": "将 Python 脚本变成交互式数据应用，适合仪表盘、报告和模型演示。",
     "overview": "Streamlit 为 Python 开发者提供快速制作 Web 数据界面的方式，让数据处理脚本结合界面控件、结果展示与交互，不必先搭建独立前后端工程。开发者可用它制作仪表盘、报告或聊天原型，编辑脚本时查看应用更新，再通过组件扩展或部署平台分享。它适合把研究和分析结果交给其他人试用，以反馈推动后续开发。开源框架与 Community Cloud 是不同层次，应用中的模型、数据访问和托管条件仍需单独设置；从原型走向长期服务时也要检查运行效率、权限及敏感配置管理。",
@@ -14654,7 +14668,7 @@
       "IDE"
     ],
     "ways": [
-      "桌面安装",
+      "桌面应用",
       "CLI",
       "MCP"
     ],
@@ -14733,9 +14747,9 @@
     ]
   },
   "tabularisdb/tabularis": {
-    "category": "devtools",
+    "category": "apps",
     "related": [
-      "apps",
+      "devtools",
       "agents"
     ],
     "kind": "应用 / 工具",
@@ -14746,7 +14760,7 @@
       "桌面工具"
     ],
     "ways": [
-      "桌面安装",
+      "桌面应用",
       "MCP"
     ],
     "summary": "桌面 SQL 工作区，内置常用数据库连接，并通过 MCP 让 Agent 查询结构与执行 SQL。",
@@ -14825,9 +14839,9 @@
     ]
   },
   "tencent-hunyuan/unirl": {
-    "category": "models",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "models"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -14932,7 +14946,7 @@
     "ways": [
       "Python",
       "CLI",
-      "Agent技能"
+      "Agent 技能"
     ],
     "summary": "通过非官方接口管理 NotebookLM 资料、提问和生成内容，并提供 Python、CLI 与技能入口。",
     "overview": "notebooklm-py 将 NotebookLM 的笔记本、资料导入、提问和内容生成组织为可编程接口，用户可批量加入文档或链接，发起基于来源的研究，再下载相应产物。项目提供 Python、命令行和 Agent 技能，适合把重复资料整理接进自己的研究流程，也支持文档列出的音频、学习卡片等生成与导出形式。它使用未公开承诺稳定的内部接口，并非 Google 官方 SDK；服务升级、认证和限流都可能使流程中断。分析工作转移到服务端也不等于没有配额、服务成本或数据上传，具体功能需以实际账号可用范围为准。",
@@ -15068,7 +15082,7 @@
       "会话追踪"
     ],
     "ways": [
-      "桌面安装"
+      "桌面应用"
     ],
     "summary": "本地优先的 Agent 桌面客户端，将模型、技能、工具和可追溯会话放进统一界面。",
     "overview": "DeepChat 将本地与云端模型、MCP 工具、技能和 ACP Agent 组织到一个桌面客户端中。用户可按会话启用能力，查看请求上下文、工具调用及结果，也能接入消息渠道远程使用。它强调保存长期任务过程，使会话可以回看和恢复，适合在多个模型与工作工具之间建立统一入口。应用在本地运行不代表模型和远程工具都离线，实际数据路径依所选提供方与集成配置而定。README 包含接口中转服务的赞助段落，其折扣、并发和可用性属于服务商宣传，并不是客户端本身保证的能力。",
@@ -15113,7 +15127,7 @@
       "本地优先"
     ],
     "ways": [
-      "桌面安装",
+      "桌面应用",
       "CLI"
     ],
     "summary": "以本地记忆、持久任务图和工具整合构建个人 Agent 工作环境的早期 Beta 项目。",
@@ -15150,7 +15164,7 @@
     "related": [
       "agents"
     ],
-    "kind": "格式与工具",
+    "kind": "协议 / 标准",
     "tags": [
       "结构化数据",
       "Token优化",
@@ -15204,7 +15218,7 @@
       "工程验证"
     ],
     "ways": [
-      "文档学习",
+      "文档阅读",
       "工作流模板"
     ],
     "summary": "围绕提示、技能、上下文和验证组织中文 AI 结对编程教程，覆盖从想法到交付。",
@@ -15251,7 +15265,7 @@
     ],
     "ways": [
       "自托管",
-      "Web"
+      "Web UI"
     ],
     "summary": "为 Agent 研究和维护客户资料设计的 CRM，用工作队列、证据和预算管理更新过程。",
     "overview": "Comp AI CRM 把 Agent 作为独立运行的资料维护者，让它围绕任务队列安排研究、记录后续检查并在预算内推进，而不是只在 CRM 表单旁增加一个聊天框。工具记录观察到的证据，较强证据可更新记录，较弱信息留作人工确认的建议，目标是降低把猜测写入客户档案的风险。项目可从已有 CRM 历史、会议和签名内容开始，再按需要接入外部来源。它适合研究持续任务和证据驱动的数据维护，但证据规则不代表身份判断永远正确，外部来源、模型运行和组织登录仍需实际部署配置。",
@@ -15464,9 +15478,9 @@
     ]
   },
   "vectorize-io/hindsight": {
-    "category": "agents",
+    "category": "knowledge",
     "related": [
-      "knowledge"
+      "agents"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -15570,7 +15584,7 @@
       "按需加载"
     ],
     "ways": [
-      "Agent技能",
+      "Agent 技能",
       "Python"
     ],
     "summary": "把技术书籍或文档集合整理成按章节加载的 Agent 技能，便于工作时检索应用。",
@@ -15616,7 +15630,7 @@
     ],
     "ways": [
       "Python",
-      "桌面界面"
+      "桌面应用"
     ],
     "summary": "在 so-vits-svc 基础上增加实时声音转换、图形界面与音频预处理工具。",
     "overview": "这个分支面向歌声与语音音色转换，在原有 so-vits-svc 流程上改善安装、界面和实时输入处理，并提供音高估计、音频切分与说话人整理等工具。使用者可加载兼容模型处理录音，也可配置音频设备进行实时转换；训练自己的模型前，需要准备合适的干净音频并完成预处理。README 明确说明项目自 2023 年春季以来主要做维护，同时列出了可比较的替代方案。模型兼容范围很窄，不能把任意 SVC 权重直接混用，输入噪声、设备配置和运行硬件都会影响实际效果与延迟。",
@@ -15648,12 +15662,11 @@
     ]
   },
   "voltagent/awesome-claude-code-subagents": {
-    "category": "learning",
+    "category": "coding",
     "related": [
-      "coding",
       "agents"
     ],
-    "kind": "学习资源",
+    "kind": "技能 / 插件",
     "tags": [
       "Claude Code",
       "子Agent",
@@ -15707,7 +15720,7 @@
     ],
     "ways": [
       "Docker Compose",
-      "Web",
+      "Web UI",
       "API"
     ],
     "summary": "通过多 Agent、工具容器和持久记忆组织安全评估，提供 Web 管理与运行追踪。",
@@ -15753,7 +15766,7 @@
       "多模型"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker",
       "本地部署"
     ],
@@ -15800,7 +15813,7 @@
     ],
     "ways": [
       "Docker",
-      "Web"
+      "Web UI"
     ],
     "summary": "在画布中整理参考素材，通过助手生成和迭代图像与视频的创作工作区。",
     "overview": "waoowaoo 当前预览版以创作画布和侧栏助手为中心：用户描述创作意图、上传参考素材，再按选定模型支持的尺寸、时长与参考模式生成图像或视频。结果可以继续修订为新版本，并保留原始素材，适合把多个生成尝试组织到一个持续项目中。推荐的发行方式是预构建 Docker 镜像，媒体和项目记录由本地数据库及私有存储管理，实际生成通过配置的 OpenRouter 服务完成。仓库简介中的全流程影视宣传需结合当前范围理解：此预览版没有音乐和配音控制，不同模型的首尾帧能力也并不相同。",
@@ -15832,8 +15845,9 @@
     ]
   },
   "worldbench/diffusionopsd": {
-    "category": "visual",
+    "category": "devtools",
     "related": [
+      "visual",
       "models"
     ],
     "kind": "研究实现",
@@ -16059,11 +16073,11 @@
     ]
   },
   "yamadashy/repomix": {
-    "category": "devtools",
+    "category": "coding",
     "related": [
-      "coding"
+      "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "开发工具",
     "tags": [
       "代码上下文",
       "仓库打包",
@@ -16072,7 +16086,7 @@
     ],
     "ways": [
       "CLI",
-      "Web",
+      "Web UI",
       "MCP"
     ],
     "summary": "将代码仓库整理成适合模型读取的单文件，并提供排除规则、token 统计与结构压缩。",
@@ -16303,7 +16317,7 @@
     ],
     "ways": [
       "CLI",
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "summary": "以 Rust 二进制运行个人 Agent，连接模型、消息通道和工具，并提供本地管理界面。",
@@ -16340,7 +16354,7 @@
     "related": [
       "agents"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "逆向分析",
       "技能路由",
@@ -16348,7 +16362,7 @@
       "工具编排"
     ],
     "ways": [
-      "Agent技能",
+      "Agent 技能",
       "CLI"
     ],
     "summary": "为逆向与安全研究任务选择分析流程，先检查工具可用性再组织可重复的操作。",
@@ -16393,7 +16407,7 @@
       "会话管理"
     ],
     "ways": [
-      "桌面安装"
+      "桌面应用"
     ],
     "summary": "把 Claude Code、Codex 等命令行编程引擎集中到一个可查看工具过程的桌面界面。",
     "overview": "ccgui 是基于 Tauri 的多引擎 AI 编程桌面客户端，把命令行运行时的会话、流式回复、工具调用和代码差异放进统一图形界面。用户选择项目与引擎后开始任务，可在不同标签页设置模型和推理级别，通过内置终端与 Git 面板查看开发过程；会话历史会从各引擎的原生记录中读取。模型渠道写入对应 CLI 的配置，应用不是另一个独立推理服务。它适合喜欢图形界面、又希望保留不同编码工具能力的用户，各引擎的安装、认证与支持特性仍需分别满足。",
@@ -16438,7 +16452,7 @@
       "RAG"
     ],
     "ways": [
-      "文档学习",
+      "文档阅读",
       "Notebook"
     ],
     "summary": "以连续货运案例串联 24 周 AI 工程学习，从 Python 走向模型应用、评估与云平台。",
@@ -16486,7 +16500,7 @@
     "ways": [
       "API",
       "Docker",
-      "Web演示"
+      "在线演示"
     ],
     "summary": "为本地模型提供应用 API 层，组织文档检索、工具、技能与结构化数据访问。",
     "overview": "PrivateGPT 当前版本把重点放在本地 AI 应用的后端能力：连接兼容 OpenAI 接口的推理服务器后，对上提供消息、资料摄取、带引用检索、工具调用和数据库访问等应用原语。内置工作台用于调试请求、配置连接器和演示，开发者可在 API 之上构建自己的产品。它从早期离线文档问答原型演进而来，因此旧教程与当前架构可能差异较大。项目自身不负责运行模型，也不自动带来完整企业部署治理；相应推理设施与团队维护的 Zylon 商业平台属于另外的能力层。",
@@ -16522,7 +16536,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "框架 / SDK",
+    "kind": "MCP 服务",
     "tags": [
       "安全评估",
       "MCP",
@@ -16740,14 +16754,14 @@
     "related": [
       "models"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "Krita",
       "局部重绘",
       "扩散模型"
     ],
     "ways": [
-      "桌面插件",
+      "插件",
       "本地部署"
     ],
     "summary": "把生成、局部重绘和参考图控制接入 Krita 绘画流程。",
@@ -16958,7 +16972,7 @@
     "related": [
       "agents"
     ],
-    "kind": "开发工具",
+    "kind": "MCP 服务",
     "tags": [
       "Blender",
       "MCP",
@@ -16966,7 +16980,7 @@
     ],
     "ways": [
       "MCP",
-      "桌面插件"
+      "插件"
     ],
     "summary": "让兼容 MCP 的 AI 客户端通过插件操作 Blender 场景。",
     "overview": "Blender MCP 把模型客户端与 Blender 连接起来，让自然语言任务转换为场景创建、对象调整、材质和渲染等操作。系统由 Blender 内的插件和外部 Python MCP 服务两部分组成：前者接收并执行命令，后者把能力提供给客户端。用户可以边查看场景边提出修改，适合快速原型或探索程序化建模。它是社区集成而非 Blender 官方产品，生成结果仍需要在软件中检查。默认脚本能力较广，文档提供安全模式与部署说明；模型判断错误、插件版本和执行环境问题，都可能影响实际场景或文件操作。",
@@ -17342,14 +17356,14 @@
     "related": [
       "agents"
     ],
-    "kind": "插件目录",
+    "kind": "技能 / 插件",
     "tags": [
       "ClaudeCode",
       "插件",
       "技能扩展"
     ],
     "ways": [
-      "插件安装",
+      "插件",
       "文档阅读"
     ],
     "summary": "由 Anthropic 维护的 Claude Code 插件目录，包含内部与第三方扩展。",
@@ -17436,7 +17450,7 @@
       "工具调用"
     ],
     "ways": [
-      "代码示例",
+      "示例代码",
       "文档阅读"
     ],
     "summary": "通过不同框架的示例学习 Agent、RAG 和实际应用工作流。",
@@ -17611,7 +17625,7 @@
     ],
     "ways": [
       "文档阅读",
-      "代码示例"
+      "示例代码"
     ],
     "summary": "通过按天记录的代码与图解学习经典机器学习方法。",
     "overview": "100 Days of ML Code 以学习日志的形式记录作者对机器学习算法的理解，包括逻辑回归、近邻、支持向量机、朴素贝叶斯和神经网络等主题。部分条目配有实现和信息图，另一些指向课程、数学解释或后续学习计划，适合边读概念边寻找小练习。它并非保证每天都有同等内容量的完整课程，也不是当前所有框架的安装指南。读者可按自己的基础选择算法主题，结合原始课程补足数学推导，再用固定数据比较实现输出，避免把完成天数当作掌握程度。",
@@ -17728,10 +17742,8 @@
     ]
   },
   "berriai/litellm": {
-    "category": "models",
-    "related": [
-      "devtools"
-    ],
+    "category": "devtools",
+    "related": [],
     "kind": "开发工具",
     "tags": [
       "AI网关",
@@ -17825,7 +17837,7 @@
     ],
     "ways": [
       "本地部署",
-      "Web界面"
+      "Web UI"
     ],
     "summary": "用看板规划编码任务，并在工作区运行和审阅多个编码 Agent。",
     "overview": "Vibe Kanban 把编码 Agent 的工作组织成看板与独立工作区。用户先创建、排序和分配任务，再启动带分支、终端和开发服务器的工作区，由已配置的 Agent 执行。完成后可查看差异、留下行内反馈，在内置浏览器预览页面，并衔接 PR 创建和合并流程。它适合把人的规划和审阅集中在一处，而不是单纯增加同时运行的模型数量。实际执行仍依赖相应 Agent 的登录与能力；多任务并行也需要关注仓库状态、资源以及评审是否跟得上。",
@@ -17913,7 +17925,7 @@
     "ways": [
       "桌面应用",
       "CLI",
-      "Web界面"
+      "Web UI"
     ],
     "summary": "把多模态模型与桌面、浏览器和 MCP 工具连接起来执行任务。",
     "overview": "UI TARS Desktop 仓库承载 TARS 多模态 Agent 栈，包含原生桌面 GUI Agent 与面向终端、网页的 Agent TARS。前者强调通过视觉模型操作电脑或浏览器，后者结合模型与 MCP 工具组织更通用的任务流程，并提供事件查看和工具运行信息。用户可选择适合本地交互或远程操作的产品路径，观察模型如何理解画面并执行步骤。它适合 GUI 自动化原型和电脑使用研究；演示中的任务完成不能代表所有软件都可可靠操作，模型、环境和界面变化都可能导致误判。",
@@ -18080,7 +18092,7 @@
     "related": [
       "agents"
     ],
-    "kind": "终端编程助手",
+    "kind": "开发工具",
     "tags": [
       "终端",
       "多模型",
@@ -18088,7 +18100,7 @@
       "LSP"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
     "summary": "Crush 是连接多种大模型、代码上下文与工具的终端编程助手。",
     "overview": "Crush 把编程对话、项目会话和工具调用放进终端，适合习惯命令行工作的开发者。它允许在会话中切换模型并保留上下文，通过 LSP 获得语言服务信息，也可接入使用 HTTP、stdio 或 SSE 的 MCP 服务。项目强调跨平台运行，并提供项目级和全局配置。用户可以选择官方模型服务或配置其他兼容提供商，再围绕现有仓库提问和修改代码；模型费用、工具权限及最终代码质量仍取决于具体配置和人工验收。",
@@ -18124,7 +18136,7 @@
     "related": [
       "coding"
     ],
-    "kind": "面试题与方法资料",
+    "kind": "学习资源",
     "tags": [
       "AI编程",
       "面试",
@@ -18166,7 +18178,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "AI 检索基础设施",
+    "kind": "框架 / SDK",
     "tags": [
       "向量数据库",
       "搜索",
@@ -18209,7 +18221,7 @@
     "related": [
       "apps"
     ],
-    "kind": "文档问答应用",
+    "kind": "应用 / 工具",
     "tags": [
       "RAG",
       "文档问答",
@@ -18217,8 +18229,8 @@
       "Gradio"
     ],
     "ways": [
-      "Web应用",
-      "自部署"
+      "Web UI",
+      "自托管"
     ],
     "summary": "Kotaemon 提供可自部署、可扩展并带文档引用预览的 RAG 问答界面。",
     "overview": "Kotaemon 将文档索引、检索和回答呈现在一个 Gradio 界面中，既面向想直接与资料对话的用户，也面向定制 RAG 流程的开发者。它支持本地模型与多种 API，默认流程组合全文检索、向量检索和重排序，并能在浏览器 PDF 预览中显示回答依据。文件可组织为私有或公开集合，还支持图表文档处理及多跳问题分解。项目提供轻量和完整 Docker 镜像，不同解析器、模型和 GraphRAG 集成需要各自配置，回答附有引用也仍需检查原文。",
@@ -18255,7 +18267,7 @@
     "related": [
       "models"
     ],
-    "kind": "扩散模型微调工具",
+    "kind": "开发工具",
     "tags": [
       "LoRA",
       "Stable Diffusion",
@@ -18298,14 +18310,14 @@
     "related": [
       "automation"
     ],
-    "kind": "编码 Agent 工作流资料与工具",
+    "kind": "开发工具",
     "tags": [
       "Agent编排",
       "验证",
       "成本管理"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "文档阅读"
     ],
     "summary": "Loop Engineering 提供围绕代码库运营编码 Agent 的循环模式与检查工具。",
@@ -18342,7 +18354,7 @@
     "related": [
       "apps"
     ],
-    "kind": "本地 Markdown 笔记应用",
+    "kind": "应用 / 工具",
     "tags": [
       "本地优先",
       "Markdown",
@@ -18387,7 +18399,7 @@
     "related": [
       "automation"
     ],
-    "kind": "Agent 工具连接 SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "工具调用",
       "身份认证",
@@ -18396,7 +18408,7 @@
     ],
     "ways": [
       "SDK",
-      "命令行",
+      "CLI",
       "MCP"
     ],
     "summary": "Composio 为 Agent 连接外部应用工具、认证和用户会话。",
@@ -18433,7 +18445,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 前端 SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "生成式UI",
       "AG-UI",
@@ -18475,10 +18487,8 @@
   },
   "coreyhaines31/marketingskills": {
     "category": "automation",
-    "related": [
-      "learning"
-    ],
-    "kind": "营销 Agent 技能库",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "营销",
       "SEO",
@@ -18486,7 +18496,7 @@
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "文档阅读"
     ],
     "summary": "为支持 Agent Skills 的编码助手提供营销、SEO、分析与增长工作流。",
@@ -18523,7 +18533,7 @@
     "related": [
       "automation"
     ],
-    "kind": "可视化 Agent 开发平台",
+    "kind": "应用 / 工具",
     "tags": [
       "低代码",
       "工作流",
@@ -18531,8 +18541,8 @@
       "插件"
     ],
     "ways": [
-      "自部署",
-      "Web应用"
+      "自托管",
+      "Web UI"
     ],
     "summary": "Coze Studio 提供创建、调试和部署 Agent 的可视化开发环境。",
     "overview": "Coze Studio 将提示词、知识检索、插件和工作流放在统一平台中，帮助开发者用低代码方式组合 Agent 与应用。后端采用 Go，前端使用 React 和 TypeScript，仓库提供可自行部署并继续扩展的实现。部署后需要先配置模型服务，再建立知识、插件及业务流程；对外调用可使用会话和工作流 API。它适合需要可视化调试与业务逻辑编排的团队。开源版与商业 Coze 存在功能差异，部分插件需要第三方认证，服务能启动也不代表模型与上传等组件已经可用。",
@@ -18564,11 +18574,11 @@
     ]
   },
   "cvat-ai/cvat": {
-    "category": "visual",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "visual"
     ],
-    "kind": "视觉数据标注平台",
+    "kind": "应用 / 工具",
     "tags": [
       "数据标注",
       "计算机视觉",
@@ -18576,8 +18586,8 @@
       "数据集"
     ],
     "ways": [
-      "自部署",
-      "Web应用",
+      "自托管",
+      "Web UI",
       "API"
     ],
     "summary": "CVAT 为图像、视频和三维数据提供标注、任务管理与数据集接口。",
@@ -18615,7 +18625,7 @@
     "related": [
       "models"
     ],
-    "kind": "交互式深度学习教材",
+    "kind": "学习资源",
     "tags": [
       "深度学习",
       "Jupyter",
@@ -18623,7 +18633,7 @@
       "多框架"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "Notebook"
     ],
     "summary": "《动手学深度学习》英文版以可运行 Notebook 串联数学、理论与代码。",
@@ -18659,14 +18669,14 @@
     "related": [
       "knowledge"
     ],
-    "kind": "任务提示词框架",
+    "kind": "应用 / 工具",
     "tags": [
       "提示词",
       "命令行",
       "多模型"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API"
     ],
     "summary": "Fabric 把可复用的 AI 提示词按实际任务组织，并提供命令行调用方式。",
@@ -18704,7 +18714,7 @@
       "automation",
       "knowledge"
     ],
-    "kind": "企业 LLM 应用平台",
+    "kind": "应用 / 工具",
     "tags": [
       "工作流",
       "RAG",
@@ -18712,8 +18722,8 @@
       "文档解析"
     ],
     "ways": [
-      "自部署",
-      "Web应用"
+      "自托管",
+      "Web UI"
     ],
     "summary": "BISHENG 为企业 AI 应用提供工作流、知识检索、Agent 与模型运维能力。",
     "overview": "BISHENG 围绕企业文档与业务流程组织大模型应用开发，包含 RAG、Agent、模型管理、评估和数据集等能力。其编排界面支持循环、并行、批处理和条件逻辑，也允许用户在执行过程中提供反馈，适合需要人工参与的文档审阅与报告生成。项目还提供文档解析能力，并列出权限、组织和可观测等企业管理方向。部署默认涉及 ES、Milvus、OnlyOffice 等第三方组件，因此需要把完整平台的资源占用和维护成本纳入计划，而不是按一个轻量聊天页面估算。",
@@ -18747,17 +18757,15 @@
   },
   "datawhalechina/easy-rl": {
     "category": "learning",
-    "related": [
-      "models"
-    ],
-    "kind": "强化学习中文教材",
+    "related": [],
+    "kind": "学习资源",
     "tags": [
       "强化学习",
       "中文教程",
       "算法"
     ],
     "ways": [
-      "在线阅读",
+      "文档阅读",
       "PDF"
     ],
     "summary": "Easy RL（蘑菇书）以中文课程整理和补充资料讲解强化学习。",
@@ -18791,10 +18799,8 @@
   },
   "datawhalechina/leedl-tutorial": {
     "category": "learning",
-    "related": [
-      "models"
-    ],
-    "kind": "深度学习中文教材",
+    "related": [],
+    "kind": "学习资源",
     "tags": [
       "深度学习",
       "数学推导",
@@ -18802,7 +18808,7 @@
     ],
     "ways": [
       "PDF",
-      "在线资料"
+      "文档阅读"
     ],
     "summary": "《李宏毅深度学习教程》将公开课内容整理为包含公式推导的中文教材。",
     "overview": "这部教程主要依据李宏毅二〇二一年春季机器学习课程编写，补充早期课程与其他深度学习资料，并对公式和难点增加推导说明。它强调帮助初学者形成深度学习直觉，再选择感兴趣的方向继续深入，内容主题涵盖常见网络结构与现代模型方法。仓库提供 PDF 下载、勘误以及关联学习资源，适合配合课程视频自学或复习。公开 PDF 是整理阶段的初稿，正式出版书籍经过进一步编辑修订，遇到细节差异时应结合勘误和对应版本判断。",
@@ -18837,7 +18843,7 @@
     "related": [
       "models"
     ],
-    "kind": "大模型部署微调教程",
+    "kind": "学习资源",
     "tags": [
       "Linux",
       "开源模型",
@@ -18882,7 +18888,7 @@
     "related": [
       "models"
     ],
-    "kind": "人脸表征研究实现",
+    "kind": "研究实现",
     "tags": [
       "FaceNet",
       "TensorFlow",
@@ -18920,16 +18926,15 @@
     ]
   },
   "dbeaver/dbeaver": {
-    "category": "devtools",
-    "related": [
-      "apps"
-    ],
-    "kind": "数据库桌面客户端",
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
     "tags": [
+      "数据库客户端",
       "SQL",
-      "数据库",
       "数据分析",
-      "AI辅助"
+      "AI辅助",
+      "通用工具"
     ],
     "ways": [
       "桌面应用"
@@ -18965,11 +18970,9 @@
     ]
   },
   "deanpeters/product-manager-skills": {
-    "category": "learning",
-    "related": [
-      "automation"
-    ],
-    "kind": "产品经理 Agent 技能库",
+    "category": "apps",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "产品管理",
       "PRD",
@@ -18977,7 +18980,7 @@
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "文档阅读"
     ],
     "summary": "将产品管理框架整理为可供人和 Agent 共同使用的技能资料。",
@@ -19014,15 +19017,15 @@
     "related": [
       "models"
     ],
-    "kind": "人脸替换实验软件",
+    "kind": "应用 / 工具",
     "tags": [
       "视频处理",
       "人脸替换",
       "生成模型"
     ],
     "ways": [
-      "桌面界面",
-      "命令行"
+      "桌面应用",
+      "CLI"
     ],
     "summary": "FaceSwap 提供从素材提取、模型训练到人脸替换转换的完整实验流程。",
     "overview": "FaceSwap 是用 Python 实现的人脸替换工具，面向图像、视频处理及生成模型学习。典型流程先从原始素材提取人脸，再使用两组人脸训练模型，最后把模型应用到目标图片或拆帧视频。项目同时提供命令行和图形界面，并附带安装、使用与视频转换说明，适合研究模型训练或制作获得相关参与者同意的视觉效果。训练速度和输出稳定性会受到素材质量、模型选择与硬件影响；README 强调合法透明使用，并明确不支持未经同意的人脸替换。",
@@ -19058,7 +19061,7 @@
     "related": [
       "models"
     ],
-    "kind": "分布式深度学习优化库",
+    "kind": "框架 / SDK",
     "tags": [
       "分布式训练",
       "ZeRO",
@@ -19102,7 +19105,7 @@
     "related": [
       "knowledge"
     ],
-    "kind": "代码知识图谱 MCP 服务",
+    "kind": "MCP 服务",
     "tags": [
       "代码索引",
       "AST",
@@ -19111,7 +19114,7 @@
     ],
     "ways": [
       "MCP",
-      "本地服务"
+      "本地部署"
     ],
     "summary": "Codebase Memory MCP 将代码结构索引为可查询的本地知识图谱。",
     "overview": "Codebase Memory MCP 通过 tree-sitter 分析代码语法结构，并在部分语言上结合 LSP 语义信息，建立函数、类、调用链和服务联系的持久化图谱。编码 Agent 可通过 MCP 查询架构、调用关系和变更影响，也可使用 Cypher 及本地图形界面探索项目。仓库提供各平台原生发行包和客户端配置工具，帮助减少反复逐文件阅读。项目宣称的速度与 token 节省来自特定测试，应结合自己的仓库验证；安装器还会改写 Agent 配置，并可能启用生命周期钩子。",
@@ -19147,14 +19150,14 @@
     "related": [
       "knowledge"
     ],
-    "kind": "版本化 SQL 数据库",
+    "kind": "开发工具",
     "tags": [
       "数据库",
       "数据版本控制",
       "MySQL"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "数据库服务"
     ],
     "summary": "Dolt 把类似 Git 的分支、提交和合并操作带入 SQL 数据表。",
@@ -19191,7 +19194,7 @@
     "related": [
       "models"
     ],
-    "kind": "结构化生成库",
+    "kind": "框架 / SDK",
     "tags": [
       "结构化输出",
       "JSON",
@@ -19235,7 +19238,7 @@
     "related": [
       "apps"
     ],
-    "kind": "本地 AI 应用构建器",
+    "kind": "应用 / 工具",
     "tags": [
       "应用生成",
       "本地开发",
@@ -19278,14 +19281,14 @@
     "related": [
       "apps"
     ],
-    "kind": "本地绘图界面",
+    "kind": "应用 / 工具",
     "tags": [
       "文生图",
       "图生图",
       "Stable Diffusion"
     ],
     "ways": [
-      "本地Web应用"
+      "本地部署"
     ],
     "summary": "Easy Diffusion 提供安装与使用本地图像生成模型的浏览器界面。",
     "overview": "Easy Diffusion 把本地图像生成环境的安装、模型选择和任务提交整合到面向普通用户的界面中。用户可以输入提示词生成图片、以现有图片继续创作或做局部修复，并通过任务队列、实时预览和风格修饰词管理多次实验。项目还提供 ControlNet 与模型搜索等进阶能力，当前 README 提到新版引擎扩展了多种模型支持。程序可以在不同系统和设备上运行，但 CPU 与各种 GPU 的速度差异较大，具体模型所需内存也可能超过页面给出的基础运行门槛。",
@@ -19322,7 +19325,7 @@
       "apps",
       "automation"
     ],
-    "kind": "多 Agent 工作空间",
+    "kind": "应用 / 工具",
     "tags": [
       "多Agent",
       "工作流",
@@ -19331,7 +19334,7 @@
     ],
     "ways": [
       "桌面应用",
-      "自部署Web"
+      "自托管"
     ],
     "summary": "Ekko Studio 将多种 Agent 运行时、会话与可视化流程放入统一工作空间。",
     "overview": "Ekko Studio 原名 Hermes Studio，提供桌面和自部署 Web 入口，统一管理 Hermes、Claude Code、Codex 等支持的 Agent。用户可以查看流式会话与工具调用、上传文件、预览产物，并在看板和可视化工作流中组织任务。Studio 自有会话存于本地 SQLite，Hermes 历史则通过只读接口呈现，模型和配置还会根据 profile 区分。它适合已有多种 Agent 的用户集中操作，但并不内置所有运行时；仓库及 npm 包仍保留 hermes-studio 与 hermes-web-ui 的旧名称。",
@@ -19368,7 +19371,7 @@
     "related": [
       "models"
     ],
-    "kind": "多模型聊天与评估界面",
+    "kind": "应用 / 工具",
     "tags": [
       "多模型",
       "本地模型",
@@ -19376,7 +19379,7 @@
       "浏览器"
     ],
     "ways": [
-      "Web应用",
+      "Web UI",
       "静态部署"
     ],
     "summary": "G0DM0D3 提供多提供商聊天、并行响应比较及本地模型连接。",
@@ -19411,17 +19414,15 @@
   },
   "emily2040/seedance-2.0": {
     "category": "visual",
-    "related": [
-      "learning"
-    ],
-    "kind": "视频提示词规划技能",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "视频策划",
       "分镜",
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "文档阅读"
     ],
     "summary": "Seedance 2.0 Skill OS 用于规划镜头、参考素材和续接片段的 Agent 技能。",
@@ -19455,10 +19456,8 @@
   },
   "eriklindernoren/ml-from-scratch": {
     "category": "learning",
-    "related": [
-      "models"
-    ],
-    "kind": "机器学习原理实现集",
+    "related": [],
+    "kind": "学习资源",
     "tags": [
       "NumPy",
       "从零实现",
@@ -19500,7 +19499,7 @@
     "related": [
       "models"
     ],
-    "kind": "端到端语音工具包",
+    "kind": "框架 / SDK",
     "tags": [
       "语音识别",
       "语音合成",
@@ -19509,7 +19508,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "summary": "ESPnet 提供覆盖识别、合成、翻译与增强的语音训练和评估流程。",
     "overview": "ESPnet 基于 PyTorch 组织端到端语音任务，包含语音识别、文本转语音、语音翻译、增强、说话人处理和歌声合成等方向。它采用类似 Kaldi 的 recipe 结构，将数据准备、训练、推理与评分放进相近的流程，并提供预训练模型供快速试用。研究者可以从小型语料示例开始，再扩展到多设备训练和其他任务，减少重复编写实验基础流程的工作。当前项目推荐 ESPnet2 或 ESPnet3；数据集、任务工具和模型资源仍需按 recipe 单独准备，旧 ESPnet1 已不再支持。",
@@ -19545,7 +19544,7 @@
     "related": [
       "models"
     ],
-    "kind": "开放模型选型目录",
+    "kind": "学习资源",
     "tags": [
       "大语言模型",
       "许可证",
@@ -19587,7 +19586,7 @@
     "related": [
       "agents"
     ],
-    "kind": "SEO 数据与 Agent 工具",
+    "kind": "应用 / 工具",
     "tags": [
       "SEO",
       "MCP",
@@ -19595,8 +19594,8 @@
       "DataForSEO"
     ],
     "ways": [
-      "自部署",
-      "Web应用",
+      "自托管",
+      "Web UI",
       "MCP"
     ],
     "summary": "OpenSEO 把 SEO 数据工作流与 MCP Agent 接入整合到可自部署工具中。",
@@ -19633,7 +19632,7 @@
     "related": [
       "models"
     ],
-    "kind": "自然语言处理库",
+    "kind": "框架 / SDK",
     "tags": [
       "NLP",
       "实体识别",
@@ -19675,7 +19674,7 @@
   "fangmumu111-bot/chatgpt-plus-pro-codex-cn-guide": {
     "category": "learning",
     "related": [],
-    "kind": "第三方订阅推广指南",
+    "kind": "学习资源",
     "tags": [
       "第三方资料",
       "商业推广",
@@ -19718,7 +19717,7 @@
       "learning",
       "models"
     ],
-    "kind": "深度学习高层库",
+    "kind": "框架 / SDK",
     "tags": [
       "PyTorch",
       "模型训练",
@@ -19763,7 +19762,7 @@
     "related": [
       "automation"
     ],
-    "kind": "JavaScript Agent 工作流框架",
+    "kind": "框架 / SDK",
     "tags": [
       "浏览器自动化",
       "多Agent",
@@ -19804,18 +19803,16 @@
   },
   "fission-ai/openspec": {
     "category": "coding",
-    "related": [
-      "learning"
-    ],
-    "kind": "规格驱动开发工具",
+    "related": [],
+    "kind": "开发工具",
     "tags": [
       "需求规格",
       "Markdown",
       "编码协作"
     ],
     "ways": [
-      "命令行",
-      "技能安装"
+      "CLI",
+      "Agent 技能"
     ],
     "summary": "OpenSpec 用版本化 Markdown 规格组织 AI 编码需求、计划与变更。",
     "overview": "OpenSpec 为 AI 编程增加一层可保存和审阅的需求资料，通过 Markdown 中的具体场景明确预期行为，并将提案、任务和实现变更关联起来。开发者可以先探索现有代码与方案，再使用工具生成提案并推进修改，避免需求只停留在聊天记录。项目支持多种编码助手，初始化时会生成相应工具的调用方式；团队还可试用独立规格仓库，跨多个代码库共享计划。它适合需要长期维护需求的项目，但规格仍需结合实际代码更新，跨仓库 Stores 当前处于测试阶段。",
@@ -19848,11 +19845,11 @@
     ]
   },
   "flashinfer-ai/flashinfer": {
-    "category": "devtools",
+    "category": "models",
     "related": [
-      "models"
+      "devtools"
     ],
-    "kind": "大模型推理 GPU 内核库",
+    "kind": "框架 / SDK",
     "tags": [
       "CUDA",
       "注意力",
@@ -19898,7 +19895,7 @@
     "related": [
       "models"
     ],
-    "kind": "深度学习论文路线图",
+    "kind": "学习资源",
     "tags": [
       "论文阅读",
       "深度学习",
@@ -19942,14 +19939,14 @@
       "automation",
       "coding"
     ],
-    "kind": "本地通用 Agent",
+    "kind": "应用 / 工具",
     "tags": [
       "本地模型",
       "浏览器操作",
       "任务规划"
     ],
     "ways": [
-      "自部署"
+      "自托管"
     ],
     "summary": "AgenticSeek 用本地推理模型组合网页浏览、代码执行和任务规划。",
     "overview": "AgenticSeek 希望将通用助手运行在用户自己的硬件上，通过任务拆解与 Agent 选择处理网页搜索、信息读取和代码工作。仓库提供本地模型配置及 SearxNG 等配套服务，工作目录决定助手可以接触的文件范围，也允许按需要配置云端模型。它适合具备本地模型设备、愿意调试实验性 Agent 的用户。README 中的完全本地指模型与应用部署选择，浏览网页仍然需要对外访问；语音方向仍在开发，演示场景也不代表真实任务的成功率保证。",
@@ -19982,12 +19979,11 @@
     ]
   },
   "geeeekexplorer/nano-vllm": {
-    "category": "devtools",
+    "category": "models",
     "related": [
-      "learning",
-      "models"
+      "learning"
     ],
-    "kind": "轻量 LLM 推理实现",
+    "kind": "模型与引擎",
     "tags": [
       "推理",
       "KV缓存",
@@ -20031,7 +20027,7 @@
     "related": [
       "agents"
     ],
-    "kind": "时序知识图谱框架",
+    "kind": "框架 / SDK",
     "tags": [
       "知识图谱",
       "记忆",
@@ -20077,7 +20073,7 @@
       "agents",
       "coding"
     ],
-    "kind": "官方 GitHub MCP 服务",
+    "kind": "MCP 服务",
     "tags": [
       "GitHub",
       "MCP",
@@ -20122,7 +20118,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Figma 设计上下文 MCP",
+    "kind": "MCP 服务",
     "tags": [
       "Figma",
       "设计转代码",
@@ -20166,7 +20162,7 @@
       "devtools",
       "audio"
     ],
-    "kind": "端侧机器学习工具集",
+    "kind": "框架 / SDK",
     "tags": [
       "端侧推理",
       "视觉追踪",
@@ -20211,7 +20207,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "带来源定位的信息抽取库",
+    "kind": "框架 / SDK",
     "tags": [
       "信息抽取",
       "结构化数据",
@@ -20255,7 +20251,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Google Cloud Agent 项目模板",
+    "kind": "开发工具",
     "tags": [
       "Google Cloud",
       "部署",
@@ -20264,7 +20260,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "summary": "Agent Starter Pack 提供云端 Agent 模板，目前仅维护关键修复并引导迁移。",
     "overview": "Agent Starter Pack 曾为 Google Cloud 上的生成式 Agent 项目提供脚手架，包含应用代码、基础设施、持续集成、评估和可观测性，帮助团队从示例走向可部署项目。它也提供 RAG 数据管线及远程模板机制，可在已有 Agent 周围补充部署资产。当前 README 已明确进入维护模式，活跃开发转向 agents-cli，不再增加新功能、模板或部署目标。因此它适合了解和维护已采用该体系的项目，新项目应先查看迁移后的工具，再决定是否继续使用旧模板。",
@@ -20302,7 +20298,7 @@
       "coding",
       "automation"
     ],
-    "kind": "终端个人 Agent",
+    "kind": "应用 / 工具",
     "tags": [
       "终端",
       "多模型",
@@ -20310,7 +20306,7 @@
       "插件"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "桌面应用"
     ],
     "summary": "gptme 在终端中组合模型、Shell、Python 与网页工具处理编程和知识工作。",
@@ -20348,7 +20344,7 @@
     "related": [
       "models"
     ],
-    "kind": "3D Gaussian Splatting 参考实现",
+    "kind": "研究实现",
     "tags": [
       "三维重建",
       "新视角合成",
@@ -20356,7 +20352,7 @@
     ],
     "ways": [
       "Python",
-      "桌面查看器"
+      "桌面应用"
     ],
     "summary": "论文作者提供的三维高斯场景优化与实时新视角渲染参考实现。",
     "overview": "该仓库是 3D Gaussian Splatting 原始论文的作者实现，用多视角图像与相机校准得到的稀疏点初始化场景，再优化高斯的位置、形状等参数，并通过专用渲染器合成新视角。项目提供训练、参考评测素材和查看工具，后续加入深度正则、抗锯齿、曝光补偿及部分 VR 查看支持。它适合复现研究或探索三维场景表达，用户仍需准备符合格式的数据及 GPU 环境。论文中的实时帧率来自特定实验，不代表所有场景与设备都达到相同性能。",
@@ -20393,14 +20389,14 @@
     "related": [
       "devtools"
     ],
-    "kind": "安全测试 Agent 框架",
+    "kind": "应用 / 工具",
     "tags": [
       "安全测试",
       "CTF",
       "会话持久化"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Docker"
     ],
     "summary": "PentestGPT 为授权测试与 CTF 提供分阶段 Agent 流程和交互式任务管理。",
@@ -20438,7 +20434,7 @@
     "related": [
       "models"
     ],
-    "kind": "大语言模型图书配套代码",
+    "kind": "学习资源",
     "tags": [
       "大语言模型",
       "Notebook",
@@ -20477,18 +20473,16 @@
     ]
   },
   "hardikpandya/stop-slop": {
-    "category": "learning",
-    "related": [
-      "automation"
-    ],
-    "kind": "写作风格修订技能",
+    "category": "apps",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "写作",
       "风格编辑",
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "文档阅读"
     ],
     "summary": "Stop Slop 用具体短语、结构与句法规则帮助修改程式化 AI 文风。",
@@ -20524,7 +20518,7 @@
     "related": [
       "agents"
     ],
-    "kind": "模型网关与可观测平台",
+    "kind": "开发工具",
     "tags": [
       "LLMOps",
       "网关",
@@ -20533,7 +20527,7 @@
     ],
     "ways": [
       "云服务",
-      "自部署",
+      "自托管",
       "API"
     ],
     "summary": "Helicone 连接模型网关、请求追踪、成本分析与提示词实验。",
@@ -20571,14 +20565,14 @@
     "related": [
       "apps"
     ],
-    "kind": "社交图文生成应用",
+    "kind": "应用 / 工具",
     "tags": [
       "小红书",
       "图文生成",
       "多页内容"
     ],
     "ways": [
-      "Web应用",
+      "Web UI",
       "Docker"
     ],
     "summary": "RedInk 将一句话主题扩展成大纲与多页社交图文。",
@@ -20616,7 +20610,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "图谱增强检索框架",
+    "kind": "框架 / SDK",
     "tags": [
       "RAG",
       "知识图谱",
@@ -20625,7 +20619,7 @@
     ],
     "ways": [
       "Python",
-      "Web应用"
+      "Web UI"
     ],
     "summary": "LightRAG 结合文档、知识图谱与检索流程构建可查询知识库。",
     "overview": "LightRAG 围绕文档索引与知识图谱组织检索增强生成，提供导入、查询、来源引用和知识可视化界面。当前实现支持多种切分策略、重排序与存储后端，可分别配置抽取、查询、关键词和视觉角色使用的模型，并通过 MinerU 或 Docling 接入多模态解析。它也提供评估与追踪集成，便于观察检索上下文和回答效果。部署者需要协调模型、嵌入、解析与存储服务，文档删除等变更也可能涉及图谱重建；项目名中的快并不是所有数据集都能直接获得的性能保证。",
@@ -20662,7 +20656,7 @@
     "related": [
       "visual"
     ],
-    "kind": "多模态 RAG 框架",
+    "kind": "框架 / SDK",
     "tags": [
       "文档解析",
       "图表",
@@ -20707,7 +20701,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Rust 终端编程 Agent",
+    "kind": "开发工具",
     "tags": [
       "终端",
       "多模型",
@@ -20715,8 +20709,8 @@
       "Rust"
     ],
     "ways": [
-      "命令行",
-      "本地Web"
+      "CLI",
+      "本地部署"
     ],
     "summary": "Codewhale 通过可选择模型的终端运行时读取项目、修改文件并验证任务。",
     "overview": "Codewhale 是 Rust 编写的开源编码 Agent，在终端或本地 Web 客户端中连接托管或本地模型，执行文件阅读、编辑、命令运行和结果检查。较大任务可分给不同角色与模型，用户也能保存会话、设置持续目标并审查工作流。项目区分只探索的计划模式与实际修改的工作模式，提供不同审批设置及撤销恢复入口。当前源码、开发预览和公开发行版可能不一致，图形工作台与计算机操作插件也各有可用性要求，使用时应以所安装版本为准。",
@@ -20753,7 +20747,7 @@
     "related": [
       "models"
     ],
-    "kind": "机器学习数据集工具库",
+    "kind": "框架 / SDK",
     "tags": [
       "数据集",
       "预处理",
@@ -20797,7 +20791,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 工程原则指南",
+    "kind": "学习资源",
     "tags": [
       "Agent工程",
       "上下文",
@@ -20839,7 +20833,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Go 的 OpenCV 绑定",
+    "kind": "框架 / SDK",
     "tags": [
       "Go",
       "OpenCV",
@@ -20884,14 +20878,14 @@
     "related": [
       "coding"
     ],
-    "kind": "程序化三维重建技能",
+    "kind": "技能 / 插件",
     "tags": [
       "Three.js",
       "图像转3D",
       "程序化建模"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "代码生成"
     ],
     "summary": "img2threejs 引导 Agent 将参考物体重建为可动画的 Three.js 代码模型。",
@@ -20930,7 +20924,7 @@
       "apps",
       "automation"
     ],
-    "kind": "桌面 Agent 协作应用",
+    "kind": "应用 / 工具",
     "tags": [
       "桌面助手",
       "办公文档",
@@ -20971,11 +20965,11 @@
     ]
   },
   "jacobgil/pytorch-grad-cam": {
-    "category": "visual",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "visual"
     ],
-    "kind": "视觉模型解释工具库",
+    "kind": "开发工具",
     "tags": [
       "GradCAM",
       "可解释性",
@@ -21019,7 +21013,7 @@
     "related": [
       "apps"
     ],
-    "kind": "本地语音工作室",
+    "kind": "应用 / 工具",
     "tags": [
       "语音合成",
       "听写",
@@ -21065,7 +21059,7 @@
     "related": [
       "learning"
     ],
-    "kind": "网站重建工程模板",
+    "kind": "开发工具",
     "tags": [
       "Next.js",
       "设计复现",
@@ -21109,7 +21103,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Disco Diffusion 开发接口",
+    "kind": "框架 / SDK",
     "tags": [
       "扩散绘图",
       "CLIP",
@@ -21118,7 +21112,7 @@
     ],
     "ways": [
       "Python",
-      "命令行",
+      "CLI",
       "服务"
     ],
     "summary": "DiscoArt 为 Disco Diffusion 图像生成提供 Python 接口和服务化能力。",
@@ -21152,11 +21146,11 @@
     ]
   },
   "jnmetacode/agency-agents-zh": {
-    "category": "agents",
+    "category": "learning",
     "related": [
-      "learning"
+      "agents"
     ],
-    "kind": "中文 Agent 角色库",
+    "kind": "技能 / 插件",
     "tags": [
       "角色定义",
       "中文",
@@ -21164,7 +21158,7 @@
       "多工具适配"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "文档阅读"
     ],
     "summary": "Agency Agents 中文社区版提供按专业角色组织的流程、规则和交付要求。",
@@ -21201,7 +21195,7 @@
     "related": [
       "models"
     ],
-    "kind": "视频世界模型训练框架",
+    "kind": "研究实现",
     "tags": [
       "世界模型",
       "视频生成",
@@ -21243,11 +21237,9 @@
     ]
   },
   "jushbjj/mr.-ranedeer-ai-tutor": {
-    "category": "learning",
-    "related": [
-      "apps"
-    ],
-    "kind": "个性化教学提示词",
+    "category": "apps",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "AI导师",
       "学习计划",
@@ -21290,14 +21282,14 @@
     "related": [
       "devtools"
     ],
-    "kind": "语音识别研究工具包",
+    "kind": "框架 / SDK",
     "tags": [
       "语音识别",
       "C++",
       "训练流程"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "C++"
     ],
     "summary": "Kaldi 提供语音识别系统开发所需的底层工具与语料实验流程。",
@@ -21334,7 +21326,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 代理与数据平面",
+    "kind": "开发工具",
     "tags": [
       "网关",
       "模型路由",
@@ -21379,7 +21371,7 @@
     "related": [
       "coding"
     ],
-    "kind": "API 录制回放测试工具",
+    "kind": "开发工具",
     "tags": [
       "API测试",
       "eBPF",
@@ -21387,7 +21379,7 @@
       "集成测试"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "CI"
     ],
     "summary": "Keploy 从应用流量生成 API 测试与依赖模拟，再在隔离环境回放。",
@@ -21425,7 +21417,7 @@
     "related": [
       "agents"
     ],
-    "kind": "多入口编程 Agent",
+    "kind": "开发工具",
     "tags": [
       "VS Code",
       "JetBrains",
@@ -21433,8 +21425,8 @@
       "多模型"
     ],
     "ways": [
-      "IDE插件",
-      "命令行"
+      "编辑器插件",
+      "CLI"
     ],
     "summary": "Kilo Code 在 IDE 和终端提供多模型编码、规划、调试与审查助手。",
     "overview": "Kilo Code 支持 VS Code、JetBrains 和命令行入口，用户可以在项目中提出任务，再由不同角色完成代码、计划、问答、调试或审查。它具备跨文件修改、终端和浏览器工具以及 MCP 扩展，可在任务中切换模型；平台还提供云端运行和自动审查等独立服务。项目核心采用 MIT 许可，具体模型目录和计费则取决于连接方式及服务账户。命令行发行包按处理器和系统区分，自动运行选项会取消权限提示，应在明确控制的环境中使用。",
@@ -21471,7 +21463,7 @@
     "related": [
       "models"
     ],
-    "kind": "肖像动画模型实现",
+    "kind": "研究实现",
     "tags": [
       "肖像动画",
       "表情控制",
@@ -21479,7 +21471,7 @@
     ],
     "ways": [
       "Python",
-      "Web界面"
+      "Web UI"
     ],
     "summary": "LivePortrait 用驱动图像或视频控制肖像表情、姿态与局部动画。",
     "overview": "LivePortrait 是相关肖像动画论文的官方 PyTorch 实现，围绕运动迁移、拼接和重定向控制让静态人像或肖像视频产生动画。项目提供 Gradio 界面、姿态和局部编辑，以及人类与部分动物模型，用户可按驱动素材调整表情和画面。它适合授权肖像创作和动画研究，输出效果依赖来源图像、驱动幅度与检测结果。Windows 有便捷发行包，Apple Silicon 可运行人像模式，但动物模式依赖 X-Pose，当前不支持 macOS，安装时需选用相应依赖。",
@@ -21516,7 +21508,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "可微几何视觉库",
+    "kind": "框架 / SDK",
     "tags": [
       "PyTorch",
       "可微分",
@@ -21556,12 +21548,11 @@
     ]
   },
   "kyegomez/tree-of-thoughts": {
-    "category": "learning",
+    "category": "models",
     "related": [
-      "agents",
-      "models"
+      "devtools"
     ],
-    "kind": "思维树推理实验实现",
+    "kind": "研究实现",
     "tags": [
       "Tree of Thoughts",
       "搜索",
@@ -21600,11 +21591,11 @@
     ]
   },
   "laion-ai/open-assistant": {
-    "category": "learning",
+    "category": "devtools",
     "related": [
       "models"
     ],
-    "kind": "已结束的开放助手项目",
+    "kind": "研究实现",
     "tags": [
       "对话数据",
       "RLHF",
@@ -21649,7 +21640,7 @@
     "related": [
       "agents"
     ],
-    "kind": "官方飞书与 Lark 命令行工具",
+    "kind": "应用 / 工具",
     "tags": [
       "飞书",
       "Lark",
@@ -21657,8 +21648,8 @@
       "办公自动化"
     ],
     "ways": [
-      "命令行",
-      "技能安装"
+      "CLI",
+      "Agent 技能"
     ],
     "summary": "Lark CLI 用统一命令和 Agent 技能操作飞书消息、文档、表格等业务能力。",
     "overview": "Lark CLI 由 larksuite 团队维护，为人和 Agent 提供飞书与 Lark 的命令行入口。它覆盖消息、文档、多维表格、日历和任务等领域，通过快捷命令、生成的 API 命令以及原始 API 三层满足不同复杂度的需求。工具支持结构化成功错误输出、请求预览与系统钥匙串保存凭据，便于接入自动化。使用者仍需创建或配置应用并完成授权，实际权限由组织和用户访问范围决定；仓库提供的技能数量随版本变化，外部操作不能只因 CLI 可用就忽略授权边界。",
@@ -21695,7 +21686,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "C/C++ 扩散模型推理引擎",
+    "kind": "模型与引擎",
     "tags": [
       "ggml",
       "图像生成",
@@ -21703,8 +21694,8 @@
       "本地推理"
     ],
     "ways": [
-      "命令行",
-      "Web界面",
+      "CLI",
+      "Web UI",
       "库"
     ],
     "summary": "stable-diffusion.cpp 用 C/C++ 运行多种图像与视频扩散模型。",
@@ -21740,7 +21731,7 @@
   "lencx/chatgpt": {
     "category": "apps",
     "related": [],
-    "kind": "第三方 ChatGPT 桌面封装",
+    "kind": "应用 / 工具",
     "tags": [
       "桌面客户端",
       "Tauri",
@@ -21783,7 +21774,7 @@
     "related": [
       "coding"
     ],
-    "kind": "编码工具模型协议代理",
+    "kind": "开发工具",
     "tags": [
       "API代理",
       "Responses API",
@@ -21791,8 +21782,8 @@
       "本地服务"
     ],
     "ways": [
-      "命令行",
-      "本地服务"
+      "CLI",
+      "本地部署"
     ],
     "summary": "OpenCodex 在本地转换模型协议，为编码工具连接不同提供商。",
     "overview": "OpenCodex 以本地代理转换 Codex 的 Responses API 与其他提供商协议，处理流式输出、工具调用、推理信息和图像等交互。它提供网页仪表盘管理模型后端与路由，也支持部分编码客户端和账号连接管理，适合研究客户端与模型接口之间的适配。实际兼容性依赖客户端版本和目标模型，协议转换并不能让所有模型具备相同工具能力。仓库提供常规安装及容器部署路线，默认绑定本机；账号选择功能不保证规避服务额度或限制，接入还需遵守原服务条件。",
@@ -21829,7 +21820,7 @@
     "related": [
       "apps"
     ],
-    "kind": "本地三维生成桌面应用",
+    "kind": "应用 / 工具",
     "tags": [
       "图像转3D",
       "本地GPU",
@@ -21875,7 +21866,7 @@
       "models",
       "devtools"
     ],
-    "kind": "大模型工程实践资料",
+    "kind": "学习资源",
     "tags": [
       "微调",
       "分布式训练",
@@ -21921,14 +21912,14 @@
     "related": [
       "coding"
     ],
-    "kind": "中文 AI 编程与工具教程",
+    "kind": "学习资源",
     "tags": [
       "Vibe Coding",
       "中文教程",
       "工具导航"
     ],
     "ways": [
-      "在线阅读"
+      "文档阅读"
     ],
     "summary": "鱼皮 AI Guide 整理 AI 工具与从需求到产品的编程学习资料。",
     "overview": "AI Guide 面向希望理解和使用 AI 工具的中文读者，提供产品介绍、工具用法、概念、提示词和项目实践资料。其 Vibe Coding 路线覆盖基础上手、编码工具选择、实际项目、上下文与质量管理，以及需求、架构和产品运营等主题。读者可按章节学习，也可从导航中查找具体工具的参考方法。项目强调入门实践，但学习速度和产品收入取决于个人基础、需求与执行，README 的宣传承诺不应当作保证；教程内容与建站代码使用不同许可。",
@@ -21965,7 +21956,7 @@
     "related": [
       "models"
     ],
-    "kind": "DALL-E 2 研究复现",
+    "kind": "研究实现",
     "tags": [
       "扩散先验",
       "CLIP",
@@ -22010,7 +22001,7 @@
       "models",
       "learning"
     ],
-    "kind": "视觉 Transformer 实现库",
+    "kind": "研究实现",
     "tags": [
       "ViT",
       "图像分类",
@@ -22054,7 +22045,7 @@
     "related": [
       "models"
     ],
-    "kind": "模型结构可视化工具",
+    "kind": "开发工具",
     "tags": [
       "模型查看",
       "ONNX",
@@ -22062,7 +22053,7 @@
     ],
     "ways": [
       "桌面应用",
-      "Web应用",
+      "Web UI",
       "Python"
     ],
     "summary": "Netron 用交互式图形查看神经网络模型结构和节点信息。",
@@ -22099,7 +22090,7 @@
     "related": [
       "visual"
     ],
-    "kind": "游戏日常辅助工具",
+    "kind": "应用 / 工具",
     "tags": [
       "明日方舟",
       "视觉识别",
@@ -22107,7 +22098,7 @@
     ],
     "ways": [
       "桌面应用",
-      "命令行"
+      "CLI"
     ],
     "summary": "MAA 使用界面识别辅助《明日方舟》日常任务与材料信息整理。",
     "overview": "MAA 面向《明日方舟》玩家，提供日常任务自动化、公招界面识别和材料识别等能力，并可将材料信息导出给相关规划工具。项目支持多个客户端与服务器方向，也提供跨平台 CLI 和多语言接口，方便用户在自有环境集成任务。它属于特定游戏场景的视觉自动化工具，不是通用大模型或 Agent 框架。安装需按新手文档匹配游戏与连接环境，国际服部分功能测试不充分；代码、额外用户协议、Logo 和随包 DirectML 的权利范围也需要区分。",
@@ -22143,7 +22134,7 @@
     "related": [
       "apps"
     ],
-    "kind": "AI 工具资源目录",
+    "kind": "学习资源",
     "tags": [
       "工具导航",
       "生成式AI",
@@ -22185,7 +22176,7 @@
     "related": [
       "agents"
     ],
-    "kind": "文档检索 Agent",
+    "kind": "应用 / 工具",
     "tags": [
       "文档检索",
       "Pi",
@@ -22193,7 +22184,7 @@
       "记忆"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Agent集成"
     ],
     "summary": "AutoRAG 2.0 转向文档图书管理员 Agent，旧 RAG AutoML 工具保留在 legacy。",
@@ -22226,11 +22217,11 @@
     ]
   },
   "meilisearch/meilisearch": {
-    "category": "devtools",
+    "category": "knowledge",
     "related": [
-      "knowledge"
+      "devtools"
     ],
-    "kind": "应用搜索引擎",
+    "kind": "应用 / 工具",
     "tags": [
       "全文搜索",
       "混合检索",
@@ -22276,7 +22267,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 长期记忆系统",
+    "kind": "框架 / SDK",
     "tags": [
       "长期记忆",
       "混合检索",
@@ -22285,7 +22276,7 @@
     ],
     "ways": [
       "API",
-      "Agent插件"
+      "插件"
     ],
     "summary": "MemOS 为 Agent 管理可检索、可修改并可隔离的长期记忆。",
     "overview": "MemOS 把长期记忆的写入、检索、编辑和删除组织为统一接口，支持文本、图像、工具轨迹及角色等信息，并以多个 memory cube 管理用户或项目之间的知识范围。项目提供异步摄入和自然语言反馈修正，也有面向 OpenClaw、Hermes 与 DeepSeek Harness 的本地或云插件。它适合需要跨任务保留上下文的助手，用户可以查看与修正记忆，而不是只依赖聊天窗口。不同插件部署路径及数据位置各异，宣传中的完成率和 token 节省来自特定评测，不能保证移植后的效果。",
@@ -22322,15 +22313,15 @@
     "related": [
       "coding"
     ],
-    "kind": "Kubernetes 本地调试工具",
+    "kind": "开发工具",
     "tags": [
       "Kubernetes",
       "流量镜像",
       "本地调试"
     ],
     "ways": [
-      "IDE插件",
-      "命令行"
+      "编辑器插件",
+      "CLI"
     ],
     "summary": "mirrord 让本地进程使用目标 Kubernetes Pod 的网络、文件和环境上下文。",
     "overview": "mirrord 将本地代码与集群中的目标 Pod 连接起来，使开发者在本机运行和调试程序时，访问远端服务、环境变量及相关流量。它通过集群侧组件转发这些交互，并提供 VS Code、IntelliJ 和 CLI 入口，也可用于编码 Agent 验证修改。这样可以减少每次代码调整都重建部署的等待，但不会自动隔离所有共享数据写入。工具使用现有 kubeconfig 权限，并按配置需要额外 Linux capabilities；数据库分支、队列拆分等保护能力属于另行提供的产品范围。",
@@ -22367,7 +22358,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "多语言 Agent 开发框架",
+    "kind": "框架 / SDK",
     "tags": [
       "Python",
       ".NET",
@@ -22408,12 +22399,12 @@
     ]
   },
   "microsoft/airsim": {
-    "category": "visual",
+    "category": "devtools",
     "related": [
-      "models",
-      "devtools"
+      "visual",
+      "models"
     ],
-    "kind": "无人载具仿真平台",
+    "kind": "研究实现",
     "tags": [
       "无人机",
       "自动驾驶",
@@ -22459,7 +22450,7 @@
     "related": [
       "models"
     ],
-    "kind": "模型协作研究系统",
+    "kind": "研究实现",
     "tags": [
       "HuggingGPT",
       "任务规划",
@@ -22467,7 +22458,7 @@
     ],
     "ways": [
       "Python",
-      "Web界面"
+      "Web UI"
     ],
     "summary": "JARVIS 以语言模型规划任务，并选择和调用 Hugging Face 专家模型。",
     "overview": "JARVIS 对应 HuggingGPT 的研究思路，由语言模型分析用户需求并拆分任务，再依据模型描述选择专家模型、执行并综合回答。仓库提供 CLI、Gradio 和部分中间结果 API，也包含相关任务评估与工具说明研究的入口。它适合研究多模态模型协作和早期 Agent 规划管线，支持本地、远程及混合配置。轻量配置不用下载所有专家模型，但依赖远程端点可用性；完整本地运行资源较大，README 的旧服务与模型示例需要结合当前接口重新验证。",
@@ -22504,7 +22495,7 @@
       "devtools",
       "agents"
     ],
-    "kind": "浏览器自动化 MCP 服务",
+    "kind": "MCP 服务",
     "tags": [
       "Playwright",
       "MCP",
@@ -22549,7 +22540,7 @@
       "learning",
       "visual"
     ],
-    "kind": "基础模型研究集合",
+    "kind": "研究实现",
     "tags": [
       "预训练",
       "多模态",
@@ -22593,7 +22584,7 @@
     "related": [
       "agents"
     ],
-    "kind": "跨 Agent 记忆层",
+    "kind": "框架 / SDK",
     "tags": [
       "长期记忆",
       "技能提炼",
@@ -22602,7 +22593,7 @@
     "ways": [
       "API",
       "SDK",
-      "Agent插件"
+      "插件"
     ],
     "summary": "MindMemOS 将用户背景、任务经验和技能候选整理为可跨 Agent 使用的记忆。",
     "overview": "MindMemOS 提供长期记忆的存储与搜索层，覆盖用户偏好、项目事实和工具经验，并通过反馈、离线整理与 schema 学习持续调整内容。项目把经验记忆与技能候选关联，支持在交互前召回上下文、交互后写入记录，提供 HTTP API、Python SDK、CLI 及部分 Agent 插件。用户可选择官方云服务或本地部署，但本地仍需配置生成、嵌入与存储，重排序按需要启用。向量维度与 Qdrant 设置必须一致，跨 Agent 共享也应按项目范围管理，不能仅因记忆持久化就认为全部内容准确。",
@@ -22639,7 +22630,7 @@
     "related": [
       "models"
     ],
-    "kind": "MIT 深度学习课程实验",
+    "kind": "学习资源",
     "tags": [
       "课程",
       "Jupyter",
@@ -22680,11 +22671,11 @@
     ]
   },
   "mlc-ai/web-llm": {
-    "category": "devtools",
+    "category": "models",
     "related": [
-      "models"
+      "devtools"
     ],
-    "kind": "浏览器端语言模型引擎",
+    "kind": "模型与引擎",
     "tags": [
       "WebGPU",
       "浏览器推理",
@@ -22692,7 +22683,7 @@
     ],
     "ways": [
       "JavaScript",
-      "Web应用"
+      "Web UI"
     ],
     "summary": "WebLLM 利用 WebGPU 在浏览器内运行受支持的语言模型。",
     "overview": "WebLLM 把模型推理放在浏览器中执行，通过 WebGPU 使用本地设备算力，并提供接近 OpenAI 风格的聊天接口。开发者可构建流式聊天、结构化 JSON 和浏览器扩展，使用 Worker 减少对界面的阻塞，也能按 MLC 格式接入定制模型。它适合不希望每次请求都依赖服务器推理的 Web 应用，但首次仍要下载模型文件，显存、浏览器和缓存条件会限制可运行规模。实际支持的是配置列表中的模型子集，函数调用在 README 中仍标为开发中，不能理解为完整 API 功能等价。",
@@ -22730,7 +22721,7 @@
       "visual",
       "audio"
     ],
-    "kind": "开放 CLIP 与多模态训练库",
+    "kind": "框架 / SDK",
     "tags": [
       "CLIP",
       "图文表征",
@@ -22775,7 +22766,7 @@
     "related": [
       "agents"
     ],
-    "kind": "官方 MCP Python SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "MCP",
       "Python",
@@ -22815,11 +22806,11 @@
     ]
   },
   "modelscope/ms-swift": {
-    "category": "models",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "models"
     ],
-    "kind": "大模型微调部署框架",
+    "kind": "框架 / SDK",
     "tags": [
       "SFT",
       "LoRA",
@@ -22828,7 +22819,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "summary": "MS-SWIFT 为文本与多模态模型提供训练、对齐、推理及部署工具。",
     "overview": "MS-SWIFT 由 ModelScope 社区提供，围绕继续预训练、监督微调、偏好优化和强化学习等任务组织模型适配与数据流程。它支持参数高效与全参数训练，集成分布式并行、量化和多种推理后端，也能处理嵌入、重排序及多模态任务。开发者可选受支持模型与数据模板构建实验，再开展评估和部署。项目覆盖面广，但不同硬件、模型和算法组合有独立限制；README 中特定模型的最低显存或加速比例不能直接用于估算所有任务的资源。",
@@ -22864,7 +22855,7 @@
     "related": [
       "models"
     ],
-    "kind": "大模型实践资源与演化图",
+    "kind": "学习资源",
     "tags": [
       "综述",
       "模型谱系",
@@ -22905,12 +22896,12 @@
     ]
   },
   "mudler/localai": {
-    "category": "devtools",
+    "category": "models",
     "related": [
-      "models",
+      "devtools",
       "agents"
     ],
-    "kind": "本地多模态推理服务",
+    "kind": "模型与引擎",
     "tags": [
       "本地推理",
       "多模态",
@@ -22918,7 +22909,7 @@
       "模型后端"
     ],
     "ways": [
-      "自部署",
+      "自托管",
       "API"
     ],
     "summary": "LocalAI 将按需安装的模型后端封装为统一的本地 AI 服务。",
@@ -22954,16 +22945,16 @@
   "mvanhorn/last30days-skill": {
     "category": "knowledge",
     "related": [
-      "learning"
+      "agents"
     ],
-    "kind": "近期跨平台研究技能",
+    "kind": "技能 / 插件",
     "tags": [
       "趋势研究",
       "社交搜索",
       "来源汇总"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "summary": "Last30Days 聚合近期多平台讨论，并让 Agent 按来源与互动信号整理简报。",
     "overview": "Last30Days 是面向近期信息检索的 Agent 技能，围绕 Reddit、Hacker News、GitHub、视频和社交平台等来源并行搜索，再根据内容与互动信号组织摘要。用户可补充自己的 API Key 或浏览器会话解锁更多来源，适合发现社区实践、近期发布与产品反馈。项目将当前运行规范放在具体技能目录中，README 仅概述流程。平台互动量反映关注度，不能直接证明内容真实或具有代表性；来源可用性、时间范围和认证条件各异，应在结果中保留原始链接与采集边界。",
@@ -23001,7 +22992,7 @@
       "agents",
       "knowledge"
     ],
-    "kind": "本地 AI 工作流启动模板",
+    "kind": "开发工具",
     "tags": [
       "n8n",
       "Ollama",
@@ -23046,7 +23037,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "JavaScript OCR 库",
+    "kind": "框架 / SDK",
     "tags": [
       "OCR",
       "WebAssembly",
@@ -23090,7 +23081,7 @@
     "related": [
       "models"
     ],
-    "kind": "NeRF 研究与训练平台",
+    "kind": "框架 / SDK",
     "tags": [
       "NeRF",
       "三维重建",
@@ -23099,7 +23090,7 @@
     ],
     "ways": [
       "Python",
-      "Web查看器"
+      "Web UI"
     ],
     "summary": "Nerfstudio 用模块化流程组织 NeRF 数据准备、训练与可视化。",
     "overview": "Nerfstudio 为神经辐射场研究提供可组合组件，把创建、训练和测试三维场景的步骤连接起来。用户可从标准场景与推荐模型入门，在训练中使用 Web 查看器观察结果，之后替换个人数据或实现新的模型组件。项目同时维护教程与社区方法入口，适合希望理解 NeRF 结构而不重复搭建基础设施的研究者。默认安装依赖 NVIDIA CUDA、PyTorch 和 tiny-cuda-nn，远程查看需要配置端口转发，模型与数据的规模也会影响训练时间与资源。",
@@ -23134,7 +23125,7 @@
   "netdata/netdata": {
     "category": "devtools",
     "related": [],
-    "kind": "基础设施可观测平台",
+    "kind": "应用 / 工具",
     "tags": [
       "监控",
       "异常检测",
@@ -23142,8 +23133,8 @@
       "告警"
     ],
     "ways": [
-      "自部署",
-      "Web界面"
+      "自托管",
+      "Web UI"
     ],
     "summary": "Netdata 实时采集基础设施指标，提供图表、异常检测与告警。",
     "overview": "Netdata 是面向系统、容器、数据库和服务的实时监控平台，通过自动发现采集器生成细粒度指标与可视化，并使用机器学习辅助发现异常。用户可在单节点界面分析性能，也能配置 Parent 汇总更长时间的数据与告警，或接入云端管理多节点。它适合排查基础设施变化，AI 能力是监控体系的一部分，而不是通用聊天助手。自动发现不能覆盖所有服务配置，告警发送也需要相应渠道条件；性能和资源占用应在自己的节点验证。",
@@ -23180,7 +23171,7 @@
       "agents",
       "devtools"
     ],
-    "kind": "语义搜索与模型工作流框架",
+    "kind": "框架 / SDK",
     "tags": [
       "向量搜索",
       "SQL",
@@ -23226,7 +23217,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Neovim 的 OpenCode 插件",
+    "kind": "技能 / 插件",
     "tags": [
       "Neovim",
       "OpenCode",
@@ -23271,7 +23262,7 @@
       "agents",
       "devtools"
     ],
-    "kind": "Agent 工程实践教程",
+    "kind": "学习资源",
     "tags": [
       "Agent部署",
       "评估",
@@ -23316,7 +23307,7 @@
     "related": [
       "models"
     ],
-    "kind": "中文语音识别系统",
+    "kind": "模型与引擎",
     "tags": [
       "中文ASR",
       "TensorFlow",
@@ -23361,7 +23352,7 @@
     "related": [
       "models"
     ],
-    "kind": "神经网络中文教材",
+    "kind": "学习资源",
     "tags": [
       "深度学习",
       "教材",
@@ -23370,7 +23361,7 @@
     ],
     "ways": [
       "PDF",
-      "在线阅读"
+      "文档阅读"
     ],
     "summary": "《神经网络与深度学习》提供通识版与含数学推导的第二版学习路径。",
     "overview": "NNDL 仓库维护邱锡鹏《神经网络与深度学习》系列的阅读入口、章节资料和勘误。通识版通过故事与直观例子建立认识，第二版则系统讨论神经网络、优化、Transformer、图网络、强化学习和大模型，并可配合 PyTorch 实践。读者可以按数学基础选择版本，先建立直觉再深入算法。当前电子稿仍在出版前修订阶段，引用或反馈需要注明版本和下载日期；第一版资料保留在独立分支，第二版 LaTeX 源码并未公开在本仓库中。",
@@ -23406,7 +23397,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Zig 轻量助手基础设施",
+    "kind": "应用 / 工具",
     "tags": [
       "Zig",
       "轻量部署",
@@ -23414,8 +23405,8 @@
       "渠道接入"
     ],
     "ways": [
-      "命令行",
-      "自部署"
+      "CLI",
+      "自托管"
     ],
     "summary": "NullClaw 用 Zig 提供可配置的个人助手与边缘部署基础设施。",
     "overview": "NullClaw 将个人 AI 助手的运行基础整理为原生 Zig 程序，强调小型二进制和可替换的子系统接口，用户通过配置选择模型及消息渠道。项目提供中英文操作指南、交互式初始化和容器流程，也展示将策略放入 WebAssembly 的边缘运行方向。它适合资源受限设备或希望研究原生 Agent 基础设施的开发者。程序体积与启动数据是特定构建的结果，不包含远端模型成本或全部系统资源；源码当前要求精确 Zig 版本，某些渠道还需要额外工具。",
@@ -23452,7 +23443,7 @@
     "related": [
       "models"
     ],
-    "kind": "语音模型训练框架",
+    "kind": "框架 / SDK",
     "tags": [
       "ASR",
       "TTS",
@@ -23494,11 +23485,11 @@
     ]
   },
   "nvidia/nemoclaw": {
-    "category": "agents",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "agents"
     ],
-    "kind": "沙箱 Agent 参考栈",
+    "kind": "开发工具",
     "tags": [
       "OpenShell",
       "沙箱",
@@ -23506,8 +23497,8 @@
       "推理"
     ],
     "ways": [
-      "命令行",
-      "自部署"
+      "CLI",
+      "自托管"
     ],
     "summary": "NemoClaw 在 NVIDIA OpenShell 中组织 Agent 沙箱、推理与生命周期管理。",
     "overview": "NemoClaw 是让受支持 Agent 在 OpenShell 沙箱内运行的参考栈，提供引导安装、推理提供商配置、网络策略、集成、快照与生命周期命令。用户可以选择 OpenClaw、Hermes 或 LangChain Deep Agents 等路线，再按宿主机条件部署。它适合评估工具型 Agent 的隔离运行方式，但只是配置与运行基础，不能保证 Agent 输出或任意外部工具天然可靠。项目仍为 alpha，平台预设与贡献者开发流程有所区别，正式使用需遵照当前先决条件并检查沙箱实际行为。",
@@ -23544,7 +23535,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 技能扫描工具",
+    "kind": "开发工具",
     "tags": [
       "技能安全",
       "静态分析",
@@ -23552,7 +23543,7 @@
       "SARIF"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Docker",
       "MCP"
     ],
@@ -23587,11 +23578,12 @@
     ]
   },
   "nvlabs/toolorchestra": {
-    "category": "models",
+    "category": "devtools",
     "related": [
-      "agents"
+      "agents",
+      "models"
     ],
-    "kind": "工具编排强化学习框架",
+    "kind": "研究实现",
     "tags": [
       "工具编排",
       "强化学习",
@@ -23637,7 +23629,7 @@
       "apps",
       "coding"
     ],
-    "kind": "多模型 Agent 桌面客户端",
+    "kind": "应用 / 工具",
     "tags": [
       "桌面助手",
       "MCP",
@@ -23682,7 +23674,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "本地个人 AI 框架",
+    "kind": "框架 / SDK",
     "tags": [
       "本地模型",
       "能耗评估",
@@ -23690,8 +23682,8 @@
       "Agent"
     ],
     "ways": [
-      "命令行",
-      "自部署"
+      "CLI",
+      "自托管"
     ],
     "summary": "OpenJarvis 为端侧个人 Agent 提供运行、评估与本地经验学习基础。",
     "overview": "OpenJarvis 面向本地优先的个人 AI，围绕通用工具原语、模型评估和本地交互轨迹构建框架。它把准确率与能耗、计算量、延迟和费用一起衡量，并提供聊天、研究、编码和计划执行等预设，用于研究何时可使用本地模型、何时才需要云端。安装器会配置 Python、Ollama 和起步模型，部分扩展与较大模型随后继续下载。它适合端侧 Agent 研究和原型开发，但研究中单轮任务的覆盖率不能推断为所有复杂任务均可离线完成。",
@@ -23729,7 +23721,7 @@
       "models",
       "devtools"
     ],
-    "kind": "图像视频生成编辑工具箱",
+    "kind": "框架 / SDK",
     "tags": [
       "OpenMMLab",
       "扩散模型",
@@ -23774,7 +23766,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "Python Agent 工作流 SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "多Agent",
       "工具调用",
@@ -23820,7 +23812,7 @@
       "automation",
       "coding"
     ],
-    "kind": "多 Agent 协作系统",
+    "kind": "应用 / 工具",
     "tags": [
       "工作台",
       "消息渠道",
@@ -23828,9 +23820,9 @@
       "技能"
     ],
     "ways": [
-      "Web应用",
-      "终端",
-      "自部署"
+      "Web UI",
+      "CLI",
+      "自托管"
     ],
     "summary": "JiuwenSwarm 通过工作台、终端和聊天渠道组织多 Agent 与工具任务。",
     "overview": "JiuwenSwarm 基于 openJiuwen，将办公与代码任务分为不同工作空间，提供 Agent 团队、技能、记忆和工具调用能力。用户可在浏览器或终端操作，也能从飞书、企业微信、Telegram 等渠道连接同一系统，部分部署支持分布式团队。它面向需要把复杂目标拆分协作的开发者，但模型配置是不可省略的步骤，默认模型必须在界面或配置文件设置。不同渠道支持私聊、群聊和数字分身等能力不一致，工具审批与工作模式也需按实际任务配置。",
@@ -23863,12 +23855,12 @@
     ]
   },
   "openrlhf/openrlhf": {
-    "category": "models",
+    "category": "devtools",
     "related": [
-      "agents",
-      "devtools"
+      "models",
+      "agents"
     ],
-    "kind": "分布式 RLHF 框架",
+    "kind": "框架 / SDK",
     "tags": [
       "RLHF",
       "Ray",
@@ -23911,9 +23903,9 @@
   "othmanadi/planning-with-files": {
     "category": "coding",
     "related": [
-      "learning"
+      "agents"
     ],
-    "kind": "持久文件规划技能",
+    "kind": "技能 / 插件",
     "tags": [
       "长期任务",
       "上下文恢复",
@@ -23921,7 +23913,7 @@
       "钩子"
     ],
     "ways": [
-      "技能安装"
+      "Agent 技能"
     ],
     "summary": "Planning with Files 用计划、发现和进度文件保存 Agent 的长期任务状态。",
     "overview": "Planning with Files 将任务信息保存在 task_plan.md、findings.md 和 progress.md 中，并通过受支持的生命周期钩子把选定上下文重新注入 Agent。它提供并行任务目录、恢复和完成检查机制，适合跨会话或长时间编码工作，减少重复寻找已知结论。当前自动恢复仅读取项目文件，访问同项目会话记录需要明确选择 catchup 模式。技能文件与原生插件的钩子生效条件不同，安装后应实际验证；README 中部分恢复基准采用旧行为，不能当作当前默认实现的重新测量。",
@@ -23958,7 +23950,7 @@
       "agents",
       "models"
     ],
-    "kind": "AI 工程学习资源目录",
+    "kind": "学习资源",
     "tags": [
       "课程",
       "图书",
@@ -24002,7 +23994,7 @@
       "learning",
       "devtools"
     ],
-    "kind": "飞桨模型资源总览",
+    "kind": "模型与引擎",
     "tags": [
       "PaddlePaddle",
       "模型库",
@@ -24047,7 +24039,7 @@
       "models",
       "visual"
     ],
-    "kind": "飞桨低代码模型开发工具",
+    "kind": "开发工具",
     "tags": [
       "模型产线",
       "OCR",
@@ -24056,8 +24048,8 @@
     ],
     "ways": [
       "Python",
-      "命令行",
-      "Web平台"
+      "CLI",
+      "Web UI"
     ],
     "summary": "PaddleX 用统一产线组合模型，支持从推理体验到训练和多端部署。",
     "overview": "PaddleX 基于飞桨整理预训练模型与多模型产线，将 OCR、文档解析、检测、分类、分割、时序等任务放入相近的调用与开发流程。用户可以先试用现成模型，效果不足时再做二次训练，并选择服务化、高性能或端侧部署。项目提供 Python 和命令行接口，也有云端图形化开发入口及细粒度性能分析。不同产线在 GPU、CPU 和国产硬件上的支持各有范围，模型组合还会增加依赖；具体版本必须与 PaddlePaddle 匹配，不能只按宣传模型数量判断可用能力。",
@@ -24095,7 +24087,7 @@
       "apps",
       "devtools"
     ],
-    "kind": "三维建筑编辑器",
+    "kind": "应用 / 工具",
     "tags": [
       "建筑设计",
       "Three.js",
@@ -24103,7 +24095,7 @@
       "本地优先"
     ],
     "ways": [
-      "Web应用",
+      "Web UI",
       "CLI",
       "MCP"
     ],
@@ -24138,18 +24130,16 @@
     ]
   },
   "petergyang/no-ai-slop": {
-    "category": "learning",
-    "related": [
-      "automation"
-    ],
-    "kind": "保留个人语气的写作技能",
+    "category": "apps",
+    "related": [],
+    "kind": "技能 / 插件",
     "tags": [
       "写作编辑",
       "风格检查",
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "插件"
     ],
     "summary": "No AI Slop 识别程式化表达，在修改时保留作者个人语气并列出改动。",
@@ -24187,7 +24177,7 @@
       "devtools",
       "models"
     ],
-    "kind": "主题模型与文本向量库",
+    "kind": "框架 / SDK",
     "tags": [
       "主题模型",
       "Word2Vec",
@@ -24232,7 +24222,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "C++ 点云处理库",
+    "kind": "框架 / SDK",
     "tags": [
       "点云",
       "三维视觉",
@@ -24275,7 +24265,7 @@
       "knowledge",
       "models"
     ],
-    "kind": "PostgreSQL 机器学习扩展",
+    "kind": "技能 / 插件",
     "tags": [
       "PostgreSQL",
       "数据库内推理",
@@ -24283,7 +24273,7 @@
     ],
     "ways": [
       "SQL",
-      "自部署"
+      "自托管"
     ],
     "summary": "PostgresML 将机器学习与语言模型操作放入 PostgreSQL 数据库。",
     "overview": "PostgresML 通过 pgml 扩展在数据所在的 PostgreSQL 内执行模型相关操作，结合 GPU、Hugging Face 模型与 pgvector 支持文本处理、嵌入和相似检索。它提供切分、排序和转换等 RAG 组件，也能通过现有 SQL 客户端接入应用，减少另建数据传输管线的需求。用户可选择云服务或 Docker 自部署，并使用配套 SDK 组织查询。模型进入数据库会把计算资源和运维需求带到数据库环境，性能宣传依赖具体测试，不能直接当作所有 SQL 工作负载的加速保证。",
@@ -24316,12 +24306,9 @@
     ]
   },
   "princeton-nlp/tree-of-thought-llm": {
-    "category": "learning",
-    "related": [
-      "agents",
-      "models"
-    ],
-    "kind": "思维树论文官方实现",
+    "category": "models",
+    "related": [],
+    "kind": "研究实现",
     "tags": [
       "Tree of Thoughts",
       "BFS",
@@ -24363,11 +24350,11 @@
     ]
   },
   "pyg-team/pytorch_geometric": {
-    "category": "models",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "models"
     ],
-    "kind": "PyTorch 图神经网络库",
+    "kind": "框架 / SDK",
     "tags": [
       "GNN",
       "图学习",
@@ -24412,7 +24399,7 @@
     "related": [
       "automation"
     ],
-    "kind": "Go 电子表格处理库",
+    "kind": "框架 / SDK",
     "tags": [
       "Go",
       "Excel",
@@ -24456,7 +24443,7 @@
     "related": [
       "models"
     ],
-    "kind": "语义分割模型库",
+    "kind": "框架 / SDK",
     "tags": [
       "语义分割",
       "UNet",
@@ -24501,7 +24488,7 @@
     "related": [
       "learning"
     ],
-    "kind": "初代通义千问模型仓库",
+    "kind": "模型与引擎",
     "tags": [
       "Qwen",
       "中文模型",
@@ -24545,7 +24532,7 @@
     "related": [
       "agents"
     ],
-    "kind": "Agent 可观测与评估 SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "追踪",
       "评估",
@@ -24591,7 +24578,7 @@
     "related": [
       "models"
     ],
-    "kind": "分布式 Python 与 AI 运行框架",
+    "kind": "框架 / SDK",
     "tags": [
       "Ray",
       "分布式计算",
@@ -24633,11 +24620,11 @@
     ]
   },
   "rerun-io/rerun": {
-    "category": "visual",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "visual"
     ],
-    "kind": "多模态时序数据工具",
+    "kind": "开发工具",
     "tags": [
       "机器人",
       "可视化",
@@ -24646,8 +24633,8 @@
     ],
     "ways": [
       "SDK",
-      "桌面查看器",
-      "Web"
+      "桌面应用",
+      "Web UI"
     ],
     "summary": "Rerun 同步记录、查询和展示机器人及视觉流程中的多模态数据。",
     "overview": "Rerun 把图片、视频、点云、姿态变换、关节与时序信号组织到统一时间轴，帮助开发者同步观察不同传感器和算法中间结果。它提供 Python、Rust 和 C++ SDK，支持实时查看、记录文件、数据查询及向训练流程传递数据，适合排查机器人或视觉系统为什么做出某个判断。它不是模型本身，而是观察和数据处理基础设施。当前 API 仍在演进，过多实体或百万级点云可能影响查看速度，Python 包含查看器，其他语言通常需要独立安装。",
@@ -24684,15 +24671,15 @@
     "related": [
       "agents"
     ],
-    "kind": "像素风 Agent 状态看板",
+    "kind": "应用 / 工具",
     "tags": [
       "状态可视化",
       "像素办公室",
       "OpenClaw"
     ],
     "ways": [
-      "Web应用",
-      "自部署"
+      "Web UI",
+      "自托管"
     ],
     "summary": "Star Office UI 把 Agent 状态、工作小记与访客呈现为像素办公室。",
     "overview": "Star Office UI 将空闲、写作、研究、执行、同步和错误等状态映射到办公室区域，让用户看到助手正在做什么。它可独立作为状态看板，也可与 OpenClaw 同步，从记忆文件整理昨日小记，使用加入密钥接入其他 Agent。项目支持中英日界面、自定义美术素材和可选 Gemini 背景生成，并有实验性桌面宠物封装。核心看板不需要生图密钥，但在线状态依赖 Agent 主动推送，代码与美术素材许可不同，公开部署还应替换默认会话与素材管理凭据。",
@@ -24725,20 +24712,18 @@
     ]
   },
   "rockbenben/chatgpt-shortcut": {
-    "category": "learning",
-    "related": [
-      "apps"
-    ],
-    "kind": "提示词搜索管理工具",
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
     "tags": [
       "提示词库",
       "收藏",
       "浏览器扩展"
     ],
     "ways": [
-      "Web应用",
+      "Web UI",
       "浏览器扩展",
-      "自部署"
+      "自托管"
     ],
     "summary": "AiShort 提供按标签搜索、复制和管理常用 AI 提示词的界面。",
     "overview": "AiShort 围绕提示词发现与个人收藏设计，用户可按关键词和场景标签查找内容，复制到聊天或编码工具，再保存自己的版本。它提供自定义标签、排序、社区分享和 JSON 导出，也有浏览器侧边栏与离线版，方便在不同网页或内网使用。该项目是提示词管理入口，不负责保证目标模型的回答质量，复制模板后仍需补充真实上下文并检查结果。基础浏览与账户功能有所区别，自部署自动同步也依赖具体方式，Vercel 一键新建和导入 fork 的更新行为不同。",
@@ -24771,11 +24756,9 @@
     ]
   },
   "rssnext/folo": {
-    "category": "knowledge",
-    "related": [
-      "apps"
-    ],
-    "kind": "AI RSS 阅读器",
+    "category": "apps",
+    "related": [],
+    "kind": "应用 / 工具",
     "tags": [
       "RSS",
       "阅读",
@@ -24822,7 +24805,7 @@
       "models",
       "audio"
     ],
-    "kind": "端侧多模态 SDK",
+    "kind": "框架 / SDK",
     "tags": [
       "端侧AI",
       "多平台",
@@ -24867,7 +24850,7 @@
     "related": [
       "devtools"
     ],
-    "kind": "量化向量索引",
+    "kind": "框架 / SDK",
     "tags": [
       "Rust",
       "TurboQuant",
@@ -24913,7 +24896,7 @@
     "related": [
       "agents"
     ],
-    "kind": "RAG 检索服务",
+    "kind": "开发工具",
     "tags": [
       "RAG",
       "混合搜索",
@@ -24921,7 +24904,7 @@
       "REST"
     ],
     "ways": [
-      "自部署",
+      "自托管",
       "API"
     ],
     "summary": "R2R 通过 REST API 提供多模态摄入、混合检索和 Agent 问答。",
@@ -24959,7 +24942,7 @@
     "related": [
       "models"
     ],
-    "kind": "NLP 任务基准目录",
+    "kind": "学习资源",
     "tags": [
       "NLP",
       "数据集",
@@ -25004,7 +24987,7 @@
       "devtools",
       "models"
     ],
-    "kind": "人脸识别模型封装库",
+    "kind": "框架 / SDK",
     "tags": [
       "人脸识别",
       "嵌入",
@@ -25050,7 +25033,7 @@
     "related": [
       "models"
     ],
-    "kind": "机器学习输出解释库",
+    "kind": "框架 / SDK",
     "tags": [
       "SHAP",
       "Shapley",
@@ -25104,7 +25087,7 @@
     ],
     "ways": [
       "Notebook",
-      "文档"
+      "文档阅读"
     ],
     "summary": "将《动手学深度学习》的早期 MXNet 示例迁移到 PyTorch 的社区学习资料。",
     "overview": "这个仓库围绕《动手学深度学习》的知识结构，把原书中的 MXNet 实现改写为 PyTorch，方便读者一边阅读数学与模型解释，一边运行对应章节的 Notebook。代码按章节组织，文档使用 Markdown，并提供在线阅读及本地文档站的入口。它适合希望通过实现理解深度学习、又偏好 PyTorch 的学习者，也能用于比较两个框架的张量与训练接口。该版本属于社区移植，文档内容会因框架差异而调整，部分章节尚未完成；阅读时需要区分它与原书后续更新的官方版本。",
@@ -25311,9 +25294,7 @@
   },
   "srbhr/resume-matcher": {
     "category": "apps",
-    "related": [
-      "coding"
-    ],
+    "related": [],
     "kind": "应用 / 工具",
     "tags": [
       "简历优化",
@@ -25445,7 +25426,7 @@
     "related": [
       "knowledge"
     ],
-    "kind": "开发平台",
+    "kind": "开发工具",
     "tags": [
       "PostgreSQL",
       "应用后端",
@@ -25496,7 +25477,7 @@
       "生成式AI"
     ],
     "ways": [
-      "Markdown",
+      "文档阅读",
       "资料索引"
     ],
     "summary": "按文本、图像、音频、代码和基础设施整理的 AI 工程学习笔记与链接。",
@@ -25528,8 +25509,9 @@
     ]
   },
   "t8y2/dbx": {
-    "category": "devtools",
+    "category": "apps",
     "related": [
+      "devtools",
       "agents"
     ],
     "kind": "应用 / 工具",
@@ -25585,7 +25567,7 @@
     ],
     "ways": [
       "JavaScript",
-      "Web"
+      "Web UI"
     ],
     "summary": "为网页绑定语音命令的轻量 JavaScript 库，可搭配 Speech KITT 显示识别状态。",
     "overview": "annyang 用较小的 JavaScript 接口把用户说出的命令与网页回调函数连接起来，方便在现有页面中加入语音导航或快捷操作。开发者定义可识别的命令及其处理逻辑，再启动识别；如果需要可见的开始、停止按钮和状态提示，可以搭配独立的 Speech KITT 界面组件。仓库强调无依赖和 MIT 许可，适合轻量网页交互实验。它依赖浏览器提供的语音识别能力，不能理解为自带离线识别模型，也不能保证所有浏览器、语言和设备上都有相同识别体验。",
@@ -25694,7 +25676,7 @@
     "ways": [
       "C++",
       "Python",
-      "移动端"
+      "移动应用"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -25738,7 +25720,7 @@
     ],
     "ways": [
       "自托管",
-      "Web",
+      "Web UI",
       "API"
     ],
     "kind": "框架 / SDK",
@@ -25782,7 +25764,7 @@
       "TensorFlow"
     ],
     "ways": [
-      "浏览器",
+      "Web UI",
       "Node.js"
     ],
     "kind": "框架 / SDK",
@@ -25917,7 +25899,7 @@
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "自动化"
     ],
     "kind": "应用 / 工具",
@@ -25963,10 +25945,10 @@
       "MCP"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "MCP"
     ],
-    "kind": "框架 / SDK",
+    "kind": "MCP 服务",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/tirth8205/code-review-graph",
@@ -26052,8 +26034,8 @@
       "集群训练"
     ],
     "ways": [
-      "桌面",
-      "Web",
+      "桌面应用",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -26095,8 +26077,8 @@
       "AI辅助"
     ],
     "ways": [
-      "桌面",
-      "命令行"
+      "桌面应用",
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -26141,8 +26123,8 @@
     ],
     "ways": [
       "Python",
-      "桌面",
-      "Web"
+      "桌面应用",
+      "Web UI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -26210,7 +26192,7 @@
       "桌面应用"
     ],
     "ways": [
-      "桌面安装"
+      "桌面应用"
     ],
     "summary": "基于 Real-ESRGAN 等模型放大低分辨率图像，提供跨平台桌面操作界面。",
     "overview": "Upscayl 将 AI 图像超分辨率包装成面向桌面用户的工具，在 Linux、macOS 和 Windows 上通过图形界面选择图片、模型与输出设置。它使用 Real-ESRGAN 和 NCNN/Vulkan 等底层能力推测高分辨率细节，并提供批量处理及自定义模型入口，适合把像素化或低分辨率素材放大后继续使用。它并非失焦照片的通用修复器，README 明确说明无法完成去模糊或重新对焦；生成的细节也不是对原始场景的可靠还原。运行需要兼容 GPU，普通 CPU 和许多集成显卡不能直接满足要求。",
@@ -26255,8 +26237,8 @@
       "策略研究"
     ],
     "ways": [
-      "桌面安装",
-      "Web"
+      "桌面应用",
+      "Web UI"
     ],
     "summary": "把金融资料研究、新闻跟踪和策略 Agent 放到同一平台，连接模型与市场服务。",
     "overview": "ValueCell 面向金融应用组织多 Agent 工作，包含读取基本面资料的研究 Agent、跟踪新闻的入口和策略相关功能。用户可安装应用、选择模型提供方，再按需要连接市场数据与交易服务，观察不同 Agent 的输出和运行状态。它适合搭建研究信息整理与策略实验界面，仓库也介绍了在线研究产品和社区扩展方向。交易部分的支持范围需仔细区分：当前文档强调合约或永续账户，并非普通现货账户的等价替代；接入市场和模型数据也不会使预测天然可靠，自动执行功能需要独立理解和控制。",
@@ -26338,7 +26320,7 @@
     "related": [
       "coding"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "Remotion",
       "视频制作",
@@ -26346,8 +26328,8 @@
       "动效"
     ],
     "ways": [
-      "Agent技能",
-      "Web预览"
+      "Agent 技能",
+      "Web UI"
     ],
     "summary": "为编码 Agent 提供镜头配方、动效参考和 Remotion 模板，用于制作产品宣传视频。",
     "overview": "video-shotcraft 把产品视频制作拆成可选的镜头配方、动效预览和可执行 Remotion 组件，让 Claude Code、Codex 等宿主据此组织分镜、动画与声音设计。用户可从画廊选择风格和镜头，围绕真实产品画面组合宣传片，再在配套工作台中调整文字、时序和效果并渲染。仓库还介绍可编辑剪映草稿的导出路径，方便后续剪辑。它提供的是技能与制作素材体系，需要宿主 Agent 和渲染环境共同工作；镜头数量会随版本变化，参考画面、配乐和 Remotion 自身的许可也应分别核对。",
@@ -26532,8 +26514,8 @@
       "实战课程"
     ],
     "ways": [
-      "文档学习",
-      "示例项目"
+      "文档阅读",
+      "示例代码"
     ],
     "summary": "通过项目练习学习编码 Agent 的环境、状态、验证与控制机制。",
     "overview": "Learn Harness Engineering 关注如何为 AI 编程 Agent 构建可靠的工作环境，包括任务状态保存、上下文恢复、验证流程和完成条件等工程问题。课程结合理论讲解、实际问题和贯穿式 Electron 项目，逐步引入循环与图式协作，让学习者观察 Agent 为什么会丢失进度、跳过检查或过早结束。仓库还提供模板、配置参考、搭建技能及 PDF 构建入口，适合从提示词尝试走向可维护的开发流程。它综合引用行业实践，但属于独立教程；引用案例中的成本与成功表现不能保证迁移到其他模型或项目后仍然成立。",
@@ -26657,12 +26639,11 @@
     ]
   },
   "wshobson/agents": {
-    "category": "learning",
+    "category": "coding",
     "related": [
-      "coding",
       "agents"
     ],
-    "kind": "学习资源",
+    "kind": "技能 / 插件",
     "tags": [
       "Agent插件",
       "技能库",
@@ -26670,8 +26651,8 @@
       "工作流"
     ],
     "ways": [
-      "插件安装",
-      "技能安装"
+      "插件",
+      "Agent 技能"
     ],
     "summary": "从统一 Markdown 源组织插件、Agent 与技能，适配多个编码助手的安装方式。",
     "overview": "wshobson/agents 将开发工作流拆为可组合的插件、角色、技能与命令，并以 plugins 目录作为内容来源，为不同编码宿主提供对应的注册或生成方式。使用者可按任务安装一个插件，也可只取其中的技能，避免把整个目录一次加载到上下文。仓库提供分类索引、宿主支持矩阵和质量评估工具，适合寻找现成流程或学习可移植插件的组织方式。不同客户端支持的组件并不相同，只安装技能不会自动安装角色、命令和 hooks；外部插件也有独立版本及信任边界，应按具体条目确认。",
@@ -26755,7 +26736,7 @@
       "agents",
       "learning"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "价值投资",
       "研究框架",
@@ -26763,8 +26744,8 @@
       "财务核验"
     ],
     "ways": [
-      "Agent技能",
-      "报告阅读"
+      "Agent 技能",
+      "文档阅读"
     ],
     "summary": "把价值投资分析拆为技能与多角色研究流程，围绕商业、财务和风险生成结构化报告。",
     "overview": "AI Berkshire 是面向 Claude Code 与 Codex 的投资研究技能合集，把商业模式、财务估值、逆向思考和长期确定性组织为不同分析视角。团队型入口让多个 Agent 分别检索与论证，再由主流程汇总分歧；轻量入口用于初筛或事件分析，并配有精确计算和来源交叉检查的工具。仓库还保留按公司和专题索引的研究报告，方便阅读实际输出。它可以帮助建立研究纪律，但角色取名不代表投资大师本人参与或背书，计算格式严格也无法保证输入资料与判断正确，更不能把作者公布的业绩视为使用工具后的预期回报。",
@@ -26847,7 +26828,7 @@
       "agents",
       "apps"
     ],
-    "kind": "应用 / 工具",
+    "kind": "MCP 服务",
     "tags": [
       "小红书",
       "MCP",
@@ -26894,7 +26875,7 @@
       "agents",
       "automation"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "tags": [
       "Claude Code",
       "多Agent",
@@ -26902,7 +26883,7 @@
       "工作流"
     ],
     "ways": [
-      "插件安装",
+      "插件",
       "CLI"
     ],
     "summary": "为 Claude Code 提供多 Agent 编排和分阶段开发工作流，配套运行状态与恢复机制。",
@@ -26981,12 +26962,12 @@
     ]
   },
   "yvgude/lean-ctx": {
-    "category": "devtools",
+    "category": "coding",
     "related": [
-      "coding",
-      "knowledge"
+      "knowledge",
+      "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "开发工具",
     "tags": [
       "上下文管理",
       "代码检索",
@@ -27039,7 +27020,7 @@
       "桌面应用"
     ],
     "ways": [
-      "桌面安装",
+      "桌面应用",
       "自托管"
     ],
     "summary": "采集会议音频并生成转写和摘要，可选择本地模型处理，也支持外部模型提供方。",
@@ -27072,10 +27053,9 @@
     ]
   },
   "zalandoresearch/fashion-mnist": {
-    "category": "learning",
+    "category": "devtools",
     "related": [
-      "visual",
-      "models"
+      "visual"
     ],
     "kind": "数据集",
     "tags": [
@@ -27130,7 +27110,7 @@
       "背景替换"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "API",
       "CLI"
     ],
@@ -27177,8 +27157,8 @@
       "长期记忆"
     ],
     "ways": [
-      "Web",
-      "桌面安装",
+      "Web UI",
+      "桌面应用",
       "自托管"
     ],
     "summary": "由 chatgpt-on-wechat 演进而来的 Agent 平台，连接多种模型、聊天通道和技能工具。",
@@ -27226,7 +27206,7 @@
     "ways": [
       "GitHub Actions",
       "Docker",
-      "Web"
+      "Web UI"
     ],
     "summary": "整合多市场行情、新闻与模型分析，定时生成自选股报告并通过配置渠道推送。",
     "overview": "daily_stock_analysis 面向日常股票研究，把自选股行情、新闻检索和模型分析汇总成可阅读的报告与决策看板。用户可在 GitHub Actions 定时运行，也可使用本地或 Docker 部署的 Web 工作台，管理配置、查看历史报告并发起手动分析。项目内置免费行情来源，同时支持更多需要令牌的数据服务和多种通知渠道，适合建立可回看的信息整理习惯。所谓零成本运行依赖平台额度、模型和数据服务选择，免费源可能限流或变化；分析报告与问股策略均是辅助研究输出，不能保证信息实时完整或交易结果。",
@@ -27258,12 +27238,11 @@
     ]
   },
   "zubair-trabzada/geo-seo-claude": {
-    "category": "devtools",
+    "category": "apps",
     "related": [
-      "agents",
-      "apps"
+      "agents"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "GEO",
       "SEO",
@@ -27271,7 +27250,7 @@
       "报告生成"
     ],
     "ways": [
-      "Claude Code技能",
+      "Agent 技能",
       "CLI"
     ],
     "summary": "在 Claude Code 中分析网站的 AI 搜索可见性、技术 SEO 和结构化内容，并生成改进报告。",
@@ -27382,7 +27361,7 @@
       "MCP"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -27472,8 +27451,8 @@
       "多模型"
     ],
     "ways": [
-      "桌面",
-      "命令行",
+      "桌面应用",
+      "CLI",
       "API"
     ],
     "reviewedAt": "2026-09-15",
@@ -27608,7 +27587,7 @@
       "人工监督"
     ],
     "ways": [
-      "本地运行",
+      "本地部署",
       "自托管"
     ],
     "reviewedAt": "2026-09-15",
@@ -27699,7 +27678,7 @@
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "API"
     ],
     "reviewedAt": "2026-09-15",
@@ -27746,7 +27725,7 @@
     "ways": [
       "Python",
       "Docker",
-      "Web",
+      "Web UI",
       "API"
     ],
     "reviewedAt": "2026-09-15",
@@ -27839,7 +27818,7 @@
     ],
     "ways": [
       "Python",
-      "桌面"
+      "桌面应用"
     ],
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
@@ -27926,8 +27905,8 @@
       "基准测试"
     ],
     "ways": [
-      "命令行",
-      "Web",
+      "CLI",
+      "Web UI",
       "API"
     ],
     "kind": "应用 / 工具",
@@ -28013,8 +27992,8 @@
       "视觉流水线"
     ],
     "ways": [
-      "桌面",
-      "本地运行"
+      "桌面应用",
+      "本地部署"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -28069,7 +28048,7 @@
   "amitshekhariitbhu/ai-engineering-interview-questions": {
     "category": "learning",
     "related": [
-      "coding"
+      "devtools"
     ],
     "summary": "围绕 AI 工程岗位整理的面试问题与讲解索引，覆盖模型、RAG、Agent 和工程场景。",
     "overview": "围绕 AI 工程岗位整理的面试问题与讲解索引，覆盖模型、RAG、Agent 和工程场景。 资料将常见概念拆成具体问题，例如 Transformer 组件、分词、位置编码、注意力、上下文窗口和模型适配方法，便于逐项检查理解程度。许多答案链接到作者的视频或专题文章，因此仓库本身更像复习目录，而非全部内容都内嵌的教材。除模型基础外，它也涉及检索增强、微调、量化及安全责任等工程话题，可以用来准备面试或发现知识盲点。实际岗位仍会考察项目实践和系统设计，背诵题目不足以说明已经掌握部署、评估与问题定位能力。",
@@ -28142,7 +28121,7 @@
       "视频生成"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -28183,11 +28162,12 @@
       "工作流",
       "DAG",
       "任务调度",
-      "MLOps"
+      "MLOps",
+      "通用基础设施"
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "框架 / SDK",
@@ -28233,7 +28213,7 @@
       "Agent"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管",
       "API"
     ],
@@ -28278,7 +28258,7 @@
       "MCP"
     ],
     "ways": [
-      "桌面"
+      "桌面应用"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -28289,10 +28269,9 @@
     "usage": "安装对应系统发行版 → 配置行情与模型入口 → 用已知股票核对数据和分析引用。"
   },
   "ashishpatel26/llm-finetuning": {
-    "category": "devtools",
+    "category": "learning",
     "related": [
-      "learning",
-      "models"
+      "devtools"
     ],
     "summary": "以 LoRA 和 Hugging Face Transformers 为核心的大语言模型高效微调示例仓库。",
     "overview": "以 LoRA 和 Hugging Face Transformers 为核心的大语言模型高效微调示例仓库。 项目聚焦在预训练语言模型上进行参数高效适配，适合希望理解微调流程、比较模型设置或在自己的数据上开展小规模实验的开发者。仓库简介和主题涉及 PEFT、LoRA 以及 Llama、Falcon 等模型生态，重点是训练方法与示例组织，而不是可直接交付的对话产品。使用时需要结合具体示例确认基础模型、数据格式和训练参数，再保留未参与训练的数据检查效果。README 内容较简短，未给出统一硬件门槛或所有模型兼容保证，因此这些条件应由实际选定的示例决定。",
@@ -28369,9 +28348,9 @@
       "插件"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker",
-      "桌面"
+      "桌面应用"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -28458,9 +28437,9 @@
     ],
     "ways": [
       "MCP",
-      "本地运行"
+      "本地部署"
     ],
-    "kind": "框架 / SDK",
+    "kind": "MCP 服务",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/awslabs/mcp",
@@ -28512,9 +28491,9 @@
     "usage": "先确认使用 TF1 还是 TF2 → 准备对应环境并选择基础示例 → 运行后修改参数观察结果。"
   },
   "bentoml/bentoml": {
-    "category": "devtools",
+    "category": "models",
     "related": [
-      "models"
+      "devtools"
     ],
     "summary": "把模型推理代码封装成 API、任务队列和多模型服务的 Python 工具。",
     "overview": "把模型推理代码封装成 API、任务队列和多模型服务的 Python 工具。 BentoML 通过服务定义组织模型加载、推理接口和业务逻辑，再管理运行依赖、模型版本及容器构建。它提供动态批处理、多阶段管线和多模型编排等服务优化能力，使本地推理脚本更容易进入可重复部署的环境。开发者仍需根据模型和流量选择并发与资源设置；BentoCloud 托管服务与开源库的本地容器部署属于不同使用路径。",
@@ -28601,9 +28580,7 @@
   },
   "blader/humanizer": {
     "category": "apps",
-    "related": [
-      "coding"
-    ],
+    "related": [],
     "summary": "以 Agent 技能形式改写文字，减少机械化表达，并可参考用户提供的写作样本。",
     "overview": "以 Agent 技能形式改写文字，减少机械化表达，并可参考用户提供的写作样本。 Humanizer 是 Markdown 技能而非独立模型，可安装到支持技能的工具中，针对句式、节奏、套话和聊天遗留痕迹提出改写。用户既能提交文字，也能指定文件，并提供自己的段落作为风格参考。它适合编辑已有草稿，目标是保持原意同时使措辞贴近具体读者。修改仍由底层模型完成，重要事实和作者本意需要对照原文检查，不能保证任何检测工具的判定。",
     "features": [
@@ -28632,9 +28609,9 @@
       "文风"
     ],
     "ways": [
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/blader/humanizer",
@@ -28688,9 +28665,7 @@
   },
   "bulletphysics/bullet3": {
     "category": "devtools",
-    "related": [
-      "models"
-    ],
+    "related": [],
     "summary": "提供碰撞检测和物理仿真的 SDK，可支持机器人、强化学习与虚拟场景实验。",
     "overview": "提供碰撞检测和物理仿真的 SDK，可支持机器人、强化学习与虚拟场景实验。 Bullet 的核心是实时物理计算，用于模拟刚体等对象的运动及相互作用，仓库同时包含演示和测试。面向机器人与强化学习，README 推荐使用 PyBullet Python 绑定，方便编写仿真环境和控制循环。它提供的是环境与动力学能力，而不是已经训练好的智能策略。部分图形演示需要 OpenGL，实验性 OpenCL 路径也存在设备和驱动限制，应与普通 CPU 或 Python 使用方式区分。",
     "features": [
@@ -28716,7 +28691,8 @@
     "tags": [
       "物理仿真",
       "机器人",
-      "强化学习"
+      "强化学习",
+      "仿真环境"
     ],
     "ways": [
       "Python",
@@ -28731,9 +28707,9 @@
     "usage": "选择 PyBullet 或 C++ 接入方式 → 按快速指南运行基础场景 → 加入控制输入并检查仿真参数。"
   },
   "bytedeco/javacv": {
-    "category": "devtools",
+    "category": "visual",
     "related": [
-      "visual"
+      "devtools"
     ],
     "summary": "为 Java 和 Android 提供 OpenCV、FFmpeg 等视觉与多媒体库的调用接口。",
     "overview": "为 Java 和 Android 提供 OpenCV、FFmpeg 等视觉与多媒体库的调用接口。 JavaCV 在 JavaCPP 包装之上加入便于使用的工具类，覆盖图像显示、视频读写、相机标定、特征匹配及部分并行计算。它让 Java 应用能复用成熟原生库，而不必逐个手写底层桥接代码。仓库提供样例帮助理解接口，适合已有 Java 技术栈的视觉应用。实际能力与平台兼容性取决于相应原生组件；README 也说明文档不够完备，复杂功能需要结合示例和上游库资料。",
@@ -28818,9 +28794,7 @@
   },
   "carloslfu/slotstream": {
     "category": "models",
-    "related": [
-      "apps"
-    ],
+    "related": [],
     "summary": "在 Apple Silicon 上通过 SSD 流式加载专家模块来运行大型 MoE 模型的工具。",
     "overview": "在 Apple Silicon 上通过 SSD 流式加载专家模块来运行大型 MoE 模型的工具。 Slotstream 将大部分模型保留在磁盘，只把当前计算所需部分载入内存，从而在有限统一内存的 Mac 上尝试更大的模型。项目提供命令行、兼容接口和 Swift 库，模型首次下载后可离线运行，也能由其他 Agent 调用。当前 README 针对指定 Qwen 模型给出明确设备要求，速度受芯片、SSD 与可用内存影响，不能把容量可运行等同于交互速度足够快；Windows、Linux 和 Intel Mac 不在此支持范围。",
     "features": [
@@ -28852,7 +28826,7 @@
       "MLX"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API",
       "Swift"
     ],
@@ -28865,9 +28839,9 @@
     "usage": "核对 Mac 系统内存和磁盘条件 → 按指南下载模型并启动工具 → 用实际任务测试速度和接口。"
   },
   "chaitanyagiri/munder-difflin": {
-    "category": "agents",
+    "category": "coding",
     "related": [
-      "coding"
+      "agents"
     ],
     "summary": "把现有编程 CLI 组织成多 Agent 团队的本地应用，用虚拟办公室展示协作。",
     "overview": "把现有编程 CLI 组织成多 Agent 团队的本地应用，用虚拟办公室展示协作。 应用为每个 Agent 提供记忆、消息箱和可见的工作位置，由协调角色路由任务，使用户能观察多个终端助手的状态。它兼容多种编程 CLI，也允许自带密钥或本地模型，重点是现有工具之上的团队运行与界面组织，而非自行训练模型。底层订阅的小时额度仍然有效，增加 Agent 数量不会获得额外模型额度；任务结果也需要在真实代码和测试中核验。",
@@ -28896,7 +28870,7 @@
       "本地应用"
     ],
     "ways": [
-      "桌面"
+      "桌面应用"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -28940,7 +28914,7 @@
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -28952,9 +28926,9 @@
     "usage": "先启动支持的模型部署框架 → 配置嵌入模型和知识库 → 导入文档后核对检索片段与回答。"
   },
   "chenhg5/cc-connect": {
-    "category": "agents",
+    "category": "coding",
     "related": [
-      "coding",
+      "agents",
       "automation"
     ],
     "summary": "把本机编程 Agent 接入飞书、钉钉、Telegram 等消息平台的桥接工具。",
@@ -28985,8 +28959,8 @@
       "多项目"
     ],
     "ways": [
-      "命令行",
-      "Web",
+      "CLI",
+      "Web UI",
       "聊天平台"
     ],
     "kind": "应用 / 工具",
@@ -29032,9 +29006,9 @@
     ],
     "ways": [
       "MCP",
-      "命令行"
+      "CLI"
     ],
-    "kind": "框架 / SDK",
+    "kind": "MCP 服务",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/ChromeDevTools/chrome-devtools-mcp",
@@ -29075,8 +29049,8 @@
       "任务空间"
     ],
     "ways": [
-      "桌面",
-      "Agent技能"
+      "桌面应用",
+      "Agent 技能"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -29119,7 +29093,7 @@
       "自托管"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "CloudflareWorkers"
     ],
     "kind": "应用 / 工具",
@@ -29206,8 +29180,8 @@
       "多视图"
     ],
     "ways": [
-      "桌面",
-      "命令行",
+      "桌面应用",
+      "CLI",
       "Python"
     ],
     "kind": "应用 / 工具",
@@ -29251,7 +29225,7 @@
       "RAG"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -29308,10 +29282,9 @@
     "usage": "选择目标模型并核对模型卡 → 安装依赖运行推理样例 → 需要训练时再整理数据并使用对应配方。"
   },
   "corsairdev/corsair": {
-    "category": "devtools",
+    "category": "automation",
     "related": [
-      "agents",
-      "automation"
+      "agents"
     ],
     "summary": "统一第三方应用连接方式的集成平台，可供 Agent、后端和用户面板共用。",
     "overview": "统一第三方应用连接方式的集成平台，可供 Agent、后端和用户面板共用。 Corsair 用一致的 API 组织不同服务的适配，减少每增加一个外部工具就重写认证和调用逻辑的工作。平台以 REST 为基础，因此不局限于 MCP 客户端，也能服务常规产品集成和多租户连接界面。可选择自行托管，或使用 Hub 处理 OAuth 刷新和 Webhook。实际可用动作取决于每个适配器及上游授权，统一接口不意味着所有服务的权限与限制相同。",
@@ -29430,7 +29403,7 @@
       "OCR"
     ],
     "ways": [
-      "桌面",
+      "桌面应用",
       "本地推理"
     ],
     "kind": "应用 / 工具",
@@ -29515,7 +29488,7 @@
       "自托管"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker",
       "API"
     ],
@@ -29835,9 +29808,9 @@
     "usage": "按课程模块准备示例环境 → 导入一组非敏感笔记构建检索 → 完成问答后跟进评估与运行环节。"
   },
   "deepseek-ai/janus": {
-    "category": "models",
+    "category": "visual",
     "related": [
-      "visual"
+      "models"
     ],
     "summary": "统一视觉理解与图像生成的多模态模型系列，包含 Janus、Janus-Pro 和 JanusFlow。",
     "overview": "统一视觉理解与图像生成的多模态模型系列，包含 Janus、Janus-Pro 和 JanusFlow。 项目同时面向看图理解和视觉生成任务，提供不同代模型、在线演示与本地使用入口。Janus-Pro 通过训练策略、数据和规模调整改进前代，JanusFlow 则探索整流流式的图像生成方式。研究者可据相应论文与权重比较方法，而不能把不同版本的配置混用。仓库记录过分词配置影响生成质量的修复，复现实验时需要匹配模型文件和实现版本。",
@@ -29910,7 +29883,7 @@
       "音乐处理"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Python"
     ],
     "kind": "框架 / SDK",
@@ -29995,10 +29968,10 @@
       "流程模板"
     ],
     "ways": [
-      "ClaudeCode",
-      "Agent技能"
+      "Claude Code",
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/Donchitos/Claude-Code-Game-Studios",
@@ -30037,7 +30010,7 @@
       "SQL"
     ],
     "ways": [
-      "Web"
+      "Web UI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30126,8 +30099,8 @@
       "MCP"
     ],
     "ways": [
-      "桌面",
-      "本地运行"
+      "桌面应用",
+      "本地部署"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30170,7 +30143,7 @@
       "数组计算"
     ],
     "ways": [
-      "浏览器",
+      "Web UI",
       "JavaScript"
     ],
     "kind": "框架 / SDK",
@@ -30215,8 +30188,8 @@
     ],
     "ways": [
       "TypeScript",
-      "Web",
-      "桌面"
+      "Web UI",
+      "桌面应用"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -30302,9 +30275,9 @@
       "ACP"
     ],
     "ways": [
-      "命令行",
-      "桌面",
-      "Web"
+      "CLI",
+      "桌面应用",
+      "Web UI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30389,8 +30362,8 @@
       "桌面工具"
     ],
     "ways": [
-      "桌面",
-      "命令行"
+      "桌面应用",
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30691,7 +30664,7 @@
     ],
     "ways": [
       "C++",
-      "命令行"
+      "CLI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -30746,9 +30719,9 @@
     "usage": "从首个任务教程开始 → 按目标查找相关章节 → 在小项目验证模板再适配。"
   },
   "foundationvision/var": {
-    "category": "models",
+    "category": "visual",
     "related": [
-      "visual"
+      "models"
     ],
     "summary": "通过预测下一尺度视觉表示进行图像生成的自回归模型研究实现。",
     "overview": "通过预测下一尺度视觉表示进行图像生成的自回归模型研究实现。 VAR 将图像生成组织为从粗到细的尺度预测，探索区别于逐个图像标记生成的建模方式，并提供论文、采样笔记本与相关演示。开发者可以据此研究视觉生成的扩展规律及模型行为。README同时链接后续文生图和视频研究，但这些位于相关项目，不能把它们全部视为当前VAR实现内置功能；与扩散模型的比较应限定论文设置和指标。",
@@ -30822,9 +30795,9 @@
       "幻灯片"
     ],
     "ways": [
-      "桌面",
-      "命令行",
-      "Agent技能"
+      "桌面应用",
+      "CLI",
+      "Agent 技能"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30866,7 +30839,7 @@
       "C++"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "C++",
       "本地推理"
     ],
@@ -30911,8 +30884,8 @@
       "MCP"
     ],
     "ways": [
-      "命令行",
-      "VSCode"
+      "CLI",
+      "VS Code"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -30966,9 +30939,9 @@
     "usage": "按当前版创建示例服务 → 定义接口并生成代码 → 配置中间件后验证请求链路。"
   },
   "google-research/google-research": {
-    "category": "learning",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "learning"
     ],
     "summary": "Google Research 发布多个独立研究实现的代码集合，适合按具体子项目查找实验。",
     "overview": "Google Research 发布多个独立研究实现的代码集合，适合按具体子项目查找实验。 仓库体量较大，各目录对应不同研究任务，使用者应先定位论文或目标方法，再阅读该目录的环境和数据说明，而非把整个仓库当成统一软件安装。官方建议只下载需要的子目录，贡献时也可浅克隆降低历史体积。源码、数据和子项目说明具有各自使用条件，研究代码并不等于经过产品化支持；README明确说明这不是官方Google产品。",
@@ -31000,7 +30973,7 @@
       "文档阅读",
       "代码实验"
     ],
-    "kind": "学习资源",
+    "kind": "研究实现",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/google-research/google-research",
@@ -31039,7 +31012,7 @@
       "轻量模型"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API"
     ],
     "kind": "应用 / 工具",
@@ -31127,7 +31100,7 @@
       "集群"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管",
       "API"
     ],
@@ -31215,9 +31188,9 @@
     ],
     "ways": [
       "Python",
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/guillaumemeyer/watermarks-remover",
@@ -31259,7 +31232,7 @@
     ],
     "ways": [
       "Python",
-      "RESTAPI"
+      "REST API"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -31356,9 +31329,9 @@
     "usage": "按资源类别浏览目录 → 检查目标仓库文档和维护状态 → 在测试项目安装验证。"
   },
   "hkuds/clawwork": {
-    "category": "agents",
+    "category": "devtools",
     "related": [
-      "devtools"
+      "agents"
     ],
     "summary": "用职业任务、完成质量和模型成本评估 AI 工作表现的实验系统。",
     "overview": "用职业任务、完成质量和模型成本评估 AI 工作表现的实验系统。 ClawWork 让Agent完成GDPVal等来源的专业任务，并通过收入与Token支出的机制观察工作质量和持续运行能力。它支持不同模型进行比较，配套仪表盘展示本地任务数据，适合研究任务价值与调用成本的关系。页面中的“赚取金额”属于实验设定或作者报告，并不代表用户可获得相同真实收入；任务评分、数据同步与成本假设都影响结果解释。",
@@ -31388,9 +31361,9 @@
     ],
     "ways": [
       "Python",
-      "Web"
+      "Web UI"
     ],
-    "kind": "框架 / SDK",
+    "kind": "研究实现",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/HKUDS/ClawWork",
@@ -31433,7 +31406,7 @@
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "聊天平台"
     ],
     "kind": "框架 / SDK",
@@ -31479,7 +31452,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -31612,7 +31585,7 @@
       "训练数据"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker"
     ],
     "kind": "应用 / 工具",
@@ -31655,7 +31628,7 @@
       "质量检查"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -31742,8 +31715,8 @@
       "文档渲染"
     ],
     "ways": [
-      "命令行",
-      "Agent技能"
+      "CLI",
+      "Agent 技能"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -31831,7 +31804,7 @@
       "MCP"
     ],
     "ways": [
-      "桌面",
+      "桌面应用",
       "API"
     ],
     "kind": "应用 / 工具",
@@ -31877,7 +31850,7 @@
       "AI编排"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -32011,7 +31984,7 @@
       "Torch",
       "Python"
     ],
-    "kind": "模型与引擎",
+    "kind": "研究实现",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/junyanz/CycleGAN",
@@ -32053,7 +32026,7 @@
     "ways": [
       "C++",
       "Python",
-      "移动端"
+      "移动应用"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -32181,7 +32154,7 @@
       "个人助手"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管",
       "聊天平台"
     ],
@@ -32311,7 +32284,7 @@
       "版本控制"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -32400,7 +32373,7 @@
       "RAG"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管",
       "聊天平台"
     ],
@@ -32445,7 +32418,7 @@
     ],
     "ways": [
       "Python",
-      "浏览器"
+      "Web UI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -32489,7 +32462,7 @@
     ],
     "ways": [
       "文档阅读",
-      "Agent技能"
+      "Agent 技能"
     ],
     "kind": "学习资源",
     "reviewedAt": "2026-09-15",
@@ -32532,7 +32505,7 @@
       "本地运行"
     ],
     "ways": [
-      "本地运行",
+      "本地部署",
       "源码开发"
     ],
     "kind": "框架 / SDK",
@@ -32623,7 +32596,7 @@
       "ComfyUI",
       "本地推理"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/Lightricks/ComfyUI-LTXVideo",
@@ -32663,10 +32636,10 @@
       "一致性"
     ],
     "ways": [
-      "ClaudeCode",
-      "Agent技能"
+      "Claude Code",
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/lingfengQAQ/webnovel-writer",
@@ -32751,7 +32724,7 @@
       "文生图"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Python"
     ],
     "kind": "模型与引擎",
@@ -32796,7 +32769,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -32882,10 +32855,10 @@
       "面试"
     ],
     "ways": [
-      "ClaudeCode",
-      "本地运行"
+      "Claude Code",
+      "本地部署"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/MadsLorentzen/ai-job-search",
@@ -33057,7 +33030,7 @@
       "便携索引"
     ],
     "ways": [
-      "本地运行",
+      "本地部署",
       "API"
     ],
     "kind": "框架 / SDK",
@@ -33100,7 +33073,7 @@
       "WebGPU"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "API"
     ],
     "kind": "模型与引擎",
@@ -33363,8 +33336,8 @@
       "知识工作"
     ],
     "ways": [
-      "桌面",
-      "Web",
+      "桌面应用",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -33408,7 +33381,7 @@
       "来源引用"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "Docker"
     ],
     "kind": "应用 / 工具",
@@ -33581,7 +33554,7 @@
       "MCP"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "API",
       "MCP"
     ],
@@ -33671,9 +33644,9 @@
     ],
     "ways": [
       "文档阅读",
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "学习资源",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
@@ -33714,8 +33687,8 @@
     ],
     "ways": [
       "Python",
-      "Web",
-      "命令行"
+      "Web UI",
+      "CLI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -33800,8 +33773,8 @@
       "记忆"
     ],
     "ways": [
-      "Web",
-      "命令行"
+      "Web UI",
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -33844,7 +33817,7 @@
       "数据增强"
     ],
     "ways": [
-      "本地运行",
+      "本地部署",
       "Python"
     ],
     "kind": "应用 / 工具",
@@ -33888,7 +33861,7 @@
     ],
     "ways": [
       "Python",
-      "Web",
+      "Web UI",
       "API"
     ],
     "kind": "模型与引擎",
@@ -33932,7 +33905,7 @@
       "技能提炼"
     ],
     "ways": [
-      "Agent技能",
+      "Agent 技能",
       "API"
     ],
     "kind": "框架 / SDK",
@@ -33975,9 +33948,9 @@
       "Claude技能"
     ],
     "ways": [
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/nidhinjs/prompt-master",
@@ -34105,7 +34078,7 @@
       "AI协作"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "自托管"
     ],
     "kind": "应用 / 工具",
@@ -34148,9 +34121,9 @@
       "HTMLCSS"
     ],
     "ways": [
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/Nutlope/hallmark",
@@ -34237,7 +34210,7 @@
       "运行时"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "Python",
       "容器"
     ],
@@ -34281,10 +34254,10 @@
       "哈希编码"
     ],
     "ways": [
-      "桌面",
+      "桌面应用",
       "CUDA"
     ],
-    "kind": "模型与引擎",
+    "kind": "研究实现",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/NVlabs/instant-ngp",
@@ -34327,7 +34300,7 @@
       "Python",
       "模型格式"
     ],
-    "kind": "框架 / SDK",
+    "kind": "协议 / 标准",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/onnx/onnx",
@@ -34368,10 +34341,10 @@
       "设计技能"
     ],
     "ways": [
-      "Agent技能",
-      "浏览器"
+      "Agent 技能",
+      "Web UI"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/op7418/guizang-ppt-skill",
@@ -34411,7 +34384,7 @@
       "业务语义"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "API",
       "MCP"
     ],
@@ -34456,8 +34429,8 @@
       "MCP"
     ],
     "ways": [
-      "Web",
-      "桌面",
+      "Web UI",
+      "桌面应用",
       "API"
     ],
     "kind": "应用 / 工具",
@@ -34588,9 +34561,9 @@
       "项目跟踪"
     ],
     "ways": [
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/OpenSenseNova/SenseNova-Skills",
@@ -34631,9 +34604,9 @@
       "MCP"
     ],
     "ways": [
-      "桌面",
-      "Web",
-      "命令行"
+      "桌面应用",
+      "Web UI",
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -34759,7 +34732,9 @@
     "tags": [
       "视频编辑",
       "MCP",
-      "AppleSilicon"
+      "AppleSilicon",
+      "历史源码开放",
+      "当前版本专有"
     ],
     "ways": [
       "macOS桌面"
@@ -34849,7 +34824,7 @@
     ],
     "ways": [
       "Python",
-      "浏览器",
+      "Web UI",
       "本地推理"
     ],
     "kind": "模型与引擎",
@@ -34892,7 +34867,7 @@
       "大项目"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -34936,8 +34911,8 @@
     ],
     "ways": [
       "API",
-      "命令行",
-      "Web"
+      "CLI",
+      "Web UI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -35025,10 +35000,10 @@
       "红队"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "CI"
     ],
-    "kind": "框架 / SDK",
+    "kind": "开发工具",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/promptfoo/promptfoo",
@@ -35069,8 +35044,8 @@
       "安全公告"
     ],
     "ways": [
-      "VSCode",
-      "命令行"
+      "VS Code",
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -35198,9 +35173,9 @@
       "多协议"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "IDE",
-      "Web"
+      "Web UI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -35244,7 +35219,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -35331,7 +35306,7 @@
     ],
     "ways": [
       "Python",
-      "命令行",
+      "CLI",
       "API"
     ],
     "kind": "模型与引擎",
@@ -35420,7 +35395,7 @@
       "混合检索"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "MCP"
     ],
     "kind": "框架 / SDK",
@@ -35507,7 +35482,7 @@
       "记忆"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "MCP"
     ],
     "kind": "框架 / SDK",
@@ -35552,9 +35527,9 @@
     ],
     "ways": [
       "MCP",
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
@@ -35739,10 +35714,10 @@
     "usage": "按教程运行最小循环 → 逐项加入工具与上下文机制 → 测试权限及失败恢复。"
   },
   "sickn33/agentic-awesome-skills": {
-    "category": "learning",
+    "category": "devtools",
     "related": [
       "agents",
-      "devtools"
+      "coding"
     ],
     "summary": "用于发现、审查并固定 Agent 技能组合的本地目录与控制工具。",
     "overview": "用于发现、审查并固定 Agent 技能组合的本地目录与控制工具。 AAS Core让Agent从完整本地目录中选择技能，再验证清单并生成可审阅计划，帮助保持精确、可复用的技能集合。当前支持路径偏向发现和只读验证，不替Agent自动排名推荐；应用与恢复功能仍标为实验性。README跟踪主分支，未发布内容可能尚未进入安装包，因此使用时应以版本化指南确认可用范围。",
@@ -35771,10 +35746,10 @@
       "本地MCP"
     ],
     "ways": [
-      "命令行",
+      "CLI",
       "MCP"
     ],
-    "kind": "学习资源",
+    "kind": "开发工具",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/sickn33/agentic-awesome-skills",
@@ -35783,10 +35758,9 @@
     "usage": "安装当前发布版 → 浏览完整技能文件并选择 → 验证清单后保存计划。"
   },
   "simonlin1212/a-stock-data": {
-    "category": "devtools",
+    "category": "apps",
     "related": [
-      "agents",
-      "apps"
+      "agents"
     ],
     "summary": "把多个 A 股数据来源整理成可供 Agent 使用的结构化技能与 Python 工具。",
     "overview": "把多个 A 股数据来源整理成可供 Agent 使用的结构化技能与 Python 工具。 项目集中描述行情、资金、公告和研报等数据入口，并列出备选来源与降级策略，减少逐个适配参数的工作。技能文件包含说明和代码，适合接入支持上下文或技能的编程助手。多数接口无需用户密钥，但README明确存在例外，数据日期和来源状态也不同；“零鉴权”不能理解为所有入口永久可用，研究结果应保留实际来源。",
@@ -35817,9 +35791,9 @@
     ],
     "ways": [
       "Python",
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "框架 / SDK",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/simonlin1212/a-stock-data",
@@ -35857,9 +35831,9 @@
       "终端"
     ],
     "ways": [
-      "命令行"
+      "CLI"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/sirmalloc/ccstatusline",
@@ -35986,7 +35960,7 @@
     ],
     "ways": [
       "Python",
-      "Web"
+      "Web UI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -36159,7 +36133,7 @@
       "MCP"
     ],
     "ways": [
-      "桌面"
+      "桌面应用"
     ],
     "kind": "应用 / 工具",
     "reviewedAt": "2026-09-15",
@@ -36245,9 +36219,9 @@
       "提示实验"
     ],
     "ways": [
-      "Agent技能"
+      "Agent 技能"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/tanweai/pua",
@@ -36331,7 +36305,7 @@
     ],
     "ways": [
       "Python",
-      "Web"
+      "Web UI"
     ],
     "kind": "模型与引擎",
     "reviewedAt": "2026-09-15",
@@ -36591,10 +36565,10 @@
       "知识交接"
     ],
     "ways": [
-      "Agent技能",
-      "本地运行"
+      "Agent 技能",
+      "本地部署"
     ],
-    "kind": "应用 / 工具",
+    "kind": "技能 / 插件",
     "reviewedAt": "2026-09-15",
     "sourceUrls": [
       "https://github.com/titanwings/distilly",
@@ -36723,7 +36697,7 @@
     ],
     "ways": [
       "Python",
-      "命令行"
+      "CLI"
     ],
     "kind": "框架 / SDK",
     "reviewedAt": "2026-09-15",
@@ -36775,10 +36749,9 @@
     "usage": "确定一个学习主题 → 挑选适合基础的连贯资料 → 完成练习后再拓展下一项。"
   },
   "unity-technologies/ml-agents": {
-    "category": "agents",
+    "category": "devtools",
     "related": [
-      "models",
-      "learning"
+      "models"
     ],
     "kind": "框架 / SDK",
     "tags": [
@@ -36912,12 +36885,12 @@
     ]
   },
   "vercel-labs/agent-browser": {
-    "category": "devtools",
+    "category": "automation",
     "related": [
       "agents",
-      "automation"
+      "devtools"
     ],
-    "kind": "应用 / 工具",
+    "kind": "开发工具",
     "tags": [
       "浏览器自动化",
       "CLI",
@@ -37062,7 +37035,7 @@
     ],
     "ways": [
       "文档阅读",
-      "技能安装"
+      "Agent 技能"
     ],
     "summary": "汇集开发团队与社区发布的 Agent 技能，方便按任务寻找来源清楚的可用配置。",
     "overview": "awesome-agent-skills 将文档处理、前端开发、工具集成和工程测试等 Agent 技能汇集为目录，并标明开发团队或社区来源。读者可按需要找到技能，转到原仓库阅读具体流程、依赖和安装方式，再接入支持 Agent Skills 的编码宿主。它适合发现现成工作方法，也可作为自己编写技能的参考。合集本身不运行技能，也不为第三方服务提供模型额度或工具权限；官方团队条目和社区条目的身份要分别核查，兼容多个宿主不代表每项技能都在各客户端拥有完全一样的功能与行为。",
@@ -37108,7 +37081,7 @@
     ],
     "ways": [
       "Python",
-      "Web界面"
+      "Web UI"
     ],
     "summary": "通过数据可视化、标注与模型评估帮助发现视觉数据集和模型结果中的问题。",
     "overview": "FiftyOne 围绕视觉 AI 开发提供可视化数据工作区，让开发者查看图像或视频样本、检查标签与预测，并结合模型评估发现数据和效果问题。它通过 Python 工作流连接数据与应用界面，适合在训练前后反复审视样本，而不是只看一个汇总准确率。用户可安装发行版本，也可为开发界面选择源码构建，按需要使用数据存储与视频处理依赖。仓库同时指向更大规模协作和云端产品，不能把这些服务的管理能力都归入本地版本；有效的数据改进仍需要结合标注标准与具体任务判断。",
@@ -37186,12 +37159,12 @@
     ]
   },
   "wanshuiyin/auto-claude-code-research-in-sleep": {
-    "category": "learning",
+    "category": "devtools",
     "related": [
       "agents",
-      "models"
+      "automation"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "自动研究",
       "交叉评审",
@@ -37199,7 +37172,7 @@
       "实验流程"
     ],
     "ways": [
-      "Agent技能",
+      "Agent 技能",
       "CLI"
     ],
     "summary": "ARIS 用 Markdown 技能组织机器学习研究、实验自动化和跨模型评审流程。",
@@ -37283,7 +37256,7 @@
       "learning",
       "agents"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "图像提示词",
       "参考图",
@@ -37291,9 +37264,9 @@
       "Agent Skills"
     ],
     "ways": [
-      "技能安装",
+      "Agent 技能",
       "CLI",
-      "画廊阅读"
+      "文档阅读"
     ],
     "summary": "整理 GPT Image 系列提示词与参考图，并提供生成编辑和从图片提取提示的技能。",
     "overview": "这个仓库把图像提示词画廊、参考案例、Agent 技能和命令行调用入口放在一起。用户可先浏览分类样例，结合自己的草图、形状或图片明确布局与编辑约束，再通过技能或 CLI 交给支持的图像模型；另一个技能用于从参考图中提炼可继续修改的提示。它适合学习参考图驱动的创作方法和组织可复用提示，不是图像模型本身，也不自带 API 使用额度。文档中的模型名称、分辨率与支持参数需按实际提供方确认；生成的 PNG 等栅格结果也不能直接视为可编辑 SVG 或 PowerPoint 图形。",
@@ -37385,7 +37358,7 @@
     ],
     "ways": [
       "Docker Compose",
-      "Web",
+      "Web UI",
       "API"
     ],
     "summary": "可私有部署的知识 Agent 平台，将文档检索、图谱、多 Agent 和权限管理集中到工作区。",
@@ -37431,8 +37404,8 @@
       "协作实践"
     ],
     "ways": [
-      "文档学习",
-      "交互示例"
+      "文档阅读",
+      "示例代码"
     ],
     "summary": "围绕 AI 编程时代的变更控制讲解 Git 原理、验证方法与团队协作。",
     "overview": "my-git 将 Git 学习从记忆命令转向理解快照、对象、引用与历史，再讨论如何接受和验证工程变更。材料通过文章、动画和临时仓库实验解释远端、worktree、存储与协作分歧，让使用编码助手的人能够判断改动范围和回退方式。它适合补足 AI 代执行命令之后仍需具备的版本控制知识，也提供按原理、单次变更和团队协作组织的导航。Git 只负责版本与历史，测试、权限、审查和发布仍是独立环节；阅读教程本身不能证明已掌握恢复能力，应通过可重现的实验检查理解。",
@@ -37514,7 +37487,7 @@
       "coding",
       "agents"
     ],
-    "kind": "Agent技能",
+    "kind": "技能 / 插件",
     "tags": [
       "技术图解",
       "SVG",
@@ -37522,7 +37495,7 @@
       "动效导出"
     ],
     "ways": [
-      "Agent技能",
+      "Agent 技能",
       "CLI",
       "HTML"
     ],
@@ -37703,7 +37676,7 @@
       "深度学习"
     ],
     "ways": [
-      "文档学习",
+      "文档阅读",
       "Notebook"
     ],
     "summary": "面向深度学习开发与研究入门的中文 PyTorch 手册，结合 Notebook 与参考文章学习。",
@@ -37794,7 +37767,7 @@
       "Web界面"
     ],
     "ways": [
-      "Web",
+      "Web UI",
       "本地部署"
     ],
     "summary": "接收本地或平台视频，通过 AI 分析提取高光片段并组织视频合集。",
@@ -37832,7 +37805,7 @@
       "knowledge",
       "devtools"
     ],
-    "kind": "框架 / SDK",
+    "kind": "MCP 服务",
     "tags": [
       "语义代码检索",
       "MCP",
@@ -37842,7 +37815,7 @@
     "ways": [
       "MCP",
       "SDK",
-      "编辑器扩展"
+      "编辑器插件"
     ],
     "summary": "将代码索引到向量数据库，通过 MCP 为编码 Agent 检索与问题相关的源码片段。",
     "overview": "Claude Context 面向大型代码库提供语义搜索能力：先解析并切分代码，通过嵌入表示存入向量数据库，再把与任务有关的片段返回给 Claude Code 等兼容 MCP 的助手。这样无需每次把全部目录塞进上下文，也可通过核心包或编辑器集成嵌入其他开发工具。项目支持多种语言及分块路径，适合在仓库较大时寻找实现线索和相关代码。它与 README 提到的长期记忆插件是不同项目，代码搜索也不能保证一次找到全部依赖；是否使用云数据库和外部嵌入决定了源码的处理位置与费用。",

@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 from ranking import period_starts, chart_entries
 from github_metadata import batch_metadata
+from taxonomy import normalize_ways
 REST_REQUEST_LIMIT = int(os.environ.get('RADAR_REST_REQUEST_LIMIT', '960'))
 _rest_requests = 0
 _rest_lock = threading.Lock()
@@ -107,7 +108,7 @@ def classify(repo, readme, editorial):
  secondary=list(dict.fromkeys(k for k in secondary if k!=primary))
  kind=info.get('kind') or ('学习资源' if primary=='learning' else '模型与引擎' if primary=='models' else '框架 / SDK' if re.search(r'framework|library|sdk',text) else '应用 / 工具')
  tags=info.get('tags') or [t for t in topics if t not in ('ai','artificial-intelligence','python','typescript','llm')][:4] or ['能力待核实']
- ways=info.get('ways',[])
+ ways=normalize_ways(info.get('ways',[]))
  source_url=f'https://github.com/{full}'
  summary=info.get('summary') or f'{repo["name"]} 属于{CATEGORIES[primary][0]}方向。仓库简介：{repo.get("description") or "作者暂未提供简介。"}'
  overview=info.get('overview') or f'{repo["name"]} 是一个主要使用 {repo.get("language") or "仓库所列技术"} 的{kind}，归入{CATEGORIES[primary][0]}方向。分类依据来自仓库简介和 Topics，具体功能请结合下方 README 原文确认。'

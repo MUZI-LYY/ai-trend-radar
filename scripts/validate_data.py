@@ -4,9 +4,10 @@ import datetime as dt
 from pathlib import Path
 from collect import period_total, is_current
 from ranking import period_starts, chart_entries
+from taxonomy import KINDS, normalize_ways
 
 
-def validate_dataset(data):
+def validate_dataset(data, *, current_taxonomy=False):
  assert data['projects'], 'No projects'
  dt.date.fromisoformat(data['date'])
  for key in ('capturedAt', 'completedAt'):
@@ -26,6 +27,9 @@ def validate_dataset(data):
   assert type(project['forks']) is int and project['forks'] >= 0, label
   assert project['url'].startswith('https://github.com/'), label
   assert project['category'] in categories, label
+  if current_taxonomy:
+   assert project['kind'] in KINDS, f'Nonstandard project kind: {label}'
+   assert project['ways'] == normalize_ways(project['ways']), f'Nonstandard usage filters: {label}'
   assert all(category in categories for category in project['related']), label
   assert project['category'] not in project['related'], label
   assert project['summary'] and project['overview'] and project['readmeUrl'], label
@@ -98,7 +102,7 @@ def validate_history(history, index, latest):
 def main():
  root = Path(__file__).resolve().parents[1] / 'public/data'
  latest = json.loads((root / 'latest.json').read_text())
- count = validate_dataset(latest)
+ count = validate_dataset(latest, current_taxonomy=True)
  index = json.loads((root / 'index.json').read_text())
  archives = []
  for snapshot in index['snapshots']:

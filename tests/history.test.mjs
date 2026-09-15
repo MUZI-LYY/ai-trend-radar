@@ -31,6 +31,8 @@ test('historical replay agrees with source daily sums without changing actual me
   const annual=days.length===expectedCount?days.reduce((n,d)=>n+d.stars,0):null;
   assert.equal(p.metrics.yearly,annual,p.fullName);
   assert.ok(p.history.every(d=>d.date<=date));assert.ok(p.createdAt.slice(0,10)<=date);
+  const profile=latest.projects.find(x=>x.id===p.id);
+  for(const key of ['category','related','kind','tags','ways','overview','features','useCases','editorial'])assert.deepEqual(p[key],profile[key],`${p.fullName} current ${key}`);
  }
 });
 test('missing data does not become zero or a complete week',()=>{
