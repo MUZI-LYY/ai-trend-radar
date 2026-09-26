@@ -12,10 +12,10 @@ def main():
  for p in d['projects']:
   repo={'full_name':p['fullName'],'name':p['name'],'description':p['description'],'topics':p['topics'],'language':p['language'],'homepage':p['homepage']}
   original={k:p[k] for k in ('readme','readmeUrl')}
-  if p['fullName'].lower() not in editorial and p.get('profileSource'):
-   from source_profile import build_source_profile
-   original.update({k:p[k] for k in build_source_profile(p,p['readme']) if k in p})
   p.update(classify(repo,p['readme'],editorial));p.update(original)
+  if not p['editorial']:
+   from source_profile import build_source_profile
+   p.update(build_source_profile(p,p['readme'],readme_url=p['readmeUrl']))
   daily={x['date']:x['stars'] for x in p['history']}
   p['metrics']['weekly']=None if p.get('stale') or p['historyStatus']!='ok' else period_total(daily,d['periodStarts']['weekly'],d['periodEnd'],p['createdAt'])
  if 'coverage' in d:

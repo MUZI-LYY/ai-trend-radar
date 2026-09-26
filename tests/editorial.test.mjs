@@ -43,3 +43,12 @@ test('an unreviewed latest profile never replaces a reviewed historical descript
  const data={projects:[{id:1,editorial:true,overview:'已整理介绍'}]};
  assert.equal(withLatestProfiles(data,{projects:[{id:1,editorial:false,overview:'自动提取'}]}).projects[0],data.projects[0]);
 });
+
+test('historical boards use the latest Chinese fallback for unreviewed projects',()=>{
+ const old={id:2,editorial:false,overview:'README 原文：English text',stars:12,metrics:{daily:3}};
+ const latest={id:2,editorial:false,overview:'项目用途待中文核对',stars:99,metrics:{daily:7}};
+ const result=withLatestProfiles({projects:[old]},{projects:[latest]});
+ assert.equal(result.projects[0].overview,latest.overview);
+ assert.equal(result.projects[0].stars,old.stars);
+ assert.deepEqual(result.projects[0].metrics,old.metrics);
+});

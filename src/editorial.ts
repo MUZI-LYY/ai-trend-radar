@@ -8,10 +8,10 @@ const profileFields = [
 ] as const satisfies readonly (keyof Project)[];
 
 export function withLatestProfiles(data: Dataset, latest: Dataset): Dataset {
- const profiles = new Map(latest.projects.filter(p=>p.editorial).map(p=>[p.id,p]));
+ const profiles = new Map(latest.projects.map(p=>[p.id,p]));
  return {...data, projects: data.projects.map(project=>{
   const profile = profiles.get(project.id);
-  if (!profile) return project;
+  if (!profile || (project.editorial && !profile.editorial)) return project;
   const fields = Object.fromEntries(profileFields.map(key=>[key,profile[key]]));
   return {...project,...fields};
  })};

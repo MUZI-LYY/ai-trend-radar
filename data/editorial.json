@@ -37889,5 +37889,139 @@
       "https://github.com/ZuzooVn/machine-learning-for-software-engineers",
       "https://github.com/ZuzooVn/machine-learning-for-software-engineers/blob/master/README.md"
     ]
+  },
+  "arcboxlabs/arcbox": {
+    "category": "agents",
+    "related": [
+      "devtools"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "Agent 沙箱",
+      "容器与虚拟机",
+      "本地运行"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "summary": "在 macOS 上运行容器、虚拟机和供 AI Agent 使用的隔离沙箱。",
+    "overview": "ArcBox 是面向 macOS 的开源容器与虚拟机运行时，使用 Rust 构建。项目把 Docker 兼容的容器环境、Agent 沙箱、本地 Kubernetes 和 Linux/macOS 虚拟机放在同一套守护进程与命令行工具中。对需要让 AI Agent 执行代码或操作系统任务的团队，它提供本机隔离环境；同一沙箱原语也用于其云端平台。项目文档将其定位为 Docker Desktop 和 OrbStack 的开源替代方案，但具体性能仍应在目标机器上验证。",
+    "audience": "需要在 Mac 上运行容器、虚拟机或测试 Agent 隔离执行环境的开发者。",
+    "features": [
+      "提供 Docker 兼容接口，可沿用 Docker CLI、Compose 和现有脚本。",
+      "提供供 Agent 使用的隔离沙箱，并可在本地运行 Kubernetes 集群。",
+      "支持在 Apple Silicon 上运行 arm64 与经模拟的 linux/amd64 镜像。",
+      "通过命令行查看容器资源使用情况。"
+    ],
+    "useCases": [
+      "为 AI Agent 的代码执行提供本机隔离环境。",
+      "在 Mac 上开发、测试 Docker 容器及 Kubernetes 工作负载。"
+    ],
+    "gettingStarted": [
+      "按官方文档安装 ArcBox，运行 abctl doctor 检查环境。",
+      "运行 abctl --help，选择 Docker、沙箱或 Kubernetes 工作流。"
+    ],
+    "requirements": [
+      "目前主要面向 Apple Silicon Mac；Intel 支持仍在开发中。",
+      "Agent 沙箱另有芯片和系统版本要求，需按当前 README 核对。"
+    ],
+    "usage": "先核对 Mac 芯片和系统版本，按官方 Quick Start 安装并运行 abctl doctor。若迁移 Docker 工作流，再参考 abctl docker setup 配置所需的 CLI 组件；使用沙箱前检查额外硬件条件。",
+    "caveat": "项目处于公开测试阶段；沙箱需要更具体的硬件与 macOS 条件。不要把 Docker 兼容理解为所有现有环境均可无改动迁移。",
+    "reviewedAt": "2026-09-26",
+    "sourceUrls": [
+      "https://github.com/arcboxlabs/arcbox",
+      "https://github.com/arcboxlabs/arcbox/blob/main/README.md"
+    ]
+  },
+  "apify/apify-mcp-server": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "MCP 服务",
+    "tags": [
+      "MCP",
+      "网页数据采集",
+      "Apify Actor"
+    ],
+    "ways": [
+      "在线服务",
+      "本地部署"
+    ],
+    "summary": "让 AI Agent 通过 MCP 调用 Apify 的网页采集与自动化工具。",
+    "overview": "Apify MCP Server 把 Apify Store 中的 Actor 暴露为 MCP 工具，让兼容 MCP 的 AI 助手执行网页抓取、搜索结果采集、社交媒体和地图数据提取等任务。官方提供托管的 mcp.apify.com 端点，也提供适合本地集成的 stdio 方式。托管端点支持 OAuth，可供 Claude.ai、VS Code 等客户端连接；实际能使用哪些 Actor 以及运行费用，取决于 Apify 账户与具体工具配置。",
+    "audience": "需要让 AI 助手调用网页数据采集或自动化工具的开发者与研究人员。",
+    "features": [
+      "将 Apify Actor 作为 MCP 工具提供给 AI 助手。",
+      "提供托管 HTTPS 端点和本地 stdio 接入方式。",
+      "托管端点支持 OAuth，便于兼容客户端连接。",
+      "可利用 Apify Store 的现成采集器处理搜索、地图、社交媒体和网站内容。"
+    ],
+    "useCases": [
+      "让 AI 助手检索网页并汇总搜索结果。",
+      "从地图、社交平台或电商站点采集任务所需的数据。"
+    ],
+    "gettingStarted": [
+      "确认所用客户端支持 MCP，优先查看官方托管端点接入说明。",
+      "按官方文档完成 OAuth 或令牌配置，并挑选需要的 Actor。",
+      "运行小范围任务，核对返回数据和费用。"
+    ],
+    "requirements": [
+      "需要兼容 MCP 的客户端。",
+      "调用部分 Actor 或托管服务可能需要 Apify 账户、授权和付费额度。"
+    ],
+    "usage": "从官方 Quickstart 选择 HTTPS 托管端点或本地 stdio。托管方式按文档连接 mcp.apify.com 并完成授权；本地方式按客户端的 MCP 配置步骤接入。先用单个 Actor 验证输入、输出和费用。",
+    "caveat": "旧的 /sse 端点已移除，需按当前文档使用新的传输方式。Apify Store 中不同 Actor 的功能、权限与计费不相同，不能把所有采集能力视为免费或默认启用。",
+    "reviewedAt": "2026-09-26",
+    "sourceUrls": [
+      "https://github.com/apify/apify-mcp-server",
+      "https://github.com/apify/apify-mcp-server/blob/main/README.md"
+    ]
+  },
+  "deeplethe/utopia": {
+    "category": "knowledge",
+    "related": [
+      "agents"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "时态知识图谱",
+      "知识治理",
+      "私有部署"
+    ],
+    "ways": [
+      "Docker",
+      "本地部署"
+    ],
+    "summary": "用带时间维度的知识图谱管理企业知识及决策依据。",
+    "overview": "Utopia 是 DeepLethe 开发的开源企业知识系统。它把时间维度和本体结构放进知识底层，目标是在资料持续进入时记录知识如何变化，并为冲突检测、推理和决策保留可追溯依据。项目文档称其核心之一是双时间知识图谱，同时提供全文检索和向量检索能力。系统可在企业自有硬件上离线部署，面向需要知识治理、审计轨迹和 Agent 可信知识基础的场景；“企业世界模型”是作者的定位，并非本站对能力的独立评测。",
+    "audience": "需要追踪知识变化、建立审计依据或为内部 Agent 提供知识基础的企业技术团队。",
+    "features": [
+      "以双时间知识图谱记录知识及其变化过程。",
+      "在系统中结合全文检索和基于 pgvector 的向量检索。",
+      "支持在自有硬件上部署，以便控制知识数据。",
+      "通过本体与时间信息为冲突检测和决策追溯提供基础。"
+    ],
+    "useCases": [
+      "维护不断更新的企业资料，并追溯某一决策当时的知识依据。",
+      "为内部 Agent 建立带时间和本体关系的知识底座。"
+    ],
+    "gettingStarted": [
+      "准备 Docker，并按 README 的预构建镜像说明启动。",
+      "打开本地界面注册首个管理员账户。",
+      "导入业务文档前，在管理界面配置聊天与嵌入模型端点。"
+    ],
+    "requirements": [
+      "快速体验需要 Docker；本地开发还需要 README 指定的 Rust、Node 与 pnpm 版本。",
+      "系统使用 Postgres，向量能力依赖 pgvector。"
+    ],
+    "usage": "先按官方 Quick Start 使用预构建镜像启动，完成初始管理员注册，再配置聊天和嵌入模型端点。若用于企业资料，应先用少量文档测试知识提取、时间追溯和权限设置。",
+    "caveat": "作者对“世界模型”及治理能力的描述需要在真实资料与业务流程中验证。首次账户会成为管理员，部署到可访问环境前应核对账户、权限及模型端点配置。",
+    "reviewedAt": "2026-09-26",
+    "sourceUrls": [
+      "https://github.com/deeplethe/utopia",
+      "https://github.com/deeplethe/utopia/blob/main/README.md"
+    ]
   }
 }

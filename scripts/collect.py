@@ -183,9 +183,7 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
  profile=classify(repo,readme,editorial)
  if not profile['editorial']:
   from source_profile import build_source_profile
-  source_profile=build_source_profile(repo,readme,readme_url=readme_url or profile['readmeUrl'])
-  if not readme_changed and old.get('profileSource'):
-   source_profile={key:old.get(key,value) for key,value in source_profile.items()}
+  source_profile=build_source_profile({**repo,'category':profile['category']},readme,readme_url=readme_url or profile['readmeUrl'])
   profile.update(source_profile)
  # The cache is already a sanitized excerpt. Avoid progressively stripping it again.
  if readme and not readme_changed:profile['readme']=readme

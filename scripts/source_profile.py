@@ -1,8 +1,7 @@
 """Evidence-first fallback profiles for repositories without an editorial profile.
 
-No translation/model calls or inferred capabilities. Every extracted capability,
-requirement and instruction remains an attributed README quotation. Compatible
-with raw Markdown and the collector's older, flattened README cache.
+English source material belongs in sourceExcerpts/README, never in Chinese
+explanatory fields. No translation calls or inferred capabilities are made.
 
 Usage: profile.update(build_source_profile(repo, readme, readme_url=readme_url))
 Call only when no manual editorial record exists. Does not set category, tags,
@@ -114,7 +113,6 @@ def build_source_profile(repo: dict[str, Any], readme: str, *, readme_url: str |
     README data is explicit; Topics remain discovery labels, not capabilities.
     """
     full = repo.get('full_name') or repo.get('fullName') or repo.get('name') or '项目'
-    name = repo.get('name') or full.rsplit('/', 1)[-1]
     description = _plain(repo.get('description') or '', 650)
     source = readme_url or repo.get('readmeUrl') or f'https://github.com/{full}'
     blocks = _sections(readme or '')
@@ -141,34 +139,34 @@ def build_source_profile(repo: dict[str, Any], readme: str, *, readme_url: str |
     if not features and description:
         features = [{'heading': 'GitHub description', 'text': description, 'kind': 'text'}]
 
-    overview_parts = [f'{name} 的作者简介：{description}' if description else f'{name} 暂未提供 GitHub 简介。']
-    if intro:
-        overview_parts.append('项目定位（README 原文）：' + intro['text'])
-    elif readme:
-        overview_parts.append('当前 README 摘录没有清晰的项目定位段落，下面保留可核对的功能和使用资料。')
-    else:
-        overview_parts.append('README 本次未取得；以下仅依据仓库简介，安装方式和功能边界尚待核实。')
-    quoted_features = [f'作者列出：{b["text"]}' for b in features]
-    if start:
-        getting_started = [f'原文步骤（{b["heading"]}）：{b["text"]}' for b in start]
-        usage = 'README 的上手说明如下，保留原文以便核对版本和具体操作：' + ' '.join(b['text'] for b in start[:2])
-    else:
-        getting_started = [f'打开 {source}，查看当前版本的安装及使用入口。']
-        usage = '当前可用资料没有提取到明确的安装或使用步骤。请从项目 README 查看实际入口；本站不据 Topics 推测启动命令。'
-    # Keep absent requirements visibly absent rather than infer CPU/GPU/API keys.
-    requirement_text = [f'文档条件：{b["text"]}' for b in requirements]
-    caveat = ' '.join(f'文档说明：{b["text"]}' for b in limitations) or '当前摘录未确认项目特有的兼容性和许可限制，使用前请核对当前 README 与许可证。'
-    caveat += ' 本页为自动来源整理；作者的性能或能力宣称未经本站独立验证。'
+    category = repo.get('category') or ''
+    category_label = {
+        'agents': 'AI Agent', 'coding': 'AI 编程', 'models': '模型与推理',
+        'knowledge': 'RAG 与知识库', 'automation': '工作流与自动化',
+        'visual': '图像与视频', 'audio': '语音与音频',
+        'apps': 'AI 应用与交互', 'devtools': '训练与开发工具',
+        'learning': '学习与资源',
+    }.get(category, 'AI 开源项目')
+    summary = f'该项目暂归入{category_label}方向，具体用途待中文核对。'
+    overview = (f'该仓库是本站收录的{category_label}方向项目。当前分类依据仓库简介与标签，'
+                '尚未完成逐项中文解读；其功能、适用场景和使用条件不能仅凭分类确认。'
+                + ('下方保留作者的原始文档摘录，可核对项目定位及具体能力。' if readme else
+                   '本次未取得项目文档，请到仓库核对项目定位及具体能力。'))
+    usage = ('已从项目文档提取上手资料，可在下方原文区域核对具体步骤和版本要求。'
+             if start else '当前资料未提取到明确的安装或使用步骤，请查看项目的官方文档。')
+    caveat = ('原文中有关于限制或兼容性的说明，请阅读官方文档确认适用条件。' if limitations else
+              '当前摘录未确认项目特有的兼容性和许可限制，使用前请核对官方文档与许可证。')
+    caveat += ' 本页为自动来源整理，作者的性能或能力宣称未经本站独立验证。'
     selected = _unique(([intro] if intro else []) + features + start + requirements + limitations + cases, 20)
     return {
-        'summary': description or f'{name}：作者尚未填写仓库简介。',
-        'overview': '\n\n'.join(overview_parts),
-        'features': quoted_features,
+        'summary': summary,
+        'overview': overview,
+        'features': [],
         'usage': usage,
         'audience': '可按下方作者提供的功能、场景和运行条件判断是否适合自己的任务；当前资料未对目标用户进行人工确认。',
-        'useCases': [f'README 场景：{b["text"]}' for b in cases],
-        'requirements': requirement_text,
-        'gettingStarted': getting_started,
+        'useCases': [],
+        'requirements': [],
+        'gettingStarted': ['打开官方文档，按当前版本的说明确认安装和使用步骤。'] if start else [],
         'caveat': caveat,
         'profileSource': 'readme-extract' if blocks else 'repository-description',
         'sourceExcerpts': [{'section': b['heading'], 'text': b['text'], 'url': source} for b in selected],
