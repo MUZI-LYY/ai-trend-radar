@@ -104,6 +104,49 @@ class ScaleCollectorTests(unittest.TestCase):
         self.assertFalse(result['editorial'])
         self.assertIsNone(result['reviewedAt'])
 
+    def test_generated_profile_is_preserved_without_claiming_human_review(self):
+        generated = {'profileStatus': 'generated', 'category': 'coding',
+                     'summary': '中文摘要', 'overview': '依据 README 整理的具体中文介绍。',
+                     'features': ['说明中明确的功能'], 'reviewedAt': '2026-09-26'}
+        with patch.object(c, 'api', return_value=[week('2026-01-01')]):
+            result = c.collect_one('org/example', self.old([]), {'org/example': generated},
+                                   '2026-01-03', '2026-01-01', repo=self.repo())
+        self.assertEqual(result['profileStatus'], 'generated')
+        self.assertFalse(result['editorial'])
+        self.assertIsNone(result['reviewedAt'])
+        self.assertEqual(result['summary'], '中文摘要')
+        self.assertEqual(result['features'], ['说明中明确的功能'])
+        self.assertIn('待人工复核', result['classificationBasis'])
+
+    def test_recreated_repository_does_not_inherit_old_id_cache_or_baseline(self):
+        import base64
+        repo=self.repo()
+        repo['id']=2
+        repo['created_at']='2026-01-02T00:00:00Z'
+        old=self.old(['2026-01-01'])
+        old['id']=1
+        old['firstSeen']='2026-01-01'
+        readme='README for the recreated repository with new project details.'
+        response={'content':base64.b64encode(readme.encode()).decode(),
+                  'sha':'new-sha','html_url':'https://github.com/org/example/blob/dev/README.md'}
+        with patch.object(c,'api',side_effect=[response,[week('2026-01-01')]]) as api:
+            result=c.collect_one('org/example',old,{},'2026-01-03','2026-01-01',repo=repo)
+        self.assertEqual(api.call_count,2)
+        self.assertEqual(result['id'],2)
+        self.assertEqual(result['readme'],readme)
+        self.assertEqual(result['readmeSha'],'new-sha')
+        self.assertEqual(result['firstSeen'],result['fetchedAt'][:10])
+        self.assertIsNone(result['netSincePrevious'])
+        self.assertIsNone(result['netBaselineAt'])
+        self.assertEqual([day['date'] for day in result['history']],['2026-01-02','2026-01-03'])
+
+    def test_manual_profile_keeps_reviewed_status(self):
+        profile = c.classify(self.repo(), '', {'org/example': {
+            'category': 'coding', 'summary': '人工摘要', 'reviewedAt': '2026-09-26'}})
+        self.assertTrue(profile['editorial'])
+        self.assertEqual(profile['reviewedAt'], '2026-09-26')
+        self.assertNotIn('profileStatus', profile)
+
     def test_failed_latest_page_cannot_publish_cached_values_as_fresh(self):
         with patch.object(c, 'api', side_effect=RuntimeError('unavailable')):
             result = c.collect_one('org/example', self.old(['2026-01-03']), {}, '2026-01-03', '2026-01-01', repo=self.repo())

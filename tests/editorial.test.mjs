@@ -52,3 +52,20 @@ test('historical boards use the latest Chinese fallback for unreviewed projects'
  assert.equal(result.projects[0].stars,old.stars);
  assert.deepEqual(result.projects[0].metrics,old.metrics);
 });
+
+test('historical boards carry the generated status from the latest profile',()=>{
+ const old={id:3,editorial:false,overview:'旧介绍',stars:12,profileStatus:undefined};
+ const latest={id:3,editorial:false,overview:'AI 整理的中文介绍',stars:88,
+  profileStatus:'generated',classificationBasis:'AI 自动整理，待人工复核'};
+ const result=withLatestProfiles({projects:[old]},{projects:[latest]});
+ assert.equal(result.projects[0].overview,latest.overview);
+ assert.equal(result.projects[0].profileStatus,'generated');
+ assert.equal(result.projects[0].classificationBasis,latest.classificationBasis);
+ assert.equal(result.projects[0].stars,old.stars);
+});
+
+test('generated latest profile does not downgrade a historical human review',()=>{
+ const old={id:4,editorial:true,overview:'人工介绍',profileStatus:undefined};
+ const latest={id:4,editorial:false,overview:'机器介绍',profileStatus:'generated'};
+ assert.equal(withLatestProfiles({projects:[old]},{projects:[latest]}).projects[0],old);
+});

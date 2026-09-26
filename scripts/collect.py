@@ -96,6 +96,7 @@ def strip_readme(md):
 
 def classify(repo, readme, editorial):
  full=repo['full_name'];edited=editorial.get(full.lower(),{});classified=CLASSIFICATION_OVERRIDES.get(full.lower(),{});info={**classified,**edited}
+ generated=edited.get('profileStatus')=='generated'
  topics=repo.get('topics',[])
  text=' '.join([full,repo.get('description') or '',*topics]).lower()
  scores={k:sum(2 if t in topics else 1 for t in ts if t in text) for k,(_,_,ts) in CATEGORIES.items()}
@@ -114,7 +115,13 @@ def classify(repo, readme, editorial):
  overview=info.get('overview') or f'{repo["name"]} 是一个主要使用 {repo.get("language") or "仓库所列技术"} 的{kind}，归入{CATEGORIES[primary][0]}方向。分类依据来自仓库简介和 Topics，具体功能请结合下方 README 原文确认。'
  usage=info.get('usage') or f'建议先阅读仓库 README 中的 Quick Start、Installation 或 Usage 部分，确认当前版本的依赖和运行方式。该仓库提供了 GitHub 源码入口'+('和项目主页。' if repo.get('homepage') else '。')
  caveat=info.get('caveat') or '安装步骤、外部服务费用和硬件要求以项目当前文档为准；仓库公开不代表所有模型、第三方服务或商业使用都没有限制。'
- return {'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'useCases':info.get('useCases',[]),'gettingStarted':info.get('gettingStarted',[]),'requirements':info.get('requirements',[]),'usage':usage,'caveat':caveat,'editorial':bool(edited),'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':info.get('reviewedAt'), 'classificationBasis':'编辑整理，依据仓库简介与 README' if edited else '用途分类已依据仓库简介与 README 复核；项目说明为自动来源整理' if classified else '依据仓库简介与 Topics 自动归类，待复核'}
+ basis=('AI 自动整理，依据仓库简介与 README，待人工复核' if generated else
+        '编辑整理，依据仓库简介与 README' if edited else
+        '用途分类已依据仓库简介与 README 复核；项目说明为自动来源整理' if classified else
+        '依据仓库简介与 Topics 自动归类，待复核')
+ profile={'category':primary,'related':secondary,'kind':kind,'tags':tags,'ways':ways,'summary':summary,'overview':overview,'audience':info.get('audience') or f'希望了解或评估{CATEGORIES[primary][0]}能力的开发者与产品研究者。','features':info.get('features',[]),'useCases':info.get('useCases',[]),'gettingStarted':info.get('gettingStarted',[]),'requirements':info.get('requirements',[]),'usage':usage,'caveat':caveat,'editorial':bool(edited) and not generated,'readme':strip_readme(readme),'readmeUrl':source_url+'/blob/'+repo.get('default_branch','main')+'/README.md','reviewedAt':None if generated else info.get('reviewedAt'),'classificationBasis':basis}
+ if generated:profile['profileStatus']='generated'
+ return profile
 
 def trending():
  # HTML is used only for candidate discovery. Reported Trending counts never enter the rankings.
@@ -151,6 +158,9 @@ def cached_history(previous, end):
 def collect_one(full, previous, editorial, end, year_start, repo=None):
  repo=repo if repo is not None else api('repos/'+full)
  if repo.get('private') or repo.get('fork') or repo.get('disabled'):return None
+ # A deleted and recreated repository can reuse the same owner/name but not its ID.
+ # Its README, Star history and observation baseline belong to the old identity.
+ if previous and previous.get('id') is not None and previous['id']!=repo['id']:previous=None
  now=dt.datetime.now(UTC);fetched=now.isoformat()
  # Reuse the stored plain-text excerpt; refresh deterministic weekly slices.
  old=previous or {}
@@ -181,7 +191,7 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
   warnings.append('Star 历史部分不可用' if latest_history_ok else 'Star 历史暂不可用')
   if not latest_history_ok:history_status='unavailable'
  profile=classify(repo,readme,editorial)
- if not profile['editorial']:
+ if not profile['editorial'] and profile.get('profileStatus')!='generated':
   from source_profile import build_source_profile
   source_profile=build_source_profile({**repo,'category':profile['category']},readme,readme_url=readme_url or profile['readmeUrl'])
   profile.update(source_profile)
@@ -190,6 +200,7 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
  if readme_url:profile['readmeUrl']=readme_url
  first=previous.get('firstSeen') if previous else fetched[:10]
  created=repo['created_at']
+ daily={day:stars for day,stars in daily.items() if day>=created[:10]}
  metrics={p:period_total(daily,s,end,created) if history_status=='ok' else None for p,s in period_starts(end).items()}
  prev_stars=previous.get('stars') if previous else None
  return {**profile,'id':repo['id'],'fullName':repo['full_name'],'name':repo['name'],'owner':repo['owner']['login'],'avatar':repo['owner']['avatar_url'],'url':repo['html_url'],'homepage':repo.get('homepage') if str(repo.get('homepage','')).startswith(('https://','http://')) else None,'stars':repo['stargazers_count'],'forks':repo['forks_count'],'language':repo.get('language') or '未标注','license':(repo.get('license') or {}).get('spdx_id') or '未明确','topics':repo.get('topics',[]),'description':repo.get('description') or '', 'archived':repo['archived'],'createdAt':created,'pushedAt':repo['pushed_at'],'fetchedAt':fetched,'firstSeen':first,'readmeSha':sha,'readmeFetchedAt':readme_fetched,'metrics':metrics,'historyStatus':history_status,'history':[{'date':d,'stars':v} for d,v in sorted(daily.items())],'warnings':warnings,'netSincePrevious':repo['stargazers_count']-prev_stars if prev_stars is not None else None,'netBaselineAt':previous.get('fetchedAt') if previous else None}
@@ -209,6 +220,40 @@ def select_candidates(previous, candidates, batch_size, new_limit, end=None, for
  due=[r for r in previous.values() if force or not is_current(r,end)]
  due.sort(key=lambda r:(r.get('lastAttemptAt',r.get('fetchedAt','')),r['fullName'].lower()))
  return new+[r['fullName'] for r in due[:max(0,batch_size-len(new))]]
+
+def deduplicate_recreated(projects, end):
+ """Keep the newest GitHub identity for each case-insensitive owner/name.
+
+ A repository name can be reused after deletion. Older IDs retain their dated
+ snapshots, but cannot share a current listing or aggregate history with the
+ new ID. Freshness decides only between records for the same identity.
+ """
+ by_name={}
+ identities={}
+ for project in projects:
+  name=project['fullName'].lower()
+  identities.setdefault(name,set()).add(project['id'])
+  current=by_name.get(name)
+  rank=(project.get('createdAt',''),project.get('fetchedAt',''),project['id'])
+  if current is None or rank>(current.get('createdAt',''),current.get('fetchedAt',''),current['id']):
+   by_name[name]=project
+ result=[]
+ for name,project in by_name.items():
+  if len(identities[name])>1:
+   project=project.copy()
+   created=project['createdAt'][:10]
+   project['history']=[day for day in project.get('history',[]) if day['date']>=created]
+   if project.get('historyStatus')=='ok' and not project.get('stale'):
+    daily={day['date']:day['stars'] for day in project['history']}
+    project['metrics']={period:period_total(daily,start,end,project['createdAt'])
+                        for period,start in period_starts(end).items()}
+   if project.get('firstSeen','')<created:project['firstSeen']=project['fetchedAt'][:10]
+   if project.get('netBaselineAt') and project['netBaselineAt']<project['createdAt']:
+    project['netSincePrevious']=None;project['netBaselineAt']=None
+   if project.get('readmeFetchedAt') and project['readmeFetchedAt']<project['createdAt']:
+    project['readme']='';project['readmeSha']=None;project['readmeFetchedAt']=None
+  result.append(project)
+ return result
 
 def retain_previous(projects, previous, end, attempted=(), attempted_at=None):
  """Prefer fresh records on redirects and preserve missing projects without old ranks."""
@@ -233,7 +278,7 @@ def retain_previous(projects, previous, end, attempted=(), attempted_at=None):
    if 'stars' in old and 'stars' in fresh:
     fresh['netSincePrevious']=fresh['stars']-old['stars']
     fresh['netBaselineAt']=old['fetchedAt']
- return list(by_id.values())
+ return deduplicate_recreated(list(by_id.values()),end)
 
 def collection_coverage(projects, discovery, excluded, end):
  tracked={p['id'] for p in projects}; excluded={name.lower() for name in excluded}
@@ -261,7 +306,8 @@ def main():
  editorial=json.loads((ROOT/'data/editorial.json').read_text()) if (ROOT/'data/editorial.json').exists() else {}
  excluded_path=ROOT/'data/excluded.json'
  excluded={name.lower() for name in json.loads(excluded_path.read_text())} if excluded_path.exists() else set()
- previous={r['fullName'].lower():r for r in latest['projects'] if r['fullName'].lower() not in excluded}
+ previous={r['fullName'].lower():r for r in deduplicate_recreated(latest['projects'],latest.get('periodEnd',end))
+           if r['fullName'].lower() not in excluded}
  # Migrate the old single-batch format using its verified dataset source date.
  for r in previous.values():
   if 'statsThrough' not in r and not r.get('stale') and r.get('historyStatus')=='ok':r['statsThrough']=latest.get('periodEnd')

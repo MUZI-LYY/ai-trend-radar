@@ -7,7 +7,7 @@ export interface Project {
  category: string; related: string[]; kind: string; tags: string[]; ways: string[]; summary: string; overview: string;
  audience: string; features: string[]; usage: string; caveat: string; editorial: boolean; readme: string; readmeUrl: string;
  useCases?: string[]; gettingStarted?: string[]; requirements?: string[];
- reviewedAt?: string; classificationBasis: string; metrics: Record<Exclude<Period,'all'>, number | null>;
+ reviewedAt?: string; profileStatus?: 'generated'; classificationBasis: string; metrics: Record<Exclude<Period,'all'>, number | null>;
  historyStatus: string; history: {date: string; stars: number}[]; warnings: string[]; netSincePrevious: number | null; netBaselineAt: string | null;
 }
 export interface Dataset {

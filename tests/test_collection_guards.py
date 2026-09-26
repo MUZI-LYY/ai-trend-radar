@@ -51,6 +51,35 @@ class CollectionGuardTests(unittest.TestCase):
   self.assertEqual(row['netSincePrevious'], -2)
   self.assertEqual(row['netBaselineAt'], old['fetchedAt'])
 
+ def test_recreated_same_name_keeps_new_identity_and_its_own_history(self):
+  old={'id':1,'fullName':'Owner/Repo','createdAt':'2026-09-18T00:00:00Z',
+       'fetchedAt':'2026-09-24T00:00:00Z','stars':3,'firstSeen':'2026-09-19',
+       'history':[{'date':'2026-09-20','stars':3}],
+       'metrics':dict.fromkeys(period_starts('2026-09-25'),3)}
+  new={'id':2,'fullName':'owner/repo','createdAt':'2026-09-25T17:00:00Z',
+       'fetchedAt':'2026-09-26T00:00:00Z','stars':0,'firstSeen':'2026-09-19',
+       'history':[{'date':'2026-09-20','stars':3},{'date':'2026-09-25','stars':0}],
+       'historyStatus':'ok','statsThrough':'2026-09-25',
+       'metrics':dict.fromkeys(period_starts('2026-09-25'),3),
+       'readme':'旧仓库文档','readmeFetchedAt':'2026-09-20T00:00:00Z',
+       'netSincePrevious':-3,'netBaselineAt':'2026-09-24T00:00:00Z'}
+  merged=c.retain_previous([new],{'owner/repo':old},'2026-09-25')
+  self.assertEqual(len(merged),1)
+  self.assertEqual(merged[0]['id'],2)
+  self.assertEqual(merged[0]['history'],[{'date':'2026-09-25','stars':0}])
+  self.assertEqual(merged[0]['metrics'],dict.fromkeys(period_starts('2026-09-25'),0))
+  self.assertEqual(merged[0]['firstSeen'],'2026-09-26')
+  self.assertIsNone(merged[0]['netSincePrevious'])
+  self.assertEqual(merged[0]['readme'],'')
+  self.assertEqual(new['history'][0]['date'],'2026-09-20')
+
+ def test_older_recreated_identity_cannot_replace_newer_even_if_fetched_later(self):
+  old={'id':1,'fullName':'owner/repo','createdAt':'2026-09-18T00:00:00Z',
+       'fetchedAt':'2026-09-27T00:00:00Z','history':[]}
+  new={'id':2,'fullName':'Owner/Repo','createdAt':'2026-09-25T00:00:00Z',
+       'fetchedAt':'2026-09-26T00:00:00Z','history':[],'historyStatus':'unavailable'}
+  self.assertEqual(c.deduplicate_recreated([old,new],'2026-09-25')[0]['id'],2)
+
  def test_source_day_uses_first_archive_across_capture_dates(self):
   def payload(capture, project):
    return {'date': capture, 'periodEnd': '2026-09-13', 'projects': [{'id': project, 'fullName': f'o/{project}', 'stars': 1, 'metrics': {'daily': 1}}]}

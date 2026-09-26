@@ -4,7 +4,7 @@ import type {Dataset, Project} from './types';
 const profileFields = [
  'category', 'related', 'kind', 'tags', 'ways', 'summary', 'overview', 'audience',
  'features', 'useCases', 'gettingStarted', 'requirements', 'usage', 'caveat',
- 'editorial', 'readme', 'readmeUrl', 'reviewedAt', 'classificationBasis',
+ 'editorial', 'readme', 'readmeUrl', 'reviewedAt', 'profileStatus', 'classificationBasis',
 ] as const satisfies readonly (keyof Project)[];
 
 export function withLatestProfiles(data: Dataset, latest: Dataset): Dataset {

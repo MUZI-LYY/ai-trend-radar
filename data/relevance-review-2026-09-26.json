@@ -1,0 +1,1882 @@
+{
+  "reviewedAt": "2026-09-26",
+  "basis": "GitHub 仓库简介、缓存 README 与官方项目资料；用途不足以证明 AI 相关的项目暂不收录。",
+  "entries": [
+    {
+      "fullName": "0xJacky/nginx-ui",
+      "id": 340339997,
+      "readmeSha": "bd089733f5b661c25eb8a87d7536003a57608a1f",
+      "decision": "exclude",
+      "reason": "主要是 Nginx 配置与管理的 Web 界面。"
+    },
+    {
+      "fullName": "1bananachicken/MaaAP",
+      "id": 1371956620,
+      "readmeSha": "2eca5e3af29c5de1675e598a48e827571bffb84e",
+      "decision": "exclude",
+      "reason": "资料仅说明它是游戏助手且处于早期开发；computer-vision 主题不足以证明主要功能直接涉及 AI。"
+    },
+    {
+      "fullName": "2217173240/wechat-article-scraping-skill",
+      "id": 1383112288,
+      "readmeSha": "181dafa4a015044e974dcfdd6d113537bd3cacc8",
+      "decision": "exclude",
+      "reason": "核心是公众号文章抓取和格式转换，Agent 调用只是使用方式。"
+    },
+    {
+      "fullName": "aardio/WinRimage",
+      "id": 1358573269,
+      "readmeSha": "91576dec73cbb91686fe577bef280290e0c63fe7",
+      "decision": "exclude",
+      "reason": "核心是普通图像压缩转换，AI 仅用于开发过程。"
+    },
+    {
+      "fullName": "Abhishek-B-R/social0-oss",
+      "id": 1374333556,
+      "readmeSha": "ee006afcb333a5f3e77b38ee686f39777d8c30ca",
+      "decision": "exclude",
+      "reason": "核心是社交媒体排期、发布与分析，MCP 只是附加接口。"
+    },
+    {
+      "fullName": "Acrazie/portfolio-web",
+      "id": 1366267759,
+      "readmeSha": "731e5ebde464281f5c27f786f04786e93bd6b53d",
+      "decision": "exclude",
+      "reason": "主体是个人作品集网站，AI 标签和开发规则不改变用途。"
+    },
+    {
+      "fullName": "actionplatform/action-platform",
+      "id": 1365315767,
+      "readmeSha": "8dbd44af8f924fb136fd5f2989f48799b7912649",
+      "decision": "exclude",
+      "reason": "主体是通用脚手架、发布和部署平台，MCP 只是接入方式。"
+    },
+    {
+      "fullName": "agavra/tuicr",
+      "id": 1130139388,
+      "readmeSha": "bd4e9820dc5e04923d0867b3555b399e64992e19",
+      "decision": "exclude",
+      "reason": "主要是人工代码审查终端界面，未体现核心 AI 功能。"
+    },
+    {
+      "fullName": "aigrantsindia/aigrantsindia",
+      "id": 936993021,
+      "readmeSha": "c9b46c98f5843edf823bdf0ba72f7b3d87f12cf5",
+      "decision": "retain",
+      "reason": "仓库专门提供印度 AI 生态的资金、人才与政策路线图；虽非代码工具，但属于 AI 专题资源。"
+    },
+    {
+      "fullName": "aisingapore/TagUI",
+      "id": 75694548,
+      "readmeSha": "a488a7c71af5c903de895dad82482ff676ff4b41",
+      "decision": "exclude",
+      "reason": "主要通过脚本流程执行通用 RPA，未体现 AI 为核心。"
+    },
+    {
+      "fullName": "AkashPriyadarshii/jev-seo",
+      "id": 1375878661,
+      "readmeSha": "88654e693ec4dc0ae577c3311006fa969a60833a",
+      "decision": "exclude",
+      "reason": "主要是 SEO 审计、爬取和排名工具，MCP 属于接入能力。"
+    },
+    {
+      "fullName": "AlessioPagliai/primo",
+      "id": 1376952459,
+      "readmeSha": "c286b137e2225f3dafb6a5a0e7aeb03a84413b70",
+      "decision": "exclude",
+      "reason": "主要交付人形机器人硬件设计，未展示以 AI 模型或训练为核心。"
+    },
+    {
+      "fullName": "Alexis-Fredryck-one/polymarket-ai-model-trading-bot-btc-kou-jump-diffusion-prediction-market",
+      "id": 1347663577,
+      "readmeSha": "9949b28cd5c641b89a33a9fc9d914d811e11cc5e",
+      "decision": "exclude",
+      "reason": "核心是 Kou 跳跃扩散概率模型与规则交易，AI 标签不足以证明 AI 为主要目的。"
+    },
+    {
+      "fullName": "amark/gun",
+      "id": 22475123,
+      "readmeSha": "e596ab2320d310f1242af5e63df1d2d27bddd379",
+      "decision": "exclude",
+      "reason": "主要是去中心化图数据同步与加密应用基础设施。"
+    },
+    {
+      "fullName": "Amrutha-dev25/TechSift",
+      "id": 1388022223,
+      "readmeSha": "6707cae97e6ef077836c2d93b11e44b219a9f0b2",
+      "decision": "exclude",
+      "reason": "当前仅实现通用新闻采集清洗，NLP 和 RAG 尚属后续计划。"
+    },
+    {
+      "fullName": "AntonAzer/Position-Reader",
+      "id": 1366595751,
+      "readmeSha": "5fe3cefd02f214ca3f962dda16e7fe6291a8cbf5",
+      "decision": "exclude",
+      "reason": "主要通过图形模板匹配读取棋盘并调用棋类引擎，明确没有学习模型。"
+    },
+    {
+      "fullName": "apache/camel",
+      "id": 206317,
+      "readmeSha": "14c15dd2c0027043521b8c117a4467b7d44d41ae",
+      "decision": "exclude",
+      "reason": "主要是通用企业系统集成框架，AI 连接能力属于附加功能。"
+    },
+    {
+      "fullName": "apache/doris",
+      "id": 99919302,
+      "readmeSha": "ca84b918ead5b2f662ac1cf17c36581c8dfc01d3",
+      "decision": "exclude",
+      "reason": "核心是通用实时分析与搜索数据库，支持 AI 不改变其定位。"
+    },
+    {
+      "fullName": "api-evangelist/localai",
+      "id": 1353535337,
+      "readmeSha": "c36a6fe549b6670ec9624eac631a14b94c7bade6",
+      "decision": "exclude",
+      "reason": "仓库是第三方 API 资料档案，并非 LocalAI 推理引擎或专门教程。"
+    },
+    {
+      "fullName": "arifszn/seemore",
+      "id": 1353845233,
+      "readmeSha": "857e67dc656bc04c952cb3915ae6166803370bba",
+      "decision": "exclude",
+      "reason": "核心是将 Markdown 文件夹渲染为文档网站的通用框架。"
+    },
+    {
+      "fullName": "arogozhnikov/einops",
+      "id": 149832847,
+      "readmeSha": "d78a67149d96902a93537b9c8b2998695c8bc95b",
+      "decision": "retain",
+      "reason": "张量重排库直接面向 PyTorch、JAX、TensorFlow 等深度学习框架，并有 ICLR 论文和模型开发示例。"
+    },
+    {
+      "fullName": "arpitnayan123-bot/Agri-link",
+      "id": 1379272293,
+      "readmeSha": "930e69fbedceac876902bae1cc55da12fad42a14",
+      "decision": "exclude",
+      "reason": "主要是农产品即时电商与农户付款平台，AI 导购只是附加功能。"
+    },
+    {
+      "fullName": "astrid-runtime/astrid",
+      "id": 1158799392,
+      "readmeSha": "4f5a307d7a54cb862d72d1a0bc8c621a0ffba8d3",
+      "decision": "exclude",
+      "reason": "核心是通用 WebAssembly 组件运行时与操作系统，Agent 只是用途之一。"
+    },
+    {
+      "fullName": "Astrosp/Awesome-OSINT-List",
+      "id": 537300699,
+      "readmeSha": "fd62aa33b10cdf5462eb9bf7e582ea09542e9dbc",
+      "decision": "exclude",
+      "reason": "综合 OSINT 工具合集，AI 只是其中一个栏目。"
+    },
+    {
+      "fullName": "atravert/Statistical-Thermodynamics-Lab",
+      "id": 1346394670,
+      "readmeSha": "77a039d4de86df1f0e57ce8a737b13ca908f9b5d",
+      "decision": "exclude",
+      "reason": "属于统计热力学课程数值实验，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "augbastos/devcard",
+      "id": 1372015027,
+      "readmeSha": "5d6c70bbdfa6d88f9651575478e2041f7c554ea2",
+      "decision": "exclude",
+      "reason": "主要生成开发活动统计卡片，AI 编程工具只是活动数据来源。"
+    },
+    {
+      "fullName": "avinashkranjan/Amazing-Python-Scripts",
+      "id": 279643881,
+      "readmeSha": "554e0fb77abb2b4d1ce8fab0d6b66cf2998d55cf",
+      "decision": "exclude",
+      "reason": "通用 Python 脚本与自动化项目合集，未专注 AI。"
+    },
+    {
+      "fullName": "axa-group/Parsr",
+      "id": 200653543,
+      "readmeSha": "33c6da437c9ccda06c2a66c5c02333bdc36ebc66",
+      "decision": "exclude",
+      "reason": "主要目的是通用文档清洗、解析与结构化提取；摘录未明确以 AI 模型或智能体为核心，面向数据科学家的用途也不足以认定为 AI 项目。"
+    },
+    {
+      "fullName": "bamboostrip/Handwriting-simulator",
+      "id": 1326175015,
+      "readmeSha": "d241a38274c19b3106da00c92346b34b33c7f8d1",
+      "decision": "exclude",
+      "reason": "使用字体排版和随机扰动模拟手写，不涉及 AI 模型生成或识别。"
+    },
+    {
+      "fullName": "bbfamily/abu",
+      "id": 68619379,
+      "readmeSha": "5a069d393b2f3c36758737fb5c6e3c1c548538eb",
+      "decision": "exclude",
+      "reason": "主要是量化交易与技术指标分析系统，AI 并非明确核心。"
+    },
+    {
+      "fullName": "bee-san/Ciphey",
+      "id": 197261780,
+      "readmeSha": "e1ca352ec2562c99f2c90461bb2eb90fec8e42e5",
+      "decision": "exclude",
+      "reason": "主要是自动解码工具，所给 README 明确表示当前无需 AI 路径判断。"
+    },
+    {
+      "fullName": "bistalker-1946/Open-General-Full-Version",
+      "id": 1361473289,
+      "readmeSha": "290771b957e38c1a6a91550e8d19b2452adae419",
+      "decision": "exclude",
+      "reason": "主要是回合制策略游戏，AI 对手只是游戏功能。"
+    },
+    {
+      "fullName": "BnbAgentChainL2/bnb-agent-chain",
+      "id": 1381916762,
+      "readmeSha": "7e2d6a5ee350584469b2009c60d638bc82369be3",
+      "decision": "exclude",
+      "reason": "核心是面向自动化程序的区块链，未要求 AI 能力。"
+    },
+    {
+      "fullName": "BobDempsey/ai-storefront",
+      "id": 1364862108,
+      "readmeSha": "3a7ec084743b160bf6552f67ff23a2824946c5c6",
+      "decision": "exclude",
+      "reason": "主要是电商店面与订单提交模板，AI 导购为附加功能。"
+    },
+    {
+      "fullName": "Buiquangtun6331/Ghostfolio-Privacy-First-Personal-Finance-Wealth-Tracker",
+      "id": 1375184535,
+      "readmeSha": "46d41b64e6f0ca61f79159821b4385ee609fbd47",
+      "decision": "exclude",
+      "reason": "主要是资产追踪与财富管理，AI 仅见于标签。"
+    },
+    {
+      "fullName": "butcherbrood2-ui/Termux-Windows",
+      "id": 1373029689,
+      "readmeSha": "b783a15a755afb38c5a1f349625c5686d747c409",
+      "decision": "exclude",
+      "reason": "主要提供 Windows 上的 Linux 终端环境。"
+    },
+    {
+      "fullName": "calesthio/Crucix",
+      "id": 1181479848,
+      "readmeSha": "a05f962a3d97d610b1229c87fab48147ba590e79",
+      "decision": "exclude",
+      "reason": "核心是情报源聚合与监控看板，LLM 助手属于可选扩展。"
+    },
+    {
+      "fullName": "ccfddl/ccf-deadlines",
+      "id": 334848347,
+      "readmeSha": "aff6609e1e8eb16e7960ca889a9d7abddf16c827",
+      "decision": "exclude",
+      "reason": "主要协作维护各领域学术会议截止日期。"
+    },
+    {
+      "fullName": "ccuriu/Unofficial-TelegramNewsAI",
+      "id": 1361807942,
+      "readmeSha": "5a95efae6a607c3159ef9e672315a222c9c8134d",
+      "decision": "retain",
+      "reason": "仓库主流程是抓取 Telegram 资讯并导出给外部 AI 助手生成摘要，README 提供面向 AI 分析的编辑指令。"
+    },
+    {
+      "fullName": "CercaTrovato/cityu-ai-course-notes",
+      "id": 1374468255,
+      "readmeSha": "59f921c87c8bb2b4e83b5963209e0070c3ae041f",
+      "decision": "retain",
+      "reason": "除课程笔记外，README 完整公开用大模型处理讲义与转录、质量规则和验收脚本的工作流；可作为 AI 知识工程案例。"
+    },
+    {
+      "fullName": "ceres-solver/ceres-solver",
+      "id": 15667250,
+      "readmeSha": "7de8f0deed0875292023d310fcb3bbd5f0707ea6",
+      "decision": "exclude",
+      "reason": "通用非线性优化库，主要目的并非 AI。"
+    },
+    {
+      "fullName": "chidex-coder/faostat-food-systems-analytics",
+      "id": 1374873820,
+      "readmeSha": "3853022bb58a4c2bfa7ec350a81b9fd4a64bc225",
+      "decision": "exclude",
+      "reason": "主要是食品系统 ETL、SQL 分析与仪表盘，预测模型仅为其中一环。"
+    },
+    {
+      "fullName": "cjiohukfield408/The-Sims-4",
+      "id": 1369909853,
+      "readmeSha": "bed756eeb14da424c4e4c4a124fecdacfe9a3667",
+      "decision": "exclude",
+      "reason": "主要是生活模拟游戏分发，角色 AI 并非项目主旨。"
+    },
+    {
+      "fullName": "ClickHouse/ClickHouse",
+      "id": 60246359,
+      "readmeSha": "8f909dc989b7fcf3ab4b7898fceeb755a13dae2b",
+      "decision": "exclude",
+      "reason": "主要是通用实时分析数据库。"
+    },
+    {
+      "fullName": "cobanov/awesome-fly",
+      "id": 1367091450,
+      "readmeSha": "ac17e04b06e9156b54dc61559a1a8584627bab43",
+      "decision": "exclude",
+      "reason": "主要汇集果蝇连接组、神经科学与仿真项目，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "complete-castrationanxiety3371/Sung",
+      "id": 1374260426,
+      "readmeSha": "2cdf1b6c2b39ac85e687f6621609edb8308e1160",
+      "decision": "exclude",
+      "reason": "主要是 Linux 音乐播放器，没有核心 AI 功能证据。"
+    },
+    {
+      "fullName": "conwnet/github1s",
+      "id": 192175095,
+      "readmeSha": "d81ce7fe32d9e67c1950db69169ec7cd7828719b",
+      "decision": "exclude",
+      "reason": "核心是在线代码浏览器，AI 聊天属于辅助功能。"
+    },
+    {
+      "fullName": "Croaky-giantess1153/gta6-cyberleek",
+      "id": 1350359706,
+      "readmeSha": "cb59884ddd7ae31393bf2466466d87e770a3d7f2",
+      "decision": "exclude",
+      "reason": "主要是游戏下载、资源管理和启动客户端。"
+    },
+    {
+      "fullName": "crofts611-rabbles/FEED-THE-AI-Community-Edition",
+      "id": 1375200133,
+      "readmeSha": "f56b5e15c2f7e564dc82038a19ad10ae172bf775",
+      "decision": "exclude",
+      "reason": "主要是以 AI 为题材的模拟益智游戏分发。"
+    },
+    {
+      "fullName": "cube-js/cube",
+      "id": 149026292,
+      "readmeSha": "71e92746eeb43c7880fa856d243281e48bad664a",
+      "decision": "exclude",
+      "reason": "主要是通用数据语义层，AI Agent 只是下游使用方之一。"
+    },
+    {
+      "fullName": "currenjin/site-for-developers",
+      "id": 567985067,
+      "readmeSha": "aa389e5aaf6ca216dfddd5e2ac50b24eca1b4a7d",
+      "decision": "exclude",
+      "reason": "属于综合开发者资源导航，涵盖语言、框架、数据库等。"
+    },
+    {
+      "fullName": "cyberbotics/webots",
+      "id": 156228018,
+      "readmeSha": "ad961b696123d121957047e0482421775e1416f6",
+      "decision": "exclude",
+      "reason": "核心是机器人和机械系统的通用建模、编程与物理仿真。"
+    },
+    {
+      "fullName": "dailydotdev/daily",
+      "id": 110216866,
+      "readmeSha": "6e545d3dcd15400601380ce971e94e93ebb1e31f",
+      "decision": "exclude",
+      "reason": "主要是通用开发者资讯聚合与社区。"
+    },
+    {
+      "fullName": "Dankosik/rust-service-template-rest",
+      "id": 1374920710,
+      "readmeSha": "cac069cb49bdd4d51f0450c8ec84b37c9ca60aae",
+      "decision": "exclude",
+      "reason": "主要是通用 Rust REST 微服务模板，Agent 支持为附加配置。"
+    },
+    {
+      "fullName": "Data-Centric-AI-Community/fg-data-profiling",
+      "id": 49346299,
+      "readmeSha": "602bfcf884d7199db7a1cc4fc50a27097c7976f9",
+      "decision": "exclude",
+      "reason": "主要提供通用数据质量分析与探索性数据分析。"
+    },
+    {
+      "fullName": "data-privacy-stack/presidio",
+      "id": 132129752,
+      "readmeSha": "a877d23deed3d2245b8b4afda308deeb10f5b534",
+      "decision": "exclude",
+      "reason": "主要是通用敏感数据识别与脱敏框架，NLP 是其识别手段之一。"
+    },
+    {
+      "fullName": "datahaven-xyz/datahaven",
+      "id": 943950290,
+      "readmeSha": "b81d71e5f9a2c65d9490cb719a6e6942f9524d83",
+      "decision": "exclude",
+      "reason": "核心是区块链去中心化存储网络，AI 数据和模型只是存储对象。"
+    },
+    {
+      "fullName": "davideuler/architecture.of.internet-product",
+      "id": 131582572,
+      "readmeSha": "4992467c9c652f8229a26d184e7e010f42c65e3a",
+      "decision": "exclude",
+      "reason": "汇总互联网产品技术架构，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "Deivid9920/Axiom-Nahuatl",
+      "id": 1370861046,
+      "readmeSha": "c6537a068a374046f9ad0891da0a1be4634ea2f1",
+      "decision": "exclude",
+      "reason": "主要是语言学习平台，核心评估为确定性算法，AI 明确为辅助。"
+    },
+    {
+      "fullName": "delochy/bitty",
+      "id": 1375965670,
+      "readmeSha": "94b309b54403f6dbec08d8760e2065217fc6b039",
+      "decision": "exclude",
+      "reason": "主要提供等待期间的小游戏、休息与桌面宠物，AI 任务状态只是触发条件。"
+    },
+    {
+      "fullName": "DiamondpixelStudio/resume-forge-lab",
+      "id": 1345979051,
+      "readmeSha": "01649baeafabf1c6c5ed08c0deae2d4daed72cbd",
+      "decision": "exclude",
+      "reason": "主体是简历与职业档案管理，AI 仅出现在标签中。"
+    },
+    {
+      "fullName": "dikshachahar338-lang/gemini-new-model",
+      "id": 1371962198,
+      "readmeSha": "0505ebbf3112bff4106b1401de215a914038d98c",
+      "decision": "exclude",
+      "reason": "只有一句模型主题简介，没有 README 或可核验的项目内容，无法确认仓库提供实际资料、代码或评测。"
+    },
+    {
+      "fullName": "dims-network/case-ortho",
+      "id": 1359722390,
+      "readmeSha": "cba14eb05f290e754d9981df8bfda569846cd0a8",
+      "decision": "exclude",
+      "reason": "主要展示亲子互动实验录像、运动轨迹与统计分析。"
+    },
+    {
+      "fullName": "dims-network/dims",
+      "id": 1359668011,
+      "readmeSha": "ebbfca1f9b8bdc7d09bf9500906f828179289c69",
+      "decision": "exclude",
+      "reason": "主要是行为科学时序数据看板与统计分析，AI 并非核心目的。"
+    },
+    {
+      "fullName": "dodoaaaa/DarQ",
+      "id": 1374092056,
+      "readmeSha": "ff37288100044f6aa1f4aa5c850658efe605be38",
+      "decision": "exclude",
+      "reason": "核心是强制切换 Android 应用深色模式，AI 标签不改变用途。"
+    },
+    {
+      "fullName": "Dokploy/dokploy",
+      "id": 788847937,
+      "readmeSha": "6a72f10d9c0b4d11b30a596b09b2bf483255b464",
+      "decision": "exclude",
+      "reason": "主要是通用应用与数据库部署平台。"
+    },
+    {
+      "fullName": "Donkyghost/qr-optical-beam",
+      "id": 1374365411,
+      "readmeSha": "48ff00cce5858d51e317fc10ce4bd374f39ec06e",
+      "decision": "exclude",
+      "reason": "通过屏幕和摄像头传输二维码数据，主要目的为离线文件传输。"
+    },
+    {
+      "fullName": "donnemartin/awesome-aws",
+      "id": 44104712,
+      "readmeSha": "06066c1c9fcd0f9df3b2ddb79541d12dc125e006",
+      "decision": "exclude",
+      "reason": "主要是 AWS 通用云服务资源合集。"
+    },
+    {
+      "fullName": "doocs/md",
+      "id": 218952803,
+      "readmeSha": "6f667f445404e633208dcad77fc872a0bf4a6833",
+      "decision": "exclude",
+      "reason": "主要是微信 Markdown 排版编辑器，AI 仅为辅助功能。"
+    },
+    {
+      "fullName": "drehtuer/dInfinityApp",
+      "id": 1366623733,
+      "readmeSha": "c07bfa370d8a728d008ffb6d03ea574ecca8edcb",
+      "decision": "exclude",
+      "reason": "核心是基于刚体物理模拟的 Android 骰子应用。"
+    },
+    {
+      "fullName": "DungKurO/just-a-launcher",
+      "id": 1374307076,
+      "readmeSha": "a26f4336a0bde791c1a42db838bd48991f5340bb",
+      "decision": "exclude",
+      "reason": "核心是轻量 Android TV 应用启动器，与 AI 无关。"
+    },
+    {
+      "fullName": "DXN1-0DAY/DXN1-STUDIO",
+      "id": 1368969390,
+      "readmeSha": "653a0a60a6ecf083f6e3fbd2f29b6505848668da",
+      "decision": "exclude",
+      "reason": "README 明确定位为游戏引擎与代码编辑器，AI 并非主要目的。"
+    },
+    {
+      "fullName": "e-m-b-a/emba",
+      "id": 290152313,
+      "readmeSha": "f78a1b54bdaddb8394022ae42c39df8762147871",
+      "decision": "exclude",
+      "reason": "主要进行固件安全分析和 SBOM 生成，未体现 AI 为核心。"
+    },
+    {
+      "fullName": "facefusion/facefusion",
+      "id": 679869950,
+      "readmeSha": "5eb32f4f2edbe7f4bfa5b0be0d8c5f5ad4b5da3e",
+      "decision": "retain",
+      "reason": "已结合官方项目资料补齐人工档案；原摘录不足以单独确认用途。"
+    },
+    {
+      "fullName": "faizan-the-coder/word-meaning-dictionary",
+      "id": 1374740442,
+      "readmeSha": "f40f89fa3aaca816029d6630660be482dee490df",
+      "decision": "exclude",
+      "reason": "主要是词典查询和模糊匹配，朗读发音只是辅助功能。"
+    },
+    {
+      "fullName": "FareedKhan-dev/ai-graph-engineering-supplychain",
+      "id": 1355499516,
+      "readmeSha": "5cf51b4923d282bd23418a56cd3b7e046bca3a72",
+      "decision": "exclude",
+      "reason": "主要通过确定性依赖图分析软件供应链漏洞，未体现核心 AI 功能。"
+    },
+    {
+      "fullName": "fastai/numerical-linear-algebra",
+      "id": 91485880,
+      "readmeSha": "767c76d22f2f185974a8447cbe2b99ceef736e31",
+      "decision": "exclude",
+      "reason": "核心是通用数值线性代数与矩阵计算课程。"
+    },
+    {
+      "fullName": "feelime/feelime",
+      "id": 1360430391,
+      "readmeSha": "5ea069f44e8a426e7ebe44c9577432d11cd9ccc6",
+      "decision": "exclude",
+      "reason": "主体是通用 Android 输入法，离线语音识别是内置功能之一。"
+    },
+    {
+      "fullName": "firerpa/lamda",
+      "id": 512334495,
+      "readmeSha": "a7852f8d8d4ad0e9e7aedc7e5205f61dca8d4552",
+      "decision": "exclude",
+      "reason": "主要是通用 Android 设备控制与自动化平台，AI Agent 和 MCP 属于集成功能。"
+    },
+    {
+      "fullName": "fluxcapctr/compy",
+      "id": 1378675417,
+      "readmeSha": "33c20e0bc14a1f1be1f385201073879622df9303",
+      "decision": "exclude",
+      "reason": "主要是通用图层图像编辑器，AI 助手是附加能力。"
+    },
+    {
+      "fullName": "forefy/reburp",
+      "id": 1363950908,
+      "readmeSha": "b89ed7d56c534c908f3e87c29aa086f8d5f7a482",
+      "decision": "exclude",
+      "reason": "主要将 Burp 功能暴露为通用 REST API，Agent 接入是使用方式。"
+    },
+    {
+      "fullName": "formfeed-dev/formfeed",
+      "id": 1364657030,
+      "readmeSha": "d42917b1785ec040e60d33fd82e221ea11b008e4",
+      "decision": "exclude",
+      "reason": "核心是模板化 PDF 和图片渲染，未体现 AI 生成能力。"
+    },
+    {
+      "fullName": "GitHubDaily/GitHubDaily",
+      "id": 163591278,
+      "readmeSha": "944943862fde11a75e7cbc04cfc4bf702b955673",
+      "decision": "exclude",
+      "reason": "汇总各类开源项目，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "glitternetwork/pinme",
+      "id": 965360470,
+      "readmeSha": "f9384e376880d514b163a91b8447ba542abba191",
+      "decision": "exclude",
+      "reason": "主要是通用项目部署 CLI，Agent Skill 只是接入方式。"
+    },
+    {
+      "fullName": "go-dev-frame/sponge",
+      "id": 538564726,
+      "readmeSha": "5cc839ee40a39dd007eb25494dd570eefef0a5e3",
+      "decision": "exclude",
+      "reason": "主要是基于配置生成代码的通用 Go 后端框架。"
+    },
+    {
+      "fullName": "goddaehee/brief-news",
+      "id": 1371100680,
+      "readmeSha": "a9cf98b7cae0f13de3a57841ec152b457d91a7fc",
+      "decision": "retain",
+      "reason": "面向 AI 从业者的专题新闻终端；README 还描述了新闻采集中的 LLM 密钥与处理流程。"
+    },
+    {
+      "fullName": "golemcloud/golem",
+      "id": 722915479,
+      "readmeSha": "c8bb97f4beda7a94bf8834e97ceddcbf8e7625ec",
+      "decision": "exclude",
+      "reason": "README 将核心定义为分布式 WebAssembly 运行平台，AI Agent 是支持场景。"
+    },
+    {
+      "fullName": "goobolabs/somali-language-standard",
+      "id": 1287487765,
+      "readmeSha": "ae19e2835c60103fb46294126737c8b91180b2f0",
+      "decision": "exclude",
+      "reason": "主要制定索马里语通用语言规范，AI 资源只是其中一部分。"
+    },
+    {
+      "fullName": "gopherdata/gophernotes",
+      "id": 50202460,
+      "readmeSha": "7b47126c64fa3a2d08227229d7b3860b5a700171",
+      "decision": "exclude",
+      "reason": "主要是通用 Go 语言交互式 Notebook 内核。"
+    },
+    {
+      "fullName": "GreptimeTeam/greptimedb",
+      "id": 480217156,
+      "readmeSha": "1c8ed985e1d119a779c2d5779e0309e59e10d7fa",
+      "decision": "exclude",
+      "reason": "主要是存储指标、日志和链路的通用可观测性数据库。"
+    },
+    {
+      "fullName": "guidobonerz/yopaca",
+      "id": 1368737817,
+      "readmeSha": "d6aa0cb4e67ca263b4d90bcdc95166798dcb73d9",
+      "decision": "exclude",
+      "reason": "核心是 Commodore 64 冒险游戏引擎及脚本编译工具。"
+    },
+    {
+      "fullName": "guofei9987/scikit-opt",
+      "id": 113166974,
+      "readmeSha": "bac5419bcec3383e2a17ea37ecbe307af09e3ee8",
+      "decision": "exclude",
+      "reason": "主要提供通用启发式优化算法，未体现专门 AI 模型或工作流用途。"
+    },
+    {
+      "fullName": "HackIndiaXYZ/ai-first-startup-hackathon-build-a-startup-using-ai-only-abyss",
+      "id": 1375325795,
+      "readmeSha": "e0135aee2f3bcb532ba0e87c3a7f400fd9f746df",
+      "decision": "exclude",
+      "reason": "资料仅说明这是 AI 主题黑客松的 ABYSS 团队仓库，没有实际产品目的或 AI 功能说明。"
+    },
+    {
+      "fullName": "HackIndiaXYZ/ai-first-startup-hackathon-build-a-startup-using-ai-only-dynamicduo",
+      "id": 1375355041,
+      "readmeSha": "2210a75546ba8259fad59958b5381fa5ef40eacd",
+      "decision": "exclude",
+      "reason": "资料仅说明这是 AI 主题黑客松的 Dynamic_duo 团队仓库，无法确认项目主要用途或具体 AI 实现。"
+    },
+    {
+      "fullName": "HackIndiaXYZ/ai-first-startup-hackathon-build-a-startup-using-ai-only-jay-bhawani",
+      "id": 1375299437,
+      "readmeSha": "3034575f4dd0a7ba377805c264e876dfd9a92613",
+      "decision": "exclude",
+      "reason": "资料只有 AI 主题黑客松及 Jay Bhawani 团队标识，没有足够内容判断实际项目是否以 AI 为核心。"
+    },
+    {
+      "fullName": "HackIndiaXYZ/ai-first-startup-hackathon-build-a-startup-using-ai-only-krupa",
+      "id": 1375306465,
+      "readmeSha": "84dea259d5d6ac66a67560ac2bd295d1832f989c",
+      "decision": "exclude",
+      "reason": "资料仅标识 AI 主题黑客松的 Krupa 团队仓库，未描述功能、技术实现或使用场景。"
+    },
+    {
+      "fullName": "halfrost/Halfrost-Field",
+      "id": 86981606,
+      "readmeSha": "45441f1cc8ba94a2553248a1ccc768a624154811",
+      "decision": "exclude",
+      "reason": "主要是通用源码解析、系统设计与工程博客。"
+    },
+    {
+      "fullName": "hammasbuilds/urdunlp",
+      "id": 1365312805,
+      "readmeSha": "6cdd6a9071db0a2f686986f2922cf6ca9374cc6c",
+      "decision": "exclude",
+      "reason": "提供 Unicode 规范化、分词和转写等通用文本处理功能。"
+    },
+    {
+      "fullName": "haplollc/ThinkingOrbs",
+      "id": 1376804059,
+      "readmeSha": "23d4519b822e3dfd03f6d750e22081686c01d1b5",
+      "decision": "exclude",
+      "reason": "实际功能是 SwiftUI 加载动画组件，不包含 AI 核心能力。"
+    },
+    {
+      "fullName": "HeadlessXLabs/hexium-browser",
+      "id": 1368251271,
+      "readmeSha": "d1446907df06de846ce8cb1d39f21371928f6345",
+      "decision": "exclude",
+      "reason": "核心是通用反检测浏览器和 Playwright 自动化能力。"
+    },
+    {
+      "fullName": "HIPS/autograd",
+      "id": 27082457,
+      "readmeSha": "be337995e6730c31d5e38a311307e3ca64c06089",
+      "decision": "retain",
+      "reason": "README 明确实现反向模式自动微分和梯度优化，这是模型训练的核心开发能力。"
+    },
+    {
+      "fullName": "hooware-ai/droiddock",
+      "id": 1375241518,
+      "readmeSha": "0752555bc0dc21cbb69c57cf7c742e9b678a8d43",
+      "decision": "exclude",
+      "reason": "核心是 Android 投屏与浏览器控制，Codex 仅为可选使用场景。"
+    },
+    {
+      "fullName": "Hossam77i/overwatch-geoint",
+      "id": 1362943218,
+      "readmeSha": "e3aeb63f2197639180d8f515b1556fec54e0e74a",
+      "decision": "exclude",
+      "reason": "主要展示地理情报与实时数据，未体现核心 AI 识别流程。"
+    },
+    {
+      "fullName": "houbb/sensitive-word",
+      "id": 232232349,
+      "readmeSha": "f90f38674bd7d9519e0539c12c4fa130543e4416",
+      "decision": "exclude",
+      "reason": "基于 DFA 和词库进行敏感词匹配，属于规则式文本工具。"
+    },
+    {
+      "fullName": "humayunkhanytstudio6547/survival-editor-z",
+      "id": 1345901330,
+      "readmeSha": "8339bff4a2664ca7495f737e5c4a637f86ce4036",
+      "decision": "exclude",
+      "reason": "实际用途是游戏存档与数值编辑，AI 标签不代表核心功能。"
+    },
+    {
+      "fullName": "ialakey/music-video-generator",
+      "id": 1376939543,
+      "readmeSha": "225886567fc5fff382e3fb241b5311f9bad772b8",
+      "decision": "exclude",
+      "reason": "通过音频处理和 FFmpeg 合成视频，无 AI 模型流程。"
+    },
+    {
+      "fullName": "iii-hq/iii",
+      "id": 911303109,
+      "readmeSha": "63d46e51c5df921a41b5442ad5cd99f41f1bd859",
+      "decision": "exclude",
+      "reason": "核心是通用后端服务编排与观测，Agent 只是应用场景。"
+    },
+    {
+      "fullName": "ildrm/wordpress-kbms-knowledge-platform",
+      "id": 1373719512,
+      "readmeSha": "284e27ae0e599c11dd67afac8bff4c1ad88e405b",
+      "decision": "exclude",
+      "reason": "主要是 WordPress 知识管理系统，AI/RAG 仅为可选功能。"
+    },
+    {
+      "fullName": "imomaliakmaldinovdev/shape-scanner-showcase",
+      "id": 1371980060,
+      "readmeSha": "13600c837f2bbf937ef6ed3dd2ed197e97ea17e4",
+      "decision": "exclude",
+      "reason": "采用轮廓、几何和 HSV 阈值规则识别，未体现 AI 模型或推理。"
+    },
+    {
+      "fullName": "incordai/Inzap",
+      "id": 1388237152,
+      "readmeSha": "cf02756b32c15d2b598d6bb2738e6852bd20d675",
+      "decision": "exclude",
+      "reason": "给定资料只说明它是面向智能体和网页抓取的无头浏览器，主要能力属于通用浏览器基础设施，未展示直接的 AI 功能。"
+    },
+    {
+      "fullName": "isl-org/Open3D",
+      "id": 75413130,
+      "readmeSha": "ecdce05a71e4d943acebadabc7028940a14a55ec",
+      "decision": "exclude",
+      "reason": "主要是通用三维数据处理库，机器学习只是部分支持。"
+    },
+    {
+      "fullName": "ItBayMax/claude-update-watchdog",
+      "id": 1359630462,
+      "readmeSha": "d4666d7487cc54d9561de1465963a2e69cb1bf53",
+      "decision": "exclude",
+      "reason": "核心是修复 Windows 应用更新后的进程占用故障。"
+    },
+    {
+      "fullName": "itshakemd/DocUp",
+      "id": 1370597821,
+      "readmeSha": "aef4f1a78190dda045e0b2181ef7fd6383509f74",
+      "decision": "exclude",
+      "reason": "主要是 Notion 博客与知识库，AI 助手仅为附加功能。"
+    },
+    {
+      "fullName": "j3ssie/osmedeus",
+      "id": 156946744,
+      "readmeSha": "bcd593cf23544b4edc71f288a5d1e1b5284c5d94",
+      "decision": "exclude",
+      "reason": "主要是安全任务编排引擎，LLM 步骤只是其中一项功能。"
+    },
+    {
+      "fullName": "Jack-Cherish/PythonPark",
+      "id": 259842566,
+      "readmeSha": "94454f2422c689ae7cd8e00e869084b25483b51d",
+      "decision": "exclude",
+      "reason": "属于综合 Python 学习合集，AI 只是部分内容。"
+    },
+    {
+      "fullName": "jacklandrin/OnlySwitch",
+      "id": 433619938,
+      "readmeSha": "ec48871acd4c0fe5cfb8d0a47476693424ecd38d",
+      "decision": "exclude",
+      "reason": "主要是 macOS 菜单栏开关与快捷操作应用。"
+    },
+    {
+      "fullName": "jbt95/leadline",
+      "id": 1367223556,
+      "readmeSha": "cd9ca30c1a85bf7e19f1116599094112800d30e8",
+      "decision": "exclude",
+      "reason": "核心是通用静态代码复杂度分析，Agent 集成只是使用方式。"
+    },
+    {
+      "fullName": "jhl-labs/ai-model-news",
+      "id": 1357725738,
+      "readmeSha": "d04ce1fd1cb9981cab72c44c5ff3dc76b70b6715",
+      "decision": "retain",
+      "reason": "专门跟踪 Anthropic 发布和 Hugging Face 热门模型的自动化资讯库，属于模型动态资源。"
+    },
+    {
+      "fullName": "jiangzhangcc-glitch/ai-signals-daily",
+      "id": 1371644392,
+      "readmeSha": "58462855b7f348de780c2e0909d470ec258e694c",
+      "decision": "retain",
+      "reason": "每日记录 GitHub、Hugging Face 等渠道的 AI 信号，提供 Markdown 和机器可读 JSON 历史数据。"
+    },
+    {
+      "fullName": "JingYu-create520/spring-review",
+      "id": 1378374167,
+      "readmeSha": "597e04f9c8a20b4aeeb8eac78b1bd792beab7058",
+      "decision": "exclude",
+      "reason": "核心是确定性静态规则检查，LLM 仅用于改写说明。"
+    },
+    {
+      "fullName": "joeseesun/qiaomu-book-reader-legacy",
+      "id": 1353517202,
+      "readmeSha": "916cbbe167a64fb1707269c7404e0cb1b4f3213b",
+      "decision": "exclude",
+      "reason": "主要是 Obsidian 电子书阅读与批注工具，AI 问答属于可选附加能力。"
+    },
+    {
+      "fullName": "joyeli/yakuyomi-nightread",
+      "id": 1369523710,
+      "readmeSha": "0d9ed9a780579ca8aa7f9f4c50b9e648f678b813",
+      "decision": "exclude",
+      "reason": "核心是基于外部掩码的漫画图像重建与色调处理，AI 检测仅为可选上游。"
+    },
+    {
+      "fullName": "judge0/judge0",
+      "id": 80240424,
+      "readmeSha": "8ee220e52e00e02aee49f650758563b0e7db3683",
+      "decision": "exclude",
+      "reason": "通用在线代码执行系统，AI Agent 只是应用场景之一。"
+    },
+    {
+      "fullName": "jumpserver/jumpserver",
+      "id": 21484781,
+      "readmeSha": "1370b4904d82fb35ea14c1f907947d054ef1e448",
+      "decision": "exclude",
+      "reason": "核心是特权访问管理平台，AI 属于附加能力。"
+    },
+    {
+      "fullName": "junyi-fang/Junyi-Fang.github.io",
+      "id": 1361542345,
+      "readmeSha": "c851cf803df5e4988c66d15eba292d25057c100f",
+      "decision": "exclude",
+      "reason": "主要是个人学术主页，研究方向涉及 AI 不等于专门 AI 项目。"
+    },
+    {
+      "fullName": "Justchicoo/Project-Ambrose",
+      "id": 1385145367,
+      "readmeSha": "db32b377b4567628c9691a7c35699cc6d8de9b77",
+      "decision": "exclude",
+      "reason": "主要产物是游戏服务器，AI Agent 只是开发方式。"
+    },
+    {
+      "fullName": "kajeesan/Open-Health-Atlas",
+      "id": 1373589167,
+      "readmeSha": "812060dbf71d115d3298c4438897120d6f4a2151",
+      "decision": "exclude",
+      "reason": "核心是本地健康记录分析与可追溯计算，AI 接入可选。"
+    },
+    {
+      "fullName": "kevinzakka/mjbatch",
+      "id": 1363423951,
+      "readmeSha": "7b8a3e80e1ede9361bb2fd8bcd0b866ee5acc2e3",
+      "decision": "exclude",
+      "reason": "核心是通用 MuJoCo 并行物理仿真，强化学习仅为应用之一。"
+    },
+    {
+      "fullName": "kisnorbert87/EXXOGEN",
+      "id": 1339414577,
+      "readmeSha": "ab54d04a69fb632fb7160d32b739d42d6e9dbd64",
+      "decision": "exclude",
+      "reason": "核心是第一性原理物理计算与基准数据，未体现 AI 模型方法。"
+    },
+    {
+      "fullName": "Komisio/komisio",
+      "id": 1364928009,
+      "readmeSha": "0c0a5c2b5f8c31657ac0a39f11a88e2dc5cecc85",
+      "decision": "exclude",
+      "reason": "主要是二手店寄售管理软件，AI 仅为架构方向。"
+    },
+    {
+      "fullName": "Krishita17/soundkey-flipperzero",
+      "id": 1377755990,
+      "readmeSha": "1dcc1060f738ea828b88dcc392d925c6a8fad8b7",
+      "decision": "exclude",
+      "reason": "核心是硬件无障碍音频交互与提示音框架，未体现 AI 核心用途。"
+    },
+    {
+      "fullName": "KrishMunot/awesome-startup",
+      "id": 48127781,
+      "readmeSha": "55ce2385501884e1c1c86a589c0ec35a676e2638",
+      "decision": "exclude",
+      "reason": "主要是创业综合资源合集，AI 工具仅为部分内容。"
+    },
+    {
+      "fullName": "ktakeuchi21/interlude",
+      "id": 1371406061,
+      "readmeSha": "8ece23bf740c3c60478c9cef9ffd6a9873595ed1",
+      "decision": "exclude",
+      "reason": "主要是个人阅读与学习 PWA，AI 辅助开发和语音功能不足以定义其主用途。"
+    },
+    {
+      "fullName": "kubeshark/kubeshark",
+      "id": 359419233,
+      "readmeSha": "19d49083b776e31a91e17defce7ed320b984e418",
+      "decision": "exclude",
+      "reason": "核心是 Kubernetes 网络可观测性，AI 查询只是集成能力。"
+    },
+    {
+      "fullName": "kubesphere/kubesphere",
+      "id": 130430977,
+      "readmeSha": "0d1ac957d2b8558342007ed9fa2bc13b1ee3cade",
+      "decision": "exclude",
+      "reason": "主要提供 Kubernetes 容器管理与通用 DevOps 能力。"
+    },
+    {
+      "fullName": "kucherenko/jscpd",
+      "id": 10353211,
+      "readmeSha": "11fc9cea5164e1c5dbc28e21d1d88b6c928e86d0",
+      "decision": "exclude",
+      "reason": "核心是通用代码重复检测与静态分析，MCP 只是附加接口。"
+    },
+    {
+      "fullName": "l62412311-alt/ad-printer",
+      "id": 1368664249,
+      "readmeSha": "6cd10a29b0fee7d844457864d04af23747866c71",
+      "decision": "exclude",
+      "reason": "核心依靠模板、排版和镜头运动制作广告，AI 文案只是可选功能。"
+    },
+    {
+      "fullName": "lamagra1998/recipe-lab-sony-pmca",
+      "id": 1374821080,
+      "readmeSha": "97920f96e2c73170825ffbef5fc1bc3689a8829c",
+      "decision": "exclude",
+      "reason": "主要提供相机胶片风格参数预设，未体现 AI 生成或识别功能。"
+    },
+    {
+      "fullName": "Lasflautas26/m5stack-stopwatch-simulator",
+      "id": 1343082772,
+      "readmeSha": "64918a34e2860e0a6fe3561cdd4d75db00c4c66e",
+      "decision": "exclude",
+      "reason": "主要模拟秒表硬件与固件行为，未体现 AI 核心功能。"
+    },
+    {
+      "fullName": "LautaroOrellano/cyber-ai-daily",
+      "id": 1375052955,
+      "readmeSha": "fd0ad33e295d6b46df50d8b04aaf4f601590b0fc",
+      "decision": "exclude",
+      "reason": "主要聚合网络安全与 AI 新闻，未体现 AI 工作流或专门学习资源。"
+    },
+    {
+      "fullName": "lianxhcn/brief",
+      "id": 1357364928,
+      "readmeSha": "628841cc660564982e1000c0b575cb39fec71e85",
+      "decision": "exclude",
+      "reason": "主要归档经管研究与课程资讯，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "LINJIANG12/video2book-courses",
+      "id": 1368093656,
+      "readmeSha": "ee9cb7555f66026de14567aef4bb062160485bc8",
+      "decision": "exclude",
+      "reason": "主体是多领域计算机课程笔记合集，AI 只是部分课程主题。"
+    },
+    {
+      "fullName": "litportnet/free-proxy-sdk",
+      "id": 1371914551,
+      "readmeSha": "1ecbd63e72883e02018b0b51c9077827bb1cebbb",
+      "decision": "exclude",
+      "reason": "提供通用代理记录查询与筛选 SDK，服务 Agent 不改变其用途。"
+    },
+    {
+      "fullName": "liveblocks/liveblocks",
+      "id": 370740787,
+      "readmeSha": "998edeaa19ce8206df44405affd1c268b121de8f",
+      "decision": "exclude",
+      "reason": "核心是实时同步、评论和通知等通用协作基础设施。"
+    },
+    {
+      "fullName": "liyupi/codefather",
+      "id": 359839626,
+      "readmeSha": "c6e7c5a9e719019d2482c16af17f2fae7b6e923d",
+      "decision": "exclude",
+      "reason": "主体是综合编程学习与求职资源，AI 仅为其中部分内容。"
+    },
+    {
+      "fullName": "liyupi/mianshiya",
+      "id": 444443265,
+      "readmeSha": "e2051dba11354629bf6757456486de7eb66bcf83",
+      "decision": "exclude",
+      "reason": "面向各类程序员的通用面试题库网站，AI 不是主要目的。"
+    },
+    {
+      "fullName": "lmbgithub/planning-heuristic-search",
+      "id": 1375300544,
+      "readmeSha": "91043f1180c9f3dc345e948ae934d8814289f0ff",
+      "decision": "retain",
+      "reason": "README 围绕 A*、可采纳启发式和加权搜索实验展开；这是经典 AI 规划与搜索的教学实现。"
+    },
+    {
+      "fullName": "lorecrafting/pramana",
+      "id": 1370995453,
+      "readmeSha": "76c5bc8ec505502056d327cc506002d3fe007db6",
+      "decision": "exclude",
+      "reason": "简介说明佛教典籍检索与确定性来源追溯，但摘录主要介绍两个 Elixir 项目的目录迁移与运行隔离，未明确检索是否使用 AI 或主要服务于 AI 应用；仅凭 nlp、pgvector 等主题不足以确认。"
+    },
+    {
+      "fullName": "lttxzmj/chinese-law-corpus",
+      "id": 1359163705,
+      "readmeSha": "c309d6020f26d0d190baee9c02c4b73fcd7ce36d",
+      "decision": "exclude",
+      "reason": "核心是通用法律结构化语料，适用于 RAG 不等于专门 AI 项目。"
+    },
+    {
+      "fullName": "Lucebrallc/awesome-peter-alkema-courses",
+      "id": 1372169268,
+      "readmeSha": "33546fb194253509d8c33f6974185d14cba4e850",
+      "decision": "exclude",
+      "reason": "按讲师汇总 IT 战略、云与领导力等综合课程，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "Lukecele/virtue",
+      "id": 1366581614,
+      "readmeSha": "ef30a1cac0d823b46b8e120b6d23c19b535946ac",
+      "decision": "exclude",
+      "reason": "实际核心是确定性模式匹配对话与金融计算，未体现模型或 Agent 执行能力。"
+    },
+    {
+      "fullName": "lxf746/any-auto-register",
+      "id": 1185330299,
+      "readmeSha": "7a0cd9b25ec5bd6dd13b1917ae3ed503f14c73e2",
+      "decision": "exclude",
+      "reason": "主要功能是账号注册与管理，服务对象为 AI 平台不等于 AI 工作流。"
+    },
+    {
+      "fullName": "Ly0n/awesome-robotic-tooling",
+      "id": 217333025,
+      "readmeSha": "574e80c632d7330776ea4de701ad60505a575e59",
+      "decision": "exclude",
+      "reason": "主要汇总机器人开发的通用软硬件工具，并非专门 AI 资源。"
+    },
+    {
+      "fullName": "MaaXYZ/MaaFramework",
+      "id": 632024122,
+      "readmeSha": "55663eba642717b448ed6484387feea6f510cb73",
+      "decision": "exclude",
+      "reason": "主要用途是基于图像识别的通用自动化黑盒测试；摘录中的 AI 分析、Skills 和 MCP 属于周边工具，不能据此将核心框架认定为 AI 项目。"
+    },
+    {
+      "fullName": "mahirgul/AiPBX",
+      "id": 1360191929,
+      "readmeSha": "d751a29bcfb48e2872e962e892ac979d91cdd767",
+      "decision": "exclude",
+      "reason": "主要是企业电话交换与统一通信管理，未体现核心 AI 功能。"
+    },
+    {
+      "fullName": "MahsaKeikha/consciousness-measurement-science",
+      "id": 1368684367,
+      "readmeSha": "fd26669d6ef9951e2c73f4e1229d84e0f4fb7830",
+      "decision": "exclude",
+      "reason": "主要研究意识测量方法与科学证据，未体现专门 AI 目标。"
+    },
+    {
+      "fullName": "mapiatoto81-byte/Whatsapp-Dekstop",
+      "id": 1374035680,
+      "readmeSha": "9d77c3cf5b0c95b091cb83e71519578b7a4ae705",
+      "decision": "exclude",
+      "reason": "主要是 WhatsApp 桌面客户端，AI 标签未体现为核心功能。"
+    },
+    {
+      "fullName": "Marshall-Soc/css_bootcamp",
+      "id": 1359232775,
+      "readmeSha": "57c27fd4b94edee567254ed5d3f790a346e70b85",
+      "decision": "exclude",
+      "reason": "主要是计算社会科学、统计和协作编程训练，非 AI 专门课程。"
+    },
+    {
+      "fullName": "MASTERTENANT/COLMENA-SOBERANA-S.A.P.I-De-C.V",
+      "id": 1375202625,
+      "readmeSha": "970ffa06efec83e8c6a9d9ac1bcef54a5e1f6ca4",
+      "decision": "exclude",
+      "reason": "简介与 README 仅说明这是 T+0 金融生态系统，没有交代 AI 功能、模型或工作机制；主题标签不足以证明主要目的与 AI 直接相关。"
+    },
+    {
+      "fullName": "masumedb/masume",
+      "id": 1351647112,
+      "readmeSha": "7623919cb4c8375555536e01b72a75f81f1a7b6b",
+      "decision": "exclude",
+      "reason": "主要是通用终端数据库客户端，AI 聊天和 MCP 是附加能力。"
+    },
+    {
+      "fullName": "maxwellmilan1234-prog/ai-disclosure-lexicon",
+      "id": 1346682892,
+      "readmeSha": "4b9f46206e3bed85d4ec0bd35ab09fd150344c46",
+      "decision": "retain",
+      "reason": "虽为确定性匹配，但专门解决 EU AI Act 聊天机器人身份披露检测，属于针对 AI 系统的治理工具。"
+    },
+    {
+      "fullName": "MBen213/ai-packing-assistant",
+      "id": 1372207409,
+      "readmeSha": "c11411e05326c479980f2e9d52b81335a1101cb7",
+      "decision": "exclude",
+      "reason": "当前仅实现规则解析与装箱仿真，AI 多模态推理仍属规划。"
+    },
+    {
+      "fullName": "MishraShardendu22/git-metadata-rewriter",
+      "id": 1377045645,
+      "readmeSha": "7ab3ebec1e0a8f2cda2f385ab3909bb8a7082339",
+      "decision": "exclude",
+      "reason": "主要用途是 Git 历史重写与提交遥测，AI 时间分布建模属于附属功能。"
+    },
+    {
+      "fullName": "mixin27/myanlex",
+      "id": 1373136490,
+      "readmeSha": "fabbfbcb6daa8f98e68cd34553aa47cabc695e30",
+      "decision": "exclude",
+      "reason": "主要是确定性缅甸语规范化、转写、分词与正字法工具。"
+    },
+    {
+      "fullName": "miyakejima/longform-rasterizer",
+      "id": 1372863498,
+      "readmeSha": "47ca1f8e2c073e84eb2678c3a3c9b88ba88c7b12",
+      "decision": "exclude",
+      "reason": "使用浏览器排版算法导出文字图片，不涉及 AI 生成。"
+    },
+    {
+      "fullName": "modelcontextprotocol/modelcontextprotocol",
+      "id": 862570523,
+      "readmeSha": "01b7f9f2f7ed26065cf8f8ad13d215fe0cbf339f",
+      "decision": "retain",
+      "reason": "已结合官方项目资料补齐人工档案；原摘录不足以单独确认用途。"
+    },
+    {
+      "fullName": "moussachm/whatsapp-herbs-bot",
+      "id": 1378955875,
+      "readmeSha": "2de128fc3f6be61cf87610f48ae734fde12d7772",
+      "decision": "exclude",
+      "reason": "实际是关键词计分和预设意图回复的客服演示，未体现模型或 Agent 推理。"
+    },
+    {
+      "fullName": "mxgmn/WaveFunctionCollapse",
+      "id": 69662720,
+      "readmeSha": "438003390dad7a815d3ce68ba793cb9f15b473a2",
+      "decision": "exclude",
+      "reason": "主要是基于局部模式约束的程序化生成算法，未体现 AI 为核心。"
+    },
+    {
+      "fullName": "nadirnet/nadir-core",
+      "id": 1364984373,
+      "readmeSha": "bf993b012a3204c014110d5c22c6653490074f48",
+      "decision": "exclude",
+      "reason": "主要用途是 ADAS 漂移与摄像头安装几何健康评分；摘录展示的是经典视觉、状态估计和统计残差方法，未体现模型训练或 AI 推理这一核心用途。"
+    },
+    {
+      "fullName": "Nathan-Gomes/quant-investment-analytics-etl",
+      "id": 1363236432,
+      "readmeSha": "d313321cc9c2330037c61cf0e893bdeb103858b7",
+      "decision": "exclude",
+      "reason": "主要是量化投资分析、组合优化与统计模拟，未体现 AI 核心。"
+    },
+    {
+      "fullName": "nautechsystems/nautilus_trader",
+      "id": 138552196,
+      "readmeSha": "82903b53d5fb61667e8853b2ab25764f5ee72373",
+      "decision": "exclude",
+      "reason": "主要是交易研究、回测与实盘执行引擎。"
+    },
+    {
+      "fullName": "nicksan222/groam",
+      "id": 1370170118,
+      "readmeSha": "bc0f363e422797e99ea597b1884c175658934981",
+      "decision": "exclude",
+      "reason": "主要是多人旅行协作与行程管理，AI 属于辅助功能。"
+    },
+    {
+      "fullName": "nicopavez/forge",
+      "id": 1375013253,
+      "readmeSha": "a199c0aa9b9d8cc6f2709611ba564f7c4d078b46",
+      "decision": "exclude",
+      "reason": "提供 Agent 接入的产品方向和 PRD，未体现实现或专门教学资源。"
+    },
+    {
+      "fullName": "NishankKS/GenAI-Trust-Study",
+      "id": 1367725078,
+      "readmeSha": "0e5d8a20ab078c2ffab9bd01c16af2d27d7330f2",
+      "decision": "retain",
+      "reason": "研究生成式 AI 的公众信任，README 描述对 82.5 万条评论的分类器误差校正与知识图谱，是 AI 专题研究资源。"
+    },
+    {
+      "fullName": "NLPchina/ansj_seg",
+      "id": 5683140,
+      "readmeSha": "fb3d0f3b50c1c4655133d1973bcd38e9e4b470f9",
+      "decision": "exclude",
+      "reason": "主要是中文分词与词典、规则处理工具，未体现 AI 模型为核心。"
+    },
+    {
+      "fullName": "nmap/nmap",
+      "id": 3671479,
+      "readmeSha": "58c58fe4af0767049ce31b3b78affc0052c5eba9",
+      "decision": "exclude",
+      "reason": "主要用于网络发现与端口扫描。"
+    },
+    {
+      "fullName": "NovaAccessLabs/wontfix-studio",
+      "id": 1371298213,
+      "readmeSha": "ab4ff156992f9d9b1ecb239a6942fd23bad85c1c",
+      "decision": "exclude",
+      "reason": "主要是喜剧视频制作与渲染工程，TTS 仅为配音环节。"
+    },
+    {
+      "fullName": "NVIDIA/cutlass",
+      "id": 112542515,
+      "readmeSha": "e8b87838638170d8845dec7c7bc0c32a74b439e3",
+      "decision": "exclude",
+      "reason": "核心是通用 CUDA 矩阵计算与高性能线性代数组件。"
+    },
+    {
+      "fullName": "NVIDIA/nccl",
+      "id": 46153892,
+      "readmeSha": "070967e7aee6bd81534e0a063acb2df67a3e32fd",
+      "decision": "exclude",
+      "reason": "核心是通用多 GPU 通信原语，服务深度学习不等于 AI 专用项目。"
+    },
+    {
+      "fullName": "nwiizo/suiko",
+      "id": 1337383093,
+      "readmeSha": "ae4606f1e0d4c7248bc629c268e7c89f8ccc64ea",
+      "decision": "exclude",
+      "reason": "主要是基于词典和确定性规则的日语文本检查工具。"
+    },
+    {
+      "fullName": "O2sa/arabic-opensource-directory",
+      "id": 1370657563,
+      "readmeSha": "7f5adbfd46589789ff1b0b5faabbd2cd5022d565",
+      "decision": "exclude",
+      "reason": "主要是阿拉伯语开源软件综合目录，范围包含字体和通用工具。"
+    },
+    {
+      "fullName": "oblien/openship",
+      "id": 1173848034,
+      "readmeSha": "d547639983bc8eaa806c14ad51cd37c0055acf20",
+      "decision": "exclude",
+      "reason": "主要是通用自托管部署与 CI/CD 平台。"
+    },
+    {
+      "fullName": "ohugonnot/mes-mots",
+      "id": 1371386012,
+      "readmeSha": "f1fc8e18a59d097f67e263bed4cd1a4d62cdb7f6",
+      "decision": "exclude",
+      "reason": "主要是图卡辅助沟通应用，朗读功能不足以表明 AI 是核心。"
+    },
+    {
+      "fullName": "ombharatiya/FAANG-Coding-Interview-Questions",
+      "id": 307782839,
+      "readmeSha": "1b6a489a79f51abbb074ccd8cc68856556b297de",
+      "decision": "exclude",
+      "reason": "核心是通用编程与系统设计面试题，AI 内容仅为其中一部分。"
+    },
+    {
+      "fullName": "openilink/openilink-hub",
+      "id": 1188421161,
+      "readmeSha": "6d87ef9c0ce184abc569aef6ccb460db1f54c3a6",
+      "decision": "exclude",
+      "reason": "核心是微信消息与 Bot 管理及应用市场，AI 工具仅为扩展能力。"
+    },
+    {
+      "fullName": "openMVG/awesome_3DReconstruction_list",
+      "id": 65994875,
+      "readmeSha": "cee9ef05d8ed45101ddf9059e17280650e02450e",
+      "decision": "exclude",
+      "reason": "主要整理多视图几何、SfM 与三维重建资源，未体现 AI 专门定位。"
+    },
+    {
+      "fullName": "openMVG/openMVG",
+      "id": 8096326,
+      "readmeSha": "362977afa0cc83c921d954497806280d875b3cd8",
+      "decision": "exclude",
+      "reason": "主要提供多视图几何与摄影测量重建，未体现 AI 模型为核心。"
+    },
+    {
+      "fullName": "openstatusHQ/openstatus",
+      "id": 655783613,
+      "readmeSha": "61a372ee26f4c40ebebf1d16fd413a1249df0cc4",
+      "decision": "exclude",
+      "reason": "核心是运行状态监控和状态页，Agent 接入只是操作方式。"
+    },
+    {
+      "fullName": "opum-ai/lore-cli",
+      "id": 1365013937,
+      "readmeSha": "959072a16b14b65877845311ff67700748e9646d",
+      "decision": "exclude",
+      "reason": "核心是文档与任务系统关联管理，Agent 可读只是使用方式。"
+    },
+    {
+      "fullName": "oRAirwolf/grouplab",
+      "id": 1370750812,
+      "readmeSha": "cde6748a546cfd834dc20516a6e6e879a36ec207",
+      "decision": "exclude",
+      "reason": "主要用途是测量步枪射击散布并解释小样本统计的不确定性；资料未说明使用 AI 模型，computer-vision 标签不足以证明与 AI 直接相关。"
+    },
+    {
+      "fullName": "oRAirwolf/grouplab-testdata",
+      "id": 1370771213,
+      "readmeSha": "5bf81c5b875f7d6139624ab7392e9177a593a944",
+      "decision": "exclude",
+      "reason": "这是用于开发和测试射击靶面测量软件的照片集；给定资料未将其定位为 AI 训练或评测数据集。"
+    },
+    {
+      "fullName": "owayo/re-sar-ch",
+      "id": 1366968061,
+      "readmeSha": "c88da598b4eb888f1b67e9882979366dbebd9b86",
+      "decision": "exclude",
+      "reason": "核心是 sysstat 性能数据分析，附带 Agent Skill 不改变主要用途。"
+    },
+    {
+      "fullName": "pacificismsandcherry8495/these",
+      "id": 1350241254,
+      "readmeSha": "eb554f2992e919dd2ec170405f48e26e31193c60",
+      "decision": "exclude",
+      "reason": "实际描述是普通自托管媒体图库，AI 标签缺乏正文支持。"
+    },
+    {
+      "fullName": "palxiao/poster-design",
+      "id": 454264265,
+      "readmeSha": "0d9af6a60cd28fc79194908ddc60257cf336df4d",
+      "decision": "exclude",
+      "reason": "主体是通用画布编辑与海报排版工具，资料中的 AI 抠图等属于附加功能。"
+    },
+    {
+      "fullName": "paperswithcode/ai-deadlines",
+      "id": 74173698,
+      "readmeSha": "6d352c05ed224b8df2d4140d659d58759296f04d",
+      "decision": "retain",
+      "reason": "README 明确只列 CV、NLP、ML、机器人等 AI 顶会截稿日期；属于专门服务 AI 研究者的资源。"
+    },
+    {
+      "fullName": "pingcap/tidb",
+      "id": 41986369,
+      "readmeSha": "11b967a80bf823b4f28a5b11167102de50185156",
+      "decision": "exclude",
+      "reason": "核心是通用分布式 SQL 数据库，支持 Agent 不改变其定位。"
+    },
+    {
+      "fullName": "plotly/dash",
+      "id": 33702544,
+      "readmeSha": "bd4493c10a807da715d5e9b7353af8f37b3325d5",
+      "decision": "exclude",
+      "reason": "主要是通用数据应用与仪表盘 Web 框架。"
+    },
+    {
+      "fullName": "polymech-info/tanit-viewer",
+      "id": 1370039070,
+      "readmeSha": "85ccf8f7eb63b5b8946bed847a88f2a6b5373286",
+      "decision": "exclude",
+      "reason": "核心是多格式媒体查看器，与 AI 聊天相邻不构成 AI 主用途。"
+    },
+    {
+      "fullName": "postbasehq/postbase",
+      "id": 1365044556,
+      "readmeSha": "7d011bd0987b315437b2637baad697b8ea02c340",
+      "decision": "exclude",
+      "reason": "主要是社交媒体定时发布工具，MCP 仅提供 AI 调用入口。"
+    },
+    {
+      "fullName": "prateek-chaubey/YTPro",
+      "id": 476558243,
+      "readmeSha": "b5dbad9cbeaa6b0d4b70b78d26edc1c6e85130f0",
+      "decision": "exclude",
+      "reason": "主要是 YouTube 播放客户端，Gemini 只是附加功能。"
+    },
+    {
+      "fullName": "puckeditor/puck",
+      "id": 648629873,
+      "readmeSha": "44e4e76fc775b5862a775d308b85f465c85de51c",
+      "decision": "exclude",
+      "reason": "主要是 React 拖拽式可视化编辑器。"
+    },
+    {
+      "fullName": "Purvi-Singhal/engineering-journey-2026",
+      "id": 1374711611,
+      "readmeSha": "2edfbcdcdde0ac20ff38ab0bf26229a41c66e467",
+      "decision": "exclude",
+      "reason": "综合软件工程学习与作品集，AI 仅是其中一个方向。"
+    },
+    {
+      "fullName": "qwdwqfwq/topconf-paper-figure-gallery",
+      "id": 1374667371,
+      "readmeSha": "a2fd563af8132790d9399611b23e2e9c2fbf33e9",
+      "decision": "retain",
+      "reason": "专门收集 ICLR、ICML、NeurIPS、CVPR、ACL、AAAI 论文主图，供 AI 研究者学习论文表达。"
+    },
+    {
+      "fullName": "R3DRUN3/flowkit",
+      "id": 1354510313,
+      "readmeSha": "66af1d0475889654c6d39e67fe61cc6a9f8f5a71",
+      "decision": "exclude",
+      "reason": "主要是通用 n8n 自动化部署与编排，AI 只是可选用途。"
+    },
+    {
+      "fullName": "raccioly/testguard",
+      "id": 1373878060,
+      "readmeSha": "14d2152f9cbd4137b2cb1a45b411e3ab8a695ee4",
+      "decision": "exclude",
+      "reason": "核心是通用变异测试与测试质量验证，Agent 集成不改变主要用途。"
+    },
+    {
+      "fullName": "ramitsurana/awesome-kubernetes",
+      "id": 44315167,
+      "readmeSha": "f75511bf83c7a1d5d810597e834a702a72d6aed9",
+      "decision": "exclude",
+      "reason": "主要收集 Kubernetes 资源，并非 AI 专门资料。"
+    },
+    {
+      "fullName": "rayaneferr/heat-equation",
+      "id": 1337643043,
+      "readmeSha": "745fd6b2edfafa9112a37da2e4f9fb6cde74cbad",
+      "decision": "exclude",
+      "reason": "使用有限差分法模拟热方程，未涉及 AI 模型。"
+    },
+    {
+      "fullName": "rdtaylorjr/tehillim",
+      "id": 1346898342,
+      "readmeSha": "eb7e204cfa8689b35528bf6be09f18459ab56270",
+      "decision": "exclude",
+      "reason": "主要是希伯来诗篇的计算文本研究，未体现 AI 为核心目的。"
+    },
+    {
+      "fullName": "reactive-resume/reactive-resume",
+      "id": 249995750,
+      "readmeSha": "f414e44aef83a0ba05b6a104a9aa90b9a28d3d16",
+      "decision": "exclude",
+      "reason": "主要是简历制作与导出工具，AI 不是核心目的。"
+    },
+    {
+      "fullName": "RicterZ/AL1S-WMS",
+      "id": 1374187787,
+      "readmeSha": "15b664863c73fca94a19cbf9778aa86ddc903c05",
+      "decision": "exclude",
+      "reason": "主体是家庭库存与采购管理系统，MCP 和 Agent 辅助属于扩展接口。"
+    },
+    {
+      "fullName": "RitualDev-Lab/DevShelf",
+      "id": 1365805016,
+      "readmeSha": "d4f4720e91b9e344973f19510cb55b24373d6295",
+      "decision": "exclude",
+      "reason": "属于通用开发工具、API 和开源项目目录，AI 只是其中一类。"
+    },
+    {
+      "fullName": "robbestad/ravnpad",
+      "id": 1362588834,
+      "readmeSha": "89f60dbc6b4d28be9a8a9c08f2f44f18d586d3d5",
+      "decision": "exclude",
+      "reason": "主要是原生文本记事本，Agent 编辑属于可选附加功能。"
+    },
+    {
+      "fullName": "rom1504/img2dataset",
+      "id": 395107319,
+      "readmeSha": "ef82169b542a89b4f4ad27234fbaba66cba99f00",
+      "decision": "retain",
+      "reason": "README 直接列出 LAION、COYO、DataComp 等模型训练图文数据集的制作示例；属于 AI 数据准备工具。"
+    },
+    {
+      "fullName": "sahrasayed3-crypto/clouda-ocr-website",
+      "id": 1360543773,
+      "readmeSha": "1020381dd160162c5ed5d9217cb2e3f407f87c21",
+      "decision": "exclude",
+      "reason": "仓库主要是 OCR 产品的静态宣传网站，不提供识别能力或专门教程。"
+    },
+    {
+      "fullName": "samchon/typia",
+      "id": 482949726,
+      "readmeSha": "5bdd86434bb15e1d2d6eaf2e9091a6b3b6ac0d43",
+      "decision": "exclude",
+      "reason": "核心是 TypeScript 类型转换、运行时校验与序列化。"
+    },
+    {
+      "fullName": "Samsonch9921/valorant-rank-booster-2026",
+      "id": 1344786939,
+      "readmeSha": "47b3ade24f40034e3855bb0f736f860b885e846b",
+      "decision": "exclude",
+      "reason": "主体是游戏作弊和代练工具，AI 标签不足以证明核心用途。"
+    },
+    {
+      "fullName": "samuelcampozano/SUIGALLERY",
+      "id": 1375235498,
+      "readmeSha": "84a8eb6e814e181ef8f631488f08724d46aa11f0",
+      "decision": "exclude",
+      "reason": "主要是去中心化媒体存储与图库，视觉 AI 属于附加能力。"
+    },
+    {
+      "fullName": "savellonirourou107-hue/SLX-Studio",
+      "id": 1354936526,
+      "readmeSha": "67ada62eda62ca38fa741cd72f2b42bf98099128",
+      "decision": "exclude",
+      "reason": "主要是 MATLAB 和 Simulink 编辑仿真 IDE，AI 明确属于辅助功能。"
+    },
+    {
+      "fullName": "scikit-image/scikit-image",
+      "id": 2014929,
+      "readmeSha": "31b8d629ff7abf4e712e640dfaa6ad9fb575fe59",
+      "decision": "exclude",
+      "reason": "主要是通用图像处理库，资料未体现 AI 模型或识别为核心。"
+    },
+    {
+      "fullName": "seungseungminh/shadcn-avatar-icons",
+      "id": 1374125636,
+      "readmeSha": "62a60d7d289aa6c1a9ff756420ae0ea135596043",
+      "decision": "exclude",
+      "reason": "提供静态头像图标和 React 组件，无 AI 核心功能。"
+    },
+    {
+      "fullName": "shimat/opencvsharp",
+      "id": 15351385,
+      "readmeSha": "2107ae707b7f4fb92d30b11f72cd9980e09ed3fa",
+      "decision": "exclude",
+      "reason": "核心是通用 OpenCV 的 .NET 封装，未以 AI 模型或识别任务为主要目的。"
+    },
+    {
+      "fullName": "sleepingesram-dev/yuena-project",
+      "id": 1375231037,
+      "readmeSha": "507832ed64624052282459fb93df96723be1dc08",
+      "decision": "exclude",
+      "reason": "公开仓库是个人综合项目展示站，AI 实现在独立私有仓库。"
+    },
+    {
+      "fullName": "sourabh7300/sourabh7300.github.io",
+      "id": 1371825828,
+      "readmeSha": "cfc287297f67d904fe75686d36e62fe7cd8911c1",
+      "decision": "exclude",
+      "reason": "主要是个人 Web 开发作品集，AI 仅为个别项目标签。"
+    },
+    {
+      "fullName": "spencermountain/compromise",
+      "id": 1999522,
+      "readmeSha": "73069f6bc9722c4c98e15a932a8cc6a85a79dd2f",
+      "decision": "exclude",
+      "reason": "主要是基于词表和语法规则的通用文本处理工具。"
+    },
+    {
+      "fullName": "SpikeStatesman/claude-generation-model-latest-version",
+      "id": 1326608797,
+      "readmeSha": null,
+      "decision": "exclude",
+      "reason": "简介谈论 Claude 模型系列，但没有 README 或仓库功能说明；视频生成主题与简介也不一致，无法确认仓库实际目的或核实版本及上下文声明。"
+    },
+    {
+      "fullName": "sreeharierk/datascience",
+      "id": 333421996,
+      "readmeSha": "b4bb1c8f09853b60e3899e23a6e9dfd0f39d4858",
+      "decision": "exclude",
+      "reason": "简介称其为数据科学学习资源汇编，但所给正文主要涉及矩阵、数据结构、数据库与商业智能，无法确认 AI 是否为主要内容；主题标签不足以单独支持判断。"
+    },
+    {
+      "fullName": "srush/GPU-Puzzles",
+      "id": 512867291,
+      "readmeSha": "601cd8948ca0e4ee5173d59319ef9108c058c4db",
+      "decision": "exclude",
+      "reason": "主要教授通用 GPU 编程与 CUDA 内核，深度学习是应用背景。"
+    },
+    {
+      "fullName": "Stupidoodle/swissdevjobs-cli",
+      "id": 1345357989,
+      "readmeSha": "9c0c7ccd0f96066bf99b3b4d6bcb4265a09df47a",
+      "decision": "exclude",
+      "reason": "主要是职位搜索与申请 CLI，MCP 和 Agent 接入属于附加接口。"
+    },
+    {
+      "fullName": "suniljavadi/suniljavadi",
+      "id": 1371462185,
+      "readmeSha": "203f93fe7956fa0d7c41ac46bc47ebc21618f225",
+      "decision": "exclude",
+      "reason": "主要是个人职业介绍和作品展示，并非 AI 项目或专门教程。"
+    },
+    {
+      "fullName": "sunlover7/agentlinkops-cli",
+      "id": 1373762233,
+      "readmeSha": "fc7076b0109e93eeb2b3d8784074849c027326e1",
+      "decision": "exclude",
+      "reason": "核心是外链台账与链接核验，Agent 技能包属于接入配套。"
+    },
+    {
+      "fullName": "supat-roong/invest-viz",
+      "id": 1376226751,
+      "readmeSha": "0d1cc72a67586d8cc74239045ff453c121e015c0",
+      "decision": "exclude",
+      "reason": "基于行情数据模拟投资组合并编码动画，无 AI 生成功能。"
+    },
+    {
+      "fullName": "taielab/awesome-hacking-lists",
+      "id": 271757813,
+      "readmeSha": "7f567b2400ad1f68e86d4c668a8927376359a301",
+      "decision": "exclude",
+      "reason": "主要是渗透测试工具及个人收藏合集，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "teambit/bit",
+      "id": 79723839,
+      "readmeSha": "f10dffe7336c9365ed3104c625a7218b54b9f6e7",
+      "decision": "exclude",
+      "reason": "核心是组件复用与构建系统，AI 和 MCP 属于辅助集成。"
+    },
+    {
+      "fullName": "techplanshetyapps/datastore-clinical-app",
+      "id": 1374503056,
+      "readmeSha": "883ad24ffa16f241c354fa7ec0221dca322fa507",
+      "decision": "exclude",
+      "reason": "简介仅提到机器学习竞赛和 Snowflake，且缺少 README；标签虽涉及 RAG 与预测分析，仍不足以确认仓库主要功能。"
+    },
+    {
+      "fullName": "The-Art-of-Hacking/h4cker",
+      "id": 94801380,
+      "readmeSha": "3fbc4add93160bdcec5a26f20dc8b11c2318a731",
+      "decision": "exclude",
+      "reason": "主要是综合网络安全资源，AI 仅为其中一个分支。"
+    },
+    {
+      "fullName": "TheAlgorithms/C",
+      "id": 63477515,
+      "readmeSha": "9670d2bb077b8d683c79438734d981f2d97c59d8",
+      "decision": "exclude",
+      "reason": "属于通用算法教学合集，机器学习只是部分内容。"
+    },
+    {
+      "fullName": "theonedev/onedev",
+      "id": 156317154,
+      "readmeSha": "4cb4a5df58810819abf6268fd83041690ba08df6",
+      "decision": "exclude",
+      "reason": "核心是代码托管、CI/CD、评审和看板等通用开发管理。"
+    },
+    {
+      "fullName": "timeplus-io/proton",
+      "id": 678214856,
+      "readmeSha": "81d49dab629ba0089e2f460d785ef6b556f30e06",
+      "decision": "exclude",
+      "reason": "主要是通用流式 SQL 与分析引擎，AI 只是应用场景之一。"
+    },
+    {
+      "fullName": "TraceApps/notetrace",
+      "id": 1368623255,
+      "readmeSha": "8aff4129b5d1b012c5532472ec9058b037a4d2c6",
+      "decision": "exclude",
+      "reason": "主要是普通笔记、清单和提醒应用，MCP 标签不足以判为 AI。"
+    },
+    {
+      "fullName": "ty4z2008/Qix",
+      "id": 18962767,
+      "readmeSha": "7265d947ab5650068c8423167151af31223c7ac9",
+      "decision": "exclude",
+      "reason": "混合收集机器学习、数据库、分布式系统和语言资料，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "TykTechnologies/tyk",
+      "id": 19537979,
+      "readmeSha": "b1ff3725f3d8da52e86f7de4c9d3a7dbd3a727e2",
+      "decision": "exclude",
+      "reason": "核心是通用 API 网关与管理，AI 和 MCP 属于支持场景。"
+    },
+    {
+      "fullName": "tyree123/stalker-2-trainer-cheats-mod-toolkit",
+      "id": 1374429712,
+      "readmeSha": "2a49a785b97ea7e7eff06697f268ce02b17de497",
+      "decision": "exclude",
+      "reason": "主要是游戏辅助与模组管理，AI 标签没有对应核心功能。"
+    },
+    {
+      "fullName": "unicity-sphere/sphere",
+      "id": 1101874129,
+      "readmeSha": "9d40513c3014a7f62a815b9310126173e1492303",
+      "decision": "exclude",
+      "reason": "主要功能是加密钱包、聊天和市场，未体现 AI 核心用途。"
+    },
+    {
+      "fullName": "unicity-sphere/sphere-sdk",
+      "id": 1143295695,
+      "readmeSha": "6bf2ab450f21a61dd2d40de86a3a1e8a7b5228aa",
+      "decision": "exclude",
+      "reason": "核心是区块链钱包、支付与通信 SDK，未体现 AI Agent 专用能力。"
+    },
+    {
+      "fullName": "unicodeveloper/globalthreatmap",
+      "id": 1140000232,
+      "readmeSha": "7fce37c0ef2e3e70d2275207c24de13c1579da68",
+      "decision": "exclude",
+      "reason": "主要是全球事件与威胁地图，所给功能未体现 AI 为核心目的。"
+    },
+    {
+      "fullName": "unlayer/react-email-editor",
+      "id": 105479936,
+      "readmeSha": "495e63de06fcdcdce920c87c1ac06e55f58c8769",
+      "decision": "exclude",
+      "reason": "核心是 React 拖拽邮件编辑器组件，AI 标签不足以改变主要用途。"
+    },
+    {
+      "fullName": "unstablebuild/rune",
+      "id": 1363950922,
+      "readmeSha": "fbc5b0f17ad9e5f683c0e5bc8f1fbedbb4db9bc6",
+      "decision": "exclude",
+      "reason": "主要是通用 IDE 与终端复用器，Agent 只是部分功能。"
+    },
+    {
+      "fullName": "usekaneo/kaneo",
+      "id": 910422636,
+      "readmeSha": "1320ec00231efca2b8ce6a85fa2ceb399f4921a9",
+      "decision": "exclude",
+      "reason": "主要是通用项目管理平台，MCP 标签不改变其用途。"
+    },
+    {
+      "fullName": "v-modal/vmodal_sdk_robotics",
+      "id": 1358878061,
+      "readmeSha": "c79a49906826fb424092c32f249396f07c1c4f37",
+      "decision": "exclude",
+      "reason": "核心是机器人传感数据的可靠暂存与上传，未体现 AI 主功能。"
+    },
+    {
+      "fullName": "Valorian0108/C.A.M.I.S",
+      "id": 1373033432,
+      "readmeSha": "de2e98a447954a27760e8545c3deb573d601fa93",
+      "decision": "exclude",
+      "reason": "核心是确定性保证金模拟与金融风险分析，AI 仅辅助解释。"
+    },
+    {
+      "fullName": "vi3k6i5/flashtext",
+      "id": 100404920,
+      "readmeSha": "014d2c7533af976a249d26e428295e1b4554a35f",
+      "decision": "exclude",
+      "reason": "通过字符串匹配算法提取和替换关键词，属于通用文本工具。"
+    },
+    {
+      "fullName": "vicky002/AlgoWiki",
+      "id": 27222050,
+      "readmeSha": "a4fa68be8a4bed4d9fc432f86ced5d2356488d24",
+      "decision": "exclude",
+      "reason": "覆盖广泛计算机科学主题的资源合集，并非 AI 专门资源。"
+    },
+    {
+      "fullName": "victorChuyen/FCS-AI-WORKFORCE",
+      "id": 1367089809,
+      "readmeSha": "5b55c91751e6a648564c65374a401ea990e96d25",
+      "decision": "exclude",
+      "reason": "主要是招聘、用工和考勤管理平台，AI 离职预测属于附加功能。"
+    },
+    {
+      "fullName": "vladimirovpv/SymDCT",
+      "id": 1355926991,
+      "readmeSha": "7ef7220cd60314beb1b54a4be913a77c2997dbf7",
+      "decision": "exclude",
+      "reason": "主要进行晶体扩散系数的符号计算，仅兼容机器学习产生的输入。"
+    },
+    {
+      "fullName": "vortex-data/vortex",
+      "id": 764020969,
+      "readmeSha": "52c6c69e13bcaceaa4f9eddc4705416ef6c2d8d0",
+      "decision": "exclude",
+      "reason": "通用列式文件格式与数据压缩处理工具。"
+    },
+    {
+      "fullName": "WasmEdge/WasmEdge",
+      "id": 224908244,
+      "readmeSha": "e792aad50c270a65d0ca255d9d793d2aaf2ac5fb",
+      "decision": "exclude",
+      "reason": "核心是通用 WebAssembly 运行时，运行 AI 模型只是应用场景。"
+    },
+    {
+      "fullName": "wasp-lang/open-saas",
+      "id": 726082384,
+      "readmeSha": "1cf327810dee244f1aed22ef0a8bd893fd997e79",
+      "decision": "exclude",
+      "reason": "通用 SaaS 开发模板，AI 编程支持和模型示例是附加功能。"
+    },
+    {
+      "fullName": "webiny/webiny-js",
+      "id": 116817549,
+      "readmeSha": "8b2dee92c561ce3b7c970c3a9eee6a1391eb6845",
+      "decision": "exclude",
+      "reason": "主要是 CMS 和 Web 内容平台，MCP 辅助开发不改变其核心用途。"
+    },
+    {
+      "fullName": "writes-the-spec/flowlite",
+      "id": 1361448478,
+      "readmeSha": "343439efe2d500ddea3bd8aa23350ad9bd9a68be",
+      "decision": "exclude",
+      "reason": "主体是通用作业调度器，附带 MCP 接口不改变用途。"
+    },
+    {
+      "fullName": "wxyhgk/roost",
+      "id": 1367948808,
+      "readmeSha": "1ce2b1a4fc60e8f29f8bbda5e9bae549e51f015e",
+      "decision": "exclude",
+      "reason": "主要管理通用 shell 会话，AI 能力来自外部 CLI。"
+    },
+    {
+      "fullName": "x-hw/amazing-qr",
+      "id": 66557478,
+      "readmeSha": "becb731052709563d513e1b7ed81e8c82159394e",
+      "decision": "exclude",
+      "reason": "主要生成普通及艺术二维码，Agent 接入不改变核心用途。"
+    },
+    {
+      "fullName": "xitu/gold-miner",
+      "id": 45512989,
+      "readmeSha": "72ace35a8b9ed310e07bdb5f281154cc9eceae86",
+      "decision": "exclude",
+      "reason": "翻译多个技术领域的文章，并非专注 AI。"
+    },
+    {
+      "fullName": "xsigil/scientific-nlp",
+      "id": 1366643017,
+      "readmeSha": "cbfb54a176f932ba41c5d2d6fcae4a5bc0c4e3cd",
+      "decision": "exclude",
+      "reason": "主要研究神经语言程序学与催眠，非自然语言处理或 AI 专门资源。"
+    },
+    {
+      "fullName": "Xtremilicious/projectlearn-project-based-learning",
+      "id": 225165015,
+      "readmeSha": "0c93f6312a38dab483a6312c8a2b002116a2966c",
+      "decision": "exclude",
+      "reason": "通用编程项目教程合集，AI 只是多个学习类别之一。"
+    },
+    {
+      "fullName": "Yang-qwq/earthol-player-profile",
+      "id": 1364231906,
+      "readmeSha": "0b3bb6e01498098989a1f9d6a737d22519f8924e",
+      "decision": "exclude",
+      "reason": "提供玩家个人主页服务，未体现 AI 核心功能。"
+    },
+    {
+      "fullName": "yzyyohh/yzyyohh",
+      "id": 1371155847,
+      "readmeSha": "e6c2433b80eb724df20ee6d59f9b17b7f5a2977e",
+      "decision": "exclude",
+      "reason": "内容是个人简介和研究方向，未提供专门 AI 项目或学习资源。"
+    },
+    {
+      "fullName": "zFinia/crosscheck",
+      "id": 1375460425,
+      "readmeSha": "f8f5646b122edf1e94050e766e8e8544d8b12e49",
+      "decision": "exclude",
+      "reason": "核心是通用仓库配置与包管理器一致性检查，AI 编程只是使用场景。"
+    },
+    {
+      "fullName": "zziz/pwc",
+      "id": 147081519,
+      "readmeSha": "f4834a1b94c6d7a840fabf72bd1947eb8db28ac8",
+      "decision": "retain",
+      "reason": "已结合官方项目资料补齐人工档案；原摘录不足以单独确认用途。"
+    }
+  ]
+}
