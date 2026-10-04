@@ -79,7 +79,23 @@ jobs:
             git commit -m 'data: update daily AI trends'
             for attempt in 1 2 3; do
               git fetch origin main
-              git rebase origin/main
+              if ! git rebase origin/main; then
+                conflicts="$(git diff --name-only --diff-filter=U)"
+                # A concurrent verified history backfill may replace the whole
+                # compressed GitHub pack. Keep that newer pack intact while
+                # publishing this run's independent AI collection.
+                if [ -z "$conflicts" ] || printf '%s\n' "$conflicts" | grep -v '^data/github-shards/' ; then
+                  echo 'Unresolved non-GitHub data conflict; refusing to discard collection data.' >&2
+                  exit 1
+                fi
+                echo 'Remote GitHub pack advanced; defer its refresh from this run.'
+                git restore --source=HEAD --staged --worktree -- data/github-shards
+                if git diff --cached --quiet; then
+                  git rebase --skip
+                else
+                  GIT_EDITOR=true git rebase --continue
+                fi
+              fi
               if git push origin HEAD:main; then
                 break
               fi
