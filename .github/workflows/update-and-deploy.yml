@@ -50,13 +50,15 @@ jobs:
             python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh
           fi
       - name: Validate published dataset
-        run: python -B scripts/validate_data.py
+        run: |
+          python -B scripts/validate_data.py
+          python -B scripts/pack_latest.py --restore --source /tmp/radar-packed-latest.json
       - name: Save collected data
         if: github.event_name != 'push'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data data/discovery.json
+          git add public/data data/discovery.json data/latest-shards
           if ! git diff --cached --quiet; then
             git commit -m 'data: update daily AI trends'
             for attempt in 1 2 3; do

@@ -16,4 +16,4 @@ python3 -B scripts/export_backfill.py --restore-to data/local-backfill.sqlite3
 
 恢复要求目标数据库为空。核验数据只有通过站点数据构建与校验后才能更新 `public/data`；分片清单中的 `admitted` 表示本地核验通过，不等于线上已收录。
 
-`scripts/pack_latest.py` 可把当前完整的 `public/data/latest.json` 无损拆成 64 个压缩分片，恢复时对完整 JSON 做 SHA-256 校验。`scripts/compact_snapshot.py` 可生成去掉重复 README 和 Star 历史的轻量日快照，同时保留每个项目当日的 Star 总数和各周期指标。两者目前是迁移工具；站点仍使用原始文件，只有采集、校验和网页读取流程全部接通后才能移除原文件。
+`scripts/pack_latest.py` 可把当前完整的 `public/data/latest.json` 无损拆成 64 个压缩分片，恢复时对完整 JSON 做 SHA-256 校验。采集、资料整理和历史导入写入 `latest.json` 时会同步更新这些分片，CI 会检查恢复后的文件与原文件一致。`scripts/compact_snapshot.py` 可生成去掉重复 README 和 Star 历史的轻量日快照，同时保留每个项目当日的 Star 总数和各周期指标。站点目前仍使用原始文件，只有网页读取和快照校验流程全部接通后才能移除原文件。

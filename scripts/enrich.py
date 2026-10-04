@@ -24,6 +24,8 @@ def main():
   discovery=json.loads((ROOT/'data/discovery.json').read_text())
   d['coverage']=collection_coverage(d['projects'],discovery,excluded,d['periodEnd'])
  atomic_json(path,d)
+ from pack_latest import pack
+ pack(path,ROOT/'data/latest-shards')
  if before_ids!={p['id'] for p in d['projects']}:
   from backfill_history import update_history
   update_history(d['projects'],d['periodEnd'],ROOT/'public/data')

@@ -391,6 +391,8 @@ def main():
  atomic_json(ROOT/'public/data/board-history.json',{'chartSize':30,'entries':entries})
  from backfill_history import update_history
  update_history(projects,end)
+ from pack_latest import pack
+ pack(latest_path, ROOT/'data/latest-shards')
  # Do not retain per-person stars. Only repo metadata and aggregate day counts are stored.
  print(json.dumps({'projects':len(projects),'historyAvailable':sum(p['historyStatus']=='ok' and not p.get('stale') for p in projects),'date':capture_date,'status':payload['status']}),flush=True)
 if __name__=='__main__':main()

@@ -93,6 +93,8 @@ def main():
                                **{k: history[k] for k in ('source', 'scope', 'generatedAt')}}, payload)
     save_history(history, ROOT / 'public/data')
     atomic_json(latest_path, payload)
+    from pack_latest import pack
+    pack(latest_path, ROOT / 'data/latest-shards')
 
 
 if __name__ == '__main__':
