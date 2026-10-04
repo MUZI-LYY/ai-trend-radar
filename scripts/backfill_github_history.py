@@ -8,6 +8,8 @@ Set GITHUB_TOKEN or use a GitHub CLI authenticated session to make requests.
 import argparse
 import datetime as dt
 import json
+import os
+import subprocess
 
 from collect import atomic_json
 from collect_github import EXTRAS, RATE_BUDGET, RateLimitExceeded, collect_history, needs_history
@@ -79,4 +81,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.limit < 0 or args.checkpoint < 1:
         parser.error('limit must be nonnegative and checkpoint positive')
+    if not os.environ.get('GITHUB_TOKEN'):
+        result = subprocess.run(['gh', 'auth', 'token'], capture_output=True, text=True, check=True)
+        os.environ['GITHUB_TOKEN'] = result.stdout.strip()
+        if not os.environ['GITHUB_TOKEN']:
+            parser.error('GitHub CLI did not return an authenticated token')
     backfill(args.limit, args.checkpoint)
