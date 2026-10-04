@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import collect
-from discover import TOPICS, load_state, pending_candidates
+from discover import MIN_STARS, TOPICS, load_state, pending_candidates
 from github_metadata import batch_metadata
 from ranking import period_starts
 
@@ -74,7 +74,8 @@ def counts(db):
 def review_one(candidate, metadata, editorial, end, year_start):
     name = candidate['fullName']
     repo = metadata.get(name.lower()) or collect.api('repos/' + name)
-    if repo['id'] != candidate['id'] or repo.get('private') or repo.get('fork') or repo.get('disabled') or repo.get('archived'):
+    if (repo['id'] != candidate['id'] or repo['stargazers_count'] < MIN_STARS
+            or repo.get('private') or repo.get('fork') or repo.get('disabled') or repo.get('archived')):
         return 'rejected', None
     content = ' '.join([repo['full_name'], repo.get('description') or '', *(repo.get('topics') or [])]).lower()
     if not set(repo.get('topics') or []) & set(TOPICS) and not RELEVANCE.search(content):

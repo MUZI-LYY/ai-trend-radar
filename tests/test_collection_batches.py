@@ -58,9 +58,11 @@ class CollectionBatchTests(unittest.TestCase):
         self.assertEqual(actual['lastAttemptAt'],'2026-09-14T12:00:00Z')
 
     def test_coverage_distinguishes_discovery_collection_and_valid_current_metrics(self):
-        candidates={'1':{'id':1,'fullName':'org/p1'},'2':{'id':3,'fullName':'org/p3','status':'retry'},
-                    '3':{'id':4,'fullName':'org/p4','status':'rejected'},
-                    '4':{'id':5,'fullName':'org/p5','status':'admitted'}}
+        candidates={'1':{'id':1,'fullName':'org/p1','stars':10},
+                    '2':{'id':3,'fullName':'org/p3','status':'retry','stars':10},
+                    '3':{'id':4,'fullName':'org/p4','status':'rejected','stars':10},
+                    '4':{'id':5,'fullName':'org/p5','status':'admitted','stars':10},
+                    '5':{'id':6,'fullName':'org/p6','stars':9}}
         report=collection_coverage([project(1,True),project(2)],{'candidates':candidates},[],END)
         self.assertEqual(report['discoveredRepositories'],5)
         self.assertEqual(report['trackedRepositories'],2)

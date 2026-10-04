@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_START = '2025-01-01'
 SOURCE = 'GitHub REST API /repos/{owner}/{repo}/stargazers/history'
-SCOPE = '按当前收录项目回溯官方每日 Star 数；不是当时的全站榜单或当时的收录快照。'
+SCOPE = '按当前收录且累计至少 10 Star 的项目回溯官方每日 Star 数；不是当时的全站榜单或当时的收录快照。'
 
 
 def save_json(path, value):

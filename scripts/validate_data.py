@@ -3,6 +3,7 @@ import json
 import datetime as dt
 from pathlib import Path
 from collect import period_total, is_current
+from discover import MIN_STARS, backlog_size, load_state
 from ranking import period_starts, chart_entries
 from taxonomy import KINDS, normalize_ways
 
@@ -23,7 +24,7 @@ def validate_dataset(data, *, current_taxonomy=False):
   label = project['fullName']
   assert project['id'] not in ids, f'Duplicate repository ID: {label}'
   ids.add(project['id'])
-  assert type(project['stars']) is int and project['stars'] >= 0, label
+  assert type(project['stars']) is int and project['stars'] >= MIN_STARS, label
   assert type(project['forks']) is int and project['forks'] >= 0, label
   assert project['url'].startswith('https://github.com/'), label
   assert project['category'] in categories, label
@@ -103,6 +104,12 @@ def main():
  root = Path(__file__).resolve().parents[1] / 'public/data'
  latest = json.loads((root / 'latest.json').read_text())
  count = validate_dataset(latest, current_taxonomy=True)
+ excluded_path = root.parents[1] / 'data/excluded.json'
+ excluded = json.loads(excluded_path.read_text()) if excluded_path.exists() else []
+ discovery = load_state(root.parents[1] / 'data/discovery.json')
+ assert all(candidate.get('stars', 0) >= MIN_STARS for candidate in discovery['candidates'].values()), 'Below-minimum discovery candidate'
+ assert latest['coverage']['pendingCandidates'] == backlog_size(
+  discovery, latest['projects'], excluded), 'Pending queue count mismatch'
  index = json.loads((root / 'index.json').read_text())
  archives = []
  for snapshot in index['snapshots']:

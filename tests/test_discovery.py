@@ -20,14 +20,14 @@ def repo(number, **values):
 
 def state_with_tasks(tasks):
     return {'schemaVersion': 1, 'candidates': {}, 'tasks': tasks, 'cycle': 1,
-            'config': {'createdStart': None, 'createdEnd': None, 'topics': list(d.TOPICS), 'minStars': 0}}
+            'config': {'createdStart': None, 'createdEnd': None, 'topics': list(d.TOPICS), 'minStars': d.MIN_STARS}}
 
 
 class DiscoveryTests(unittest.TestCase):
     def test_backlog_excludes_reviewed_ids_and_rejected_or_excluded_names(self):
         state = {'candidates': {
             str(i): {'id': i, 'fullName': f'owner/project{i}',
-                     'status': 'rejected' if i == 3 else 'pending'}
+                     'status': 'rejected' if i == 3 else 'pending', 'stars': 10}
             for i in range(1, 5)}}
         self.assertEqual(d.backlog_size(state), 3)
         self.assertEqual(d.backlog_size(state, [{'id': 1, 'fullName': 'owner/renamed'}],
@@ -39,11 +39,11 @@ class DiscoveryTests(unittest.TestCase):
     def run_discovery(self, state, request, count=1, **kwargs):
         return d.discover(state, request, count, TODAY, pause=lambda _: None, **kwargs)
 
-    def test_topic_and_sort_rotation_includes_small_projects(self):
+    def test_topic_and_sort_rotation_starts_at_ten_stars(self):
         tasks = d.initial_tasks(TODAY)
         self.assertEqual({t['topic'] for t in tasks[:len(d.TOPICS)]}, set(d.TOPICS))
         self.assertEqual({t['sort'] for t in tasks}, {'stars', 'updated'})
-        self.assertEqual({t['minStars'] for t in tasks}, {0, 10, 100, 1000})
+        self.assertEqual({t['minStars'] for t in tasks}, {10, 100, 1000})
 
     def test_full_page_resumes_after_restart_without_dropping_candidates(self):
         state = state_with_tasks([self.task()])
@@ -93,14 +93,15 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(left['maxStars']+1,right['minStars'])
         self.assertIsNone(right['maxStars'])
 
-    def test_zero_star_partition_and_repositories_are_not_excluded(self):
-        task=self.task(minStars=0,maxStars=9)
-        left,right=d.split_task(task)
-        self.assertEqual(left['minStars'],0)
-        self.assertEqual(left['maxStars']+1,right['minStars'])
+    def test_below_ten_star_repositories_never_enter_queue(self):
         state=state_with_tasks([])
-        self.assertTrue(d.merge_candidate(state,repo(1,stargazers_count=0),'topic:llm',TODAY))
+        self.assertFalse(d.merge_candidate(state,repo(1,stargazers_count=9),'topic:llm',TODAY))
+        self.assertFalse(state['candidates'])
+        self.assertTrue(d.merge_candidate(state,repo(1,stargazers_count=10),'topic:llm',TODAY))
         self.assertEqual(len(d.pending_candidates(state)),1)
+        state['candidates']['1']['stars']=9
+        self.assertEqual(d.pending_candidates(state),[])
+        self.assertEqual(d.backlog_size(state),0)
 
     def test_unsplittable_limit_is_reported_and_never_requests_page_eleven(self):
         task = self.task(minStars=100, maxStars=100, page=10,

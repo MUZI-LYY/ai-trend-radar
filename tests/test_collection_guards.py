@@ -112,8 +112,12 @@ class CollectionGuardTests(unittest.TestCase):
   self.assertEqual(c.period_total(daily, earliest, end, '2020-01-01'), 10)
 
  def test_validator_catches_wrong_period_aggregate(self):
-  data = {'schemaVersion': 2, 'date': '2026-09-14', 'capturedAt': '2026-09-14T00:00:00+00:00', 'completedAt': '2026-09-14T00:01:00+00:00', 'periodEnd': '2026-09-13', 'periodStarts': period_starts('2026-09-13'), 'categories': [{'id': 'agents'}], 'projects': [{'id': 1, 'fullName': 'o/a', 'stars': 1, 'forks': 0, 'url': 'https://github.com/o/a', 'category': 'agents', 'related': [], 'summary': 's', 'overview': 'o', 'readmeUrl': 'r', 'metrics': {'daily': 1, 'weekly': 1, 'monthly': 1, 'yearly': 1}, 'historyStatus': 'ok', 'createdAt': '2026-09-13T00:00:00Z', 'history': [{'date': '2026-09-13', 'stars': 1}]}]}
+  data = {'schemaVersion': 2, 'date': '2026-09-14', 'capturedAt': '2026-09-14T00:00:00+00:00', 'completedAt': '2026-09-14T00:01:00+00:00', 'periodEnd': '2026-09-13', 'periodStarts': period_starts('2026-09-13'), 'categories': [{'id': 'agents'}], 'projects': [{'id': 1, 'fullName': 'o/a', 'stars': 10, 'forks': 0, 'url': 'https://github.com/o/a', 'category': 'agents', 'related': [], 'summary': 's', 'overview': 'o', 'readmeUrl': 'r', 'metrics': {'daily': 1, 'weekly': 1, 'monthly': 1, 'yearly': 1}, 'historyStatus': 'ok', 'createdAt': '2026-09-13T00:00:00Z', 'history': [{'date': '2026-09-13', 'stars': 1}]}]}
   self.assertEqual(validate_dataset(data), 1)
+  data['projects'][0]['stars'] = 9
+  with self.assertRaises(AssertionError):
+   validate_dataset(data)
+  data['projects'][0]['stars'] = 10
   data['projects'][0]['metrics']['weekly'] = 7
   with self.assertRaisesRegex(AssertionError, 'weekly'):
    validate_dataset(data)

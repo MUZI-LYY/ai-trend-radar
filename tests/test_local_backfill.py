@@ -16,7 +16,7 @@ class LocalBackfillTests(unittest.TestCase):
             db = connect(Path(directory) / 'backfill.sqlite3')
             state = {'candidates': {
                 str(i): {'id': i, 'fullName': f'owner/ai-{i}', 'status': 'pending',
-                         'sources': ['topic:llm'], 'stars': i,
+                         'sources': ['topic:llm'], 'stars': i + 10,
                          'createdAt': '2026-01-01T00:00:00Z'}
                 for i in range(1, 4)}}
             first = select_pending(state, [], [], db, 3, '2026-10-04')

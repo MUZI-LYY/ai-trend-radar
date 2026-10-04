@@ -1,6 +1,6 @@
 # 本地候选核验
 
-`scripts/local_backfill.py` 使用当前 `data/discovery.json` 和已发布项目作为输入，按 GitHub ID 去重。每个候选的真实仓库元数据、README 和官方 Star 日历史核验结果会立即写入本地 SQLite；中断后再次运行会跳过已完成项。不可公开访问、非 AI 相关、Fork 或归档的仓库记为拒绝；API 临时失败隔日重试。核验结果先暂存，**不会直接进入线上榜单**。
+`scripts/local_backfill.py` 使用当前 `data/discovery.json` 和已发布项目作为输入，按 GitHub ID 去重，只考虑累计至少 10 Star 的仓库。每个候选的真实仓库元数据、README 和官方 Star 日历史核验结果会立即写入本地 SQLite；中断后再次运行会跳过已完成项。不可公开访问、非 AI 相关、Fork 或归档的仓库记为拒绝；API 临时失败隔日重试。核验结果先暂存，**不会直接进入线上榜单**。
 
 ```bash
 python3 -B scripts/local_backfill.py --batch-size 1000 --rest-budget 3000 --workers 4

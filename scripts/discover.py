@@ -27,6 +27,7 @@ TOPICS = (
 )
 PAGE_SIZE = 100
 MIN_DATE = '2008-01-01'
+MIN_STARS = 10
 
 
 def save_state(state, path=STATE_PATH):
@@ -47,11 +48,11 @@ def load_state(path=STATE_PATH):
 
 
 def initial_tasks(today, created_start=None, created_end=None):
-    # Topics rotate before going deeper into any one subject. The lower band also
-    # gives emerging repositories space instead of filling every slot with giants.
+    # Topics rotate before going deeper into any one subject. Eligible smaller
+    # repositories still get their own lane instead of losing every slot to giants.
     return [dict(topic=topic, minStars=low, maxStars=high, sort=sort, page=1,
                  createdStart=created_start or MIN_DATE, createdEnd=created_end or today)
-            for low, high in ((1000, None), (100, 999), (10, 99), (0, 9))
+            for low, high in ((1000, None), (100, 999), (MIN_STARS, 99))
             for sort in ('stars', 'updated') for topic in TOPICS]
 
 
@@ -88,6 +89,8 @@ def merge_candidate(state, repo, source, today):
     name = repo.get('full_name', '')
     if not re.fullmatch(r'[\w.-]+/[\w.-]+', name) or type(repo.get('id')) is not int:
         return False
+    if type(repo.get('stargazers_count')) is not int or repo['stargazers_count'] < MIN_STARS:
+        return False
     if repo.get('private') or repo.get('fork') or repo.get('disabled') or repo.get('archived'):
         return False
     key = str(repo['id'])
@@ -115,7 +118,8 @@ def pending_candidates(state, tracked=(), excluded=(), today=None):
     excluded = {name.lower() for name in excluded}
     lanes = {}
     for candidate in state['candidates'].values():
-        if (candidate['id'] in ids or candidate['fullName'].lower() in excluded
+        if (candidate.get('stars', 0) < MIN_STARS
+                or candidate['id'] in ids or candidate['fullName'].lower() in excluded
                 or candidate.get('status') in ('admitted', 'rejected')
                 or candidate.get('retryAfter', '') > today):
             continue
@@ -138,7 +142,8 @@ def backlog_size(state, tracked=(), excluded=()):
     """Count unreviewed repository identities without sorting the whole queue."""
     ids = {repo['id'] for repo in tracked}
     excluded = {name.lower() for name in excluded}
-    return sum(candidate['id'] not in ids
+    return sum(candidate.get('stars', 0) >= MIN_STARS
+               and candidate['id'] not in ids
                and candidate['fullName'].lower() not in excluded
                and candidate.get('status') not in ('admitted', 'rejected')
                for candidate in state['candidates'].values())
@@ -161,7 +166,13 @@ def discover(state, request, max_requests=24, today=None, persist=None,
              pause=time.sleep, interval=2.2, created_start=None, created_end=None):
     today = today or dt.datetime.now(dt.timezone.utc).date().isoformat()
     config = {'createdStart': created_start, 'createdEnd': created_end, 'topics': list(TOPICS),
-              'minStars': 0}
+              'minStars': MIN_STARS}
+    previous_config = state.get('config')
+    if (previous_config and previous_config.get('minStars') == 0
+            and {**previous_config, 'minStars': MIN_STARS} == config):
+        state['tasks'] = [task for task in state['tasks']
+                          if task.get('maxStars') is None or task['maxStars'] >= MIN_STARS]
+        state['config'] = config
     if state.get('config') != config or not state['tasks']:
         state.update(config=config, tasks=initial_tasks(today, created_start, created_end),
                      cycle=state.get('cycle', 0) + 1)
