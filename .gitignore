@@ -33,6 +33,10 @@ yarn-error.log*
 .vercel
 next-env.d.ts
 /dist/
+/public/data/latest-bootstrap.json
+/public/data/latest-slim.json
+/public/data/snapshot-boards.json
+/public/data/project-details/
 /.wrangler/
 /outputs/
 /work/

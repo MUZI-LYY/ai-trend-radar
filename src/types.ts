@@ -11,6 +11,8 @@ export interface Project {
  historyStatus: string; history: {date: string; stars: number}[]; warnings: string[]; netSincePrevious: number | null; netBaselineAt: string | null;
 }
 export interface Dataset {
+ bootstrapStats?: {projectCount:number;positiveDaily:number;zeroDaily:number;missingDaily:number};
+ detailShardCount?: number;
  coverage?: {discoveredRepositories:number;trackedRepositories:number;updatedRepositories:number;pendingCandidates:number;pendingUpdates:number;sourceDate:string;totalLimit:null};
  viewType?: 'retrospective'; metadataDate?: string;
  schemaVersion: number; date: string; capturedAt: string; completedAt: string; periodEnd: string;

@@ -12,7 +12,7 @@ export function withLatestProfiles(data: Dataset, latest: Dataset): Dataset {
  return {...data, projects: data.projects.map(project=>{
   const profile = profiles.get(project.id);
   if (!profile || (project.editorial && !profile.editorial)) return project;
-  const fields = Object.fromEntries(profileFields.map(key=>[key,profile[key]]));
+  const fields = Object.fromEntries(profileFields.filter(key=>key!=='readme'||profile.readme).map(key=>[key,profile[key]]));
   return {...project,...fields};
  })};
 }
