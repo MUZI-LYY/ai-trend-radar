@@ -22,6 +22,18 @@ const when=(s:string)=>new Date(s).toLocaleString('zh-CN',{timeZone:'Asia/Shangh
 const color:Record<string,string>={agents:'#6878dc',coding:'#e8a355',models:'#4680b8',knowledge:'#419d87',automation:'#aa75bb',visual:'#df7e95',audio:'#d1a23e',apps:'#47a0b1',devtools:'#869458',learning:'#8391a4'};
 const score=(p:Project,period:BoardPeriod)=>period==='custom'?(p.customGrowth??null):period==='all'?p.stars:p.metrics[period];
 function rank(items:Project[],period:BoardPeriod,retrospective=false){return items.filter(p=>!p.stale&&score(p,period)!==null).sort((a,b)=>(score(b,period)??0)-(score(a,period)??0)||(retrospective?0:b.stars-a.stars)||compareNames(a.fullName,b.fullName));}
+type DataGetter=<T,>(file:string)=>Promise<T>;
+async function hydrateProject(dataset:Dataset,source:Dataset,detail:string|null,get:DataGetter):Promise<Dataset>{
+ if(!detail)return dataset;
+ const selected=dataset.projects.find(p=>p.fullName.toLowerCase()===detail);
+ if(!selected||selected.readme||!source.detailShardCount)return dataset;
+ const shard=await get<{completedAt:string;projects:Pick<Project,'id'|'readme'|'history'>[]}>(`project-details/${selected.id%source.detailShardCount}.json`);
+ if(shard.completedAt!==source.completedAt)throw Error('项目资料正在更新，请重新加载。');
+ const fields=shard.projects.find(p=>p.id===selected.id);
+ if(!fields)return dataset;
+ return {...dataset,projects:dataset.projects.map(p=>p.id===selected.id?
+  {...p,readme:fields.readme,history:source===dataset?fields.history:p.history}:p)};
+}
 function Picker({value,onChange,items,label}:{value:string;onChange:(v:string)=>void;items:{value:string;label:string}[];label:string}){return <Select value={value} onValueChange={v=>v!==null&&onChange(String(v))}><SelectTrigger aria-label={label} className="picker"><SelectValue>{items.find(i=>i.value===value)?.label??value}</SelectValue></SelectTrigger><SelectContent>{items.map(i=><SelectItem key={i.value} value={i.value}>{i.label}</SelectItem>)}</SelectContent></Select>}
 function MiniChart({history}:{history:Project['history']}){const points=history.slice(-14);if(points.length<2)return <span className="muted">积累中</span>;const max=Math.max(...points.map(p=>p.stars),1);const line=points.map((p,i)=>`${i*92/(points.length-1)},${26-p.stars/max*23}`).join(' ');return <svg className="sparkline" viewBox="0 0 94 29" role="img" aria-label="最近14个来源统计日的每日新增 Star"><polyline points={line} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/><circle cx="92" cy={26-points.at(-1)!.stars/max*23} r="2.4" fill="currentColor"/></svg>}
 function HistoryChart({project}:{project:Project}){const [span,setSpan]=useState(30);const points=project.history.slice(-span);if(points.length<2)return <div className="empty">有效历史不足，暂无曲线。缺失值不会被视为零。</div>;const max=Math.max(...points.map(p=>p.stars),1);const w=720,h=180;const line=points.map((p,i)=>`${i*w/(points.length-1)},${h-8-p.stars/max*(h-20)}`).join(' ');return <section className="chart-section"><div className="section-head"><div><h2>Star 增长轨迹</h2><p>每日官方历史统计 · 非累计曲线</p></div><div className="segmented">{[30,90,365].map(n=><button aria-pressed={span===n} onClick={()=>setSpan(n)} key={n}>{n} 天</button>)}</div></div><div className="chart-wrapper"><span className="chart-max">{format(max)}</span><svg viewBox={`-5 -5 ${w+10} ${h+15}`} role="img" aria-label={`${points[0].date} 至 ${points.at(-1)!.date} 的每日 Star 统计`}><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#269c70" stopOpacity=".2"/><stop offset="1" stopColor="#269c70" stopOpacity="0"/></linearGradient></defs>{[0,1,2,3].map(i=><line key={i} x1="0" y1={i*h/3} x2={w} y2={i*h/3} stroke="#e5ece8" strokeDasharray="4 4"/>)}<polygon points={`0,${h} ${line} ${w},${h}`} fill="url(#chartFill)"/><polyline points={line} fill="none" stroke="#23825e" strokeWidth="2.5" strokeLinejoin="round"/></svg><div className="chart-dates"><span>{points[0].date}</span><span>{points.at(-1)!.date}</span></div></div><details className="source-details"><summary>查看曲线的原始数值</summary><div className="history-values">{points.slice().reverse().map(p=><div key={p.date}><span>{p.date}</span><strong>+{format(p.stars)}</strong></div>)}</div></details></section>}
@@ -55,43 +67,32 @@ export default function App(){
   if(period!=='custom'||!customRange)return;
   let ignore=false;setCustomLoading(true);setCustomError('');
   const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`data/${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('区间数据暂时无法加载，请重试。');return r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
-  Promise.all([get<Dataset>('latest.json'),get<HistoryData>('history.json')]).then(([latest,history])=>{
+  Promise.all([get<Dataset>('latest-slim.json'),get<HistoryData>('history.json')]).then(async([latest,history])=>{
    const result=prepareDailyRange(normalizeDataset(latest),history,customRange.start,customRange.end);
-   if(!ignore)setCustomResult({range:customRange,...result});
+   const detail=hash.startsWith('#/project/')?decodeURIComponent(hash.slice(10)).toLowerCase():null;
+   const data=await hydrateProject(result.data,latest,detail,get);
+   if(!ignore)setCustomResult({range:customRange,...result,data});
   }).catch(e=>{if(!ignore)setCustomError(String(e.message))}).finally(()=>{if(!ignore)setCustomLoading(false)});
   return()=>{ignore=true};
- },[period,customRange,dataCache,dataVersion]);
+ },[period,customRange,hash,dataCache,dataVersion]);
 
  useEffect(()=>{
   if(period==='custom')return;
   let ignore=false;setLoading(true);setError('');
   const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`data/${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('榜单暂时无法加载，请稍后重试。');return r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
   const detail=hash.startsWith('#/project/')?decodeURIComponent(hash.slice(10)).toLowerCase():null;
-  const hydrate=async(dataset:Dataset,source=dataset):Promise<Dataset>=>{
-   if(!detail)return dataset;
-   const selected=dataset.projects.find(p=>p.fullName.toLowerCase()===detail);
-   if(!selected||selected.readme)return dataset;
-   const count=source.detailShardCount;
-   if(!count)return dataset;
-   const shard=await get<{completedAt:string;projects:Pick<Project,'id'|'readme'|'history'>[]}>(`project-details/${selected.id%count}.json`);
-   if(shard.completedAt!==source.completedAt)throw Error('项目资料正在更新，请重新加载。');
-   const fields=shard.projects.find(p=>p.id===selected.id);
-   if(!fields)return dataset;
-   return {...dataset,projects:dataset.projects.map(p=>p.id===selected.id?
-    {...p,readme:fields.readme,history:source===dataset?fields.history:p.history}:p)};
-  };
   const load=async()=>{
-   if(date.startsWith('history:')){const [latest,history]=await Promise.all([get<Dataset>('latest.json'),get<HistoryData>('history.json')]);return replayHistory(normalizeDataset(latest),history as HistoryData,date.slice(8))}
+   if(date.startsWith('history:')){const [latest,history]=await Promise.all([get<Dataset>('latest-slim.json'),get<HistoryData>('history.json')]);return hydrateProject(replayHistory(normalizeDataset(latest),history,date.slice(8)),latest,detail,get)}
    if(date==='latest'){
     const bootstrap=await get<Dataset>('latest-bootstrap.json');
     const topOnly=period==='daily'&&dailyScope==='top'&&(!detail||bootstrap.projects.some(p=>p.fullName.toLowerCase()===detail));
     if(topOnly)return normalizeDataset(bootstrap);
     const latest=await get<Dataset>('latest-slim.json');
     if(latest.completedAt!==bootstrap.completedAt)throw Error('榜单正在更新，请重新加载。');
-    return normalizeDataset(await hydrate(latest));
+    return normalizeDataset(await hydrateProject(latest,latest,detail,get));
    }
    const [snapshot,latest]=await Promise.all([get<Dataset>(`snapshots/${date}.json`),get<Dataset>('latest-slim.json')]);
-   return hydrate(withLatestProfiles(normalizeDataset(snapshot),latest),latest);
+   return hydrateProject(withLatestProfiles(normalizeDataset(snapshot),latest),latest,detail,get);
   };
   load().then(d=>{if(!ignore)setData(d)}).catch(e=>{if(!ignore)setError(String(e.message))}).finally(()=>{if(!ignore)setLoading(false)});return()=>{ignore=true};
  },[date,period,dailyScope,hash,dataVersion,dataCache]);

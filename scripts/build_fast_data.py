@@ -45,7 +45,8 @@ def build(directory=DATA):
         detail_shards[project['id'] % DETAIL_SHARDS].append({
             'id': project['id'], 'readme': project.get('readme', ''),
             'history': project.get('history', [])[-365:]})
-    slim = {**bootstrap, 'projects': compact, 'detailShardCount': DETAIL_SHARDS}
+    slim = {**{key: value for key, value in latest.items() if key != 'projects'},
+            'projects': compact, 'detailShardCount': DETAIL_SHARDS}
     write_json(directory / 'latest-slim.json', slim)
     for number, projects in enumerate(detail_shards):
         write_json(directory / 'project-details' / f'{number}.json', {
