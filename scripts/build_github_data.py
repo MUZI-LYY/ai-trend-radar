@@ -123,7 +123,9 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
     history_index = json.loads((output / 'history-index.json').read_text())
     chart = cumulative_chart(payload, history, history_index, {'entries': entries})
     atomic_json(output / 'cumulative-chart.json', chart)
-    build_fast_data(output)
+    # The cumulative GitHub board must keep current repository metadata even
+    # when most repositories still lack daily Star history.
+    build_fast_data(output, hold_daily_until_covered=False)
     return payload
 
 

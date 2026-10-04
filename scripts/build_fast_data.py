@@ -125,8 +125,9 @@ def build_archived_boards(source, completed_at):
     write_json(source / 'snapshot-boards.json', {'completedAt': completed_at, 'snapshots': boards})
 
 
-def build(source=DATA):
-    latest = publishable_dataset(json.loads((source / 'latest.json').read_text()))
+def build(source=DATA, *, hold_daily_until_covered=True):
+    current = json.loads((source / 'latest.json').read_text())
+    latest = publishable_dataset(current) if hold_daily_until_covered else current
     bootstrap = {key: value for key, value in latest.items() if key != 'projects'}
     detail_count = max(MIN_DETAIL_SHARDS, math.ceil(len(latest['projects']) / DETAIL_PROJECTS_PER_SHARD))
     detail_shards = [[] for _ in range(detail_count)]

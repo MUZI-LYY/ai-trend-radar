@@ -109,20 +109,22 @@ class GithubBoardTests(unittest.TestCase):
         end = (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat()
         previous_day = (dt.date.fromisoformat(end) - dt.timedelta(days=1)).isoformat()
 
-        def repo(identity, name, stars):
+        def repo(identity, name, stars, created=previous_day):
             return {'id': identity, 'full_name': name, 'name': name.split('/')[1],
                     'owner': {'login': name.split('/')[0], 'avatar_url': ''},
                     'html_url': 'https://github.com/' + name, 'stargazers_count': stars,
                     'forks_count': 3, 'language': 'TypeScript', 'license': None,
                     'topics': ['web'], 'description': 'A web project', 'archived': False,
-                    'created_at': previous_day + 'T00:00:00Z', 'pushed_at': end + 'T00:00:00Z',
+                    'created_at': created + 'T00:00:00Z', 'pushed_at': end + 'T00:00:00Z',
                     'default_branch': 'main', 'homepage': ''}
 
         ranked = project_from_repo(repo(1, 'example/first', 50), None, end, fetch_history=False)
         ranked.update(historyStatus='ok', statsThrough=end, metrics={'daily': 5, 'weekly': 8,
                       'monthly': 8, 'yearly': 8}, history=[{'date': previous_day, 'stars': 3},
                                                           {'date': end, 'stars': 5}], warnings=[])
-        missing = project_from_repo(repo(2, 'example/second', 100), None, end, fetch_history=False)
+        # The older day was fully covered before this repository existed. The
+        # current cumulative board must still include the newly discovered repo.
+        missing = project_from_repo(repo(2, 'example/second', 100, end), None, end, fetch_history=False)
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source, output = root / 'github-repositories.json', root / 'public/data/github'
@@ -140,8 +142,14 @@ class GithubBoardTests(unittest.TestCase):
             chart = json.loads((output / 'cumulative-chart.json').read_text())
             self.assertEqual([1], chart['entries'][-1]['ids'])
             bootstrap = json.loads((output / 'latest-bootstrap.json').read_text())
+            self.assertEqual(end, bootstrap['periodEnd'])
             self.assertEqual(2, bootstrap['bootstrapStats']['projectCount'])
             self.assertEqual(1, bootstrap['bootstrapStats']['positiveDaily'])
+            self.assertEqual(1, bootstrap['coverage']['updatedRepositories'])
+            self.assertEqual(1, bootstrap['coverage']['pendingUpdates'])
+            rows = [project for i in range(bootstrap['listShardCount'])
+                    for project in json.loads((output / 'latest-list' / f'{i}.json').read_text())['projects']]
+            self.assertEqual({1, 2}, {project['id'] for project in rows})
 
 
 if __name__ == '__main__':
