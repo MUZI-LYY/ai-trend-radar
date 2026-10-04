@@ -1,5 +1,6 @@
 import sys
 import unittest
+from unittest import mock
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
 import collect as c
@@ -8,6 +9,16 @@ from validate_data import validate_dataset
 
 
 class CollectionGuardTests(unittest.TestCase):
+ def test_request_budget_exhaustion_never_becomes_missing_source_history(self):
+  repo={'id':1,'full_name':'o/real','name':'real','private':False,'fork':False,
+        'disabled':False,'created_at':'2026-01-01T00:00:00Z'}
+  with mock.patch.object(c,'api',side_effect=c.RequestBudgetExceeded('budget')):
+   with self.assertRaises(c.RequestBudgetExceeded):
+    c.collect_one('o/real',None,{},'2026-09-13','2026-01-01',repo=repo)
+   with mock.patch.object(c,'should_refresh_readme',return_value=False):
+    with self.assertRaises(c.RequestBudgetExceeded):
+     c.collect_one('o/real',None,{},'2026-09-13','2026-01-01',repo=repo)
+
  def test_missing_history_is_reported_and_empty_batch_cannot_publish(self):
   valid = {'fullName': 'o/valid', 'metrics': {'daily': 0, 'weekly': 0, 'monthly': 0, 'yearly': 0}}
   unavailable = {'fullName': 'o/missing', 'metrics': dict.fromkeys(valid['metrics'])}

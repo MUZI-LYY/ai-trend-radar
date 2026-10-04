@@ -24,6 +24,15 @@ def state_with_tasks(tasks):
 
 
 class DiscoveryTests(unittest.TestCase):
+    def test_backlog_excludes_reviewed_ids_and_rejected_or_excluded_names(self):
+        state = {'candidates': {
+            str(i): {'id': i, 'fullName': f'owner/project{i}',
+                     'status': 'rejected' if i == 3 else 'pending'}
+            for i in range(1, 5)}}
+        self.assertEqual(d.backlog_size(state), 3)
+        self.assertEqual(d.backlog_size(state, [{'id': 1, 'fullName': 'owner/renamed'}],
+                                        ['OWNER/PROJECT2']), 1)
+
     def task(self, **changes):
         return {**d.initial_tasks(TODAY)[0], **changes}
 

@@ -59,9 +59,10 @@ class CollectionBatchTests(unittest.TestCase):
 
     def test_coverage_distinguishes_discovery_collection_and_valid_current_metrics(self):
         candidates={'1':{'id':1,'fullName':'org/p1'},'2':{'id':3,'fullName':'org/p3','status':'retry'},
-                    '3':{'id':4,'fullName':'org/p4','status':'rejected'}}
+                    '3':{'id':4,'fullName':'org/p4','status':'rejected'},
+                    '4':{'id':5,'fullName':'org/p5','status':'admitted'}}
         report=collection_coverage([project(1,True),project(2)],{'candidates':candidates},[],END)
-        self.assertEqual(report['discoveredRepositories'],4)
+        self.assertEqual(report['discoveredRepositories'],5)
         self.assertEqual(report['trackedRepositories'],2)
         self.assertEqual(report['updatedRepositories'],1)
         self.assertEqual(report['pendingCandidates'],1)

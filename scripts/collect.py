@@ -173,6 +173,7 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
    new_readme=api('repos/'+repo['full_name']+'/readme',raw=True)[:100000] if r.get('encoding')=='none' else base64.b64decode(r.get('content','')).decode('utf-8',errors='replace')[:100000]
    if not new_readme.strip():raise ValueError('Empty README content')
    readme=new_readme;sha=r.get('sha');readme_url=r.get('html_url');readme_fetched=fetched;readme_changed=True
+  except RequestBudgetExceeded:raise
   except Exception:warnings.append('README 获取失败，保留已有摘录' if readme else 'README 获取失败')
  daily=cached_history(previous,end);history_status='ok';latest_history_ok=False
  try:
@@ -187,6 +188,7 @@ def collect_one(full, previous, editorial, end, year_start, repo=None):
    if page==1:latest_history_ok=True
    if period_total(daily,year_start,end,repo['created_at']) is not None:break
    if len(weeks)<30:break
+ except RequestBudgetExceeded:raise
  except Exception:
   warnings.append('Star 历史部分不可用' if latest_history_ok else 'Star 历史暂不可用')
   if not latest_history_ok:history_status='unavailable'
@@ -283,7 +285,7 @@ def retain_previous(projects, previous, end, attempted=(), attempted_at=None):
 def collection_coverage(projects, discovery, excluded, end):
  tracked={p['id'] for p in projects}; excluded={name.lower() for name in excluded}
  candidates=list(discovery['candidates'].values())
- pending=[c for c in candidates if c['id'] not in tracked and c.get('status')!='rejected'
+ pending=[c for c in candidates if c['id'] not in tracked and c.get('status') not in ('admitted','rejected')
           and c['fullName'].lower() not in excluded]
  updated=sum(is_current(p,end) for p in projects)
  return {'discoveredRepositories':len(tracked | {c['id'] for c in candidates}),
@@ -318,14 +320,18 @@ def main():
   report=run_discovery(discovery,api,max_requests=24,persist=save_state)
   if report['errors']:warnings.append('部分候选搜索未完成，保留分页进度等待后续发现任务。')
  candidates={key:r['fullName'] for key,r in previous.items()}
+ selection_previous=previous.copy()
  for candidate in pending_candidates(discovery,tracked=latest['projects'],excluded=excluded):
-  candidates[candidate['fullName'].lower()]=candidate['fullName']
+  key=candidate['fullName'].lower()
+  candidates[key]=candidate['fullName']
+  if key in previous and previous[key]['id']!=candidate['id']:
+   selection_previous.pop(key,None)
  for n in SEEDS:candidates[n.lower()]=n
  # Work is bounded, admission count is not. Unselected candidates stay queued.
  candidates={key:value for key,value in candidates.items() if key not in excluded}
- names=select_candidates(previous,candidates,args.batch_size,args.new_limit,end,args.force_refresh)
+ names=select_candidates(selection_previous,candidates,args.batch_size,args.new_limit,end,args.force_refresh)
  if not names:print('All tracked data is current; no eligible candidate work.');return
- projects=[];failures=[]
+ projects=[];failures=[];budget_deferred=set()
  metadata=batch_metadata(names)
  if len(metadata)<len(names):warnings.append('部分批量元数据不可用，将在 REST 预算内尝试单仓库获取。')
  def work(name):
@@ -349,15 +355,19 @@ def main():
      projects.append(result);print(f'Collected {result["fullName"]}: {result["stars"]} stars; history={result["historyStatus"]}',flush=True)
      record_attempt(discovery,name,'admitted')
     else:record_attempt(discovery,name,'rejected')
+   except RequestBudgetExceeded:
+    budget_deferred.add(name.lower())
    except Exception as e:
     failures.append(name);record_attempt(discovery,name,'retry');print(f'Failed {name}: {e}',file=sys.stderr,flush=True)
  save_state(discovery)
  # Do not publish a misleading severely incomplete batch.
  if len(failures)>max(3,len(names)*0.2):raise SystemExit('Too many failed repositories: previous published data preserved')
- projects=retain_previous(projects,previous,end,{name.lower() for name in names},now.isoformat())
+ projects=retain_previous(projects,previous,end,
+                          {name.lower() for name in names}-budget_deferred,now.isoformat())
  projects.sort(key=lambda p:(-p['stars'],p['fullName'].lower()))
  missing_history=missing_period_history(projects)
  coverage=collection_coverage(projects,discovery,excluded,end)
+ if budget_deferred:warnings.append(f'{len(budget_deferred)} 个仓库因本轮 API 预算用尽而顺延，候选核验状态未改变。')
  if coverage['pendingUpdates']:warnings.append(f'{coverage["pendingUpdates"]} 个已收录项目待更新或暂缺完整本期数据，后续批次继续处理；未更新指标不参榜。')
  if missing_history:warnings.append(f'{len(missing_history)} 个项目的部分 Star 历史不可用，缺失指标不参与对应榜单。')
  payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API + GraphQL API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}

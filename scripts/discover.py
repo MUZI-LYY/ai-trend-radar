@@ -111,13 +111,12 @@ def pending_candidates(state, tracked=(), excluded=(), today=None):
     consume admission slots. A failed candidate waits before another attempt.
     """
     today = today or dt.datetime.now(dt.timezone.utc).date().isoformat()
-    names = {p['fullName'].lower() for p in tracked}
     ids = {p['id'] for p in tracked}
     excluded = {name.lower() for name in excluded}
     lanes = {}
     for candidate in state['candidates'].values():
-        if (candidate['id'] in ids or candidate['fullName'].lower() in names | excluded
-                or candidate.get('status') == 'rejected'
+        if (candidate['id'] in ids or candidate['fullName'].lower() in excluded
+                or candidate.get('status') in ('admitted', 'rejected')
                 or candidate.get('retryAfter', '') > today):
             continue
         # A source lane remains stable even if a later search finds more topics.
@@ -133,6 +132,16 @@ def pending_candidates(state, tracked=(), excluded=(), today=None):
             if lanes[key]:
                 result.append(lanes[key].pop(0))
     return result
+
+
+def backlog_size(state, tracked=(), excluded=()):
+    """Count unreviewed repository identities without sorting the whole queue."""
+    ids = {repo['id'] for repo in tracked}
+    excluded = {name.lower() for name in excluded}
+    return sum(candidate['id'] not in ids
+               and candidate['fullName'].lower() not in excluded
+               and candidate.get('status') not in ('admitted', 'rejected')
+               for candidate in state['candidates'].values())
 
 
 def record_attempt(state, name, outcome, today=None):
@@ -218,6 +227,8 @@ def main():
     parser.add_argument('--state', type=Path, default=STATE_PATH)
     parser.add_argument('--created-start')
     parser.add_argument('--created-end')
+    parser.add_argument('--pause-while-pending', type=int, default=0,
+                        help='Skip new searches while this many candidates await review')
     args = parser.parse_args()
     for date in (args.created_start, args.created_end):
         if date:
@@ -228,6 +239,16 @@ def main():
         parser.error('Creation date range is reversed')
     from collect import api
     state = load_state(args.state)
+    if args.pause_while_pending:
+        latest = ROOT / 'public/data/latest.json'
+        tracked = json.loads(latest.read_text()).get('projects', []) if latest.exists() else []
+        excluded_path = ROOT / 'data/excluded.json'
+        excluded = json.loads(excluded_path.read_text()) if excluded_path.exists() else []
+        pending = backlog_size(state, tracked, excluded)
+        if pending >= args.pause_while_pending:
+            print(json.dumps({'paused': True, 'pendingCandidates': pending,
+                              'resumeBelow': args.pause_while_pending}), flush=True)
+            return
     report = discover(state, api, args.max_requests, persist=lambda s: save_state(s, args.state),
                       created_start=args.created_start, created_end=args.created_end)
     print(json.dumps({**report, 'candidates': len(state['candidates']),

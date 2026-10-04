@@ -36,7 +36,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RADAR_REST_REQUEST_LIMIT: 24
-        run: python -B scripts/discover.py --max-requests 24
+        run: python -B scripts/discover.py --max-requests 24 --pause-while-pending 1000
       - name: Collect public GitHub data
         if: github.event_name != 'push'
         env:
@@ -45,9 +45,9 @@ jobs:
           RADAR_REST_REQUEST_LIMIT: 940
         run: |
           if [ "$FORCE_REFRESH" = "true" ]; then
-            python -B scripts/collect.py --batch-size 600 --new-limit 40 --no-discover --refresh --force-refresh
+            python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh --force-refresh
           else
-            python -B scripts/collect.py --batch-size 600 --new-limit 40 --no-discover --refresh
+            python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh
           fi
       - name: Validate published dataset
         run: python -B scripts/validate_data.py
