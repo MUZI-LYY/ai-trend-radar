@@ -33,8 +33,8 @@ def pack(source=SOURCE, packed=PACKED, manifest=MANIFEST):
     return info
 
 
-def restore(source=PACKED, output=SOURCE, manifest=MANIFEST):
-    source, output, manifest = map(Path, (source, output, manifest))
+def unpack(source=PACKED, manifest=MANIFEST):
+    source, manifest = map(Path, (source, manifest))
     info = json.loads(manifest.read_text())
     if info.get('schemaVersion') != 1:
         raise ValueError('Unsupported history pack')
@@ -45,6 +45,12 @@ def restore(source=PACKED, output=SOURCE, manifest=MANIFEST):
     if digest(raw) != info['sourceSha256'] or len(raw) != info['sourceBytes']:
         raise ValueError('Restored history checksum mismatch')
     json.loads(raw)
+    return raw, info
+
+
+def restore(source=PACKED, output=SOURCE, manifest=MANIFEST):
+    output = Path(output)
+    raw, info = unpack(source, manifest)
     temporary = output.with_suffix(output.suffix + '.tmp')
     temporary.write_bytes(raw)
     temporary.replace(output)

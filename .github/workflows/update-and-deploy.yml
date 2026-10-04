@@ -63,6 +63,8 @@ jobs:
           python -B scripts/validate_data.py
           python -B scripts/pack_latest.py --restore --source /tmp/radar-packed-latest.json
           python -B scripts/validate_data.py --directory public/data/github
+      - name: Update cumulative daily chart
+        run: python -B scripts/build_tenure_index.py
       - name: Save collected data
         if: github.event_name != 'push'
         run: |

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from compact_snapshot import compact
+from pack_history import unpack as unpack_history
 from pack_latest import write_json
 from ranking import chart_entries
 
@@ -22,6 +23,16 @@ def compact_dist(directory):
         before += path.stat().st_size
         write_json(path, reduced)
         after += path.stat().st_size
+    history_path = directory / 'data/history.json'
+    recovered, _ = unpack_history(directory / 'data/history.json.gz',
+                                  directory / 'data/history-pack.json')
+    if recovered != history_path.read_bytes():
+        raise ValueError('Packed deployment history differs from the complete source')
+    if not (directory / 'data/latest-bootstrap.json').exists() or not list(
+            (directory / 'data/latest-list').glob('*.json')):
+        raise ValueError('Current list shards missing from deployment')
+    history_path.unlink()
+    (directory / 'data/latest.json').unlink()
     return {'snapshots': len(snapshots), 'originalBytes': before, 'deployedBytes': after}
 
 

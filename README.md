@@ -81,7 +81,7 @@ python3 -B scripts/enrich.py
 python3 -B scripts/validate_data.py
 ```
 
-符合至少 10 Star 门槛的仓库不设收录总量上限，未完成项目留待后续批次。排除名单位于 `data/excluded.json`；最新数据、历史日值和归档快照位于 `public/data/`。完整的 `latest.json` 与 `history.json` 在干净检出后由 `python3 -B scripts/restore_data.py` 从已校验的分片和压缩文件恢复；`npm run dev`、`npm run build` 和自动采集也会先恢复它们。
+符合至少 10 Star 门槛的仓库不设收录总量上限，未完成项目留待后续批次。排除名单位于 `data/excluded.json`；最新数据、历史日值和归档快照位于 `public/data/`。完整的 `latest.json` 与 `history.json` 在干净检出后由 `python3 -B scripts/restore_data.py` 从已校验的分片和压缩文件恢复；`npm run dev`、`npm run build` 和自动采集也会先恢复它们。部署包提供分片项目数据和 `history.json.gz`；页面按需解压历史数据，构建时会核对它与原始历史逐字节一致。
 
 「有趣项目」的选题和简短解读维护在 `src/spotlight-data.ts`。新增条目需填写已收录 AI 项目的 `fullName`、新意标签、看点、入选理由和入门提示。编辑判断需能指出具体的交互或使用场景变化，并找到公开资料或示例作为尝试入口；不计算“趣味分”。热度展示本周官方 Star 新增，不能据此推断实际使用人数。未收录的项目先核实来源并加入 AI 项目采集数据，再添加精选条目。
 

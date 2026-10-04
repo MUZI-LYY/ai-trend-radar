@@ -15,15 +15,20 @@ from ranking import period_starts
 
 
 class GithubBoardTests(unittest.TestCase):
-    def test_seed_repositories_have_current_chinese_explanations(self):
+    def test_curated_chinese_explanations_and_new_project_fallback(self):
         ledger = json.loads((ROOT / 'data/github-repositories.json').read_text())
         profiles = json.loads((ROOT / 'data/github-profiles.json').read_text())
+        names = {project['fullName'] for project in ledger['projects']}
+        self.assertLessEqual(set(profiles), names)
         for original in ledger['projects']:
             localized = localized_profile(original, category(original), profiles)
             self.assertEqual(original['description'], localized['description'])
-            self.assertEqual(profiles[original['fullName']]['summary'], localized['summary'])
+            profile = profiles.get(original['fullName'])
+            if profile and profile['sourceDescription'] == original['description']:
+                self.assertEqual(profile['summary'], localized['summary'])
+            elif not any('\u3400' <= char <= '\u9fff' for char in original['description']):
+                self.assertIn('尚待中文整理', localized['summary'])
             self.assertRegex(localized['summary'], '[\u3400-\u9fff]')
-        self.assertEqual(len(ledger['projects']), len(profiles))
         changed = {**ledger['projects'][0], 'description': 'Changed upstream description'}
         self.assertIn('尚待中文整理', localized_profile(changed, category(changed), profiles)['summary'])
 

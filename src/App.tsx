@@ -12,6 +12,7 @@ import Pagination from './Pagination';
 import {useBoardNavigation} from './useBoardNavigation';
 import {aggregateDailyBoards,type DailyBoard,type WeeklyBoard} from './weekly';
 import {replayHistory,prepareDailyRange,type HistoryIndex,type HistoryData} from './history';
+import {parseHistoryResponse} from './history-source';
 import {archiveReady,normalizeDataset,cumulativeTenure,compareNames,type BoardHistory,type CumulativeChart} from './ranking';
 import {completeLatest} from './latest-data';
 import Spotlights from './Spotlights';
@@ -41,6 +42,7 @@ function BoardApp({mode}:{mode:'ai'|'github'}){
  const aboutHref=isGithub?'#/github/about':'#/about';
  const projectHref=isGithub?'#/github/project/':'#/project/';
  const dataRoot=isGithub?'data/github/':'data/';
+ const historyFile=isGithub?'history.json':'history.json.gz';
  const stateKey=isGithub?'github-radar:board:v1':boardStateKey;
  const [savedState]=useState(()=>{try{const stored=sessionStorage.getItem(stateKey);const parsed=parseBoardState(stored);return isGithub&&!stored?{...parsed,period:'all' as BoardPeriod}:parsed}catch{return parseBoardState(null)}});
  const [dataCache]=useState(()=>new Map<string,Promise<unknown>>());
@@ -72,27 +74,27 @@ function BoardApp({mode}:{mode:'ai'|'github'}){
  useEffect(()=>{
   if(period!=='custom'||!customRange)return;
   let ignore=false;setCustomLoading(true);setCustomError('');
-  const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`${dataRoot}${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('区间数据暂时无法加载，请重试。');return r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
-  Promise.all([get<Dataset>('latest-bootstrap.json').then(bootstrap=>completeLatest(bootstrap,get,dataCache)),get<HistoryData>('history.json')]).then(([latest,history])=>{
+  const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`${dataRoot}${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('区间数据暂时无法加载，请重试。');return file.endsWith('.json.gz')?parseHistoryResponse<T>(r):r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
+  Promise.all([get<Dataset>('latest-bootstrap.json').then(bootstrap=>completeLatest(bootstrap,get,dataCache)),get<HistoryData>(historyFile)]).then(([latest,history])=>{
    const result=prepareDailyRange(normalizeDataset(latest),history,customRange.start,customRange.end);
    if(!ignore)setCustomResult({range:customRange,...result});
   }).catch(e=>{if(!ignore)setCustomError(String(e.message))}).finally(()=>{if(!ignore)setCustomLoading(false)});
   return()=>{ignore=true};
- },[period,customRange,dataCache,dataVersion,dataRoot]);
+ },[period,customRange,dataCache,dataVersion,dataRoot,historyFile]);
 
  useEffect(()=>{
   let ignore=false;setLoading(true);setError('');
-  const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`${dataRoot}${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('榜单暂时无法加载，请稍后重试。');return r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
+  const get=<T,>(file:string):Promise<T>=>{if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`${dataRoot}${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('榜单暂时无法加载，请稍后重试。');return file.endsWith('.json.gz')?parseHistoryResponse<T>(r):r.json()}).catch(e=>{dataCache.delete(file);throw e}));return dataCache.get(file)! as Promise<T>};
   const load=async()=>{
    const bootstrap=await get<Dataset>('latest-bootstrap.json');
    const latest=needsFull?await completeLatest(bootstrap,get,dataCache):bootstrap;
-   if(date.startsWith('history:')){const history=await get<HistoryData>('history.json');return {bootstrap,data:replayHistory(normalizeDataset(latest),history,date.slice(8))}}
+   if(date.startsWith('history:')){const history=await get<HistoryData>(historyFile);return {bootstrap,data:replayHistory(normalizeDataset(latest),history,date.slice(8))}}
    if(date==='latest')return {bootstrap,data:normalizeDataset(latest)};
    const snapshot=await get<Dataset>(`snapshots/${date}.json`);
    return {bootstrap,data:{...withLatestProfiles(normalizeDataset(snapshot),latest),listComplete:true}};
   };
   load().then(({bootstrap,data})=>{if(!ignore){setBootstrapData(bootstrap);setData(data)}}).catch(e=>{if(!ignore)setError(String(e.message))}).finally(()=>{if(!ignore)setLoading(false)});return()=>{ignore=true};
- },[date,needsFull,dataVersion,dataCache,dataRoot]);
+ },[date,needsFull,dataVersion,dataCache,dataRoot,historyFile]);
  useEffect(()=>{fetch(import.meta.env.BASE_URL+dataRoot+'history-index.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(setHistoryIndex).catch(()=>{});},[dataVersion,dataRoot]);
 
  useEffect(()=>{fetch(import.meta.env.BASE_URL+dataRoot+'board-history.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(value=>{setBoardHistory(value);setBoardHistoryError('')}).catch(()=>setBoardHistoryError('日榜索引加载失败，暂时无法可靠汇总日榜。'));},[dataVersion,dataRoot]);

@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from compact_snapshot import HISTORY_DAYS, compact, verify
 from compact_dist import compact_dist
+from pack_history import pack as pack_history
 from ranking import daily_leaders
 
 
@@ -64,11 +65,19 @@ class CompactSnapshotTests(unittest.TestCase):
             snapshot.write_text(json.dumps(data))
             (root / 'data/latest.json').write_text(json.dumps({'projects': [
                 {'id': 1, 'editorial': False, 'readme': 'current source'}]}))
+            history_path = root / 'data/history.json'
+            history_path.write_text(json.dumps({'projects': [{'id': 1, 'days': data['projects'][0]['history']}]}))
+            pack_history(history_path, root / 'data/history.json.gz', root / 'data/history-pack.json')
+            (root / 'data/latest-bootstrap.json').write_text('{}')
+            (root / 'data/latest-list').mkdir()
+            (root / 'data/latest-list/0.json').write_text('{}')
             result = compact_dist(root)
             self.assertEqual(result['snapshots'], 1)
             project = json.loads(snapshot.read_text())['projects'][0]
             self.assertEqual(project['history'], data['projects'][0]['history'])
             self.assertNotIn('readme', project)
+            self.assertFalse(history_path.exists())
+            self.assertFalse((root / 'data/latest.json').exists())
 
 
 if __name__ == '__main__':
