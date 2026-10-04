@@ -46,3 +46,4 @@ __pycache__/
 
 # Temporary parallel editorial drafts
 /data/editorial-rich-*.json
+/data/local-backfill.sqlite3*
