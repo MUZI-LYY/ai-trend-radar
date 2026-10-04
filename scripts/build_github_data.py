@@ -10,6 +10,7 @@ from backfill_history import merge_projects, save_history
 from build_fast_data import build as build_fast_data
 from build_tenure_index import cumulative_chart
 from collect import atomic_json, is_current
+from collect_github import HISTORY_START, needs_history
 from pack_history import pack as pack_history
 from ranking import chart_entries, period_starts
 
@@ -84,7 +85,9 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
         project['category'] = category(project)
         projects.append(localized_profile(project, project['category'], profiles))
     projects.sort(key=lambda p: (-p['stars'], p['fullName'].lower()))
-    current = sum(is_current(p, end) for p in projects)
+    # The broad board promises coverage back to 2025-01-01. Recent-period
+    # metrics alone can be present while early official days are still absent.
+    current = sum(is_current(p, end) and not needs_history(p, end) for p in projects)
     warnings = [] if current == len(projects) else [f'{len(projects)-current} 个仓库等待完整本期 Star 历史，暂不参与增长榜。']
     payload = {
         'schemaVersion': 2, 'date': capture, 'capturedAt': ledger.get('updatedAt', now.isoformat()),
@@ -100,7 +103,8 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
         'coverage': {'discoveredRepositories': len(projects) + len(ledger.get('pending', [])),
                      'trackedRepositories': len(projects), 'updatedRepositories': current,
                      'pendingCandidates': len(ledger.get('pending', [])),
-                     'pendingUpdates': len(projects)-current, 'sourceDate': end, 'totalLimit': None},
+                     'pendingUpdates': len(projects)-current, 'sourceDate': end,
+                     'historyStart': HISTORY_START, 'totalLimit': None},
     }
     output.mkdir(parents=True, exist_ok=True)
     atomic_json(output / 'latest.json', payload)

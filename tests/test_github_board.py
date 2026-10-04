@@ -10,9 +10,11 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import collect_github as github
 from build_github_data import ROOT, build, category, localized_profile
+from collect import period_total
 from collect_github import RateBudget, RateLimitExceeded, collect_history, needs_history, project_from_repo, search_candidates, select_work
 from pack_history import unpack as unpack_history
 from ranking import period_starts
+from validate_data import validate_dataset
 
 
 class GithubBoardTests(unittest.TestCase):
@@ -239,6 +241,26 @@ class GithubBoardTests(unittest.TestCase):
             rows = [project for i in range(bootstrap['listShardCount'])
                     for project in json.loads((output / 'latest-list' / f'{i}.json').read_text())['projects']]
             self.assertEqual({1, 2}, {project['id'] for project in rows})
+
+            # Current daily/yearly metrics must not hide missing early 2025
+            # history in the published coverage count.
+            old_creation = {**ranked, 'createdAt': '2025-01-01T00:00:00Z'}
+            first_current_year = dt.date.fromisoformat(end).replace(month=1, day=1)
+            history = [{'date': (first_current_year + dt.timedelta(days=offset)).isoformat(),
+                        'stars': 1}
+                       for offset in range((dt.date.fromisoformat(end) - first_current_year).days + 1)]
+            days = {entry['date']: entry['stars'] for entry in history}
+            old_creation['history'] = history
+            old_creation['metrics'] = {period: period_total(days, start, end,
+                                                             old_creation['createdAt'])
+                                       for period, start in period_starts(end).items()}
+            source.write_text(json.dumps({'updatedAt': dt.datetime.now(dt.timezone.utc).isoformat(),
+                                          'projects': [old_creation], 'pending': []}))
+            incomplete = build(source=source, output=output)
+            self.assertEqual(0, incomplete['coverage']['updatedRepositories'])
+            self.assertEqual(1, incomplete['coverage']['pendingUpdates'])
+            self.assertEqual('2025-01-01', incomplete['coverage']['historyStart'])
+            validate_dataset(incomplete)
 
 
 if __name__ == '__main__':

@@ -8,6 +8,8 @@ copy. Only official daily values are stored; missing dates remain absent.
 import argparse
 import datetime as dt
 import json
+import os
+import subprocess
 from pathlib import Path
 
 import collect_github as github
@@ -112,7 +114,8 @@ def collect_shard(source, output, start, end, shard_index=0, shard_count=1,
     if shard_count < 1 or not 0 <= shard_index < shard_count or max_requests < 1:
         raise ValueError('Invalid shard or request limit')
     ledger = read_ledger(source)
-    chosen = sorted((p for p in ledger['projects'] if p['id'] % shard_count == shard_index),
+    chosen = sorted((p for p in ledger['projects']
+                     if p.get('stars', 0) >= 10 and p['id'] % shard_count == shard_index),
                     key=lambda p: p['id'])
     requests = attempted = complete = incomplete = errors = 0
     limited = False
@@ -208,6 +211,12 @@ def main():
     if args.action == 'collect':
         if dt.date.fromisoformat(args.start) > dt.date.fromisoformat(args.end):
             parser.error('--start must not follow --end')
+        if not os.environ.get('GITHUB_TOKEN'):
+            result = subprocess.run(['gh', 'auth', 'token'], capture_output=True,
+                                    text=True, check=True)
+            os.environ['GITHUB_TOKEN'] = result.stdout.strip()
+            if not os.environ['GITHUB_TOKEN']:
+                parser.error('GitHub CLI did not return an authenticated token')
         result = collect_shard(args.input, args.output, args.start, args.end,
                                args.shard_index, args.shard_count,
                                args.max_requests, args.project_limit)

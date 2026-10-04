@@ -4,6 +4,7 @@ import json
 import datetime as dt
 from pathlib import Path
 from collect import period_total, is_current
+from collect_github import HISTORY_START, needs_history
 from discover import MIN_STARS, backlog_size, load_state
 from ranking import period_starts, chart_entries
 from taxonomy import KINDS, normalize_ways
@@ -54,7 +55,13 @@ def validate_dataset(data, *, current_taxonomy=False):
   assert coverage['sourceDate']==data['periodEnd'], 'Coverage source day mismatch'
   assert coverage['totalLimit'] is None, 'Unexpected total collection limit'
   assert coverage['trackedRepositories']==len(ids), 'Coverage collection count mismatch'
-  updated=sum(is_current(p,data['periodEnd']) for p in data['projects'])
+  full_history_coverage=coverage.get('historyStart')
+  if full_history_coverage:
+   dt.date.fromisoformat(full_history_coverage)
+   assert full_history_coverage == HISTORY_START, 'Unexpected history coverage start'
+  updated=sum(is_current(p,data['periodEnd']) and
+              (not full_history_coverage or not needs_history(p,data['periodEnd']))
+              for p in data['projects'])
   assert coverage['updatedRepositories']==updated, 'Coverage freshness count mismatch'
   assert coverage['pendingUpdates']==len(ids)-updated, 'Coverage pending update count mismatch'
   assert coverage['discoveredRepositories']>=len(ids), 'Discovered count is below collection count'

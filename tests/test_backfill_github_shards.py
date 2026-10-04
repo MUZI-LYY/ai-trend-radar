@@ -12,6 +12,7 @@ from collect_github import RateLimitExceeded
 
 def project(identity, name='example/repo'):
     return {'id': identity, 'fullName': name, 'createdAt': '2025-01-01T00:00:00Z',
+            'stars': 20,
             'history': [], 'historyStatus': 'unavailable', 'statsThrough': None,
             'metrics': {'daily': None, 'weekly': None, 'monthly': None, 'yearly': None},
             'warnings': ['Star 历史暂不可用'], 'description': 'Preserve metadata'}
@@ -89,6 +90,17 @@ class GithubHistoryBackfillTests(unittest.TestCase):
             self.assertEqual(2, rows[7]['metrics']['yearly'])
             self.assertEqual(1, rows[7]['metrics']['daily'])
             self.assertEqual([], rows[8]['history'])
+
+    def test_skips_repositories_below_ten_stars(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            low = project(7)
+            low['stars'] = 9
+            source = root / 'source.json'
+            source.write_text(json.dumps({'projects': [low, project(8)]}))
+            report = backfill.collect_shard(source, root / 'patches', '2025-01-01',
+                                            '2025-01-02', project_limit=0)
+            self.assertEqual(1, report['projects'])
 
     def test_partial_merge_leaves_missing_metric_null_and_keeps_newer_days(self):
         with tempfile.TemporaryDirectory() as directory:
