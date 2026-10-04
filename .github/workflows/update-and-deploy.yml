@@ -28,6 +28,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Restore canonical data from verified packs
+        run: python -B scripts/restore_data.py
       - name: Test collection and ranking boundaries
         run: python -B -m unittest discover -s tests -v
       - name: Discover candidate repositories with persistent pagination
@@ -45,9 +47,9 @@ jobs:
           RADAR_REST_REQUEST_LIMIT: 700
         run: |
           if [ "$FORCE_REFRESH" = "true" ]; then
-            python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh --force-refresh
+            python -B scripts/collect.py --batch-size 600 --new-limit 300 --no-discover --refresh --force-refresh
           else
-            python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh
+            python -B scripts/collect.py --batch-size 600 --new-limit 300 --no-discover --refresh
           fi
       - name: Collect independent GitHub board
         if: github.event_name != 'push'

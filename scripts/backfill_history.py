@@ -69,6 +69,9 @@ def save_history(payload, directory):
                       'completeProjects': sum(not missing_dates(days, start, end, p['createdAt']) for p, days in zip(eligible, counts)),
                       'projectDays': sum(len(days) for days in counts)})
     save_json(directory / 'history.json', payload)
+    if directory.resolve() == (ROOT / 'public/data').resolve():
+        from pack_history import pack
+        pack()
     save_json(directory / 'history-index.json', {
         'start': dates[0] if dates else None, 'end': dates[-1] if dates else None,
         'dates': dates, 'source': payload['source'], 'scope': payload['scope'],
