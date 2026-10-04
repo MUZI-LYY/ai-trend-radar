@@ -70,9 +70,18 @@ class GithubBoardTests(unittest.TestCase):
         self.assertEqual(39, budget.remaining['core'])
         self.assertEqual('gh', run.call_args_list[1].args[0][0])
 
-    def test_budget_reserves_core_and_search_calls_separately(self):
+    def test_budget_reserves_core_history_and_search_calls_separately(self):
         budget = RateBudget(authenticated=True)
         budget.after('repos/example/repo', {'X-RateLimit-Resource': 'core', 'X-RateLimit-Remaining': '40'})
+        with self.assertRaises(RateLimitExceeded):
+            budget.before('repos/example/repo')
+        budget.after('repos/example/repo/stargazers/history',
+                     {'X-RateLimit-Resource': 'core', 'X-RateLimit-Remaining': '6'})
+        budget.before('repos/example/repo/stargazers/history')
+        with self.assertRaises(RateLimitExceeded):
+            budget.before('repos/example/repo')
+        budget.after('repos/example/repo/stargazers/history',
+                     {'X-RateLimit-Resource': 'core', 'X-RateLimit-Remaining': '5'})
         with self.assertRaises(RateLimitExceeded):
             budget.before('repos/example/repo/stargazers/history')
         budget.before('search/repositories?q=stars%3A%3E100')

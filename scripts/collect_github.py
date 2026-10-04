@@ -40,11 +40,15 @@ class RateBudget:
 
     def __init__(self, authenticated=False):
         self.remaining = {}
-        self.reserve = {'core': 40 if authenticated else 5, 'search': 2}
+        self.reserve = {'core': 40 if authenticated else 5, 'history': 5, 'search': 2}
         self.paused = False
 
     def resource(self, endpoint):
-        return 'search' if endpoint.startswith('search/') else 'core'
+        if endpoint.startswith('search/'):
+            return 'search'
+        if '/stargazers/history' in endpoint:
+            return 'history'
+        return 'core'
 
     def before(self, endpoint):
         if self.paused:
@@ -54,7 +58,9 @@ class RateBudget:
             raise RateLimitExceeded(f'{resource} API reserve reached; continue in the next run')
 
     def after(self, endpoint, headers):
-        resource = header_value(headers, 'X-RateLimit-Resource') or self.resource(endpoint)
+        # The Star history API currently labels its separately resetting quota
+        # as "core"; keep it apart from repository metadata responses.
+        resource = self.resource(endpoint)
         remaining = header_value(headers, 'X-RateLimit-Remaining')
         if resource in self.reserve and remaining is not None:
             self.remaining[resource] = int(remaining)
