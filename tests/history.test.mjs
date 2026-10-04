@@ -73,12 +73,21 @@ test('weekly chart is daily TOP 30 union; only on-chart days contribute, never s
 test('saved daily chart wins over retrospective data and duplicate captures do not double count',()=>{
  const current=weeklyData([weeklyProject(1,{'2026-09-07':900,'2026-09-08':4},{fullName:'org/new-name'})]);
  const original=weeklyData([weeklyProject(1,{}, {fullName:'org/old-name',metrics:{daily:3}})],'2026-09-07',
-  {date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z'});
+  {date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z',coverage:{trackedRepositories:1,updatedRepositories:1}});
  const later={...original,capturedAt:'2026-09-08T12:00:00Z',projects:[weeklyProject(1,{}, {metrics:{daily:999}})]};
  const board=aggregateDailyBoards(current,[later,original]);
  assert.equal(board.rows.length,1);assert.equal(board.rows[0].growth,7);
  assert.equal(board.rows[0].project.fullName,'org/new-name');assert.equal(board.rows[0].appearances,2);
  assert.equal(board.days[0].source,'snapshot');assert.equal(board.days[0].captureDate,'2026-09-08');
+});
+test('partly collected archives are reconstructed from official daily history',()=>{
+ const current=weeklyData([weeklyProject(1,{'2026-09-07':9,'2026-09-08':4})]);
+ const partial=weeklyData([weeklyProject(1,{}, {metrics:{daily:1}})],'2026-09-07',
+  {date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z',coverage:{trackedRepositories:10,updatedRepositories:1}});
+ const board=aggregateDailyBoards(current,[partial]);
+ assert.equal(board.days[0].source,'retrospective');
+ assert.equal(board.days[0].rows[0].growth,9);
+ assert.equal(board.rows[0].growth,13);
 });
 test('missing daily charts are explicit; complete zero days are valid empty charts',()=>{
  const missing=weeklyData([weeklyProject(1,{'2026-09-08':2})]);

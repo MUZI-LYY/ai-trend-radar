@@ -1,13 +1,13 @@
 """Build the cumulative daily TOP 30 index used by the website.
 
-Saved daily charts take precedence. Earlier dates are reconstructed from the
-official per-repository Star history for the currently tracked collection.
+Sufficiently covered saved daily charts take precedence. Other dates are
+reconstructed from official Star history for the currently tracked collection.
 """
 import json
 from collections import defaultdict
 from pathlib import Path
 
-from ranking import daily_leaders
+from ranking import MIN_ARCHIVE_COVERAGE, archive_ready, daily_leaders
 from build_fast_data import publishable_dataset
 
 ROOT = Path(__file__).resolve().parents[1] / 'public' / 'data'
@@ -18,6 +18,7 @@ def cumulative_chart(latest, history, history_index, saved):
     dates = {day for day in history_index['dates'] if day <= end}
     current = {project['id']: project for project in latest['projects']}
     candidates = defaultdict(list)
+    observed = defaultdict(int)
     for record in history['projects']:
         project = current.get(record['id'])
         if project is None:
@@ -25,12 +26,17 @@ def cumulative_chart(latest, history, history_index, saved):
         name = project['fullName'].lower()
         for day in record['days']:
             date, growth = day['date'], day['stars']
-            if date in dates and growth > 0:
-                candidates[date].append((-growth, name, project['id']))
+            if date in dates and date >= project['createdAt'][:10]:
+                observed[date] += 1
+                if growth > 0:
+                    candidates[date].append((-growth, name, project['id']))
+
+    dates = {day for day in dates if (eligible := sum(project['createdAt'][:10] <= day
+                 for project in current.values())) and observed[day] / eligible >= MIN_ARCHIVE_COVERAGE}
 
     archived = {}
     for entry in sorted(saved['entries'], key=lambda item: (item['capturedDate'], item['date'])):
-        if entry['date'] <= end:
+        if entry['date'] <= end and archive_ready(entry):
             archived.setdefault(entry['date'], entry['ids'])
 
     dates.update(archived)

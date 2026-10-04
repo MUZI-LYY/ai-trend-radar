@@ -6,7 +6,7 @@ import argparse, concurrent.futures, datetime as dt, hashlib, json, os, re, subp
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
-from ranking import period_starts, chart_entries
+from ranking import archive_ready, period_starts, chart_entries
 from github_metadata import batch_metadata
 from taxonomy import normalize_ways
 REST_REQUEST_LIMIT = int(os.environ.get('RADAR_REST_REQUEST_LIMIT', '960'))
@@ -379,11 +379,11 @@ def main():
  if missing_history:warnings.append(f'{len(missing_history)} 个项目的部分 Star 历史不可用，缺失指标不参与对应榜单。')
  payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API + GraphQL API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}
  payload['coverage']=coverage
- # First successfully published daily archive is immutable; refresh only changes latest.json.
+ # Freeze the first sufficiently covered daily archive; refresh only changes latest.json.
  # Before 08:00 Beijing the UTC source day has not advanced yet. Do not freeze
  # yesterday's source data into today's archive during an hourly continuation.
  archive_day=(dt.date.fromisoformat(capture_date)-dt.timedelta(days=1)).isoformat()
- if not snapshot_path.exists() and end==archive_day:atomic_json(snapshot_path,payload)
+ if not snapshot_path.exists() and end==archive_day and archive_ready(payload):atomic_json(snapshot_path,payload)
  atomic_json(latest_path,payload)
  index=[{'date':p.stem,'file':'snapshots/'+p.name} for p in sorted(snapshot_path.parent.glob('*.json'),reverse=True)]
  atomic_json(ROOT/'public/data/index.json',{'snapshots':index})

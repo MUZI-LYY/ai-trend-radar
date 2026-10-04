@@ -1,5 +1,5 @@
 import type {Dataset,Project} from './types';
-import {compareNames,priorDay,weekStart} from './ranking';
+import {archiveReady,compareNames,priorDay,weekStart} from './ranking';
 
 export type DailySource='latest'|'snapshot'|'retrospective'|'unavailable';
 export interface DailyBoardRow {project:Project;growth:number;rank:number}
@@ -32,7 +32,8 @@ function dailyBoard(data:Dataset,date:string,source:DailySource,histories?:Map<n
 
 /** Aggregate actual daily chart rows, never the repository-wide weekly metrics.
  * The anchor day's chart matches the selected daily view exactly. Older saved
- * charts are authoritative; unsaved days are visibly reconstructed from day data.
+ * charts with sufficient source coverage are authoritative; other days are
+ * visibly reconstructed from day data.
  * A project contributes only on days it entered that day's positive-growth TOP 30.
  */
 export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:DailySource='latest',failedDates:string[]=[],period:'weekly'|'monthly'|'custom'='weekly',rangeStart?:string):WeeklyBoard {
@@ -43,6 +44,7 @@ export function aggregateDailyBoards(data:Dataset,snapshots:Dataset[],anchor:Dai
  for(const snapshot of [...snapshots].sort((a,b)=>a.capturedAt.localeCompare(b.capturedAt))) {
   if(snapshot.periodEnd<start||snapshot.periodEnd>end)continue;
   if(anchor==='snapshot'&&snapshot.capturedAt>data.capturedAt)continue;
+  if(!archiveReady(snapshot.coverage))continue;
   if(!saved.has(snapshot.periodEnd))saved.set(snapshot.periodEnd,snapshot);
  }
  const dates:string[]=[];

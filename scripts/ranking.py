@@ -2,6 +2,13 @@
 import datetime as dt
 
 DAILY_CHART_SIZE = 30
+MIN_ARCHIVE_COVERAGE = 0.98
+
+def archive_ready(entry):
+ coverage = entry.get('coverage', entry)
+ total = coverage.get('trackedRepositories', 0)
+ updated = coverage.get('updatedRepositories', 0)
+ return total > 0 and updated / total >= MIN_ARCHIVE_COVERAGE
 
 def period_starts(end):
  date = dt.date.fromisoformat(end)
@@ -13,7 +20,13 @@ def daily_leaders(projects):
  return [p['id'] for p in sorted(valid, key=lambda p: (-p['metrics']['daily'], -p['stars'], p['fullName'].lower()))[:DAILY_CHART_SIZE]]
 
 def chart_entry(payload):
- return {'date': payload['periodEnd'], 'capturedDate': payload['date'], 'ids': daily_leaders(payload['projects'])}
+ entry = {'date': payload['periodEnd'], 'capturedDate': payload['date'],
+          'ids': daily_leaders(payload['projects'])}
+ coverage = payload.get('coverage')
+ if coverage:
+  entry['trackedRepositories'] = coverage['trackedRepositories']
+  entry['updatedRepositories'] = coverage['updatedRepositories']
+ return entry
 
 def chart_entries(payloads):
  """Use the first archived observation of a source day, even across capture dates."""

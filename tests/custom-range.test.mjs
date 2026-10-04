@@ -75,7 +75,7 @@ test('custom and monthly/weekly boards agree for identical dates; missing saved 
   const custom=aggregateDailyBoards(data,[],'latest',[],'custom',start);
   assert.deepEqual(custom,standard);
  }
- const saved={...data,date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z',periodEnd:'2026-09-07',projects:[{...data.projects[0],metrics:{daily:10}}]};
+ const saved={...data,date:'2026-09-08',capturedAt:'2026-09-08T00:00:00Z',periodEnd:'2026-09-07',coverage:{trackedRepositories:1,updatedRepositories:1},projects:[{...data.projects[0],metrics:{daily:10}}]};
  assert.equal(aggregateDailyBoards(data,[saved],'latest',[],'custom','2026-09-07').rows[0].growth,14);
  assert.equal(aggregateDailyBoards(data,[],'latest',['2026-09-07'],'custom','2026-09-07').unavailableDays,1);
 });

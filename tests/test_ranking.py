@@ -1,8 +1,13 @@
 import sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
-from ranking import period_starts,daily_leaders,observed_tenure
+from ranking import archive_ready,period_starts,daily_leaders,observed_tenure
 class RankingTests(unittest.TestCase):
+ def test_partial_archive_cannot_be_frozen_as_a_daily_board(self):
+  self.assertFalse(archive_ready({}))
+  self.assertFalse(archive_ready({'coverage':{'trackedRepositories':100,'updatedRepositories':97}}))
+  self.assertTrue(archive_ready({'coverage':{'trackedRepositories':100,'updatedRepositories':98}}))
+
  def test_week_starts_monday(self):
   self.assertEqual(period_starts('2026-09-13')['weekly'],'2026-09-07')
   self.assertEqual(period_starts('2026-09-14')['weekly'],'2026-09-14')

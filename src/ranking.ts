@@ -1,6 +1,9 @@
 import type { Dataset, Project } from './types';
-export interface BoardHistory {chartSize: number; entries: {date:string;capturedDate:string;ids:number[]}[]}
+export interface BoardHistory {chartSize: number; entries: {date:string;capturedDate:string;ids:number[];trackedRepositories?:number;updatedRepositories?:number}[]}
 export interface CumulativeChart {chartSize:number; start:string; end:string; scope:string; entries:{date:string;ids:number[];source:'latest'|'snapshot'|'retrospective'}[]}
+export function archiveReady(coverage?:{trackedRepositories?:number;updatedRepositories?:number}):boolean {
+ return !!coverage?.trackedRepositories&&typeof coverage.updatedRepositories==='number'&&coverage.updatedRepositories/coverage.trackedRepositories>=0.98;
+}
 const dayMs=86400000;
 export const priorDay=(day:string)=>new Date(Date.parse(day+'T00:00:00Z')-dayMs).toISOString().slice(0,10);
 export function weekStart(day:string){const date=new Date(day+'T00:00:00Z');return new Date(date.getTime()-((date.getUTCDay()+6)%7)*dayMs).toISOString().slice(0,10)}
