@@ -42,7 +42,7 @@ function BoardApp({mode}:{mode:'ai'|'github'}){
  const aboutHref=isGithub?'#/github/about':'#/about';
  const projectHref=isGithub?'#/github/project/':'#/project/';
  const dataRoot=isGithub?'data/github/':'data/';
- const historyFile=isGithub?'history.json':'history.json.gz';
+ const historyFile='history.json.gz';
  const stateKey=isGithub?'github-radar:board:v1':boardStateKey;
  const [savedState]=useState(()=>{try{const stored=sessionStorage.getItem(stateKey);const parsed=parseBoardState(stored);return isGithub&&!stored?{...parsed,period:'all' as BoardPeriod}:parsed}catch{return parseBoardState(null)}});
  const [dataCache]=useState(()=>new Map<string,Promise<unknown>>());

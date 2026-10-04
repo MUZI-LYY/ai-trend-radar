@@ -33,6 +33,14 @@ def compact_dist(directory):
         raise ValueError('Current list shards missing from deployment')
     history_path.unlink()
     (directory / 'data/latest.json').unlink()
+    github_dir = directory / 'data/github'
+    if github_dir.exists():
+        github_history = github_dir / 'history.json'
+        github_recovered, _ = unpack_history(github_dir / 'history.json.gz',
+                                             github_dir / 'history-pack.json')
+        if github_recovered != github_history.read_bytes():
+            raise ValueError('Packed GitHub history differs from the complete source')
+        github_history.unlink()
     return {'snapshots': len(snapshots), 'originalBytes': before, 'deployedBytes': after}
 
 

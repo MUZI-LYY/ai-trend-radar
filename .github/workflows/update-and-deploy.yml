@@ -55,7 +55,10 @@ jobs:
         if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -B scripts/collect_github.py --limit 50 --pages 2
+        # At 5,000+ tracked repositories, 240 refresh slots per hour can cover
+        # one full source day while 20 slots remain available for new projects.
+        # The collector stops before the job's 40-minute limit and saves progress.
+        run: python -B scripts/collect_github.py --limit 260 --new-limit 20 --max-seconds 600 --pages 2
       - name: Build independent GitHub board
         run: python -B scripts/build_github_data.py --archive
       - name: Validate published dataset
@@ -68,9 +71,10 @@ jobs:
       - name: Save collected data
         if: github.event_name != 'push'
         run: |
+          python -B scripts/pack_latest.py --source data/github-repositories.json --output data/github-shards
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data data/discovery.json data/latest-shards data/github-repositories.json
+          git add public/data data/discovery.json data/latest-shards data/github-shards
           if ! git diff --cached --quiet; then
             git commit -m 'data: update daily AI trends'
             for attempt in 1 2 3; do

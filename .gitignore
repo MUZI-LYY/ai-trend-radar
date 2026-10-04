@@ -45,11 +45,14 @@ next-env.d.ts
 /public/data/github/latest-list/
 /public/data/github/project-details/
 /public/data/github/history.json
+/public/data/github/history.json.gz
+/public/data/github/history-pack.json
 /public/data/github/history-index.json
 /public/data/github/board-history.json
 /public/data/github/snapshot-boards.json
 /public/data/github/cumulative-chart.json
 /public/data/github/index.json
+/data/github-repositories.json
 /.wrangler/
 /outputs/
 /work/

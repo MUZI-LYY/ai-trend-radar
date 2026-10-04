@@ -10,11 +10,98 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import collect_github as github
 from build_github_data import ROOT, build, category, localized_profile
-from collect_github import RateBudget, RateLimitExceeded, collect_history, needs_history, project_from_repo, search_candidates
+from collect_github import RateBudget, RateLimitExceeded, collect_history, needs_history, project_from_repo, search_candidates, select_work
+from pack_history import unpack as unpack_history
 from ranking import period_starts
 
 
 class GithubBoardTests(unittest.TestCase):
+    def test_hourly_selection_covers_large_board_and_reserves_new_slots(self):
+        end = '2026-10-03'
+        projects = {identity: {'id': identity, 'fullName': f'owner/repo-{identity:04}',
+                               'createdAt': '2025-01-01T00:00:00Z',
+                               'fetchedAt': f'2026-10-02T{identity % 24:02}:00:00+00:00',
+                               'statsThrough': '2026-10-02', 'metrics': {}, 'history': []}
+                    for identity in range(1, 5078)}
+        candidates = {identity: {'id': identity, 'full_name': f'new/repo-{identity}',
+                                 'stargazers_count': identity}
+                      for identity in range(6000, 6040)}
+        selected = select_work(projects, candidates, end, 260, 20)
+        self.assertEqual(260, len(selected))
+        self.assertEqual(240, sum(kind == 'refresh' for kind, _ in selected))
+        self.assertEqual(20, sum(kind == 'new' for kind, _ in selected))
+        self.assertEqual(6039, selected[240][1]['id'])
+        self.assertGreaterEqual(240 * 24, len(projects))
+        # Failed attempts rotate behind untouched projects on the next run.
+        first = selected[0][1]
+        projects[first['id']] = {**first, 'lastAttemptAt': '2026-10-04T00:00:00+00:00'}
+        self.assertNotEqual(first['id'], select_work(projects, {}, end, 260, 20)[0][1]['id'])
+        self.assertEqual(260, len(select_work(projects, {}, end, 260, 20)))
+
+    def test_hourly_collection_saves_completed_work_at_time_budget(self):
+        with tempfile.TemporaryDirectory() as directory:
+            ledger = Path(directory) / 'github-repositories.json'
+            old = [{'id': identity, 'fullName': f'owner/repo-{identity}',
+                    'createdAt': '2025-01-01T00:00:00Z', 'fetchedAt': '2026-10-01T00:00:00+00:00',
+                    'stars': 100, 'statsThrough': None, 'metrics': {}, 'history': []}
+                   for identity in (1, 2)]
+            ledger.write_text(json.dumps({'projects': old, 'pending': [], 'updatedAt': old[0]['fetchedAt']}))
+            metadata = {p['fullName'].lower(): {'id': p['id'], 'full_name': p['fullName'],
+                                                'created_at': p['createdAt'], 'pushed_at': None}
+                        for p in old}
+
+            def refreshed(repo, previous, end):
+                return {**previous, 'fetchedAt': '2026-10-04T01:00:00+00:00',
+                        'statsThrough': end, 'historyStatus': 'ok', 'metrics': {'daily': 1},
+                        'history': [{'date': end, 'stars': 1}]}
+
+            with patch.object(github, 'EXTRAS', ledger), \
+                 patch.object(github, 'batch_metadata', return_value=metadata), \
+                 patch.object(github, 'project_from_repo', side_effect=refreshed), \
+                 patch.object(github.time, 'monotonic', side_effect=[0, 0, 601]):
+                github.collect(limit=2, pages=0, discover=False, new_limit=0, max_seconds=600)
+            saved = {p['id']: p for p in json.loads(ledger.read_text())['projects']}
+            self.assertIsNotNone(saved[1]['statsThrough'])
+            self.assertIsNone(saved[2]['statsThrough'])
+
+    def test_new_candidates_wait_for_complete_history_before_admission(self):
+        end = (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat()
+        existing = {'id': 1, 'fullName': 'owner/existing', 'createdAt': end + 'T00:00:00Z',
+                    'fetchedAt': '2026-10-04T00:00:00+00:00', 'stars': 100,
+                    'statsThrough': end, 'historyStatus': 'ok',
+                    'metrics': {period: 1 for period in period_starts(end)},
+                    'history': [{'date': end, 'stars': 1}]}
+        candidates = [{'id': identity, 'full_name': f'owner/new-{identity}',
+                       'stargazers_count': stars, 'created_at': end + 'T00:00:00Z',
+                       'pushed_at': end + 'T00:00:00Z'}
+                      for identity, stars in ((2, 300), (3, 200), (4, 100))]
+
+        def collected(repo, previous, date):
+            self.assertIsNone(previous)
+            complete = repo['id'] == 2
+            return {'id': repo['id'], 'fullName': repo['full_name'],
+                    'createdAt': repo['created_at'], 'fetchedAt': '2026-10-04T01:00:00+00:00',
+                    'stars': repo['stargazers_count'], 'historyStatus': 'ok',
+                    'statsThrough': date, 'metrics': {period: 1 if complete else None
+                                                      for period in period_starts(date)},
+                    'history': [{'date': date, 'stars': 1}] if complete else []}
+
+        with tempfile.TemporaryDirectory() as directory:
+            ledger = Path(directory) / 'github-repositories.json'
+            ledger.write_text(json.dumps({'projects': [existing], 'pending': candidates,
+                                          'updatedAt': existing['fetchedAt']}))
+            with patch.object(github, 'EXTRAS', ledger), \
+                 patch.object(github, 'batch_metadata', return_value={}), \
+                 patch.object(github, 'project_from_repo', side_effect=collected):
+                github.collect(limit=2, pages=0, discover=False, new_limit=2)
+            saved = json.loads(ledger.read_text())
+            self.assertEqual({1, 2}, {project['id'] for project in saved['projects']})
+            self.assertEqual({3, 4}, {repo['id'] for repo in saved['pending']})
+            self.assertIn('lastAttemptAt', next(repo for repo in saved['pending'] if repo['id'] == 3))
+            selected = select_work({p['id']: p for p in saved['projects']},
+                                   {p['id']: p for p in saved['pending']}, end, 1, 1)
+            self.assertEqual(4, selected[0][1]['id'])
+
     def test_history_backfills_2025_and_schedules_existing_short_histories(self):
         end = '2025-12-31'
         first = dt.date(2024, 12, 29)
@@ -137,6 +224,8 @@ class GithubBoardTests(unittest.TestCase):
             self.assertFalse(next(p for p in result['projects'] if p['id'] == 2)['stale'])
             self.assertIsNone(next(p for p in result['projects'] if p['id'] == 2)['metrics']['daily'])
             history = json.loads((output / 'history.json').read_text())
+            packed, _ = unpack_history(output / 'history.json.gz', output / 'history-pack.json')
+            self.assertEqual((output / 'history.json').read_bytes(), packed)
             self.assertEqual(5, next(p for p in history['projects'] if p['id'] == 1)['days'][-1]['stars'])
             self.assertEqual([], next(p for p in history['projects'] if p['id'] == 2)['days'])
             chart = json.loads((output / 'cumulative-chart.json').read_text())

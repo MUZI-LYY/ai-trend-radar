@@ -10,6 +10,7 @@ from backfill_history import merge_projects, save_history
 from build_fast_data import build as build_fast_data
 from build_tenure_index import cumulative_chart
 from collect import atomic_json, is_current
+from pack_history import pack as pack_history
 from ranking import chart_entries, period_starts
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -120,6 +121,7 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
     history = merge_projects(old, projects, old.get('start', '2025-01-01'), end)
     history['scope'] = SCOPE
     save_history(history, output)
+    pack_history(output / 'history.json', output / 'history.json.gz', output / 'history-pack.json')
     history_index = json.loads((output / 'history-index.json').read_text())
     chart = cumulative_chart(payload, history, history_index, {'entries': entries})
     atomic_json(output / 'cumulative-chart.json', chart)

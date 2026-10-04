@@ -10,12 +10,14 @@ import json
 import os
 import re
 import subprocess
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 from urllib.parse import quote
 
 from collect import atomic_json, flatten_history, period_total, strip_readme
+from github_metadata import batch_metadata
 from ranking import period_starts
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -284,14 +286,30 @@ def project_from_repo(repo, previous, end, fetch_history=True):
     }
 
 
-def collect(limit=40, pages=2, discover=True):
+def select_work(projects, candidates, end, limit, new_limit):
+    """Refresh overdue projects fairly while reserving a bounded discovery lane."""
+    due = sorted((p for p in projects.values() if needs_history(p, end)),
+                 key=lambda p: (p.get('lastAttemptAt', p.get('fetchedAt', '')),
+                                p['fullName'].lower()))
+    fresh = sorted((r for r in candidates.values() if r['id'] not in projects),
+                   key=lambda r: (r.get('lastAttemptAt', ''),
+                                  -r.get('stargazers_count', 0), r['full_name'].lower()))
+    new_count = min(len(fresh), new_limit, limit)
+    return ([('refresh', p) for p in due[:limit - new_count]] +
+            [('new', p) for p in fresh[:new_count]])
+
+
+def collect(limit=260, pages=2, discover=True, new_limit=20, max_seconds=600):
+    started = time.monotonic()
     now = dt.datetime.now(dt.timezone.utc)
     end = (now.date() - dt.timedelta(days=1)).isoformat()
     previous = json.loads(EXTRAS.read_text()) if EXTRAS.exists() else {'projects': [], 'pending': []}
     by_id = {project['id']: project for project in previous['projects']}
     candidates = {repo['id']: repo for repo in previous.get('pending', [])}
     discovered, cursors = search_candidates(end, pages, previous.get('searchCursor', {})) if discover else ({}, previous.get('searchCursor', {}))
-    candidates.update(discovered)
+    for identity, repo in discovered.items():
+        previous_attempt = candidates.get(identity, {}).get('lastAttemptAt')
+        candidates[identity] = {**repo, **({'lastAttemptAt': previous_attempt} if previous_attempt else {})}
     if discover:
         try:
             for name in trending_names()[:8]:
@@ -301,18 +319,26 @@ def collect(limit=40, pages=2, discover=True):
             print(f'Trending lookup paused: {error}', flush=True)
         except Exception as error:
             print(f'Trending discovery incomplete: {error}', flush=True)
-    # Refresh tracked projects first, then add highest-Star and recent candidates.
-    due = sorted((p for p in by_id.values() if needs_history(p, end)),
-                 key=lambda p: (p.get('statsThrough') == end, p.get('fetchedAt', '')))
-    fresh = sorted((r for r in candidates.values() if r['id'] not in by_id),
-                   key=lambda r: (-r.get('stargazers_count', 0), r['full_name'].lower()))
-    selected = [('refresh', p) for p in due[:limit if not fresh else max(1, limit // 2)]]
-    selected += [('new', p) for p in fresh[:max(0, limit - len(selected))]]
+    selected = select_work(by_id, candidates, end, limit, new_limit)
+    # The AI collector already uses GraphQL batching for repository metadata.
+    # One query can refresh 25 existing repositories, leaving REST history calls
+    # as the main per-project cost. Missing GraphQL nodes fall back to REST.
+    metadata = batch_metadata([item['fullName'] for kind, item in selected
+                               if kind == 'refresh'])
     changed = 0
     for kind, item in selected:
+        if time.monotonic() - started >= max_seconds:
+            print('Collection time budget reached; remaining projects continue in the next run', flush=True)
+            break
         try:
-            repo = api('repos/' + item['fullName']) if kind == 'refresh' else item
+            repo = (metadata.get(item['fullName'].lower()) or api('repos/' + item['fullName'])) if kind == 'refresh' else item
+            if not repo.get('pushed_at'):
+                repo['pushed_at'] = repo['created_at']
             result = project_from_repo(repo, by_id.get(repo['id']), end)
+            if kind == 'new' and (result['historyStatus'] != 'ok' or needs_history(result, end)):
+                candidates[item['id']] = {**repo, 'lastAttemptAt': dt.datetime.now(dt.timezone.utc).isoformat()}
+                print(f'{repo["full_name"]}: Star history incomplete; retained as pending candidate', flush=True)
+                continue
             by_id[result['id']] = result
             changed += 1
             candidates.pop(result['id'], None)
@@ -324,13 +350,17 @@ def collect(limit=40, pages=2, discover=True):
             raise
         except Exception as error:
             print(f'{item.get("fullName", item.get("full_name"))}: {error}', flush=True)
-    # Search already returned official repository metadata. Admit it for the
-    # cumulative board; period ranks wait for independently fetched history.
-    for repo in candidates.values():
-        if repo['id'] not in by_id:
-            by_id[repo['id']] = project_from_repo(repo, None, end, fetch_history=False)
-            changed += 1
-    pending = []
+            if kind == 'refresh':
+                # A deleted or temporarily unavailable repository must not
+                # monopolize the same slot on every hourly run.
+                by_id[item['id']] = {**item, 'lastAttemptAt': dt.datetime.now(dt.timezone.utc).isoformat()}
+                changed += 1
+            else:
+                candidates[item['id']] = {**item, 'lastAttemptAt': dt.datetime.now(dt.timezone.utc).isoformat()}
+    # Discovery expands the candidate queue, not the published board. A new
+    # repository enters the board only after its official history is complete.
+    pending = sorted((repo for repo in candidates.values() if repo['id'] not in by_id),
+                     key=lambda repo: (-repo.get('stargazers_count', 0), repo['full_name'].lower()))
     atomic_json(EXTRAS, {'schemaVersion': 1, 'updatedAt': dt.datetime.now(dt.timezone.utc).isoformat() if changed else previous.get('updatedAt', now.isoformat()),
                          'projects': sorted(by_id.values(), key=lambda p: (-p['stars'], p['fullName'].lower())),
                          'pending': pending, 'searchCursor': cursors})
@@ -339,13 +369,15 @@ def collect(limit=40, pages=2, discover=True):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--limit', type=int, default=40)
+    parser.add_argument('--limit', type=int, default=260)
     parser.add_argument('--pages', type=int, default=2)
+    parser.add_argument('--new-limit', type=int, default=20)
+    parser.add_argument('--max-seconds', type=int, default=600)
     parser.add_argument('--no-discover', action='store_true')
     args = parser.parse_args()
-    if args.limit < 1 or args.pages < 0:
-        parser.error('limit must be positive and pages nonnegative')
+    if args.limit < 1 or args.pages < 0 or args.new_limit < 0 or args.max_seconds < 1:
+        parser.error('limit and max-seconds must be positive; pages and new-limit nonnegative')
     try:
-        print(collect(args.limit, args.pages, not args.no_discover))
+        print(collect(args.limit, args.pages, not args.no_discover, args.new_limit, args.max_seconds))
     except AuthenticationError as error:
         parser.exit(2, str(error) + '\n')
