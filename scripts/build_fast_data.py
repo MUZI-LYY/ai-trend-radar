@@ -101,6 +101,30 @@ def publishable_dataset(latest):
                          'pendingUpdates': count - updated}}
 
 
+def build_archived_boards(source, completed_at):
+    """Keep covered archived TOP 30s in one small request for week/month views."""
+    index_path = source / 'board-history.json'
+    entries = json.loads(index_path.read_text())['entries'] if index_path.exists() else []
+    boards = []
+    for entry in entries:
+        tracked = entry.get('trackedRepositories', 0)
+        if not tracked or entry.get('updatedRepositories', 0) / tracked < READY_COVERAGE_RATIO:
+            continue
+        snapshot = json.loads((source / 'snapshots' / (entry['capturedDate'] + '.json')).read_text())
+        leaders = sorted((project for project in snapshot['projects']
+                          if not project.get('stale') and (project['metrics'].get('daily') or 0) > 0),
+                         key=lambda project: (-project['metrics']['daily'], -project['stars'],
+                                              project['fullName'].lower()))[:30]
+        if [project['id'] for project in leaders] != entry['ids']:
+            raise ValueError('Archived daily chart changed: ' + entry['date'])
+        board = {key: value for key, value in snapshot.items() if key != 'projects'}
+        board['projects'] = [{**{key: value for key, value in project.items()
+                                 if key not in ('history', 'readme')},
+                              'history': [], 'readme': ''} for project in leaders]
+        boards.append(board)
+    write_json(source / 'snapshot-boards.json', {'completedAt': completed_at, 'snapshots': boards})
+
+
 def build(source=DATA):
     latest = publishable_dataset(json.loads((source / 'latest.json').read_text()))
     bootstrap = {key: value for key, value in latest.items() if key != 'projects'}
@@ -147,6 +171,7 @@ def build(source=DATA):
         for path in directory.glob('*.json'):
             if path.stem.isdecimal() and int(path.stem) >= count:
                 path.unlink()
+    build_archived_boards(source, latest['completedAt'])
     # This file was used by the previous unsplit client build.
     (source / 'latest-summary.json').unlink(missing_ok=True)
 

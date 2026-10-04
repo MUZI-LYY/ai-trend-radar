@@ -7,6 +7,33 @@ from scripts.build_fast_data import build, publishable_dataset
 
 
 class FastDataTests(unittest.TestCase):
+    def test_archived_bundle_keeps_only_covered_daily_charts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'snapshots').mkdir()
+            project = {'id': 1, 'fullName': 'o/p1', 'createdAt': '2026-01-01',
+                       'stars': 100, 'metrics': {'daily': 8}, 'stale': False,
+                       'history': [{'date': '2026-10-02', 'stars': 8}], 'readme': 'Source'}
+            latest = {'date': '2026-10-03', 'periodEnd': '2026-10-02',
+                      'completedAt': 'v1', 'projects': [project]}
+            (root / 'latest.json').write_text(json.dumps(latest))
+            for captured, day in [('2026-10-02', '2026-10-01'),
+                                  ('2026-10-03', '2026-10-02')]:
+                (root / 'snapshots' / f'{captured}.json').write_text(json.dumps({
+                    **latest, 'date': captured, 'periodEnd': day}))
+            (root / 'board-history.json').write_text(json.dumps({'entries': [
+                {'date': '2026-10-01', 'capturedDate': '2026-10-02', 'ids': [1],
+                 'trackedRepositories': 100, 'updatedRepositories': 100},
+                {'date': '2026-10-02', 'capturedDate': '2026-10-03', 'ids': [1],
+                 'trackedRepositories': 100, 'updatedRepositories': 30},
+            ]}))
+            build(root)
+            bundle = json.loads((root / 'snapshot-boards.json').read_text())
+            self.assertEqual(bundle['completedAt'], 'v1')
+            self.assertEqual([board['date'] for board in bundle['snapshots']], ['2026-10-02'])
+            self.assertEqual([p['id'] for p in bundle['snapshots'][0]['projects']], [1])
+            self.assertEqual(bundle['snapshots'][0]['projects'][0]['history'], [])
+
     def test_newest_well_covered_day_skips_partly_collected_intermediate_day(self):
         projects = []
         for i in range(10):

@@ -95,15 +95,19 @@ export default function App(){
   const target=period==='custom'?customResult!.boardData:data;const start=period==='custom'?customRange!.start:target.periodStarts[aggregatePeriod as 'weekly'|'monthly'];
   const anchor=period==='custom'?customResult!.anchor:retrospective?'retrospective':date==='latest'?'latest':'snapshot';
   const records=boardHistory.entries.filter(e=>e.date>=start&&e.date<target.periodEnd&&archiveReady(e));
-  void Promise.all(records.map(async record=>{
-   const file=`snapshots/${record.capturedDate}.json`;
-   try{
-    if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`data/${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('日榜快照读取失败');return r.json()}).catch(error=>{dataCache.delete(file);throw error}));
-    return {data:await dataCache.get(file) as Dataset,date:record.date};
-   }catch{return {data:null,date:record.date}}
-  })).then(async results=>{
+  if(!records.length){
+   setWeeklyResult({key:weeklyKey,board:aggregateDailyBoards(target,[],anchor,[],aggregatePeriod,customRange?.start)});
+   setWeeklyLoading(false);
+   return()=>{ignore=true};
+  }
+  const file='snapshot-boards.json';
+  if(!dataCache.has(file))dataCache.set(file,fetch(import.meta.env.BASE_URL+`data/${file}`,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('日榜快照读取失败');return r.json()}).catch(error=>{dataCache.delete(file);throw error}));
+  void (dataCache.get(file) as Promise<{completedAt:string;snapshots:Dataset[]}>).then(async bundle=>{
    const latest=await dataCache.get('latest-full') as Dataset;
    if(ignore)return;
+   if(bundle.completedAt!==latest.completedAt)throw Error('榜单正在更新，请重新加载。');
+   const byCapture=new Map(bundle.snapshots.map(snapshot=>[snapshot.date,snapshot]));
+   const results=records.map(record=>({data:byCapture.get(record.capturedDate)??null,date:record.date}));
    const snapshots=results.flatMap(r=>r.data?[withLatestProfiles(r.data,latest)]:[]);
    setWeeklyResult({key:weeklyKey,board:aggregateDailyBoards(target,snapshots,anchor,anchor==='snapshot'?results.filter(r=>!r.data).map(r=>r.date):[],aggregatePeriod,customRange?.start)});
   }).catch(error=>{if(!ignore)setWeeklyError(String(error))}).finally(()=>{if(!ignore)setWeeklyLoading(false)});
