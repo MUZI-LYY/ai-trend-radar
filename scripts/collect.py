@@ -16,6 +16,9 @@ _rest_lock = threading.Lock()
 class RequestBudgetExceeded(RuntimeError):
  pass
 
+class RepositoryUnavailable(RuntimeError):
+ pass
+
 def reserve_rest_request():
  global _rest_requests
  with _rest_lock:
@@ -55,6 +58,8 @@ def api(endpoint, *, raw=False):
    if result.returncode:raise RuntimeError(result.stderr.strip()[:180])
    return result.stdout if raw else json.loads(result.stdout)
   except (urllib.error.HTTPError,urllib.error.URLError,RuntimeError,subprocess.TimeoutExpired,json.JSONDecodeError) as e:
+   if '404' in str(e) and re.fullmatch(r'repos/[^/?]+/[^/?]+',endpoint):
+    raise RepositoryUnavailable(f'{endpoint}: public repository unavailable') from None
    if attempt==2 or ('404' in str(e)):raise RuntimeError(f'{endpoint.split("?")[0]}: {e}') from None
    time.sleep(2**attempt*3)
 
@@ -357,6 +362,8 @@ def main():
     else:record_attempt(discovery,name,'rejected')
    except RequestBudgetExceeded:
     budget_deferred.add(name.lower())
+   except RepositoryUnavailable:
+    record_attempt(discovery,name,'rejected')
    except Exception as e:
     failures.append(name);record_attempt(discovery,name,'retry');print(f'Failed {name}: {e}',file=sys.stderr,flush=True)
  save_state(discovery)

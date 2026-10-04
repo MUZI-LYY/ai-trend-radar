@@ -9,6 +9,12 @@ from validate_data import validate_dataset
 
 
 class CollectionGuardTests(unittest.TestCase):
+ def test_missing_public_repository_is_rejected_without_retrying(self):
+  with mock.patch.dict(c.os.environ,{'GITHUB_TOKEN':''}), \
+       mock.patch.object(c.subprocess,'run',return_value=mock.Mock(returncode=1,stderr='HTTP 404: Not Found')):
+   with self.assertRaises(c.RepositoryUnavailable):
+    c.api('repos/owner/deleted')
+
  def test_request_budget_exhaustion_never_becomes_missing_source_history(self):
   repo={'id':1,'full_name':'o/real','name':'real','private':False,'fork':False,
         'disabled':False,'created_at':'2026-01-01T00:00:00Z'}
