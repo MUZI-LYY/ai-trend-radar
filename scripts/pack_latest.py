@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Losslessly store the canonical latest dataset in small compressed shards."""
 import argparse
+from contextlib import ExitStack
 import gzip
 import hashlib
+import io
 import json
 from pathlib import Path
 
@@ -32,10 +34,14 @@ def pack(source=LATEST, output=SHARDS_DIR):
     output.mkdir(parents=True, exist_ok=True)
     metadata = {key: value for key, value in dataset.items() if key != 'projects'}
     write_json(output / 'metadata.json', metadata)
-    handles = [gzip.open(output / f'{index:02x}.jsonl.gz.tmp', 'wt', encoding='utf-8',
-                         compresslevel=6) for index in range(SHARDS)]
     counts = [0] * SHARDS
-    try:
+    with ExitStack() as stack:
+        handles = []
+        for index in range(SHARDS):
+            raw = stack.enter_context((output / f'{index:02x}.jsonl.gz.tmp').open('wb'))
+            compressed = stack.enter_context(gzip.GzipFile(
+                filename='', mode='wb', fileobj=raw, compresslevel=6, mtime=0))
+            handles.append(stack.enter_context(io.TextIOWrapper(compressed, encoding='utf-8')))
         seen = set()
         for order, project in enumerate(dataset['projects']):
             identity = project['id']
@@ -46,9 +52,6 @@ def pack(source=LATEST, output=SHARDS_DIR):
             handles[index].write(json.dumps({'order': order, 'project': project},
                                             ensure_ascii=False, separators=(',', ':')) + '\n')
             counts[index] += 1
-    finally:
-        for handle in handles:
-            handle.close()
     files = []
     for index, count in enumerate(counts):
         temporary = output / f'{index:02x}.jsonl.gz.tmp'

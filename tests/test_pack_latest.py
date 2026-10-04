@@ -19,6 +19,10 @@ class LatestShardTests(unittest.TestCase):
                 'coverage': {'pendingCandidates': 10}}
             source.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + '\n')
             manifest = pack(source, shards)
+            first_bytes = [(shards / item['file']).read_bytes() for item in manifest['files']]
+            self.assertEqual(manifest, pack(source, shards))
+            self.assertEqual(first_bytes,
+                             [(shards / item['file']).read_bytes() for item in manifest['files']])
             self.assertEqual(manifest['projectCount'], 2)
             restore(shards, recovered)
             self.assertEqual(recovered.read_bytes(), source.read_bytes())
