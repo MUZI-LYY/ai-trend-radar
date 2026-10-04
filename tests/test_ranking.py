@@ -10,16 +10,19 @@ class RankingTests(unittest.TestCase):
   self.assertEqual(period_starts('2026-01-01')['weekly'],'2025-12-29')
  def test_week_crosses_month(self):
   self.assertEqual(period_starts('2026-09-01')['weekly'],'2026-08-31')
- def test_tenure_counts_consecutive_observed_days(self):
+ def test_tenure_counts_observed_days(self):
   history=[{'date':'2026-09-11','ids':[1]},{'date':'2026-09-12','ids':[1]}]
   self.assertEqual(observed_tenure(1,'2026-09-13',[1],history),{'days':3,'since':'2026-09-11'})
  def test_same_day_refresh_does_not_double_count(self):
   history=[{'date':'2026-09-12','ids':[1]},{'date':'2026-09-13','ids':[1]}]
   self.assertEqual(observed_tenure(1,'2026-09-13',[1],history)['days'],2)
- def test_gap_or_leaving_chart_restarts(self):
-  for history in [[{'date':'2026-09-11','ids':[1]}],[{'date':'2026-09-12','ids':[2]}]]:
-   self.assertEqual(observed_tenure(1,'2026-09-13',[1],history)['days'],1)
-  self.assertIsNone(observed_tenure(1,'2026-09-13',[2],[]))
+ def test_cross_month_and_reentry_keep_earlier_days(self):
+  history=[{'date':'2026-09-29','ids':[1]},{'date':'2026-09-30','ids':[1]},
+           {'date':'2026-10-01','ids':[2]},{'date':'2026-10-02','ids':[1]}]
+  self.assertEqual(observed_tenure(1,'2026-10-03',[1],history),{'days':4,'since':'2026-09-29'})
+  self.assertEqual(observed_tenure(1,'2026-10-03',[2],history),{'days':3,'since':'2026-09-29'})
+  self.assertEqual(observed_tenure(2,'2026-10-03',[1],history),{'days':1,'since':'2026-10-01'})
+  self.assertEqual(observed_tenure(3,'2026-10-03',[1],history),{'days':0,'since':''})
  def test_global_top_30_excludes_stale_and_null(self):
   projects=[{'id':i,'fullName':f'o/r{i}','stars':100-i,'metrics':{'daily':i}} for i in range(35)]
   projects[34]['stale']=True;projects[33]['metrics']['daily']=None

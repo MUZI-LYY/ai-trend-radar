@@ -18,8 +18,13 @@ export function compareNames(a:string,b:string){const left=a.toLowerCase(),right
 export function dailyLeaders(projects:Project[],limit=30){return projects.filter(p=>!p.stale&&(p.metrics.daily??0)>0).sort((a,b)=>b.metrics.daily!-a.metrics.daily!||b.stars-a.stars||compareNames(a.fullName,b.fullName)).slice(0,limit).map(p=>p.id)}
 export function tenure(id:number,end:string,currentIds:number[],history:BoardHistory|null){
  if(!history)return null;
- if(!currentIds.includes(id))return {days:0,since:''};
- const entries=new Map<string,number[]>();for(const e of history.entries.slice().sort((a,b)=>a.capturedDate.localeCompare(b.capturedDate))){if(e.date<end&&!entries.has(e.date))entries.set(e.date,e.ids)}let since=end,days=1;
- while(entries.get(priorDay(since))?.includes(id)){since=priorDay(since);days++}
- return {days,since};
+ const seen=new Set<string>(),dates:string[]=[];
+ for(const entry of history.entries.slice().sort((a,b)=>a.capturedDate.localeCompare(b.capturedDate))){
+  if(entry.date>=end||seen.has(entry.date))continue;
+  seen.add(entry.date);
+  if(entry.ids.includes(id))dates.push(entry.date);
+ }
+ if(currentIds.includes(id))dates.push(end);
+ dates.sort();
+ return {days:dates.length,since:dates[0]??''};
 }

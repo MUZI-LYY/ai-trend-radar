@@ -24,11 +24,9 @@ def chart_entries(payloads):
  return [entries[date] for date in sorted(entries)]
 
 def observed_tenure(project_id, end, current_ids, entries):
- if project_id not in current_ids: return None
  by_date = {}
  for entry in sorted(entries,key=lambda e:e.get('capturedDate',e['date'])):
   if entry['date'] < end:by_date.setdefault(entry['date'],set(entry['ids']))
- date = dt.date.fromisoformat(end); days = 1
- while project_id in by_date.get((date-dt.timedelta(days=1)).isoformat(), set()):
-  date -= dt.timedelta(days=1); days += 1
- return {'days': days, 'since': date.isoformat()}
+ dates = [date for date, ids in by_date.items() if project_id in ids]
+ if project_id in current_ids: dates.append(end)
+ return {'days': len(dates), 'since': min(dates) if dates else ''}
