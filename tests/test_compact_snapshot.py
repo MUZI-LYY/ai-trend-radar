@@ -1,9 +1,12 @@
 import sys
+import json
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from compact_snapshot import compact, verify
+from compact_snapshot import HISTORY_DAYS, compact, verify
+from compact_dist import compact_dist
 from ranking import daily_leaders
 
 
@@ -22,8 +25,50 @@ class CompactSnapshotTests(unittest.TestCase):
         self.assertEqual(verify(original, reduced), 2)
         self.assertEqual(daily_leaders(reduced['projects']), daily_leaders(original['projects']))
         self.assertEqual(reduced['projects'][0]['summary'], 'reviewed description')
-        self.assertEqual(reduced['projects'][0]['history'], [])
+        self.assertEqual(reduced['projects'][0]['history'], projects[0]['history'])
+        self.assertEqual(reduced['projects'][0]['readme'], 'source text')
+
+    def test_readme_is_removed_only_when_current_profile_can_restore_it(self):
+        historical = {'projects': [
+            {'id': 1, 'editorial': False, 'readme': 'historical source'},
+            {'id': 2, 'editorial': True, 'readme': 'reviewed source'},
+            {'id': 3, 'editorial': False, 'readme': 'removed project source'},
+        ]}
+        latest = {'projects': [
+            {'id': 1, 'editorial': False, 'readme': 'current source'},
+            {'id': 2, 'editorial': False, 'readme': 'unreviewed source'},
+        ]}
+        reduced = compact(historical, latest)
         self.assertNotIn('readme', reduced['projects'][0])
+        self.assertEqual(reduced['projects'][1]['readme'], 'reviewed source')
+        self.assertEqual(reduced['projects'][2]['readme'], 'removed project source')
+        self.assertEqual(verify(historical, reduced, latest), 3)
+
+    def test_visible_history_spans_survive_compaction(self):
+        history = [{'date': str(index), 'stars': index} for index in range(400)]
+        original = {'projects': [{'id': 1, 'history': history, 'readme': 'source text'}]}
+        reduced = compact(original)
+        for span in (14, 30, 90, 365):
+            self.assertEqual(reduced['projects'][0]['history'][-span:], history[-span:])
+        self.assertEqual(len(reduced['projects'][0]['history']), HISTORY_DAYS)
+
+    def test_only_deployment_copy_is_compacted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            snapshot = root / 'data/snapshots/2026-10-04.json'
+            snapshot.parent.mkdir(parents=True)
+            data = {'date': '2026-10-04', 'periodEnd': '2026-10-03',
+                    'capturedAt': '2026-10-04T00:00:00Z', 'projects': [
+                        {'id': 1, 'fullName': 'o/r', 'stars': 5, 'metrics': {'daily': 2},
+                         'history': [{'date': '2026-10-03', 'stars': 2}], 'readme': 'large text'}]}
+            snapshot.write_text(json.dumps(data))
+            (root / 'data/latest.json').write_text(json.dumps({'projects': [
+                {'id': 1, 'editorial': False, 'readme': 'current source'}]}))
+            result = compact_dist(root)
+            self.assertEqual(result['snapshots'], 1)
+            project = json.loads(snapshot.read_text())['projects'][0]
+            self.assertEqual(project['history'], data['projects'][0]['history'])
+            self.assertNotIn('readme', project)
 
 
 if __name__ == '__main__':

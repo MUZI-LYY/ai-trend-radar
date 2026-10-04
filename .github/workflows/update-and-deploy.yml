@@ -82,6 +82,8 @@ jobs:
         run: node --test tests/*.test.mjs
       - run: npm run lint
       - run: npm run build
+      - name: Compact deployment snapshots
+        run: python -B scripts/compact_dist.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
