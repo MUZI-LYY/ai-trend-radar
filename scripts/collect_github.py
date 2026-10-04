@@ -20,6 +20,7 @@ from ranking import period_starts
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTRAS = ROOT / 'data/github-repositories.json'
+HISTORY_START = '2025-01-01'
 
 
 class RateLimitExceeded(RuntimeError):
@@ -183,7 +184,7 @@ def collect_history(repo, previous, end):
     status = 'ok'
     latest_ok = False
     try:
-        for page in range(1, 4):
+        for page in range(1, 16):
             weeks = api(f'repos/{repo["full_name"]}/stargazers/history?per_page=30&page={page}')
             if not isinstance(weeks, list) or (page == 1 and not weeks):
                 raise ValueError('Star history unavailable')
@@ -192,7 +193,7 @@ def collect_history(repo, previous, end):
             values.update(flatten_history(weeks, end))
             if page == 1:
                 latest_ok = True
-            if period_total(values, end[:4] + '-01-01', end, repo['created_at']) is not None or len(weeks) < 30:
+            if period_total(values, HISTORY_START, end, repo['created_at']) is not None or len(weeks) < 30:
                 break
     except RateLimitExceeded:
         raise
@@ -202,6 +203,13 @@ def collect_history(repo, previous, end):
     metrics = {period: period_total(values, start, end, repo['created_at']) if status == 'ok' else None
                for period, start in starts.items()}
     return status, metrics, [{'date': date, 'stars': count} for date, count in sorted(values.items())]
+
+
+def needs_history(project, end):
+    if project.get('statsThrough') != end or any(value is None for value in project.get('metrics', {}).values()):
+        return True
+    days = {day['date']: day['stars'] for day in project.get('history', [])}
+    return period_total(days, HISTORY_START, end, project['createdAt']) is None
 
 
 def readme_from_github(repo, previous, fetch):
@@ -288,8 +296,7 @@ def collect(limit=40, pages=2, discover=True):
         except Exception as error:
             print(f'Trending discovery incomplete: {error}', flush=True)
     # Refresh tracked projects first, then add highest-Star and recent candidates.
-    due = sorted((p for p in by_id.values() if p.get('statsThrough') != end or
-                  any(value is None for value in p.get('metrics', {}).values())),
+    due = sorted((p for p in by_id.values() if needs_history(p, end)),
                  key=lambda p: (p.get('statsThrough') == end, p.get('fetchedAt', '')))
     fresh = sorted((r for r in candidates.values() if r['id'] not in by_id),
                    key=lambda r: (-r.get('stargazers_count', 0), r['full_name'].lower()))

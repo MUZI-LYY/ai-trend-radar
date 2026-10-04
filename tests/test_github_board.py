@@ -10,11 +10,37 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import collect_github as github
 from build_github_data import ROOT, build, category, localized_profile
-from collect_github import RateBudget, RateLimitExceeded, project_from_repo, search_candidates
+from collect_github import RateBudget, RateLimitExceeded, collect_history, needs_history, project_from_repo, search_candidates
 from ranking import period_starts
 
 
 class GithubBoardTests(unittest.TestCase):
+    def test_history_backfills_2025_and_schedules_existing_short_histories(self):
+        end = '2025-12-31'
+        first = dt.date(2024, 12, 29)
+        weeks = [{'week': int(dt.datetime.combine(first + dt.timedelta(weeks=offset),
+                  dt.time(), dt.timezone.utc).timestamp()), 'total': 0, 'days': [0] * 7}
+                 for offset in range(53)]
+        weeks.reverse()
+        calls = []
+
+        def historical_page(endpoint):
+            page = int(endpoint.split('page=')[-1])
+            calls.append(page)
+            return weeks[(page - 1) * 30:page * 30]
+
+        repo = {'full_name': 'example/repo', 'created_at': '2025-01-01T00:00:00Z'}
+        with patch.object(github, 'api', side_effect=historical_page):
+            status, metrics, history = collect_history(repo, None, end)
+        self.assertEqual('ok', status)
+        self.assertEqual([1, 2], calls)
+        self.assertEqual(0, metrics['yearly'])
+        self.assertEqual('2025-01-01', history[3]['date'])
+        complete = {'statsThrough': end, 'createdAt': repo['created_at'],
+                    'metrics': metrics, 'history': history}
+        self.assertFalse(needs_history(complete, end))
+        self.assertTrue(needs_history({**complete, 'history': history[210:]}, end))
+
     def test_curated_chinese_explanations_and_new_project_fallback(self):
         ledger = json.loads((ROOT / 'data/github-repositories.json').read_text())
         profiles = json.loads((ROOT / 'data/github-profiles.json').read_text())
