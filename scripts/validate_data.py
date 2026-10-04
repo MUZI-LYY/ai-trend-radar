@@ -1,4 +1,5 @@
 """Validate both current data and immutable archives against their source day counts."""
+import argparse
 import json
 import datetime as dt
 from pathlib import Path
@@ -100,16 +101,19 @@ def validate_history(history, index, latest):
  return len(expected)
 
 
-def main():
- root = Path(__file__).resolve().parents[1] / 'public/data'
+def main(directory=None):
+ default = Path(__file__).resolve().parents[1] / 'public/data'
+ root = Path(directory) if directory else default
  latest = json.loads((root / 'latest.json').read_text())
- count = validate_dataset(latest, current_taxonomy=True)
- excluded_path = root.parents[1] / 'data/excluded.json'
- excluded = json.loads(excluded_path.read_text()) if excluded_path.exists() else []
- discovery = load_state(root.parents[1] / 'data/discovery.json')
- assert all(candidate.get('stars', 0) >= MIN_STARS for candidate in discovery['candidates'].values()), 'Below-minimum discovery candidate'
- assert latest['coverage']['pendingCandidates'] == backlog_size(
-  discovery, latest['projects'], excluded), 'Pending queue count mismatch'
+ is_ai_board = root.resolve() == default.resolve()
+ count = validate_dataset(latest, current_taxonomy=is_ai_board)
+ if is_ai_board:
+  excluded_path = root.parents[1] / 'data/excluded.json'
+  excluded = json.loads(excluded_path.read_text()) if excluded_path.exists() else []
+  discovery = load_state(root.parents[1] / 'data/discovery.json')
+  assert all(candidate.get('stars', 0) >= MIN_STARS for candidate in discovery['candidates'].values()), 'Below-minimum discovery candidate'
+  assert latest['coverage']['pendingCandidates'] == backlog_size(
+   discovery, latest['projects'], excluded), 'Pending queue count mismatch'
  index = json.loads((root / 'index.json').read_text())
  archives = []
  for snapshot in index['snapshots']:
@@ -128,4 +132,7 @@ def main():
 
 
 if __name__ == '__main__':
- main()
+ parser=argparse.ArgumentParser()
+ parser.add_argument('--directory',help='Dataset directory; defaults to the AI board')
+ args=parser.parse_args()
+ main(args.directory)

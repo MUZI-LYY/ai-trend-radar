@@ -37,6 +37,17 @@ next-env.d.ts
 /public/data/latest-slim.json
 /public/data/snapshot-boards.json
 /public/data/project-details/
+/public/data/latest-list/
+/public/data/github/latest.json
+/public/data/github/latest-bootstrap.json
+/public/data/github/latest-list/
+/public/data/github/project-details/
+/public/data/github/history.json
+/public/data/github/history-index.json
+/public/data/github/board-history.json
+/public/data/github/snapshot-boards.json
+/public/data/github/cumulative-chart.json
+/public/data/github/index.json
 /.wrangler/
 /outputs/
 /work/

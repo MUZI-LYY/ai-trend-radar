@@ -42,23 +42,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FORCE_REFRESH: ${{ inputs.force_refresh }}
-          RADAR_REST_REQUEST_LIMIT: 940
+          RADAR_REST_REQUEST_LIMIT: 700
         run: |
           if [ "$FORCE_REFRESH" = "true" ]; then
             python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh --force-refresh
           else
             python -B scripts/collect.py --batch-size 600 --new-limit 160 --no-discover --refresh
           fi
+      - name: Collect independent GitHub board
+        if: github.event_name != 'push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -B scripts/collect_github.py --limit 50 --pages 2
+      - name: Build independent GitHub board
+        run: python -B scripts/build_github_data.py --archive
       - name: Validate published dataset
         run: |
           python -B scripts/validate_data.py
           python -B scripts/pack_latest.py --restore --source /tmp/radar-packed-latest.json
+          python -B scripts/validate_data.py --directory public/data/github
       - name: Save collected data
         if: github.event_name != 'push'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data data/discovery.json data/latest-shards
+          git add public/data data/discovery.json data/latest-shards data/github-repositories.json
           if ! git diff --cached --quiet; then
             git commit -m 'data: update daily AI trends'
             for attempt in 1 2 3; do
