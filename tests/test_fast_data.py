@@ -66,12 +66,36 @@ class FastDataTests(unittest.TestCase):
             (root / 'latest.json').write_text(json.dumps({
                 'completedAt': 'v1', 'periodEnd': '2026-10-03', 'projects': projects,
             }))
-            build(root)
+            build(root, hold_daily_until_covered=True)
             bootstrap = json.loads((root / 'latest-bootstrap.json').read_text())
             self.assertEqual(bootstrap['periodEnd'], '2026-10-02')
             self.assertEqual(bootstrap['pendingDay'], '2026-10-03')
             self.assertEqual(bootstrap['pendingDayCoverage'], 2)
             self.assertEqual([p['id'] for p in bootstrap['projects']], list(range(7, -1, -1)))
+            build(root)
+            current = json.loads((root / 'latest-bootstrap.json').read_text())
+            self.assertEqual(current['periodEnd'], '2026-10-03')
+            self.assertNotIn('pendingDay', current)
+            self.assertEqual(current['bootstrapStats']['missingDaily'], 8)
+
+    def test_stale_projects_are_counted_as_missing_daily_data(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            projects = [
+                {'id': 1, 'fullName': 'o/current', 'createdAt': '2026-01-01',
+                 'stars': 100, 'metrics': {'daily': 4}, 'stale': False,
+                 'history': [{'date': '2026-10-03', 'stars': 4}], 'readme': ''},
+                {'id': 2, 'fullName': 'o/stale', 'createdAt': '2026-01-01',
+                 'stars': 100, 'metrics': {'daily': None}, 'stale': True,
+                 'history': [], 'readme': ''},
+            ]
+            (root / 'latest.json').write_text(json.dumps({
+                'completedAt': 'v1', 'periodEnd': '2026-10-03', 'projects': projects,
+            }))
+            build(root)
+            bootstrap = json.loads((root / 'latest-bootstrap.json').read_text())
+            self.assertEqual(bootstrap['bootstrapStats']['rankedDaily'], 1)
+            self.assertEqual(bootstrap['bootstrapStats']['missingDaily'], 1)
 
     def test_list_shards_grow_without_enlarging_each_chunk(self):
         with tempfile.TemporaryDirectory() as directory:

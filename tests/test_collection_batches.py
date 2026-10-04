@@ -33,6 +33,12 @@ class CollectionBatchTests(unittest.TestCase):
         self.assertEqual(len(selected),600)
         self.assertEqual(sum(n.startswith('new/') for n in selected),40)
 
+    def test_overdue_and_new_candidates_both_start_before_request_budget_runs_out(self):
+        previous={f'org/p{i}':project(i) for i in range(3)}
+        candidates={f'new/p{i}':f'new/p{i}' for i in range(3)}
+        self.assertEqual(select_candidates(previous,candidates,6,3,END),
+                         ['org/p0','new/p0','org/p1','new/p1','org/p2','new/p2'])
+
     def test_failed_repository_rotates_behind_unattempted_ones(self):
         failed=project(1,lastAttemptAt='2026-09-14T12:00:00Z')
         waiting=project(2)

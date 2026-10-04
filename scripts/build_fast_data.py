@@ -125,7 +125,7 @@ def build_archived_boards(source, completed_at):
     write_json(source / 'snapshot-boards.json', {'completedAt': completed_at, 'snapshots': boards})
 
 
-def build(source=DATA, *, hold_daily_until_covered=True):
+def build(source=DATA, *, hold_daily_until_covered=False):
     current = json.loads((source / 'latest.json').read_text())
     latest = publishable_dataset(current) if hold_daily_until_covered else current
     bootstrap = {key: value for key, value in latest.items() if key != 'projects'}
@@ -158,7 +158,7 @@ def build(source=DATA, *, hold_daily_until_covered=True):
         'projectCount': len(projects),
         'positiveDaily': len(leaders),
         'zeroDaily': sum(not p.get('stale') and p['metrics'].get('daily') == 0 for p in projects),
-        'missingDaily': sum(not p.get('stale') and p['metrics'].get('daily') is None for p in projects),
+        'missingDaily': sum(p.get('stale') or p['metrics'].get('daily') is None for p in projects),
         'rankedDaily': sum(not p.get('stale') and p['metrics'].get('daily') is not None for p in projects),
     }
     write_json(source / 'latest-bootstrap.json', bootstrap)

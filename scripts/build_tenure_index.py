@@ -8,7 +8,6 @@ from collections import defaultdict
 from pathlib import Path
 
 from ranking import MIN_ARCHIVE_COVERAGE, archive_ready, daily_leaders
-from build_fast_data import publishable_dataset
 
 ROOT = Path(__file__).resolve().parents[1] / 'public' / 'data'
 
@@ -59,7 +58,7 @@ def main():
     def read(name):
         return json.loads((ROOT / name).read_text())
 
-    chart = cumulative_chart(publishable_dataset(read('latest.json')), read('history.json'),
+    chart = cumulative_chart(read('latest.json'), read('history.json'),
                              read('history-index.json'), read('board-history.json'))
     target = ROOT / 'cumulative-chart.json'
     target.write_text(json.dumps(chart, ensure_ascii=False, separators=(',', ':')) + '\n')

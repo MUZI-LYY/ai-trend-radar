@@ -222,12 +222,18 @@ def select_candidates(previous, candidates, batch_size, new_limit, end=None, for
  """Bound work per run, never collection size. Oldest attempts rotate fairly.
 
  New admissions have reserved slots even when a very large existing collection is
- overdue. Already-current repositories need not be fetched again every hour.
+ overdue. Interleave them with overdue repositories so request limits cannot
+ consistently exhaust before the older records get their turn.
  """
  new=[name for key,name in candidates.items() if key not in previous][:min(new_limit,batch_size)]
  due=[r for r in previous.values() if force or not is_current(r,end)]
  due.sort(key=lambda r:(r.get('lastAttemptAt',r.get('fetchedAt','')),r['fullName'].lower()))
- return new+[r['fullName'] for r in due[:max(0,batch_size-len(new))]]
+ due=[r['fullName'] for r in due[:max(0,batch_size-len(new))]]
+ selected=[]
+ for index in range(max(len(due),len(new))):
+  if index<len(due):selected.append(due[index])
+  if index<len(new):selected.append(new[index])
+ return selected
 
 def deduplicate_recreated(projects, end):
  """Keep the newest GitHub identity for each case-insensitive owner/name.

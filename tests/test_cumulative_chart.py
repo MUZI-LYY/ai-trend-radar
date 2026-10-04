@@ -7,6 +7,19 @@ from build_tenure_index import cumulative_chart
 
 
 class CumulativeChartTests(unittest.TestCase):
+    def test_latest_partial_day_uses_only_fresh_daily_leaders(self):
+        latest = {'periodEnd': '2026-10-03', 'projects': [
+            {'id': 1, 'fullName': 'a/fresh', 'createdAt': '2026-01-01',
+             'stars': 100, 'metrics': {'daily': 5}, 'stale': False},
+            {'id': 2, 'fullName': 'b/stale', 'createdAt': '2026-01-01',
+             'stars': 100, 'metrics': {'daily': None}, 'stale': True},
+        ]}
+        chart = cumulative_chart(latest, {'scope': 'verified', 'projects': []},
+                                 {'dates': []}, {'entries': []})
+        self.assertEqual(chart['end'], '2026-10-03')
+        self.assertEqual(chart['entries'], [
+            {'date': '2026-10-03', 'ids': [1], 'source': 'latest'}])
+
     def test_saved_days_override_replay_and_latest_counts_once(self):
         def project(identity, name, growth):
             return {'id': identity, 'fullName': name, 'createdAt': '2026-09-01', 'stars': 100,
