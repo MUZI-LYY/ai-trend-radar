@@ -6,7 +6,9 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "predev": "python3 scripts/build_tenure_index.py",
     "dev": "vite",
+    "prebuild": "python3 scripts/build_tenure_index.py",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "collect": "python3 scripts/collect.py",

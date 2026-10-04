@@ -1,5 +1,6 @@
 import type { Dataset, Project } from './types';
 export interface BoardHistory {chartSize: number; entries: {date:string;capturedDate:string;ids:number[]}[]}
+export interface CumulativeChart {chartSize:number; start:string; end:string; scope:string; entries:{date:string;ids:number[];source:'latest'|'snapshot'|'retrospective'}[]}
 const dayMs=86400000;
 export const priorDay=(day:string)=>new Date(Date.parse(day+'T00:00:00Z')-dayMs).toISOString().slice(0,10);
 export function weekStart(day:string){const date=new Date(day+'T00:00:00Z');return new Date(date.getTime()-((date.getUTCDay()+6)%7)*dayMs).toISOString().slice(0,10)}
@@ -27,4 +28,13 @@ export function tenure(id:number,end:string,currentIds:number[],history:BoardHis
  if(currentIds.includes(id))dates.push(end);
  dates.sort();
  return {days:dates.length,since:dates[0]??''};
+}
+export function cumulativeTenure(id:number,end:string,chart:CumulativeChart|null){
+ if(!chart||end<chart.start||end>chart.end)return null;
+ let days=0,since='';
+ for(const entry of chart.entries){
+  if(entry.date>end)break;
+  if(entry.ids.includes(id)){days++;if(!since)since=entry.date}
+ }
+ return {days,since};
 }

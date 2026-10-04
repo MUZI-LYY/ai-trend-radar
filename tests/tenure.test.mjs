@@ -7,12 +7,12 @@ import {pathToFileURL} from 'node:url';
 import ts from 'typescript';
 
 const directory=await mkdtemp(join(tmpdir(),'radar-tenure-'));
-let tenure;
+let tenure,cumulativeTenure;
 try {
  const source=await readFile(new URL('../src/ranking.ts',import.meta.url),'utf8');
  const compiled=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
  await writeFile(join(directory,'ranking.mjs'),compiled);
- ({tenure}=await import(pathToFileURL(join(directory,'ranking.mjs'))));
+ ({tenure,cumulativeTenure}=await import(pathToFileURL(join(directory,'ranking.mjs'))));
 } finally {await rm(directory,{recursive:true,force:true})}
 
 test('daily chart days accumulate across months, gaps and re-entry',()=>{
@@ -36,4 +36,19 @@ test('current source day counts once even when already archived',()=>{
  ]};
  assert.deepEqual(tenure(1,'2026-10-01',[1],history),{days:2,since:'2026-09-30'});
  assert.deepEqual(tenure(1,'2026-10-01',[],history),{days:1,since:'2026-09-30'});
+});
+
+test('cumulative chart counts historical and saved days across months through the selected day',()=>{
+ const chart={chartSize:30,start:'2025-12-31',end:'2026-10-03',scope:'current collection',entries:[
+  {date:'2025-12-31',ids:[1],source:'retrospective'},
+  {date:'2026-01-01',ids:[1],source:'retrospective'},
+  {date:'2026-09-30',ids:[2],source:'retrospective'},
+  {date:'2026-10-01',ids:[1],source:'snapshot'},
+  {date:'2026-10-02',ids:[2],source:'snapshot'},
+  {date:'2026-10-03',ids:[1],source:'latest'},
+ ]};
+ assert.deepEqual(cumulativeTenure(1,'2026-01-01',chart),{days:2,since:'2025-12-31'});
+ assert.deepEqual(cumulativeTenure(1,'2026-10-03',chart),{days:4,since:'2025-12-31'});
+ assert.deepEqual(cumulativeTenure(2,'2026-10-03',chart),{days:2,since:'2026-09-30'});
+ assert.equal(cumulativeTenure(1,'2026-10-04',chart),null);
 });
