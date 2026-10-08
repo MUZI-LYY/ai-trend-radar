@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from collect import select_candidates, retain_previous, collection_coverage, is_current
+from collect import select_candidates, retain_previous, collection_coverage, is_current, is_ai_candidate
 
 END='2026-09-13'
 
@@ -13,6 +13,20 @@ def project(number, current=False, **values):
             'fetchedAt':'2026-09-01T00:00:00Z','stars':10,
             'statsThrough':END if current else '2026-08-31',
             'historyStatus':'ok','metrics':dict(daily=1,weekly=7,monthly=13,yearly=100),**values}
+
+
+class CandidateRelevanceTests(unittest.TestCase):
+    def test_optional_mcp_topic_does_not_admit_general_software(self):
+        fitness={'full_name':'DuarteSantos8/openGym',
+                 'description':'Self-hosted gym and body-weight tracker',
+                 'topics':['fitness','mcp']}
+        mcp_server={'full_name':'example/workout-mcp',
+                    'description':'MCP server for exercise records','topics':['mcp']}
+        agent={'full_name':'example/browser','description':'Headless browser for AI agents',
+               'topics':['browser','ai-agents']}
+        self.assertFalse(is_ai_candidate(fitness))
+        self.assertTrue(is_ai_candidate(mcp_server))
+        self.assertTrue(is_ai_candidate(agent))
 
 
 class CollectionBatchTests(unittest.TestCase):

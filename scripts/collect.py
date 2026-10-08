@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 from ranking import archive_ready, period_starts, chart_entries
 from github_metadata import batch_metadata
-from discover import MIN_STARS
+from discover import MIN_STARS, TOPICS
 from taxonomy import normalize_ways
 REST_REQUEST_LIMIT = int(os.environ.get('RADAR_REST_REQUEST_LIMIT', '960'))
 _rest_requests = 0
@@ -42,6 +42,13 @@ CATEGORIES = {
  'learning': ('学习与资源', '教程、课程和学习资料', ['awesome','tutorial','course','for-beginners','from-scratch','guide','resources']),
 }
 SEEDS = ['ollama/ollama','langgenius/dify','langchain-ai/langchain','langchain-ai/langgraph','open-webui/open-webui','n8n-io/n8n','huggingface/transformers','vllm-project/vllm','ggml-org/llama.cpp','Comfy-Org/ComfyUI','AUTOMATIC1111/stable-diffusion-webui','openai/whisper','QwenAudio/CosyVoice','Blaizzy/mlx-audio','infiniflow/ragflow','docling-project/docling','microsoft/markitdown','run-llama/llama_index','crewAIInc/crewAI','microsoft/autogen','Significant-Gravitas/AutoGPT','Aider-AI/aider','OpenHands/OpenHands','anthropics/claude-code','google-gemini/gemini-cli','anomalyco/opencode','FlowiseAI/Flowise','Mintplex-Labs/anything-llm','ItzCrazyKns/Vane','lobehub/lobehub','unslothai/unsloth','hiyouga/LlamaFactory','langfuse/langfuse','rasbt/LLMs-from-scratch','microsoft/generative-ai-for-beginners','f/prompts.chat','github/spec-kit','modelcontextprotocol/servers','browser-use/browser-use','firecrawl/firecrawl']
+
+def is_ai_candidate(repo):
+ """An optional MCP topic alone does not make a general app an AI project."""
+ topics={topic.lower() for topic in repo.get('topics',[])}
+ if topics & (set(TOPICS)-{'mcp'}):return True
+ identity=' '.join([repo['full_name'],repo.get('description') or '']).lower()
+ return bool(re.search(r'\b(ai|llm|rag|gpt|ml|mcp|agent|agents)\b|artificial.intelligence|machine.learning|deep.learning|diffusion|neural|语音|智能|模型',identity))
 
 def atomic_json(path, value):
  path.parent.mkdir(parents=True, exist_ok=True)
@@ -351,9 +358,7 @@ def main():
   repo=metadata.get(name.lower()) or api('repos/'+name)
   if repo['stargazers_count']<MIN_STARS:return None,repo['id']
   if name.lower() not in previous and name.lower() not in {s.lower() for s in SEEDS}:
-   from discover import TOPICS
-   text=' '.join([repo['full_name'],repo.get('description') or '',*repo.get('topics',[])]).lower()
-   if not (set(repo.get('topics',[])) & set(TOPICS)) and not re.search(r'\b(ai|llm|rag|gpt|ml|mcp)\b|artificial.intelligence|machine.learning|deep.learning|diffusion|neural|语音|智能|模型',text):return None,None
+   if not is_ai_candidate(repo):return None,None
   result=collect_one(name,previous.get(name.lower()),editorial,end,year_start,repo=repo)
   if result:
    result['statsThrough']=end if result['historyStatus']=='ok' else None
