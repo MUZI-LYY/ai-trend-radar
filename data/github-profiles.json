@@ -583,7 +583,7 @@
     "sourceDescription": "the runtime your coding agents live on",
     "summary": "为 AI 编程代理提供运行环境的项目。"
   },
-  "Hmbown/Codewhale": {
+  "codewhale-hq/Codewhale": {
     "sourceDescription": "Open-source coding agent for your terminal, built in Rust and on a journey of continuous community improvement. Issues and PRs welcome.",
     "summary": "使用 Rust 构建的终端 AI 编程代理。"
   },
