@@ -44,21 +44,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FORCE_REFRESH: ${{ inputs.force_refresh }}
-          RADAR_REST_REQUEST_LIMIT: 700
+          # Leave capacity from the 5,000-request hourly core quota for the
+          # independent board, discovery, retries, and other repository jobs.
+          RADAR_REST_REQUEST_LIMIT: 2400
         run: |
           if [ "$FORCE_REFRESH" = "true" ]; then
-            python -B scripts/collect.py --batch-size 600 --new-limit 300 --no-discover --refresh --force-refresh
+            python -B scripts/collect.py --batch-size 2100 --new-limit 300 --no-discover --refresh --force-refresh
           else
-            python -B scripts/collect.py --batch-size 600 --new-limit 300 --no-discover --refresh
+            python -B scripts/collect.py --batch-size 2100 --new-limit 300 --no-discover --refresh
           fi
       - name: Collect independent GitHub board
         if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # At 5,000+ tracked repositories, 240 refresh slots per hour can cover
-        # one full source day while 20 slots remain available for new projects.
-        # The collector stops before the job's 40-minute limit and saves progress.
-        run: python -B scripts/collect_github.py --limit 260 --new-limit 20 --max-seconds 600 --pages 2
+        # Refresh up to 500 tracked repositories and verify up to 150 new ones;
+        # the collector stops at its API reserve or time limit and saves progress.
+        run: python -B scripts/collect_github.py --limit 650 --new-limit 150 --max-seconds 900 --pages 2
       - name: Build independent GitHub board
         run: python -B scripts/build_github_data.py --archive
       - name: Validate published dataset
