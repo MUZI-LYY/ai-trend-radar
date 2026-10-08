@@ -16,6 +16,7 @@ from discover import MIN_STARS, load_state, save_state
 from export_backfill import export as export_backfill
 from pack_latest import pack
 from ranking import chart_entry
+from snapshot_io import read_snapshot, snapshot_paths, write_snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -107,9 +108,9 @@ def run(root=ROOT, prune_local=False):
 
     entries = {}
     removed_archived = 0
-    snapshots = sorted((data_dir / 'snapshots').glob('*.json'))
+    snapshots = snapshot_paths(data_dir / 'snapshots')
     for path in snapshots:
-        snapshot = json.loads(path.read_text())
+        snapshot = read_snapshot(path)
         removed_archived += clean_dataset(snapshot, removed_current_ids)
         # Preserve archive coverage for the saved-board completeness rule. Dated
         # discovery counts cannot be reconstructed after changing the threshold.
@@ -121,7 +122,7 @@ def run(root=ROOT, prune_local=False):
             'pendingUpdates': count - updated, 'sourceDate': snapshot['periodEnd'],
             'totalLimit': None,
         }
-        atomic_json(path, snapshot)
+        write_snapshot(path, snapshot)
         entry = chart_entry(snapshot)
         entries.setdefault(entry['date'], entry)
     board = {'chartSize': 30, 'entries': [entries[day] for day in sorted(entries)]}

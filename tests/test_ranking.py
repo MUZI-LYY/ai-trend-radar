@@ -1,8 +1,10 @@
 import json,sys,tempfile,unittest
 from pathlib import Path
+from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
 from ranking import archive_ready,period_starts,daily_leaders,observed_tenure
 from collect import save_daily_archive
+from snapshot_io import SnapshotTooLarge, read_snapshot, snapshot_date, snapshot_paths
 class RankingTests(unittest.TestCase):
  def test_partial_archive_cannot_be_frozen_as_a_daily_board(self):
   self.assertFalse(archive_ready({}))
@@ -23,6 +25,22 @@ class RankingTests(unittest.TestCase):
    self.assertTrue(save_daily_archive(path,capture(98),'2026-10-07'))
    self.assertFalse(save_daily_archive(path,capture(100),'2026-10-07'))
    self.assertEqual(json.loads(path.read_text())['coverage']['updatedRepositories'],98)
+
+ def test_large_daily_capture_uses_git_safe_gzip_archive(self):
+  with tempfile.TemporaryDirectory() as directory:
+   path=Path(directory)/'2026-10-08.json.gz'
+   capture={'periodEnd':'2026-10-07','coverage':{'trackedRepositories':100,'updatedRepositories':80}}
+   self.assertTrue(save_daily_archive(path,capture,'2026-10-07'))
+   self.assertEqual(path.read_bytes()[:2],b'\x1f\x8b')
+   self.assertEqual(read_snapshot(path),capture)
+   self.assertEqual([snapshot_date(p) for p in snapshot_paths(directory)],['2026-10-08'])
+
+ def test_oversize_archive_is_rejected_before_it_reaches_git(self):
+  with tempfile.TemporaryDirectory() as directory, patch('snapshot_io.MAX_GIT_BLOB_BYTES',10):
+   path=Path(directory)/'2026-10-08.json.gz'
+   capture={'periodEnd':'2026-10-07','coverage':{'trackedRepositories':100,'updatedRepositories':80}}
+   with self.assertRaises(SnapshotTooLarge):save_daily_archive(path,capture,'2026-10-07')
+   self.assertFalse(path.exists())
 
  def test_week_starts_monday(self):
   self.assertEqual(period_starts('2026-09-13')['weekly'],'2026-09-07')

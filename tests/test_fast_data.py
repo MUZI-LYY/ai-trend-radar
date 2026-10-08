@@ -1,9 +1,12 @@
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from scripts.build_fast_data import build, publishable_dataset
+from snapshot_io import write_snapshot
 
 
 class FastDataTests(unittest.TestCase):
@@ -19,8 +22,8 @@ class FastDataTests(unittest.TestCase):
             (root / 'latest.json').write_text(json.dumps(latest))
             for captured, day in [('2026-10-02', '2026-10-01'),
                                   ('2026-10-03', '2026-10-02')]:
-                (root / 'snapshots' / f'{captured}.json').write_text(json.dumps({
-                    **latest, 'date': captured, 'periodEnd': day}))
+                path = root / 'snapshots' / (f'{captured}.json.gz' if captured == '2026-10-02' else f'{captured}.json')
+                write_snapshot(path, {**latest, 'date': captured, 'periodEnd': day})
             (root / 'board-history.json').write_text(json.dumps({'entries': [
                 {'date': '2026-10-01', 'capturedDate': '2026-10-02', 'ids': [1],
                  'trackedRepositories': 100, 'updatedRepositories': 100},

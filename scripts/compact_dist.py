@@ -6,22 +6,22 @@ from pathlib import Path
 
 from compact_snapshot import compact
 from pack_history import unpack as unpack_history
-from pack_latest import write_json
 from ranking import chart_entries
+from snapshot_io import read_snapshot, snapshot_paths, write_snapshot
 
 
 def compact_dist(directory):
     directory = Path(directory)
-    snapshots = sorted((directory / 'data/snapshots').glob('*.json'))
+    snapshots = snapshot_paths(directory / 'data/snapshots')
     latest = json.loads((directory / 'data/latest.json').read_text())
     before = after = 0
     for path in snapshots:
-        full = json.loads(path.read_text())
+        full = read_snapshot(path)
         reduced = compact(full, latest)
         if chart_entries([full]) != chart_entries([reduced]):
             raise ValueError('Daily chart changed during compaction: ' + path.name)
         before += path.stat().st_size
-        write_json(path, reduced)
+        write_snapshot(path, reduced)
         after += path.stat().st_size
     history_path = directory / 'data/history.json'
     recovered, _ = unpack_history(directory / 'data/history.json.gz',

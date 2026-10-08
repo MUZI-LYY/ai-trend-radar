@@ -90,7 +90,9 @@ function BoardApp({mode}:{mode:'ai'|'github'}){
    const latest=needsFull?await completeLatest(bootstrap,get,dataCache):bootstrap;
    if(date.startsWith('history:')){const history=await get<HistoryData>(historyFile);return {bootstrap,data:replayHistory(normalizeDataset(latest),history,date.slice(8))}}
    if(date==='latest')return {bootstrap,data:normalizeDataset(latest)};
-   const snapshot=await get<Dataset>(`snapshots/${date}.json`);
+   let snapshot:Dataset;
+   try{snapshot=await get<Dataset>(`snapshots/${date}.json.gz`)}
+   catch{snapshot=await get<Dataset>(`snapshots/${date}.json`)}
    return {bootstrap,data:{...withLatestProfiles(normalizeDataset(snapshot),latest),listComplete:true}};
   };
   load().then(({bootstrap,data})=>{if(!ignore){setBootstrapData(bootstrap);setData(data)}}).catch(e=>{if(!ignore)setError(String(e.message))}).finally(()=>{if(!ignore)setLoading(false)});return()=>{ignore=true};

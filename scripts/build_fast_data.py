@@ -9,6 +9,7 @@ import json
 import math
 import datetime as dt
 from pathlib import Path
+from snapshot_io import find_snapshot, read_snapshot
 
 
 DATA = Path(__file__).resolve().parents[1] / 'public' / 'data'
@@ -110,7 +111,7 @@ def build_archived_boards(source, completed_at):
         tracked = entry.get('trackedRepositories', 0)
         if not tracked or entry.get('updatedRepositories', 0) / tracked < READY_COVERAGE_RATIO:
             continue
-        snapshot = json.loads((source / 'snapshots' / (entry['capturedDate'] + '.json')).read_text())
+        snapshot = read_snapshot(find_snapshot(source / 'snapshots', entry['capturedDate']))
         leaders = sorted((project for project in snapshot['projects']
                           if not project.get('stale') and (project['metrics'].get('daily') or 0) > 0),
                          key=lambda project: (-project['metrics']['daily'], -project['stars'],

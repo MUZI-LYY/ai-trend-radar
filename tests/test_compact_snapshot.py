@@ -9,6 +9,7 @@ from compact_snapshot import HISTORY_DAYS, compact, verify
 from compact_dist import compact_dist
 from pack_history import pack as pack_history
 from ranking import daily_leaders
+from snapshot_io import read_snapshot, write_snapshot
 
 
 class CompactSnapshotTests(unittest.TestCase):
@@ -56,13 +57,13 @@ class CompactSnapshotTests(unittest.TestCase):
     def test_only_deployment_copy_is_compacted(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            snapshot = root / 'data/snapshots/2026-10-04.json'
+            snapshot = root / 'data/snapshots/2026-10-04.json.gz'
             snapshot.parent.mkdir(parents=True)
             data = {'date': '2026-10-04', 'periodEnd': '2026-10-03',
                     'capturedAt': '2026-10-04T00:00:00Z', 'projects': [
                         {'id': 1, 'fullName': 'o/r', 'stars': 5, 'metrics': {'daily': 2},
                          'history': [{'date': '2026-10-03', 'stars': 2}], 'readme': 'large text'}]}
-            snapshot.write_text(json.dumps(data))
+            write_snapshot(snapshot, data)
             (root / 'data/latest.json').write_text(json.dumps({'projects': [
                 {'id': 1, 'editorial': False, 'readme': 'current source'}]}))
             history_path = root / 'data/history.json'
@@ -73,7 +74,7 @@ class CompactSnapshotTests(unittest.TestCase):
             (root / 'data/latest-list/0.json').write_text('{}')
             result = compact_dist(root)
             self.assertEqual(result['snapshots'], 1)
-            project = json.loads(snapshot.read_text())['projects'][0]
+            project = read_snapshot(snapshot)['projects'][0]
             self.assertEqual(project['history'], data['projects'][0]['history'])
             self.assertNotIn('readme', project)
             self.assertFalse(history_path.exists())

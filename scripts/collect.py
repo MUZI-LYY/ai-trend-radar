@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 from ranking import archive_ready, period_starts, chart_entries
+from snapshot_io import SnapshotTooLarge, read_snapshot, snapshot_date, snapshot_paths, write_snapshot
 from github_metadata import batch_metadata
 from discover import MIN_STARS, TOPICS
 from taxonomy import normalize_ways
@@ -57,7 +58,7 @@ def atomic_json(path, value):
 def save_daily_archive(path, payload, archive_day):
  if payload['periodEnd'] != archive_day:return False
  if path.exists():
-  previous=json.loads(path.read_text())
+  previous=read_snapshot(path)
   if archive_ready(previous):return False
   old=previous.get('coverage',{})
   new=payload.get('coverage',{})
@@ -69,7 +70,7 @@ def save_daily_archive(path, payload, archive_day):
    return False
  # Keep a dated partial capture visible while coverage grows. Once it reaches
  # the archive threshold, preserve that first sufficiently covered observation.
- atomic_json(path,payload)
+ write_snapshot(path,payload)
  return True
 
 
@@ -341,7 +342,7 @@ def main():
  if args.batch_size<1 or args.new_limit<0:parser.error('batch-size must be positive and new-limit nonnegative')
  now=dt.datetime.now(UTC);capture_date=now.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat();end=(now.date()-dt.timedelta(days=1)).isoformat();year_start=min(period_starts(end).values())
  latest_path=ROOT/'public/data/latest.json';latest=json.loads(latest_path.read_text()) if latest_path.exists() else {'projects':[]}
- snapshot_path=ROOT/'public/data/snapshots'/f'{capture_date}.json'
+ snapshot_path=ROOT/'public/data/snapshots'/f'{capture_date}.json.gz'
  if snapshot_path.exists() and not (args.refresh or args.force_refresh):print('Already collected '+capture_date+'; archived snapshot preserved.');return
  editorial=json.loads((ROOT/'data/editorial.json').read_text()) if (ROOT/'data/editorial.json').exists() else {}
  excluded_path=ROOT/'data/excluded.json'
@@ -420,11 +421,14 @@ def main():
  # Save a dated partial capture and refresh it until sufficiently covered.
  # Before 08:00 Beijing the UTC source day has not advanced yet.
  archive_day=(dt.date.fromisoformat(capture_date)-dt.timedelta(days=1)).isoformat()
- save_daily_archive(snapshot_path,payload,archive_day)
+ try:save_daily_archive(snapshot_path,payload,archive_day)
+ except SnapshotTooLarge as error:
+  payload['warnings'].append('本日归档超过 Git 文件大小限制，已保留最新统计与官方日历史供回溯；归档待拆分。')
+  print(f'Archive deferred: {error}',file=sys.stderr,flush=True)
  atomic_json(latest_path,payload)
- index=[{'date':p.stem,'file':'snapshots/'+p.name} for p in sorted(snapshot_path.parent.glob('*.json'),reverse=True)]
+ index=[{'date':snapshot_date(p),'file':'snapshots/'+p.name} for p in sorted(snapshot_paths(snapshot_path.parent),reverse=True)]
  atomic_json(ROOT/'public/data/index.json',{'snapshots':index})
- entries=chart_entries(json.loads(p.read_text()) for p in snapshot_path.parent.glob('*.json'))
+ entries=chart_entries(read_snapshot(p) for p in snapshot_paths(snapshot_path.parent))
  atomic_json(ROOT/'public/data/board-history.json',{'chartSize':30,'entries':entries})
  from backfill_history import update_history
  update_history(projects,end)

@@ -29,7 +29,8 @@ def main():
  if before_ids!={p['id'] for p in d['projects']}:
   from backfill_history import update_history
   update_history(d['projects'],d['periodEnd'],ROOT/'public/data')
- entries=chart_entries([json.loads(p.read_text()) for p in sorted((ROOT/'public/data/snapshots').glob('*.json'))])
+ from snapshot_io import read_snapshot, snapshot_paths
+ entries=chart_entries(read_snapshot(p) for p in snapshot_paths(ROOT/'public/data/snapshots'))
  atomic_json(ROOT/'public/data/board-history.json',{'chartSize':30,'entries':entries})
  print(f'Enriched {len(d["projects"])} projects; {sum(p["editorial"] for p in d["projects"])} edited profiles. Archives preserved.')
 if __name__=='__main__':main()

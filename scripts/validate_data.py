@@ -7,6 +7,7 @@ from collect import period_total, is_current
 from collect_github import HISTORY_START, needs_history
 from discover import MIN_STARS, backlog_size, load_state
 from ranking import period_starts, chart_entries
+from snapshot_io import read_snapshot
 from taxonomy import KINDS, normalize_ways
 
 
@@ -128,7 +129,7 @@ def main(directory=None):
   path = root / snapshot['file']
   assert path.resolve().is_relative_to(root.resolve()), 'Archive path outside data directory'
   assert path.exists(), 'Missing archive'
-  archived = json.loads(path.read_text())
+  archived = read_snapshot(path)
   assert archived['date'] == snapshot['date'], 'Archive date mismatch'
   validate_dataset(archived)
   archives.append(archived)
