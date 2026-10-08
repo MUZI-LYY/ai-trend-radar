@@ -142736,5 +142736,209 @@
       "https://github.com/aashish254/Aniflow/blob/main/README.md"
     ],
     "sourceReadmeSha": "63625ec5edc0ac0df26e48b8435b2defe70bf3f5"
+  },
+  "lexmount/moli": {
+    "category": "agents",
+    "related": [
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "无头浏览器",
+      "网页提取",
+      "CDP",
+      "WebDriver"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "summary": "面向 AI Agent 的 Rust 无头浏览器，按需生成页面布局与画面。",
+    "overview": "Moli 提供完整浏览器运行时，供 Agent 获取和提取网页内容。它优先处理 DOM 与结构化输出，只有需要几何信息、截图或 PDF 时才执行布局和渲染，以减少持续维护画面的开销。可通过 CLI、CDP、WebDriver Classic 和 BiDi 使用，支持 Linux、macOS 与 Windows；README 同时列出 Markdown、语义树等输出形式。",
+    "audience": "需要让 Agent 读取网页、操作浏览器或提取页面结构的开发者。",
+    "features": [
+      "读取网页并输出 DOM、Markdown 或语义树。",
+      "在需要时生成布局、截图和 PDF。",
+      "提供 CLI、CDP、WebDriver Classic 与 BiDi 接口。"
+    ],
+    "useCases": [
+      "给 AI Agent 提供网页读取和自动化执行能力。"
+    ],
+    "gettingStarted": [
+      "按 README 的平台安装步骤获取 Moli。",
+      "选择 CLI 或浏览器协议接口，并用目标页面验证输出。"
+    ],
+    "requirements": [],
+    "usage": "按照 README 选择 CLI、CDP 或 WebDriver 接口；先用简单页面验证提取格式，再按任务需要启用布局、截图或 PDF。",
+    "caveat": "README 将低开销和兼容性作为项目目标，具体表现需按目标网站、操作方式和运行环境验证。",
+    "sourceUrls": [
+      "https://github.com/lexmount/moli"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  "docker/docker-agent": {
+    "category": "agents",
+    "related": [
+      "automation",
+      "devtools"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "Agent 编排",
+      "YAML 配置",
+      "MCP",
+      "OCI Registry"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "summary": "通过 YAML 配置、运行和分享 AI Agent 的 Docker CLI 工具。",
+    "overview": "docker-agent 让开发者用 YAML 声明 Agent、模型和工具，再以 docker agent 运行。README 介绍了可自动委派任务的多 Agent 团队、内置工具及 MCP 服务接入，并支持多家模型提供方和 Docker Model Runner。项目还提供可插拔检索能力，支持将 Agent 打包推送至 OCI Registry，便于跨环境分享和运行。",
+    "audience": "希望在 Docker 工作流中定义和运行 Agent 的开发者。",
+    "features": [
+      "用 YAML 声明 Agent、模型和工具。",
+      "编排多 Agent 团队并连接 MCP 服务。",
+      "将 Agent 推送至 OCI Registry 分享。"
+    ],
+    "useCases": [
+      "为开发任务建立可复用的 Agent 配置。",
+      "跨环境分发和运行 Agent。"
+    ],
+    "gettingStarted": [
+      "按 README 安装 docker-agent CLI 插件。",
+      "创建 YAML 配置并运行 docker agent。"
+    ],
+    "requirements": [
+      "需要 Docker 环境及所选模型提供方的访问条件。"
+    ],
+    "usage": "从 README 的示例 YAML 开始，定义模型和工具，再使用 docker agent 运行；需要分享时按文档推送至 OCI Registry。",
+    "caveat": "模型提供方、MCP 服务和检索后端各自有配置与费用条件；具体支持版本以 README 为准。",
+    "sourceUrls": [
+      "https://github.com/docker/docker-agent"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  "monid-ai/monid": {
+    "category": "agents",
+    "related": [
+      "devtools"
+    ],
+    "kind": "框架 / SDK",
+    "tags": [
+      "工具发现",
+      "连接器",
+      "端点选择",
+      "Agent 工具"
+    ],
+    "ways": [
+      "API",
+      "本地部署"
+    ],
+    "summary": "为 AI Agent 统一发现与调用第三方工具的连接器框架。",
+    "overview": "Monid 将不同服务的工具接口汇集到统一入口，Agent 可按任务搜索可用端点，并查看价格、健康状态与延迟后选择调用。仓库本身主要是连接器定义层：提供方和端点用声明式文件描述身份验证、输入输出及计费方式，可通过提交连接器扩展目录。README 自述覆盖搜索、抓取、企业信息和媒体等工具；具体数量与价格应以服务实时目录为准。",
+    "audience": "需要让 Agent 按任务发现和调用外部工具的开发者。",
+    "features": [
+      "按任务发现工具端点，并展示价格、健康状态与延迟信息。",
+      "以声明式连接器描述身份验证、输入输出和计费方式。",
+      "允许贡献新的服务连接器。"
+    ],
+    "useCases": [
+      "为 Agent 接入搜索、抓取和媒体处理等第三方工具。"
+    ],
+    "gettingStarted": [
+      "阅读仓库的连接器定义和调用文档。",
+      "按服务要求配置访问凭证并测试端点。"
+    ],
+    "requirements": [],
+    "usage": "先通过目录发现符合任务的端点，再核对价格、健康状态和鉴权条件；若需扩展服务，可按仓库约定提交连接器定义。",
+    "caveat": "目录中的端点、可用性、价格与延迟会变化，实际调用前应读取实时数据；连接第三方服务可能需要各自凭证。",
+    "sourceUrls": [
+      "https://github.com/monid-ai/monid"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  "tencentcloud/octop": {
+    "category": "agents",
+    "related": [
+      "knowledge",
+      "automation"
+    ],
+    "kind": "应用 / 工具",
+    "tags": [
+      "自托管助手",
+      "多用户",
+      "消息渠道",
+      "知识库"
+    ],
+    "ways": [
+      "Web UI",
+      "CLI",
+      "本地部署"
+    ],
+    "summary": "面向个人、家庭和小团队的多用户自托管 AI 助手。",
+    "overview": "Octop 在本地以单进程运行 Web 控制台、CLI、即时通讯渠道和定时任务，让每位用户配置独立的 Agent、工作区与连接渠道。项目支持飞书、钉钉、QQ、Telegram、企业微信等聊天入口，也提供 HTTP、SSE 和 WebSocket 接口。README 还介绍了知识库检索、MCP 连接器及 ACP 编码 Agent 集成；默认使用 SQLite，亦可选 PostgreSQL。",
+    "audience": "希望自行部署多用户 AI 助手的个人、家庭和小团队。",
+    "features": [
+      "通过 Web、CLI 和多种即时通讯渠道使用助手。",
+      "按用户隔离 Agent、工作区与渠道。",
+      "集成知识库检索、MCP 连接器和定时任务。"
+    ],
+    "useCases": [
+      "为家庭或小团队部署共享但按用户配置的助手。"
+    ],
+    "gettingStarted": [
+      "按 README 准备运行环境并启动服务。",
+      "在控制台配置模型、用户和消息渠道。"
+    ],
+    "requirements": [],
+    "usage": "先按 README 启动本地服务并验证 Web 控制台，再为用户配置 Agent 与渠道；需要持久化扩展时核对 SQLite 或 PostgreSQL 的部署说明。",
+    "caveat": "接入聊天平台和模型服务需要各自的凭证与权限配置；多用户部署时应核对工作区隔离与服务访问设置。",
+    "sourceUrls": [
+      "https://github.com/TencentCloud/Octop"
+    ],
+    "reviewedAt": "2026-10-08"
+  },
+  "mvschwarz/openrig": {
+    "category": "agents",
+    "related": [
+      "coding",
+      "automation"
+    ],
+    "kind": "开发工具",
+    "tags": [
+      "多 Agent",
+      "团队编排",
+      "tmux",
+      "持续上下文"
+    ],
+    "ways": [
+      "CLI",
+      "本地部署"
+    ],
+    "summary": "把 Claude Code、Codex 等编码 Agent 组织为持久团队的编排工具。",
+    "overview": "OpenRig 用 YAML 描述 Agent 团队的角色、连接与持续运行规则，并通过 rig up 启动 tmux 会话和各个 Agent。它重点管理多会话之间的关系、重启后的恢复及长期共享上下文，适合把分散的编码终端整理成可持续协作的团队。README 要求 Node.js 22 或 24 与 tmux；支持 macOS、Linux，Windows 需 WSL2。",
+    "audience": "需要组织多个编码 Agent 并维持团队上下文的开发者。",
+    "features": [
+      "以 YAML 定义 Agent 角色、连接和持续运行规则。",
+      "通过 tmux 启动并管理多个 Agent 会话。",
+      "支持会话恢复和共享上下文。"
+    ],
+    "useCases": [
+      "把多个编码 Agent 组成长期协作团队。"
+    ],
+    "gettingStarted": [
+      "准备 Node.js 22 或 24 与 tmux。",
+      "按 README 编写 RigSpec，再运行 rig up。"
+    ],
+    "requirements": [
+      "Node.js 22 或 24 与 tmux；Windows 需 WSL2。"
+    ],
+    "usage": "按 README 定义团队角色和连接关系，运行 rig up 后检查各 Agent 的 tmux 会话及上下文传递。",
+    "caveat": "依赖所选编码 Agent 自身的安装和订阅；跨 Agent 协作效果应在具体项目中验证。",
+    "sourceUrls": [
+      "https://github.com/mvschwarz/openrig"
+    ],
+    "reviewedAt": "2026-10-08"
   }
 }

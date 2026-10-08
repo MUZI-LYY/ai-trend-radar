@@ -33,6 +33,7 @@ def validate_dataset(data, *, current_taxonomy=False):
   if current_taxonomy:
    assert project['kind'] in KINDS, f'Nonstandard project kind: {label}'
    assert project['ways'] == normalize_ways(project['ways']), f'Nonstandard usage filters: {label}'
+   assert '尚未完成逐项中文解读' not in project['overview'], f'Generic project description: {label}'
   assert all(category in categories for category in project['related']), label
   assert project['category'] not in project['related'], label
   assert project['summary'] and project['overview'] and project['readmeUrl'], label
