@@ -133,8 +133,11 @@ class GithubBoardTests(unittest.TestCase):
     def test_curated_chinese_explanations_and_new_project_fallback(self):
         ledger = json.loads((ROOT / 'data/github-repositories.json').read_text())
         profiles = json.loads((ROOT / 'data/github-profiles.json').read_text())
-        names = {project['fullName'] for project in ledger['projects']}
-        self.assertLessEqual(set(profiles), names)
+        # A repository rename may leave an unused curated key; only matching
+        # profiles can affect published explanations.
+        first = ledger['projects'][0]
+        self.assertEqual(localized_profile(first, category(first), profiles),
+                         localized_profile(first, category(first), {**profiles, '__renamed__/old': {}}))
         for original in ledger['projects']:
             localized = localized_profile(original, category(original), profiles)
             self.assertEqual(original['description'], localized['description'])

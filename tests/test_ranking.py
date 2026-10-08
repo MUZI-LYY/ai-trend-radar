@@ -1,12 +1,28 @@
-import sys,unittest
+import json,sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
 from ranking import archive_ready,period_starts,daily_leaders,observed_tenure
+from collect import save_daily_archive
 class RankingTests(unittest.TestCase):
  def test_partial_archive_cannot_be_frozen_as_a_daily_board(self):
   self.assertFalse(archive_ready({}))
   self.assertFalse(archive_ready({'coverage':{'trackedRepositories':100,'updatedRepositories':97}}))
   self.assertTrue(archive_ready({'coverage':{'trackedRepositories':100,'updatedRepositories':98}}))
+
+ def test_partial_daily_capture_updates_until_first_complete_observation(self):
+  with tempfile.TemporaryDirectory() as directory:
+   path=Path(directory)/'2026-10-08.json'
+   def capture(updated,end='2026-10-07'):
+    return {'periodEnd':end,'coverage':{'trackedRepositories':100,'updatedRepositories':updated}}
+   self.assertFalse(save_daily_archive(path,capture(10),'2026-10-08'))
+   self.assertFalse(path.exists())
+   self.assertTrue(save_daily_archive(path,capture(50),'2026-10-07'))
+   self.assertTrue(save_daily_archive(path,capture(90),'2026-10-07'))
+   self.assertFalse(save_daily_archive(path,capture(70),'2026-10-07'))
+   self.assertEqual(json.loads(path.read_text())['coverage']['updatedRepositories'],90)
+   self.assertTrue(save_daily_archive(path,capture(98),'2026-10-07'))
+   self.assertFalse(save_daily_archive(path,capture(100),'2026-10-07'))
+   self.assertEqual(json.loads(path.read_text())['coverage']['updatedRepositories'],98)
 
  def test_week_starts_monday(self):
   self.assertEqual(period_starts('2026-09-13')['weekly'],'2026-09-07')

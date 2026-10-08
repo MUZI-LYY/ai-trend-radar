@@ -1,8 +1,13 @@
 import {useMemo} from 'react';
 import {periodOptions,type SelectablePeriod} from './period-options';
 import './period-selector.css';
-export default function PeriodSelector({period,min,max,end,onChange}:{period:SelectablePeriod;min:string;max:string;end:string;onChange:(end:string)=>void}){
- const options=useMemo(()=>periodOptions(period,min,max),[period,min,max]);
+export default function PeriodSelector({period,min,max,end,onChange}:{period:SelectablePeriod|'daily';min:string;max:string;end:string;onChange:(end:string)=>void}){
+ const options=useMemo(()=>period==='daily'?[]:periodOptions(period,min,max),[period,min,max]);
+ if(period==='daily')return <section className="period-selector" aria-label="选择日榜日期">
+  <label htmlFor="daily-source-date">日期<input id="daily-source-date" type="date" min={min} max={max} value={end} onChange={event=>{if(event.target.value>=min&&event.target.value<=max)onChange(event.target.value)}}/></label>
+  <p aria-live="polite">{end===max?'最新统计日':'按官方 Star 日历史回溯；未保存的日期不冒充当时快照'}</p>
+  <button type="button" onClick={()=>onChange(max)}>最新一天</button>
+ </section>;
  const selected=options.find(o=>o.start<=end&&o.end>=end)??options[0];
  if(!selected)return null;
  const years=[...new Set(options.map(o=>o.year))];

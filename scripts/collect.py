@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """GitHub-only collector. Uses Actions GITHUB_TOKEN or gh's normal API client.
-Never reads credentials from gh, never fabricates missing history or overwrites dated archives.
+Never reads credentials from gh, never fabricates missing history or overwrites complete dated archives.
 """
 import argparse, concurrent.futures, datetime as dt, hashlib, json, os, re, subprocess, sys, time, threading, urllib.request, urllib.error
 from pathlib import Path
@@ -53,6 +53,25 @@ def is_ai_candidate(repo):
 def atomic_json(path, value):
  path.parent.mkdir(parents=True, exist_ok=True)
  tmp=path.with_suffix(path.suffix+'.tmp'); tmp.write_text(json.dumps(value,ensure_ascii=False,separators=(',',':'))+'\n');tmp.replace(path)
+
+def save_daily_archive(path, payload, archive_day):
+ if payload['periodEnd'] != archive_day:return False
+ if path.exists():
+  previous=json.loads(path.read_text())
+  if archive_ready(previous):return False
+  old=previous.get('coverage',{})
+  new=payload.get('coverage',{})
+  old_total=old.get('trackedRepositories',0)
+  new_total=new.get('trackedRepositories',0)
+  old_ratio=old.get('updatedRepositories',0)/old_total if old_total else 0
+  new_ratio=new.get('updatedRepositories',0)/new_total if new_total else 0
+  if previous.get('periodEnd')==archive_day and (new_ratio,new.get('updatedRepositories',0)) <= (old_ratio,old.get('updatedRepositories',0)):
+   return False
+ # Keep a dated partial capture visible while coverage grows. Once it reaches
+ # the archive threshold, preserve that first sufficiently covered observation.
+ atomic_json(path,payload)
+ return True
+
 
 def api(endpoint, *, raw=False):
  token=os.environ.get('GITHUB_TOKEN')
@@ -398,11 +417,10 @@ def main():
  if missing_history:warnings.append(f'{len(missing_history)} 个项目的部分 Star 历史不可用，缺失指标不参与对应榜单。')
  payload={'schemaVersion':2,'date':capture_date,'capturedAt':now.isoformat(),'completedAt':dt.datetime.now(UTC).isoformat(),'periodEnd':end,'periodStarts':period_starts(end),'source':'GitHub REST API + GraphQL API','metric':'官方 Star 历史日统计','timezoneNote':'日期按官方 week 时间戳的 UTC 日期展开；源统计日边界不保证与 UTC 或北京时间午夜一致。日榜取已结束的来源统计日。','scope':'本站收录累计至少 10 Star 的 AI 相关公开仓库，并非 GitHub 全量项目。','categories':[{'id':k,'label':v[0],'description':v[1]} for k,v in CATEGORIES.items()],'status':'partial' if failures or missing_history or any(p.get('stale') for p in projects) else 'complete','warnings':sorted(set(warnings)),'failedRepositories':failures,'missingHistoryRepositories':missing_history,'projects':projects}
  payload['coverage']=coverage
- # Freeze the first sufficiently covered daily archive; refresh only changes latest.json.
- # Before 08:00 Beijing the UTC source day has not advanced yet. Do not freeze
- # yesterday's source data into today's archive during an hourly continuation.
+ # Save a dated partial capture and refresh it until sufficiently covered.
+ # Before 08:00 Beijing the UTC source day has not advanced yet.
  archive_day=(dt.date.fromisoformat(capture_date)-dt.timedelta(days=1)).isoformat()
- if not snapshot_path.exists() and end==archive_day and archive_ready(payload):atomic_json(snapshot_path,payload)
+ save_daily_archive(snapshot_path,payload,archive_day)
  atomic_json(latest_path,payload)
  index=[{'date':p.stem,'file':'snapshots/'+p.name} for p in sorted(snapshot_path.parent.glob('*.json'),reverse=True)]
  atomic_json(ROOT/'public/data/index.json',{'snapshots':index})
