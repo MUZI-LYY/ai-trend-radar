@@ -45,11 +45,13 @@ class GithubBoardTests(unittest.TestCase):
             ledger = Path(directory) / 'github-repositories.json'
             old = [{'id': identity, 'fullName': f'owner/repo-{identity}',
                     'createdAt': '2025-01-01T00:00:00Z', 'fetchedAt': '2026-10-01T00:00:00+00:00',
-                    'stars': 100, 'statsThrough': None, 'metrics': {}, 'history': []}
-                   for identity in (1, 2)]
+                    'stars': 9 if identity == 3 else 100, 'statsThrough': None,
+                    'metrics': {}, 'history': []}
+                   for identity in (1, 2, 3)]
             ledger.write_text(json.dumps({'projects': old, 'pending': [], 'updatedAt': old[0]['fetchedAt']}))
             metadata = {p['fullName'].lower(): {'id': p['id'], 'full_name': p['fullName'],
-                                                'created_at': p['createdAt'], 'pushed_at': None}
+                                                'created_at': p['createdAt'], 'pushed_at': None,
+                                                'stargazers_count': p['stars']}
                         for p in old}
 
             def refreshed(repo, previous, end):
@@ -63,6 +65,7 @@ class GithubBoardTests(unittest.TestCase):
                  patch.object(github.time, 'monotonic', side_effect=[0, 0, 601]):
                 github.collect(limit=2, pages=0, discover=False, new_limit=0, max_seconds=600)
             saved = {p['id']: p for p in json.loads(ledger.read_text())['projects']}
+            self.assertEqual({1, 2}, set(saved))
             self.assertIsNotNone(saved[1]['statsThrough'])
             self.assertIsNone(saved[2]['statsThrough'])
 
@@ -217,11 +220,12 @@ class GithubBoardTests(unittest.TestCase):
         # The older day was fully covered before this repository existed. The
         # current cumulative board must still include the newly discovered repo.
         missing = project_from_repo(repo(2, 'example/second', 100, end), None, end, fetch_history=False)
+        below_floor = project_from_repo(repo(3, 'example/under-ten', 9, end), None, end, fetch_history=False)
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source, output = root / 'github-repositories.json', root / 'public/data/github'
             source.write_text(json.dumps({'updatedAt': dt.datetime.now(dt.timezone.utc).isoformat(),
-                                          'projects': [ranked, missing], 'pending': []}))
+                                          'projects': [ranked, missing, below_floor], 'pending': []}))
             result = build(source=source, output=output)
             self.assertEqual(2, len(result['projects']))
             self.assertEqual(period_starts(end), result['periodStarts'])

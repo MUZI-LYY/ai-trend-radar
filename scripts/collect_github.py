@@ -17,6 +17,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from collect import atomic_json, flatten_history, period_total, strip_readme
+from discover import MIN_STARS
 from github_metadata import batch_metadata
 from ranking import period_starts
 
@@ -304,17 +305,21 @@ def collect(limit=260, pages=2, discover=True, new_limit=20, max_seconds=600):
     now = dt.datetime.now(dt.timezone.utc)
     end = (now.date() - dt.timedelta(days=1)).isoformat()
     previous = json.loads(EXTRAS.read_text()) if EXTRAS.exists() else {'projects': [], 'pending': []}
-    by_id = {project['id']: project for project in previous['projects']}
-    candidates = {repo['id']: repo for repo in previous.get('pending', [])}
+    by_id = {project['id']: project for project in previous['projects'] if project['stars'] >= MIN_STARS}
+    candidates = {repo['id']: repo for repo in previous.get('pending', [])
+                  if repo.get('stargazers_count', 0) >= MIN_STARS}
     discovered, cursors = search_candidates(end, pages, previous.get('searchCursor', {})) if discover else ({}, previous.get('searchCursor', {}))
     for identity, repo in discovered.items():
+        if repo.get('stargazers_count', 0) < MIN_STARS:
+            continue
         previous_attempt = candidates.get(identity, {}).get('lastAttemptAt')
         candidates[identity] = {**repo, **({'lastAttemptAt': previous_attempt} if previous_attempt else {})}
     if discover:
         try:
             for name in trending_names()[:8]:
                 repo = api('repos/' + name)
-                candidates[repo['id']] = repo
+                if repo['stargazers_count'] >= MIN_STARS:
+                    candidates[repo['id']] = repo
         except RateLimitExceeded as error:
             print(f'Trending lookup paused: {error}', flush=True)
         except Exception as error:
@@ -325,13 +330,18 @@ def collect(limit=260, pages=2, discover=True, new_limit=20, max_seconds=600):
     # as the main per-project cost. Missing GraphQL nodes fall back to REST.
     metadata = batch_metadata([item['fullName'] for kind, item in selected
                                if kind == 'refresh'])
-    changed = 0
+    changed = len(previous['projects']) - len(by_id)
     for kind, item in selected:
         if time.monotonic() - started >= max_seconds:
             print('Collection time budget reached; remaining projects continue in the next run', flush=True)
             break
         try:
             repo = (metadata.get(item['fullName'].lower()) or api('repos/' + item['fullName'])) if kind == 'refresh' else item
+            if repo['stargazers_count'] < MIN_STARS:
+                by_id.pop(repo['id'], None)
+                candidates.pop(repo['id'], None)
+                changed += 1
+                continue
             if not repo.get('pushed_at'):
                 repo['pushed_at'] = repo['created_at']
             result = project_from_repo(repo, by_id.get(repo['id']), end)
@@ -359,7 +369,8 @@ def collect(limit=260, pages=2, discover=True, new_limit=20, max_seconds=600):
                 candidates[item['id']] = {**item, 'lastAttemptAt': dt.datetime.now(dt.timezone.utc).isoformat()}
     # Discovery expands the candidate queue, not the published board. A new
     # repository enters the board only after its official history is complete.
-    pending = sorted((repo for repo in candidates.values() if repo['id'] not in by_id),
+    pending = sorted((repo for repo in candidates.values() if repo['id'] not in by_id and
+                      repo.get('stargazers_count', 0) >= MIN_STARS),
                      key=lambda repo: (-repo.get('stargazers_count', 0), repo['full_name'].lower()))
     atomic_json(EXTRAS, {'schemaVersion': 1, 'updatedAt': dt.datetime.now(dt.timezone.utc).isoformat() if changed else previous.get('updatedAt', now.isoformat()),
                          'projects': sorted(by_id.values(), key=lambda p: (-p['stars'], p['fullName'].lower())),

@@ -11,6 +11,7 @@ from build_fast_data import build as build_fast_data
 from build_tenure_index import cumulative_chart
 from collect import atomic_json, is_current
 from collect_github import HISTORY_START, needs_history
+from discover import MIN_STARS
 from pack_history import pack as pack_history
 from ranking import chart_entries, period_starts
 
@@ -77,6 +78,8 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
     capture = now.astimezone(dt.timezone(dt.timedelta(hours=8))).date().isoformat()
     projects = []
     for raw in ledger['projects']:
+        if raw['stars'] < MIN_STARS:
+            continue
         if raw.get('metadataThrough') == end:
             project = {**raw, 'stale': False}
         else:
