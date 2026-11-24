@@ -125,7 +125,9 @@ def build(archive=False, source=SOURCE, output=OUTPUT):
     atomic_json(output / 'board-history.json', {'chartSize': 30, 'entries': entries})
     history_path = output / 'history.json'
     old = json.loads(history_path.read_text()) if history_path.exists() else {}
-    history = merge_projects(old, projects, old.get('start', '2025-01-01'), end)
+    # A Star history backfill can verify past days independently of repository metadata.
+    history = merge_projects(old, projects, old.get('start', HISTORY_START), end,
+                             include_stale_history=True)
     history['scope'] = SCOPE
     save_history(history, output)
     pack_history(output / 'history.json', output / 'history.json.gz', output / 'history-pack.json')

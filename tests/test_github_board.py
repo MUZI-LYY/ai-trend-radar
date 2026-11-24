@@ -200,6 +200,25 @@ class GithubBoardTests(unittest.TestCase):
         self.assertEqual({'0': 4}, cursors)
         self.assertEqual(1, len(calls))
 
+    def test_backfilled_days_are_published_while_metadata_remains_stale(self):
+        end = (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat()
+        project = {
+            'id': 42, 'fullName': 'example/backfilled', 'createdAt': end + 'T00:00:00Z',
+            'stars': 10, 'historyStatus': 'ok', 'statsThrough': end,
+            'history': [{'date': end, 'stars': 2}], 'metrics': {key: 2 for key in period_starts(end)},
+            'metadataThrough': (dt.date.fromisoformat(end) - dt.timedelta(days=1)).isoformat(),
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'github-repositories.json'
+            source.write_text(json.dumps({'projects': [project], 'pending': []}))
+            result = build(source=source, output=root / 'github')
+            self.assertTrue(result['projects'][0]['stale'])
+            self.assertIsNone(result['projects'][0]['metrics']['daily'])
+            self.assertEqual(1, result['coverage']['pendingUpdates'])
+            history = json.loads((root / 'github/history.json').read_text())
+            self.assertEqual(project['history'], history['projects'][0]['days'])
+
     def test_independent_dataset_preserves_missing_growth_and_replays_real_days(self):
         end = (dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat()
         previous_day = (dt.date.fromisoformat(end) - dt.timedelta(days=1)).isoformat()

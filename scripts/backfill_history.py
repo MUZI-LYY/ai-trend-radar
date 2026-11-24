@@ -35,7 +35,7 @@ def missing_dates(days, start, end, created):
     return result
 
 
-def merge_projects(previous, projects, start, end):
+def merge_projects(previous, projects, start, end, *, include_stale_history=False):
     """Keep past values for tracked IDs, overlay newly fetched valid aggregate days."""
     start = min(start, previous.get('start', start))
     old = {p['id']: p for p in previous.get('projects', [])}
@@ -44,7 +44,7 @@ def merge_projects(previous, projects, start, end):
         project_start = max(start, project['createdAt'][:10])
         days = {d['date']: d['stars'] for d in old.get(project['id'], {}).get('days', [])
                 if project_start <= d['date'] <= end}
-        if project.get('historyStatus') == 'ok' and not project.get('stale'):
+        if project.get('historyStatus') == 'ok' and (include_stale_history or not project.get('stale')):
             for day in project.get('history', []):
                 if project_start <= day['date'] <= end:
                     if type(day['stars']) is not int or day['stars'] < 0:
