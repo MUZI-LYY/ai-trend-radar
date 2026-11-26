@@ -110,6 +110,17 @@ def validate_history(history, index, latest):
  return len(expected)
 
 
+def validated_archives(root, snapshots):
+ for snapshot in snapshots:
+  path = root / snapshot['file']
+  assert path.resolve().is_relative_to(root.resolve()), 'Archive path outside data directory'
+  assert path.exists(), 'Missing archive'
+  archived = read_snapshot(path)
+  assert archived['date'] == snapshot['date'], 'Archive date mismatch'
+  validate_dataset(archived)
+  yield archived
+
+
 def main(directory=None):
  default = Path(__file__).resolve().parents[1] / 'public/data'
  root = Path(directory) if directory else default
@@ -123,21 +134,13 @@ def main(directory=None):
   assert all(candidate.get('stars', 0) >= MIN_STARS for candidate in discovery['candidates'].values()), 'Below-minimum discovery candidate'
   assert latest['coverage']['pendingCandidates'] == backlog_size(
    discovery, latest['projects'], excluded), 'Pending queue count mismatch'
- index = json.loads((root / 'index.json').read_text())
- archives = []
- for snapshot in index['snapshots']:
-  path = root / snapshot['file']
-  assert path.resolve().is_relative_to(root.resolve()), 'Archive path outside data directory'
-  assert path.exists(), 'Missing archive'
-  archived = read_snapshot(path)
-  assert archived['date'] == snapshot['date'], 'Archive date mismatch'
-  validate_dataset(archived)
-  archives.append(archived)
+ snapshots = json.loads((root / 'index.json').read_text())['snapshots']
  board = json.loads((root / 'board-history.json').read_text())
  assert board['chartSize'] == 30, 'Unexpected daily board size'
- assert board['entries'] == chart_entries(archives), 'Board history differs from first archived daily rankings'
+ archived_entries = chart_entries(validated_archives(root, snapshots))
+ assert board['entries'] == archived_entries, 'Board history differs from first archived daily rankings'
  history_days = validate_history(json.loads((root / 'history.json').read_text()), json.loads((root / 'history-index.json').read_text()), latest)
- print(f'Validated {count} projects and {len(archives)} archives; {history_days} historical source dates; all period totals match source histories.')
+ print(f'Validated {count} projects and {len(snapshots)} archives; {history_days} historical source dates; all period totals match source histories.')
 
 
 if __name__ == '__main__':

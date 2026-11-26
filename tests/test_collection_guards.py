@@ -104,6 +104,19 @@ class CollectionGuardTests(unittest.TestCase):
   self.assertEqual(len(entries), 1)
   self.assertEqual(entries[0]['ids'], [1])
 
+ def test_archive_stream_prefers_earliest_capture_and_preserves_ties(self):
+  def payload(day, captured_at, project):
+   return {'date': '2026-09-15', 'capturedAt': captured_at, 'periodEnd': day,
+           'projects': [{'id': project, 'fullName': f'o/{project}', 'stars': 1, 'metrics': {'daily': 1}}]}
+  archives = (row for row in [
+   payload('2026-09-14', '2026-09-15T02:00:00Z', 3),
+   payload('2026-09-13', '2026-09-15T02:00:00Z', 5),
+   payload('2026-09-14', '2026-09-15T01:00:00Z', 1),
+   payload('2026-09-14', '2026-09-15T01:00:00Z', 2),
+  ])
+  self.assertEqual([(row['date'], row['ids']) for row in chart_entries(archives)],
+                   [('2026-09-13', [5]), ('2026-09-14', [1])])
+
  def test_year_start_requests_previous_year_week(self):
   end = '2026-01-01'
   earliest = min(period_starts(end).values())

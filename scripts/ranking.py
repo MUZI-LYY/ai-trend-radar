@@ -30,11 +30,13 @@ def chart_entry(payload):
 
 def chart_entries(payloads):
  """Use the first archived observation of a source day, even across capture dates."""
- entries={}
- for payload in sorted(payloads,key=lambda p:(p['date'],p.get('capturedAt',''))):
-  entry=chart_entry(payload)
-  entries.setdefault(entry['date'],entry)
- return [entries[date] for date in sorted(entries)]
+ first_by_day = {}
+ for payload in payloads:
+  day = payload['periodEnd']
+  capture = (payload['date'], payload.get('capturedAt', ''))
+  if day not in first_by_day or capture < first_by_day[day][0]:
+   first_by_day[day] = (capture, chart_entry(payload))
+ return [first_by_day[day][1] for day in sorted(first_by_day)]
 
 def observed_tenure(project_id, end, current_ids, entries):
  by_date = {}
